@@ -7,7 +7,11 @@
 
 <hr />
 
-[![Build Status](https://travis-ci.org/dfcook/vue-testing-library.png?branch=master)](https://travis-ci.org/dfcook/vue-testing-library)
+[![Build Status](https://travis-ci.org/dfcook/vue-testing-library.svg?branch=master)](https://travis-ci.org/dfcook/vue-testing-library)
+
+[![Coverage Status](https://coveralls.io/repos/github/dfcook/vue-testing-library/badge.svg?branch=master)](https://coveralls.io/github/dfcook/vue-testing-library?branch=master)
+
+[![GitHub version](https://badge.fury.io/gh/dfcook%2Fvue-testing-library.svg)](https://badge.fury.io/gh/dfcook%2Fvue-testing-library)
 
 ## This library
 
