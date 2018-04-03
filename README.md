@@ -7,6 +7,8 @@
 
 <hr />
 
+[![Build Status](https://travis-ci.org/dfcook/vue-testing-library.png?branch=master)](https://travis-ci.org/dfcook/vue-testing-library)
+
 ## This library
 
 The `vue-testing-library` is a very light-weight solution for testing Vue
