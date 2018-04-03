@@ -4,7 +4,7 @@
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --verbose --watch"
+    "test": "jest --verbose"
   },
   "author": "Daniel Cook",
   "license": "MIT",
