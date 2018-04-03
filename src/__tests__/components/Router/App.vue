@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import LocationDisplay from './LocationDisplay.vue'
+import LocationDisplay from './LocationDisplay'
 
 export default {
   components: {

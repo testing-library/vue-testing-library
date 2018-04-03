@@ -6,13 +6,13 @@ const wait = time => new Promise(resolve => setTimeout(resolve, time))
 
 test('unmounts a component', async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
-  
-  const { unmount, queryByTestId, wrapper } = render(StopWatch)
-  Simulate.click(queryByTestId('start-stop-button'))
+
+  const { unmount, getByText, wrapper } = render(StopWatch)
+  Simulate.click(getByText('start'))
 
   unmount()
   expect(wrapper.vm._isDestroyed).toBe(true)
 
-  await wait()  
+  await wait()
   expect(console.error).not.toHaveBeenCalled()
 })

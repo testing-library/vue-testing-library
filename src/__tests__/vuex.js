@@ -7,34 +7,33 @@ const store = {
     count: 0
   },
   actions: {
-    increment: jest.fn(),
-    decrement: jest.fn()    
+    increment: ({commit, state}) => commit('SET_COUNT', state.count + 1),
+    decrement: ({commit, state}) => commit('SET_COUNT', state.count - 1)
   },
   mutations: {
     SET_COUNT: (state, count) => state.count = count
   }
 }
 
-test('can render with redux with defaults', () => {
-  const { wrapper, queryByTestId } = render(VuexTest, { store })
-  Simulate.click(queryByTestId('incrementer'))
-  wrapper.update()
-  expect(store.actions.increment).toBeCalled()  
+test('can render with vuex with defaults', () => {
+  const {getByTestId, getByText} = render(VuexTest, { store })
+  Simulate.click(getByText('+'))
+  expect(getByTestId('count-value').textContent).toBe('1')
 })
 
-test('can render with redux with custom initial state', () => {
+test('can render with vuex with custom initial state', () => {
   store.state.count = 3
-  const {queryByTestId} = render(VuexTest, { store })
-  Simulate.click(queryByTestId('decrementer'))
-  expect(store.actions.decrement).toBeCalled()
+  const {getByTestId, getByText} = render(VuexTest, { store })
+  Simulate.click(getByText('-'))
+  expect(getByTestId('count-value').textContent).toBe('2')
 })
 
-test('can render with redux with custom store', () => {
+test('can render with vuex with custom store', () => {
   // this is a silly store that can never be changed
   const store = { state: { count: 1000 } }
-  const {queryByTestId} = render(VuexTest, { store })
-  Simulate.click(queryByTestId('incrementer'))
-  expect(queryByTestId('count-value').textContent).toBe('1000')
-  Simulate.click(queryByTestId('decrementer'))
-  expect(queryByTestId('count-value').textContent).toBe('1000')
+  const {getByTestId, getByText} = render(VuexTest, { store })
+  Simulate.click(getByText('+'))
+  expect(getByTestId('count-value').textContent).toBe('1000')
+  Simulate.click(getByText('-'))
+  expect(getByTestId('count-value').textContent).toBe('1000')
 })

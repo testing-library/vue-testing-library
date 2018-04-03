@@ -1,22 +1,16 @@
 import { createLocalVue, mount, Wrapper } from '@vue/test-utils'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import waitForExpect from 'wait-for-expect'
 import Simulate from './Simulate'
+import * as queries from './queries'
 
-function select(id) {
-  return `[data-testid="${id}"]`
-}
-
-function queryDivByTestId(wrapper, id) {
-  return wrapper.find(select(id)).element
-}
-
-function render(TestComponent, { props = null, store = null, routes = null } = {}) {    
+function render(TestComponent, { props = null, store = null, routes = null } = {}) {
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
 
-  if (store) { 
+  if (store) {
     localVue.use(Vuex)
     vuexStore = new Vuex.Store(store)
   }
@@ -34,15 +28,23 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
     attachToDocument: true
   })
 
+  const wrapperHelpers = Object.entries(queries).reduce(
+    (helpers, [key, fn]) => {
+      helpers[key] = fn.bind(null, wrapper)
+      return helpers
+    },
+    {},
+  )
+
   return {
     wrapper,
-    unmount: () => wrapper.destroy(true),    
-    queryByTestId: queryDivByTestId.bind(null, wrapper),
-  }  
+    unmount: () => wrapper.destroy(true),
+    ...wrapperHelpers
+  }
 }
 
-function flushPromises() {
-  return new Promise(resolve => setImmediate(resolve))
+function wait(callback = () => {}, {timeout = 4500, interval = 50} = {}) {
+  return waitForExpect(callback, timeout, interval)
 }
 
-export { render, flushPromises, Simulate }
+export { render, wait, Simulate }

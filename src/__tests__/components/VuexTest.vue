@@ -2,13 +2,9 @@
   <div>
     <h2>Counter</h2>
     <div>
-      <button @click="decrement" data-testid="decrementer">
-        -
-      </button>
+      <button @click="decrement" data-testid="decrementer">-</button>
       <span data-testid="count-value">{{ count }}</span>
-      <button @click="increment" data-testid="incrementer">
-        +
-      </button>
+      <button @click="increment" data-testid="incrementer">+</button>
     </div>
   </div>
 </template>
