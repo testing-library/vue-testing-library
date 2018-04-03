@@ -7,17 +7,6 @@
 
 <hr />
 
-[![Build Status][build-badge]][build]
-[![version][version-badge]][package]
-[![downloads][downloads-badge]][npmtrends]
-[![MIT License][license-badge]][license]
-
-[![PRs Welcome][prs-badge]][prs]
-
-[![Watch on GitHub][github-watch-badge]][github-watch]
-[![Star on GitHub][github-star-badge]][github-star]
-[![Tweet][twitter-badge]][twitter]
-
 ## This library
 
 The `vue-testing-library` is a very light-weight solution for testing Vue
