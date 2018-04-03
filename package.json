@@ -1,7 +1,7 @@
 {
   "name": "vue-testing-library",
   "version": "1.0.0",
-  "description": "Simple and completed Vue DOM testing utilities that encourage good testing practices.",
+  "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
   "main": "src/index.js",
   "scripts": {
     "test": "jest --verbose --watch"
