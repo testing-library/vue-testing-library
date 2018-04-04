@@ -2,7 +2,7 @@ export default {
   click(elem) {
     if (elem) {
       if (elem.trigger) {
-        return elem.trigger('submit')
+        return elem.trigger('click')
       }
 
       if (elem.click) {
@@ -24,12 +24,12 @@ export default {
   change (elem, value) {
     if (elem) {
       if (elem.trigger) {
-        return elem.trigger('change', value)
+        return elem.trigger('change',{ value })
       }
 
       if (elem.value) {
         return elem.value = value
       }
-    }    
+    }
   }
 }

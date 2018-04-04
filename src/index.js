@@ -38,7 +38,7 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
 
   return {
     wrapper,
-    unmount: () => wrapper.destroy(true),
+    unmount: () => wrapper.destroy(),
     ...wrapperHelpers
   }
 }
