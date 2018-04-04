@@ -1,35 +1,21 @@
-export default {
-  click(elem) {
-    if (elem) {
-      if (elem.trigger) {
-        return elem.trigger('click')
-      }
-
-      if (elem.click) {
-        return elem.click()
-      }
+const simulate = (event, elem, ...params) => {
+  if (elem) {
+    if (elem.trigger) {
+      return elem.trigger(event, ...params)
     }
-  },
-  submit(elem) {
-    if (elem) {
-      if (elem.trigger) {
-        return elem.trigger('submit')
-      }
 
-      if (elem.submit) {
-        return elem.submit()
-      }
-    }
-  },
-  change (elem, value) {
-    if (elem) {
-      if (elem.trigger) {
-        return elem.trigger('change',{ value })
-      }
-
-      if (elem.value) {
-        return elem.value = value
-      }
+    if (elem[event]) {
+      return elem[event](...params)
     }
   }
+}
+
+const click = simulate.bind(null, 'click')
+const submit = simulate.bind(null, 'submit')
+const change = simulate.bind(null, 'change')
+
+export default {
+  click,
+  submit,
+  change
 }

@@ -44,6 +44,7 @@
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
+      "<rootDir>/npm/",
       "<rootDir>/src/__tests__/components/"
     ],
     "transform": {
