@@ -24,7 +24,7 @@ The more your tests resemble the way your software is used, the more confidence 
 
 ## Installation
 
-This module is distributed via [npm][npm] which is bundled with [node][node] and
+This module is distributed via npm which is bundled with node and
 should be installed as one of your project's `devDependencies`:
 
 ```
