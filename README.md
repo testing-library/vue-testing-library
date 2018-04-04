@@ -17,7 +17,7 @@ The `vue-testing-library` is a very light-weight solution for testing Vue
 components. It provides light utility functions on top of `@vue/test-utils`, in a way that encourages better testing practices.
 It's primary guiding principle is:
 
-> [The more your tests resemble the way your software is used, the more confidence they can give you.][guiding-principle]
+The more your tests resemble the way your software is used, the more confidence they can give you.
 
 ## LICENSE
 

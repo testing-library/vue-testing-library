@@ -14,7 +14,11 @@ test('login form submits', () => {
   const formNode = wrapper.find('form')
   const submitButtonNode = getByText('submit')
 
-  // Act
+  // Act - this is waiting on an issue in @vue/test-utils to allow v-model to be updated by
+  // changes to DOM elements
+  
+  // Simulate.change(usernameNode, fakeUser.username)
+  // Simulate.change(passwordNode, fakeUser.password)
   wrapper.setData(fakeUser)
 
   // NOTE: in jsdom, it's not possible to trigger a form submission
