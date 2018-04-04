@@ -17,11 +17,14 @@ function queryByAltText(container, alt) {
   )
 }
 
-function queryByPlaceholderText(container, text) {
+function queryByAttribute(attribute, container, text) {
   return query (
-    container, '[placeholder]', elem => elem.getAttribute('placeholder'), text
+    container, `[${attribute}]`, elem => elem.getAttribute(attribute), text
   )
 }
+
+const queryByPlaceholderText = queryByAttribute.bind(null, 'placeholder')
+const queryByTestId = queryByAttribute.bind(null, 'data-testid')
 
 function queryLabelByText(container, text) {
   return query (
@@ -39,7 +42,7 @@ function queryByLabelText(container, text, { selector = '*' } = {}) {
   const label = queryLabelByText(container, text)
 
   if (!label) {
-    return null
+    return queryByAttribute('aria-label', container, text)
   }
 
   /* istanbul ignore if */
@@ -65,15 +68,6 @@ function queryByLabelText(container, text, { selector = '*' } = {}) {
   }
 }
 
-function queryByTestId(container, id) {
-  const found = container.find(getDataTestIdSelector(id))
-  return found && found.element ? found.element : null
-}
-
-function getDataTestIdSelector(id) {
-  return `[data-testid="${id}"]`
-}
-
 function getText(node) {
   if (!node) {
     return null
@@ -96,7 +90,7 @@ function getByTestId(container, id, ...rest) {
   const el = queryByTestId(container, id, ...rest)
   if (!el) {
     throw new Error(
-      `Unable to find an element by: ${getDataTestIdSelector(id)}`,
+      `Unable to find an element by: [data-testid="${id}"]`,
     )
   }
   return el
