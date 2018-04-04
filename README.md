@@ -11,6 +11,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/dfcook/vue-testing-library/badge.svg?branch=master)](https://coveralls.io/github/dfcook/vue-testing-library?branch=master)&nbsp;&nbsp;
 [![GitHub version](https://badge.fury.io/gh/dfcook%2Fvue-testing-library.svg)](https://badge.fury.io/gh/dfcook%2Fvue-testing-library)
 
+[![npm version](https://badge.fury.io/js/vue-testing-library.svg)](https://badge.fury.io/js/vue-testing-library)&nbsp;&nbsp;
+[![license](https://img.shields.io/github/license/dfcook/vue-testing-library.svg)](https://img.shields.io/github/license/dfcook/vue-testing-library)
+
 ## This library
 
 The `vue-testing-library` is a very light-weight solution for testing Vue
