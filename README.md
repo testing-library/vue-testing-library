@@ -22,6 +22,87 @@ It's primary guiding principle is:
 
 The more your tests resemble the way your software is used, the more confidence they can give you.
 
+## Installation
+
+This module is distributed via [npm][npm] which is bundled with [node][node] and
+should be installed as one of your project's `devDependencies`:
+
+```
+npm install --save-dev vue-testing-library
+
+```
+
+## Usage
+
+```
+npm install --save-dev vue-testing-library
+                       jest
+                       vue-jest
+                       babel-jest
+                       babel-preset-env
+                       babel-plugin-transform-runtime
+```
+
+```javascript
+// package.json
+  "scripts": {
+    "test": "jest"
+  }
+
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    }
+  }
+
+// .babelrc
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      }
+    }]
+  ],
+  "plugins": [
+    "transform-runtime"
+  ],
+  "env": {
+    "test": {
+      "presets": ["env"]
+    }
+  }
+}
+
+// src/TestComponent.vue
+<template>
+  <span data-testid="test1">Hello World</span>
+</template>
+
+// src/TestComponent.spec.js
+import { render } from 'vue-testing-library'
+import TestComponent from './TestComponent'
+
+test('should render HelloWorld', () => {
+  const { queryByTestId } = render(TestComponent)
+  expect(queryByTestId('test1').textContent).toBe('Hello World')
+})
+
+```
+
 ## LICENSE
 
 MIT
