@@ -4,9 +4,6 @@
     <button @click="handleRunClick" data-testid="start-stop-button">
       {{ running ? 'Stop' : 'Start' }}
     </button>
-    <button @click="handleClearClick" data-testid="clear-button">
-      Clear
-    </button>
   </div>
 </template>
 
