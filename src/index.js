@@ -37,8 +37,11 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
   )
 
   return {
-    wrapper,
     unmount: () => wrapper.destroy(),
+    isUnmounted: () => wrapper.vm._isDestroyed,
+    html: () => wrapper.html(),
+    updateProps: _ => wrapper.setProps(_),
+    updateState: _ => wrapper.setData(_),
     ...wrapperHelpers
   }
 }

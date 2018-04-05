@@ -5,27 +5,26 @@ import Login from './components/Login'
 test('login form submits', () => {
   const fakeUser = {username: 'jackiechan', password: 'hiya! 🥋'}
   const handleSubmit = jest.fn()
-  const {wrapper, getByLabelText, getByText} = render(
+  const {updateState, getByLabelText, getByText} = render(
     Login, { props: { onSubmit: handleSubmit } }
   )
 
   const usernameNode = getByLabelText('username')
   const passwordNode = getByLabelText('password')
-  const formNode = wrapper.find('form')
   const submitButtonNode = getByText('submit')
 
   // Act - this is waiting on an issue in @vue/test-utils to allow v-model to be updated by
   // changes to DOM elements
-  
+
   // Simulate.change(usernameNode, fakeUser.username)
   // Simulate.change(passwordNode, fakeUser.password)
-  wrapper.setData(fakeUser)
+  updateState(fakeUser)
 
   // NOTE: in jsdom, it's not possible to trigger a form submission
   // by clicking on the submit button. This is really unfortunate.
   // So the next best thing is to simulate a submit on the form itself
   // then ensure that there's a submit button.
-  Simulate.submit(formNode)
+  Simulate.click(submitButtonNode)
 
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)

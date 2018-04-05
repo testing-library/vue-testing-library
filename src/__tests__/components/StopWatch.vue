@@ -20,11 +20,6 @@ export default {
     }
   },
   methods: {
-    handleClearClick () {
-      clearInterval(this.timer)
-      this.lapse = 0
-      this.running = false
-    },
     handleRunClick () {
       if (this.running) {
         clearInterval(this.timer)
@@ -36,7 +31,7 @@ export default {
         })
       }
 
-      this.running = !this.running      
+      this.running = !this.running
     }
   },
   beforeDestroy () {

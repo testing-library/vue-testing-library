@@ -9,7 +9,7 @@ test('Fetch makes an API call and displays the greeting when load-greeting is cl
     }),
   )
 
-  const {wrapper, getByText} = render(Fetch, { props: { url: '/greeting' } })
+  const {html, getByText} = render(Fetch, { props: { url: '/greeting' } })
 
   // Act
   Simulate.click(getByText('Fetch'))
@@ -19,5 +19,5 @@ test('Fetch makes an API call and displays the greeting when load-greeting is cl
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
   expect(axiosMock.get).toHaveBeenCalledWith('/greeting')
   expect(getByText('hello there').textContent).toBe('hello there')
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(html()).toMatchSnapshot()
 })
