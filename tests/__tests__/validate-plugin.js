@@ -6,7 +6,7 @@ import '../../src/extend-expect'
 import Validate from './components/Validate'
 
 test('can validate using plugin', async () => {
-  const { getByPlaceholderText, queryByTestId, html } = render(Validate, {},
+  const { getByPlaceholderText, queryByTestId } = render(Validate, {},
     vue => vue.use(VeeValidate, { events: 'blur' }))
 
   const usernameInput = getByPlaceholderText('Username...')
@@ -15,6 +15,5 @@ test('can validate using plugin', async () => {
 
   await wait()
 
-  console.log(html())
   expect(queryByTestId('username-errors')).toBeInTheDOM()
 })

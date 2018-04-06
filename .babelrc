@@ -3,17 +3,21 @@
     ["env", {
       "modules": false,
       "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+        "browsers": [
+          "> 1%",
+          "last 2 versions",
+          "not ie <= 8"
+        ]
       }
-    }]    
-  ],  
+    }]
+  ],
   "plugins": [
     "transform-object-rest-spread",
     "transform-runtime"
   ],
   "env": {
     "test": {
-      "presets": ["env"]      
+      "presets": ["env"]
     }
   }
 }

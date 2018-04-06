@@ -3,6 +3,7 @@ import '../../src/extend-expect'
 
 import {
   Empty,
+  Attribute,
   GetByAltText,
   LabelText,
   LabelWithNoFormControl,
@@ -97,6 +98,32 @@ test('using jest helpers to assert element states', () => {
   ).toThrowError()
   expect(() =>
     expect(queryByTestId('count-value')).not.toHaveTextContent('2'),
+  ).toThrowError()
+})
+
+test('using jest helpers to check element attributes', () => {
+  const {queryByTestId} = render(Attribute)
+
+  expect(queryByTestId('ok-button')).toHaveAttribute('disabled')
+  expect(queryByTestId('ok-button')).toHaveAttribute('type')
+  expect(queryByTestId('ok-button')).not.toHaveAttribute('class')
+  expect(queryByTestId('ok-button')).toHaveAttribute('type', 'submit')
+  expect(queryByTestId('ok-button')).not.toHaveAttribute('type', 'button')
+
+  expect(() =>
+    expect(queryByTestId('ok-button')).not.toHaveAttribute('disabled'),
+  ).toThrowError()
+  expect(() =>
+    expect(queryByTestId('ok-button')).not.toHaveAttribute('type'),
+  ).toThrowError()
+  expect(() =>
+    expect(queryByTestId('ok-button')).toHaveAttribute('class'),
+  ).toThrowError()
+  expect(() =>
+    expect(queryByTestId('ok-button')).not.toHaveAttribute('type', 'submit'),
+  ).toThrowError()
+  expect(() =>
+    expect(queryByTestId('ok-button')).toHaveAttribute('type', 'button'),
   ).toThrowError()
 })
 

@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     submit () {
-      this.$validator.validateAll()
     }
   }
 }
