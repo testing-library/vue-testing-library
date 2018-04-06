@@ -12,6 +12,11 @@
     "type": "git",
     "url": "https://github.com/dfcook/vue-testing-library"
   },
+  "keywords": [
+    "vue.js",
+    "DOM",
+    "testing"
+  ],
   "author": "Daniel Cook",
   "license": "MIT",
   "dependencies": {
