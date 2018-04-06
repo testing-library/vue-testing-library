@@ -1,5 +1,5 @@
 import NumberDisplay from './components/NumberDisplay.vue'
-import { render } from '../'
+import { render } from '../../src'
 
 test('calling render with the same component but different props does not remount', () => {
   const { queryByTestId, updateProps } = render(NumberDisplay, { props: { number: 1 } })

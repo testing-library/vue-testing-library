@@ -31,6 +31,7 @@
     "jest": "^22.4.2",
     "jest-in-case": "^1.0.2",
     "jest-serializer-vue": "^1.0.0",
+    "vee-validate": "^2.0.6",
     "vue-jest": "^2.2.1"
   },
   "jest": {
@@ -45,7 +46,7 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/npm/",
-      "<rootDir>/src/__tests__/components/"
+      "<rootDir>/tests/__tests__/components/"
     ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",

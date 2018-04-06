@@ -2,7 +2,7 @@ import App from './components/Router/App.vue'
 import Home from './components/Router/Home.vue'
 import About from './components/Router/About.vue'
 
-import { render, Simulate } from '../'
+import { render, Simulate } from '../../src'
 
 const routes = [
   { path: '/', component: Home },

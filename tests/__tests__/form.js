@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { render, Simulate } from '../'
+import { render, Simulate } from '../../src'
 import Login from './components/Login'
 
 test('login form submits', () => {

@@ -1,5 +1,5 @@
-import {render} from '../'
-import '../extend-expect'
+import {render} from '../../src'
+import '../../src/extend-expect'
 
 import {
   Empty,

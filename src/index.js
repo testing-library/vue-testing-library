@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import Simulate from './Simulate'
 import * as queries from './queries'
 
-function render(TestComponent, { props = null, store = null, routes = null } = {}) {
+function render(TestComponent, { props = null, store = null, routes = null } = {}, configurationCb) {
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
@@ -18,6 +18,10 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
   if (routes) {
     localVue.use(VueRouter)
     router = new VueRouter(routes)
+  }
+
+  if (configurationCb && typeof configurationCb === 'function') {
+    configurationCb(localVue)
   }
 
   const wrapper = mount(TestComponent, {

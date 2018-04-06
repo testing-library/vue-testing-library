@@ -1,5 +1,5 @@
 import cases from 'jest-in-case'
-import { render } from '../'
+import { render } from '../../src'
 import TextMatchers from './components/TextMatchers'
 
 cases(

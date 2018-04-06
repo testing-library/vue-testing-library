@@ -1,4 +1,4 @@
-import { render, wait } from '../'
+import { render, wait } from '../../src'
 import EndToEnd from './components/EndToEnd'
 
 test('it waits for the data to be loaded', async () => {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import StopWatch from './components/StopWatch.vue'
-import { render, select, Simulate } from '../'
+import { render, select, Simulate } from '../../src'
 
 const wait = time => new Promise(resolve => setTimeout(resolve, time))
 

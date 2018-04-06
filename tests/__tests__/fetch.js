@@ -1,5 +1,5 @@
 import axiosMock from 'axios'
-import { render, Simulate, wait } from '../'
+import { render, Simulate, wait } from '../../src'
 import Fetch from './components/Fetch.vue'
 
 test('Fetch makes an API call and displays the greeting when load-greeting is clicked', async () => {

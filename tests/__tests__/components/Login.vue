@@ -2,7 +2,11 @@
   <div>
     <form @submit.prevent="submit">
       <label for="username-input">Username</label>
-      <input v-model="username" id="username-input" placeholder="Username..." name="username" />
+      <input
+        id="username-input"
+        v-model="username"
+        placeholder="Username..."
+        name="username" />
       <label id="password-label">Password</label>
       <input
         v-model="password"

@@ -1,5 +1,5 @@
 import VuexTest from './components/VuexTest'
-import { render, Simulate } from '../'
+import { render, Simulate } from '../../src'
 import Vuex from 'vuex'
 
 const store = {
