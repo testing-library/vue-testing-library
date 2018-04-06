@@ -25,12 +25,12 @@
   "author": "Daniel Cook",
   "license": "MIT",
   "dependencies": {
+    "dom-testing-library": "^1.0.0",
     "@vue/test-utils": "^1.0.0-beta.12",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",
-    "vuex": "^3.0.1",
-    "wait-for-expect": "^0.4.0"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "axios": "^0.18.0",

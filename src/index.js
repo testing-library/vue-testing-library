@@ -1,9 +1,8 @@
 import { createLocalVue, mount, Wrapper } from '@vue/test-utils'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
-import waitForExpect from 'wait-for-expect'
 import Simulate from './Simulate'
-import * as queries from './queries'
+import { wait, queries } from 'dom-testing-library'
 
 function render(TestComponent, { props = null, store = null, routes = null } = {}, configurationCb) {
   const localVue = createLocalVue()
@@ -34,7 +33,7 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
 
   const wrapperHelpers = Object.entries(queries).reduce(
     (helpers, [key, fn]) => {
-      helpers[key] = fn.bind(null, wrapper)
+      helpers[key] = fn.bind(null, wrapper.element)
       return helpers
     },
     {},
@@ -48,10 +47,6 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
     updateState: _ => wrapper.setData(_),
     ...wrapperHelpers
   }
-}
-
-function wait(callback = () => {}, {timeout = 4500, interval = 50} = {}) {
-  return waitForExpect(callback, timeout, interval)
 }
 
 export { render, wait, Simulate }

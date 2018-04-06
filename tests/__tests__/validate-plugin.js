@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 
 import { render, Simulate, wait } from '../../src'
-import '../../src/extend-expect'
 import Validate from './components/Validate'
 
 test('can validate using plugin', async () => {
@@ -15,5 +14,5 @@ test('can validate using plugin', async () => {
 
   await wait()
 
-  expect(queryByTestId('username-errors')).toBeInTheDOM()
+  expect(queryByTestId('username-errors').textContent).toBe('The username field is required.')
 })

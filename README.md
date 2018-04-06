@@ -22,7 +22,8 @@ It's primary guiding principle is:
 
 The more your tests resemble the way your software is used, the more confidence they can give you.
 
-The intention is to closely track react-test-utils and its capabilities. As such significant parts of its code are repeated here verbatim. All credit for this must go to Kent C Dodds and the other contributors to that project.
+The intention is to closely track react-test-utils and its capabilities. To this end it uses the marvellous `dom-testing-utils` library for querying the DOM.
+
 
 ## Installation
 
