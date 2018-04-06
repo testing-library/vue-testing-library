@@ -8,6 +8,10 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "version": "babel --presets=es2015 src --out-dir npm"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfcook/vue-testing-library"
+  },
   "author": "Daniel Cook",
   "license": "MIT",
   "dependencies": {
