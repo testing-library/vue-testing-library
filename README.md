@@ -92,7 +92,9 @@ npm install --save-dev vue-testing-library
 
 // src/TestComponent.vue
 <template>
-  <span data-testid="test1">Hello World</span>
+  <div>
+    <span data-testid="test1">Hello World</span>
+  </div>
 </template>
 
 // src/TestComponent.spec.js
