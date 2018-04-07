@@ -1,6 +1,4 @@
 import { createLocalVue, mount, Wrapper } from '@vue/test-utils'
-import Vuex from 'vuex'
-import VueRouter from 'vue-router'
 import Simulate from './Simulate'
 import { wait, queries } from 'dom-testing-library'
 
@@ -10,11 +8,13 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
   let router = null
 
   if (store) {
+    const Vuex = require('vuex')
     localVue.use(Vuex)
     vuexStore = new Vuex.Store(store)
   }
 
   if (routes) {
+    const VueRouter = require('vue-router')
     localVue.use(VueRouter)
     router = new VueRouter(routes)
   }
