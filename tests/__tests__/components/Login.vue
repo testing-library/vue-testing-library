@@ -34,7 +34,7 @@ export default {
       password: ''
     }
   },
-  methods: {
+  methods: {    
     submit () {
       this.onSubmit({
         username: this.username,

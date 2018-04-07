@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submit">
+  <form>
     <label for="username-input">Username</label>
     <input
       id="username-input"
@@ -30,10 +30,6 @@ export default {
     return {
       username: '',
       password: ''
-    }
-  },
-  methods: {
-    submit () {
     }
   }
 }

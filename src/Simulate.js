@@ -12,14 +12,18 @@ const simulate = (event, elem, ...params) => {
 
 const click = simulate.bind(null, 'click')
 const submit = simulate.bind(null, 'submit')
-const change = simulate.bind(null, 'change')
 const focus = simulate.bind(null, 'focus')
 const blur = simulate.bind(null, 'blur')
 
+const touch = (elem) => {
+  focus(elem)
+  blur(elem)
+}
+
 export default {
+  blur,
   click,
-  submit,
-  change,
   focus,
-  blur
+  submit,    
+  touch
 }

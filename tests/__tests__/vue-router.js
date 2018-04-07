@@ -11,7 +11,7 @@ const routes = [
 ]
 
 test('full app rendering/navigating', () => {
-  const { wrapper, queryByTestId } = render(App, { routes })
+  const { queryByTestId } = render(App, { routes })
   // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(queryByTestId('location-display').textContent).toBe('/')
   Simulate.click(queryByTestId('about-link'))

@@ -2,7 +2,7 @@ import { render, wait } from '../../src'
 import EndToEnd from './components/EndToEnd'
 
 test('it waits for the data to be loaded', async () => {
-  const { html, queryByText, queryByTestId } = render(EndToEnd)
+  const { queryByText, queryByTestId } = render(EndToEnd)
 
   expect(queryByText('Loading...')).toBeTruthy()
 

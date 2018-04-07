@@ -1,7 +1,7 @@
 <div align="center">
 <h1>vue-testing-library</h1>
 
-<p>Port of the ultra-low surface area testing library <a href="https://github.com/kentcdodds/react-testing-library/">react-testing-library</a> to <a href="https://github.com/vuejs/vue">Vue.js</a> using <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a></p>
+<p>Lightweight adapter allowing <a href="https://github.com/kentcdodds/dom-testing-library/">dom-testing-library</a> to be used to test <a href="https://github.com/vuejs/vue">Vue.js</a> components built on top of <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a></p>
 
 </div>
 
@@ -16,14 +16,15 @@
 
 ## This library
 
-The `vue-testing-library` is a very light-weight solution for testing Vue
-components. It provides light utility functions on top of `@vue/test-utils`, in a way that encourages better testing practices.
-It's primary guiding principle is:
+The `vue-testing-library` is a an adapter that enables Vue testing using the framework-agnostic DOM testing library `dom-testing-library`
 
-The more your tests resemble the way your software is used, the more confidence they can give you.
-
-The intention is to closely track react-test-utils and its capabilities. To this end it uses the marvellous `dom-testing-utils` library for querying the DOM.
-
+* [Installation](#installation)
+* [Usage](#usage)
+  * [`render`](#render)
+  * [`Simulate`](#simulate)
+  * [`wait`](#wait)
+* [Examples](#examples) 
+* [LICENSE](#license)
 
 ## Installation
 
@@ -107,6 +108,43 @@ test('should render HelloWorld', () => {
 })
 
 ```
+
+### render
+
+The `render` function takes up to 3 parameters and returns an object with some helper methods
+
+1. Component - the Vue component to be tested.
+2. RenderOptions - an object containing additional information to be passed to @vue/test-utils mount. This can be:
+* props - The component props to be passed to TestComponent
+* store - The object definition of a Vuex store, if present `render` will configure a Vuex store and pass to mount.
+* routes - A set of routes, if present render will configure VueRouter and pass to mount.
+3. configurationCb - A callback to be called passing the Vue instance when created. This allows 3rd party plugins to be installed prior to mount.
+
+### Simulate
+
+Lightweight wrapper around DOM element methods
+
+### wait
+
+When in need to wait for non-deterministic periods of time you can use `wait`,
+to wait for your expectations to pass. The `wait` function is a small wrapper
+around the
+[`wait-for-expect`](https://github.com/TheBrainFamily/wait-for-expect) module.
+
+Waiting can be very important in Vue components, @vue/test-utils has succeeded in making the majority of updates happen
+synchronously however there are occasions when wait will allow the DOM to update. For example, see [`here`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
+
+## Examples
+
+You'll find examples of testing with different libraries in
+[the test directory](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__).
+Some included are:
+
+* [`vuex`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/vuex.js)
+* [`vue-router`](https://github.com/dfcook/vue-testing-library/tree/master/__tests__/vue-router.js)
+* [`vee-validate`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
+
+Feel free to contribute more!
 
 ## LICENSE
 

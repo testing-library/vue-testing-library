@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import { render, Simulate, wait } from '../../src'
+import { html, render, Simulate, wait } from '../../src'
 import Login from './components/Login'
 
 test('login form submits', async () => {
   const fakeUser = {username: 'jackiechan', password: 'hiya! 🥋'}
   const handleSubmit = jest.fn()
-  const {updateState, getByLabelText, getByText} = render(
+  const { updateState, getByLabelText, getByText } = render(
     Login, { props: { onSubmit: handleSubmit } }
   )
 
@@ -15,7 +15,6 @@ test('login form submits', async () => {
 
   // Act - this is waiting on an issue in @vue/test-utils to allow v-model to be updated by
   // changes to DOM elements
-
   updateState(fakeUser)
 
   // NOTE: in jsdom, it's not possible to trigger a form submission

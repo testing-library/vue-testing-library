@@ -9,8 +9,7 @@ test('can validate using plugin', async () => {
     vue => vue.use(VeeValidate, { events: 'blur' }))
 
   const usernameInput = getByPlaceholderText('Username...')
-  Simulate.focus(usernameInput)
-  Simulate.blur(usernameInput)
+  Simulate.touch(usernameInput)  
 
   await wait()
 
