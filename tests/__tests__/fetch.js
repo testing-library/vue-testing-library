@@ -5,8 +5,8 @@ import Fetch from './components/Fetch.vue'
 test('Fetch makes an API call and displays the greeting when load-greeting is clicked', async () => {
   axiosMock.get.mockImplementationOnce(() =>
     Promise.resolve({
-      data: {greeting: 'hello there'},
-    }),
+      data: {greeting: 'hello there'}
+    })
   )
 
   const {html, getByText} = render(Fetch, { props: { url: '/greeting' } })

@@ -1,3 +1,5 @@
 <template>
-  <input id="username-id" placeholder="username" />
+  <input
+    id="username-id"
+    placeholder="username" >
 </template>

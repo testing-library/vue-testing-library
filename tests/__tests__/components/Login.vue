@@ -6,7 +6,7 @@
         id="username-input"
         v-model="username"
         placeholder="Username..."
-        name="username" />
+        name="username" >
       <label id="password-label">Password</label>
       <input
         v-model="password"
@@ -14,7 +14,7 @@
         type="password"
         name="password"
         aria-labelledby="password-label"
-      />
+      >
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -34,7 +34,7 @@ export default {
       password: ''
     }
   },
-  methods: {    
+  methods: {
     submit () {
       this.onSubmit({
         username: this.username,
@@ -44,4 +44,3 @@ export default {
   }
 }
 </script>
-

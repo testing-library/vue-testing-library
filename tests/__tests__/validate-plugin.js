@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 
 import { render, Simulate, wait } from '../../src'
@@ -9,7 +8,7 @@ test('can validate using plugin', async () => {
     vue => vue.use(VeeValidate, { events: 'blur' }))
 
   const usernameInput = getByPlaceholderText('Username...')
-  Simulate.touch(usernameInput)  
+  Simulate.touch(usernameInput)
 
   await wait()
 

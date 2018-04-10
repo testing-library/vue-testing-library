@@ -2,11 +2,11 @@
   <form>
     <label for="username-input">Username</label>
     <input
+      v-validate="'required|email'"
       id="username-input"
       v-model="username"
-      v-validate="'required|email'"
       placeholder="Username..."
-      name="username" />
+      name="username" >
 
     <span
       v-if="errors.has('username')"
@@ -19,7 +19,7 @@
       type="password"
       name="password"
       aria-labelledby="password-label"
-    />
+    >
     <button type="submit">Submit</button>
   </form>
 </template>

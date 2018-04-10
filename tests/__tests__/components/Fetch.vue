@@ -1,9 +1,13 @@
 <template>
   <div>
-    <button @click="fetch" data-testid="load-greeting">
+    <button
+      data-testid="load-greeting"
+      @click="fetch">
       Fetch
     </button>
-    <span v-if="data" data-testid="greeting-text">{{ data.greeting }}</span>
+    <span
+      v-if="data"
+      data-testid="greeting-text">{{ data.greeting }}</span>
     {{ data ?  : null}
   </div>
 </template>
@@ -27,7 +31,7 @@ export default {
     fetch () {
       axios
         .get(this.url)
-        .then(response => this.data = response.data)      
+        .then(response => { this.data = response.data })
     }
   }
 }
