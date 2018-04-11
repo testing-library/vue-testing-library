@@ -1,3 +1,5 @@
 <template>
-  <a href="/about" id="anchor">About</a>
+  <a
+    id="anchor"
+    href="/about">About</a>
 </template>

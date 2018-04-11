@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="loading">Loading...</div>
-    <div v-else data-testid="message">
+    <div
+      v-else
+      data-testid="message">
       Loaded this message: {{ data.returnedMessage }}
     </div>
   </div>

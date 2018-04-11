@@ -24,6 +24,6 @@ export default {
   blur,
   click,
   focus,
-  submit,    
+  submit,
   touch
 }

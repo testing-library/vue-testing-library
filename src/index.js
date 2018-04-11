@@ -1,8 +1,8 @@
-import { createLocalVue, mount, Wrapper } from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
 import Simulate from './Simulate'
 import { wait, queries } from 'dom-testing-library'
 
-function render(TestComponent, { props = null, store = null, routes = null } = {}, configurationCb) {
+function render (TestComponent, { props = null, store = null, routes = null } = {}, configurationCb) {
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
@@ -36,7 +36,7 @@ function render(TestComponent, { props = null, store = null, routes = null } = {
       helpers[key] = fn.bind(null, wrapper.element)
       return helpers
     },
-    {},
+    {}
   )
 
   return {

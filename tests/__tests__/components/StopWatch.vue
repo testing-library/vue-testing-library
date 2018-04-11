@@ -1,7 +1,9 @@
 <template>
   <div>
     <span data-testid="elapsed">{{ lapse }}ms</span>
-    <button @click="handleRunClick" data-testid="start-stop-button">
+    <button
+      data-testid="start-stop-button"
+      @click="handleRunClick">
       {{ running ? 'Stop' : 'Start' }}
     </button>
   </div>
@@ -15,6 +17,9 @@ export default {
       lapse: 0,
       timer: null
     }
+  },
+  beforeDestroy () {
+    clearInterval(this.timer)
   },
   methods: {
     handleRunClick () {
@@ -30,9 +35,6 @@ export default {
 
       this.running = !this.running
     }
-  },
-  beforeDestroy () {
-    clearInterval(this.timer)
   }
 }
 </script>
