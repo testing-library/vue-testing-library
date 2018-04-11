@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import Simulate from './Simulate'
-import { wait, queries } from 'dom-testing-library'
+import { bindElementToQueries, fireEvent, wait } from 'dom-testing-library'
 
 function render (TestComponent, { props = null, store = null, routes = null } = {}, configurationCb) {
   const localVue = createLocalVue()
@@ -31,13 +31,7 @@ function render (TestComponent, { props = null, store = null, routes = null } = 
     attachToDocument: true
   })
 
-  const wrapperHelpers = Object.entries(queries).reduce(
-    (helpers, [key, fn]) => {
-      helpers[key] = fn.bind(null, wrapper.element)
-      return helpers
-    },
-    {}
-  )
+  const wrapperHelpers = bindElementToQueries(wrapper.element)
 
   return {
     unmount: () => wrapper.destroy(),
@@ -49,4 +43,4 @@ function render (TestComponent, { props = null, store = null, routes = null } = 
   }
 }
 
-export { render, wait, Simulate }
+export { render, wait, fireEvent, Simulate }
