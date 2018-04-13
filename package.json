@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "@vue/test-utils": "^1.0.0-beta.13",
-    "dom-testing-library": "^1.6.1",
+    "dom-testing-library": "^1.7.1",
     "vue": "^2.5.16",
     "vue-template-compiler": "^2.5.16"
   },
@@ -45,7 +45,7 @@
     "coveralls": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
