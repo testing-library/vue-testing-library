@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "@vue/test-utils": "^1.0.0-beta.13",
-    "dom-testing-library": "^1.7.1",
+    "dom-testing-library": "^1.10.0",
     "vue": "^2.5.16",
     "vue-template-compiler": "^2.5.16"
   },
