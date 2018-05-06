@@ -5,7 +5,7 @@ test('unmounts a component', async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 
   const { unmount, isUnmounted, getByText } = render(StopWatch)
-  Simulate.click(getByText('start'))
+  Simulate.click(getByText('Start'))
 
   await wait()
 
@@ -19,7 +19,7 @@ test('unmounts a component', async () => {
 test('updates component state', async () => {
   const { getByTestId, getByText } = render(StopWatch)
 
-  const startButton = getByText('start')
+  const startButton = getByText('Start')
   const elapsedTime = getByTestId('elapsed')
 
   expect(elapsedTime.textContent).toBe('0ms')
