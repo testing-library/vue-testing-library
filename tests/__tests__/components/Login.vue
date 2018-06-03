@@ -4,6 +4,7 @@
       <label for="username-input">Username</label>
       <input
         id="username-input"
+        data-testid="username-input"
         v-model="username"
         placeholder="Username..."
         name="username" >

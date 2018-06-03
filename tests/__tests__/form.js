@@ -4,11 +4,11 @@ import Login from './components/Login'
 test('login form submits', async () => {
   const fakeUser = {username: 'jackiechan', password: 'hiya! 🥋'}
   const handleSubmit = jest.fn()
-  const { updateState, getByText } = render(
+  const { getByText, updateState } = render(
     Login, { props: { onSubmit: handleSubmit } }
   )
 
-  const submitButtonNode = getByText('submit')
+  const submitButtonNode = getByText('Submit')
 
   // Act - this is waiting on an issue in @vue/test-utils to allow v-model to be updated by
   // changes to DOM elements
