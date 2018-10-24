@@ -141,7 +141,7 @@ You'll find examples of testing with different libraries in
 Some included are:
 
 * [`vuex`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/vuex.js)
-* [`vue-router`](https://github.com/dfcook/vue-testing-library/tree/master/__tests__/vue-router.js)
+* [`vue-router`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/vue-router.js)
 * [`vee-validate`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
 
 Feel free to contribute more!
