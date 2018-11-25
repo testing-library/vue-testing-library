@@ -4,8 +4,8 @@
       <label for="username-input">Username</label>
       <input
         id="username-input"
-        data-testid="username-input"
         v-model="username"
+        data-testid="username-input"
         placeholder="Username..."
         name="username" >
       <label id="password-label">Password</label>

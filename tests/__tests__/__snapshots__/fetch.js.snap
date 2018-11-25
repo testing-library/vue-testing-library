@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Fetch makes an API call and displays the greeting when load-greeting is clicked 1`] = `
-<div>
-  <button data-testid="load-greeting">
+<div><button data-testid="load-greeting">
     Fetch
-  </button> <span data-testid="greeting-text">hello there</span> {{ data ? : null}
+  </button> <span data-testid="greeting-text">hello there</span>
+  {{ data ?  : null}
 </div>
 `;

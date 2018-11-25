@@ -16,7 +16,7 @@ const fetchAMessage = () =>
     // of an async operation calling a callback at a non-deterministic time
     const randomTimeout = Math.floor(Math.random() * 100)
     setTimeout(() => {
-      resolve({returnedMessage: 'Hello World'})
+      resolve({ returnedMessage: 'Hello World' })
     }, randomTimeout)
   })
 

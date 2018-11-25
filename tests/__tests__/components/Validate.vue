@@ -1,18 +1,25 @@
 <template>
   <form>
-    <label for="username-input">Username</label>
+    <label
+      id="username-label"
+      for="username">Username</label>
+
     <input
       v-validate="'required|email'"
-      id="username-input"
       v-model="username"
       placeholder="Username..."
-      name="username" >
+      name="username"
+      aria-labelledby="username-label"
+    >
 
     <span
-      v-if="errors.has('username')"
+      v-show="errors.has('username')"
       data-testid="username-errors">{{ errors.first('username') }}</span>
 
-    <label id="password-label">Password</label>
+    <label
+      id="password-label"
+      for="password"
+    >Password</label>
     <input
       v-model="password"
       placeholder="Password..."
@@ -26,11 +33,9 @@
 
 <script>
 export default {
-  data () {
-    return {
-      username: '',
-      password: ''
-    }
-  }
+  data: () => ({
+    username: '',
+    password: ''
+  })
 }
 </script>

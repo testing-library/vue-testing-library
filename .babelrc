@@ -1,8 +1,9 @@
 {
   "presets": [
-    ["env", {
-      "modules": false,
+    ["@babel/env", {
+      "modules": "commonjs",
       "targets": {
+        "node": "current",
         "browsers": [
           "> 1%",
           "last 2 versions",
@@ -12,12 +13,7 @@
     }]
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-runtime"
-  ],
-  "env": {
-    "test": {
-      "presets": ["env"]
-    }
-  }
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-runtime"
+  ]
 }

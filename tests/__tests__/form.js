@@ -2,7 +2,7 @@ import { render, Simulate } from '../../src'
 import Login from './components/Login'
 
 test('login form submits', async () => {
-  const fakeUser = {username: 'jackiechan', password: 'hiya! 🥋'}
+  const fakeUser = { username: 'jackiechan', password: 'hiya! 🥋' }
   const handleSubmit = jest.fn()
   const { getByText, updateState } = render(
     Login, { props: { onSubmit: handleSubmit } }
