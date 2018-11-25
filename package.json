@@ -1,6 +1,6 @@
 {
   "name": "vue-testing-library",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
   "main": "npm/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "lint:fix": "eslint --ext .js,.vue . --fix",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "version": "babel --presets=es2015 src --out-dir npm"
+    "version": "babel --presets=env src --out-dir npm"
   },
   "repository": {
     "type": "git",
