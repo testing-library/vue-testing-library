@@ -1,6 +1,6 @@
 import VeeValidate from 'vee-validate'
 
-import { render, Simulate, wait } from '../../src'
+import { render, fireEvent, wait } from '../../src'
 import Validate from './components/Validate'
 
 test('can validate using plugin', async () => {
@@ -8,7 +8,7 @@ test('can validate using plugin', async () => {
     vue => vue.use(VeeValidate, { events: 'blur' }))
 
   const usernameInput = getByPlaceholderText('Username...')
-  Simulate.touch(usernameInput)
+  fireEvent.touch(usernameInput)
 
   await wait()
 

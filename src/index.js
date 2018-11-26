@@ -2,11 +2,12 @@ import {
   createLocalVue,
   mount
 } from '@vue/test-utils'
-import Simulate from './Simulate'
+
 import {
   getQueriesForElement,
   prettyDOM,
-  wait
+  wait,
+  fireEvent
 } from 'dom-testing-library'
 
 const mountedWrappers = new Set()
@@ -74,9 +75,13 @@ function cleanupAtWrapper (wrapper) {
   mountedWrappers.delete(wrapper)
 }
 
+fireEvent.touch = (elem) => {
+  fireEvent.focus(elem)
+  fireEvent.blur(elem)
+}
+
 export * from 'dom-testing-library'
 export {
   cleanup,
-  render,
-  Simulate
+  render
 }

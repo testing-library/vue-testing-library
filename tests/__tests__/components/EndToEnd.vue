@@ -12,7 +12,7 @@
 <script>
 const fetchAMessage = () =>
   new Promise(resolve => {
-    // we are using random timeout here to simulate a real-time example
+    // we are using random timeout here to fireEvent a real-time example
     // of an async operation calling a callback at a non-deterministic time
     const randomTimeout = Math.floor(Math.random() * 100)
     setTimeout(() => {

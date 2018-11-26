@@ -1,4 +1,4 @@
-import { render, Simulate } from '../../src'
+import { render, fireEvent } from '../../src'
 import Login from './components/Login'
 
 test('login form submits', async () => {
@@ -16,9 +16,9 @@ test('login form submits', async () => {
 
   // NOTE: in jsdom, it's not possible to trigger a form submission
   // by clicking on the submit button. This is really unfortunate.
-  // So the next best thing is to simulate a submit on the form itself
+  // So the next best thing is to fireEvent a submit on the form itself
   // then ensure that there's a submit button.
-  Simulate.click(submitButtonNode)
+  fireEvent.click(submitButtonNode)
 
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)

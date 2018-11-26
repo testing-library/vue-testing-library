@@ -21,9 +21,9 @@ The `vue-testing-library` is a an adapter that enables Vue testing using the fra
 * [Installation](#installation)
 * [Usage](#usage)
   * [`render`](#render)
-  * [`Simulate`](#simulate)
+  * [`fireEvent`](#fireEvent)
   * [`wait`](#wait)
-* [Examples](#examples) 
+* [Examples](#examples)
 * [LICENSE](#license)
 
 ## Installation
@@ -120,9 +120,9 @@ The `render` function takes up to 3 parameters and returns an object with some h
 * routes - A set of routes, if present render will configure VueRouter and pass to mount.
 3. configurationCb - A callback to be called passing the Vue instance when created. This allows 3rd party plugins to be installed prior to mount.
 
-### Simulate
+### fireEvent
 
-Lightweight wrapper around DOM element methods
+Lightweight wrapper around DOM element events and methods
 
 ### wait
 

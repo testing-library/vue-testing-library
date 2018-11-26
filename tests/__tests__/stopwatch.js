@@ -1,11 +1,11 @@
 import StopWatch from './components/StopWatch.vue'
-import { render, wait, Simulate } from '../../src'
+import { render, wait, fireEvent } from '../../src'
 
 test('unmounts a component', async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 
   const { unmount, isUnmounted, getByText } = render(StopWatch)
-  Simulate.click(getByText('Start'))
+  fireEvent.click(getByText('Start'))
 
   await wait()
 
@@ -24,9 +24,9 @@ test('updates component state', async () => {
 
   expect(elapsedTime.textContent).toBe('0ms')
 
-  Simulate.click(startButton)
+  fireEvent.click(startButton)
   await wait()
-  Simulate.click(startButton)
+  fireEvent.click(startButton)
 
   expect(elapsedTime.textContent).not.toBe('0ms')
 })
