@@ -1,10 +1,21 @@
-import { createLocalVue, mount } from '@vue/test-utils'
+import {
+  createLocalVue,
+  mount
+} from '@vue/test-utils'
 import Simulate from './Simulate'
-import { getQueriesForElement, prettyDOM, wait } from 'dom-testing-library'
+import {
+  getQueriesForElement,
+  prettyDOM,
+  wait
+} from 'dom-testing-library'
 
 const mountedWrappers = new Set()
 
-function render (TestComponent, { props = null, store = null, routes = null } = {}, configurationCb) {
+function render (TestComponent, {
+  props = null,
+  store = null,
+  routes = null
+} = {}, configurationCb) {
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
@@ -18,7 +29,9 @@ function render (TestComponent, { props = null, store = null, routes = null } = 
   if (routes) {
     const VueRouter = require('vue-router')
     localVue.use(VueRouter)
-    router = new VueRouter(routes)
+    router = new VueRouter({
+      routes
+    })
   }
 
   if (configurationCb && typeof configurationCb === 'function') {
@@ -29,7 +42,8 @@ function render (TestComponent, { props = null, store = null, routes = null } = 
     localVue,
     router,
     store: vuexStore,
-    propsData: { ...props },
+    propsData: { ...props
+    },
     attachToDocument: true,
     sync: false
   })
@@ -61,4 +75,8 @@ function cleanupAtWrapper (wrapper) {
 }
 
 export * from 'dom-testing-library'
-export { cleanup, render, Simulate }
+export {
+  cleanup,
+  render,
+  Simulate
+}
