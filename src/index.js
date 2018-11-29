@@ -54,6 +54,7 @@ function render (TestComponent, {
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
+    emitted: () => wrapper.emitted(),
     updateProps: _ => {
       wrapper.setProps(_)
       return wait()
