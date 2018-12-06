@@ -25,6 +25,10 @@ module.exports = {
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await
-    'generator-star-spacing': 0
+    'generator-star-spacing': 0,
+    'vue/html-closing-bracket-newline': 0,
+    'vue/singleline-html-element-content-newline': 0,
+    'vue/multiline-html-element-content-newline': 0,
+    'vue/html-closing-bracket-spacing': 0
   }
 }

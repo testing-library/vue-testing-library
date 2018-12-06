@@ -5,8 +5,8 @@
       for="username">Username</label>
 
     <input
-      v-validate="'required|email'"
       v-model="username"
+      v-validate="'required|email'"
       placeholder="Username..."
       name="username"
       aria-labelledby="username-label"
