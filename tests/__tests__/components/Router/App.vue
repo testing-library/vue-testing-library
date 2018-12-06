@@ -1,17 +1,17 @@
 <template>
   <div>
-    <router-link
+    <RouterLink
       to="/"
       data-testid="home-link">
       Home
-    </router-link>
-    <router-link
+    </RouterLink>
+    <RouterLink
       to="/about"
       data-testid="about-link">
       About
-    </router-link>
-    <router-view />
-    <location-display />
+    </RouterLink>
+    <RouterView />
+    <LocationDisplay />
   </div>
 </template>
 
