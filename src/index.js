@@ -49,6 +49,8 @@ function render (TestComponent, {
     sync: false
   })
 
+  mountedWrappers.add(wrapper);
+
   return {
     debug: () => console.log(prettyDOM(wrapper.element)),
     unmount: () => wrapper.destroy(),
