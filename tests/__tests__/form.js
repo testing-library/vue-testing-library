@@ -18,7 +18,7 @@ test('login form submits', async () => {
   // by clicking on the submit button. This is really unfortunate.
   // So the next best thing is to fireEvent a submit on the form itself
   // then ensure that there's a submit button.
-  fireEvent.click(submitButtonNode)
+  await fireEvent.click(submitButtonNode)
 
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)

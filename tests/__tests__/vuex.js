@@ -1,5 +1,5 @@
 import VuexTest from './components/VuexTest'
-import { render, fireEvent, wait } from '../../src'
+import { render, fireEvent } from '../../src'
 
 const store = {
   state: {
@@ -16,16 +16,16 @@ const store = {
 
 test('can render with vuex with defaults', async () => {
   const { getByTestId, getByText } = render(VuexTest, { store })
-  fireEvent.click(getByText('+'))
-  await wait()
+  await fireEvent.click(getByText('+'))
+
   expect(getByTestId('count-value').textContent).toBe('1')
 })
 
 test('can render with vuex with custom initial state', async () => {
   store.state.count = 3
   const { getByTestId, getByText } = render(VuexTest, { store })
-  fireEvent.click(getByText('-'))
-  await wait()
+  await fireEvent.click(getByText('-'))
+
   expect(getByTestId('count-value').textContent).toBe('2')
 })
 
@@ -35,11 +35,11 @@ test('can render with vuex with custom store', async () => {
 
   const store = { state: { count: 1000 } }
   const { getByTestId, getByText } = render(VuexTest, { store })
-  fireEvent.click(getByText('+'))
-  await wait()
+
+  await fireEvent.click(getByText('+'))
   expect(getByTestId('count-value').textContent).toBe('1000')
-  fireEvent.click(getByText('-'))
-  await wait()
+
+  await fireEvent.click(getByText('-'))
   expect(getByTestId('count-value').textContent).toBe('1000')
 
   expect(console.error).toHaveBeenCalled()

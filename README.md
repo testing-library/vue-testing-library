@@ -122,7 +122,7 @@ The `render` function takes up to 3 parameters and returns an object with some h
 
 ### fireEvent
 
-Lightweight wrapper around DOM element events and methods
+Lightweight wrapper around DOM element events and methods. Will call wait, so can be awaited to allow effects to propagate.
 
 ### wait
 

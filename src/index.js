@@ -43,13 +43,12 @@ function render (TestComponent, {
     localVue,
     router,
     store: vuexStore,
-    propsData: { ...props
-    },
+    propsData: { ...props },
     attachToDocument: true,
     sync: false
   })
 
-  mountedWrappers.add(wrapper);
+  mountedWrappers.add(wrapper)
 
   return {
     debug: () => console.log(prettyDOM(wrapper.element)),
@@ -78,9 +77,17 @@ function cleanupAtWrapper (wrapper) {
   mountedWrappers.delete(wrapper)
 }
 
-fireEvent.touch = (elem) => {
-  fireEvent.focus(elem)
-  fireEvent.blur(elem)
+Object.keys(fireEvent).forEach(fn => {
+  fireEvent[`_${fn}`] = fireEvent[fn];
+  fireEvent[fn] = async (...params) => {
+    fireEvent[`_${fn}`](...params)
+    await wait()
+  }
+})
+
+fireEvent.touch = async (elem) => {
+  await fireEvent.focus(elem)
+  await fireEvent.blur(elem)
 }
 
 export * from 'dom-testing-library'
