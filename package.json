@@ -27,10 +27,10 @@
   "author": "Daniel Cook",
   "license": "MIT",
   "dependencies": {
-    "@vue/test-utils": "^1.0.0-beta.26",
-    "dom-testing-library": "^3.14.0",
-    "vue": "^2.5.17",
-    "vue-template-compiler": "^2.5.17"
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "dom-testing-library": "^3.15.0",
+    "vue": "^2.5.21",
+    "vue-template-compiler": "^2.5.21"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
@@ -43,7 +43,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "coveralls": "^3.0.2",
-    "eslint": "^5.9.0",
+    "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^8.0.0",
@@ -55,7 +55,7 @@
     "jest-in-case": "^1.0.2",
     "jest-serializer-vue": "^2.0.2",
     "vee-validate": "^2.1.4",
-    "vue-jest": "^3.0.1",
+    "vue-jest": "^3.0.2",
     "vue-router": "^3.0.2",
     "vuex": "^3.0.1"
   },
