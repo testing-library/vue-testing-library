@@ -4,6 +4,5 @@ exports[`Fetch makes an API call and displays the greeting when load-greeting is
 <div>
   <button data-testid="load-greeting">
     Fetch
-  </button> <span data-testid="greeting-text">hello there</span> {{ data ? : null}
-</div>
+  </button> <span data-testid="greeting-text">hello there</span></div>
 `;

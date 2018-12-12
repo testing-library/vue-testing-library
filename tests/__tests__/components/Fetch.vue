@@ -8,7 +8,6 @@
     <span
       v-if="data"
       data-testid="greeting-text">{{ data.greeting }}</span>
-    {{ data ?  : null}
   </div>
 </template>
 
