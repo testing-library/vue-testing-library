@@ -7,7 +7,9 @@
     </button>
     <span
       v-if="data"
-      data-testid="greeting-text">{{ data.greeting }}</span>
+      data-testid="greeting-text">
+      {{ data.greeting }}
+    </span>
   </div>
 </template>
 

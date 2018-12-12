@@ -51,6 +51,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest": "^23.6.0",
+    "jest-dom": "^3.0.0",
     "jest-in-case": "^1.0.2",
     "jest-serializer-vue": "^2.0.2",
     "vee-validate": "^2.1.4",

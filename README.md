@@ -99,12 +99,13 @@ npm install --save-dev vue-testing-library
 </template>
 
 // src/TestComponent.spec.js
+import 'jest-dom/extend-expect'
 import { render } from 'vue-testing-library'
 import TestComponent from './TestComponent'
 
 test('should render HelloWorld', () => {
   const { queryByTestId } = render(TestComponent)
-  expect(queryByTestId('test1').textContent).toBe('Hello World')
+  expect(queryByTestId('test1')).toHaveTextContent('Hello World')
 })
 
 ```

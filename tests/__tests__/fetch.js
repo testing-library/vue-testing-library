@@ -1,6 +1,7 @@
 import axiosMock from 'axios'
 import { render, fireEvent } from '../../src'
 import Fetch from './components/Fetch.vue'
+import 'jest-dom/extend-expect'
 
 test('Fetch makes an API call and displays the greeting when load-greeting is clicked', async () => {
   axiosMock.get.mockImplementationOnce(() =>
@@ -16,6 +17,6 @@ test('Fetch makes an API call and displays the greeting when load-greeting is cl
 
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
   expect(axiosMock.get).toHaveBeenCalledWith('/greeting')
-  expect(getByText('hello there').textContent).toBe('hello there')
+  expect(getByText('hello there')).toHaveTextContent('hello there')
   expect(html()).toMatchSnapshot()
 })

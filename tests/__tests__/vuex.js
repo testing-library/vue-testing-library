@@ -1,3 +1,5 @@
+import 'jest-dom/extend-expect'
+
 import VuexTest from './components/VuexTest'
 import { render, fireEvent } from '../../src'
 
@@ -18,7 +20,7 @@ test('can render with vuex with defaults', async () => {
   const { getByTestId, getByText } = render(VuexTest, { store })
   await fireEvent.click(getByText('+'))
 
-  expect(getByTestId('count-value').textContent).toBe('1')
+  expect(getByTestId('count-value')).toHaveTextContent('1')
 })
 
 test('can render with vuex with custom initial state', async () => {
@@ -26,7 +28,7 @@ test('can render with vuex with custom initial state', async () => {
   const { getByTestId, getByText } = render(VuexTest, { store })
   await fireEvent.click(getByText('-'))
 
-  expect(getByTestId('count-value').textContent).toBe('2')
+  expect(getByTestId('count-value')).toHaveTextContent('2')
 })
 
 test('can render with vuex with custom store', async () => {
@@ -37,10 +39,10 @@ test('can render with vuex with custom store', async () => {
   const { getByTestId, getByText } = render(VuexTest, { store })
 
   await fireEvent.click(getByText('+'))
-  expect(getByTestId('count-value').textContent).toBe('1000')
+  expect(getByTestId('count-value')).toHaveTextContent('1000')
 
   await fireEvent.click(getByText('-'))
-  expect(getByTestId('count-value').textContent).toBe('1000')
+  expect(getByTestId('count-value')).toHaveTextContent('1000')
 
   expect(console.error).toHaveBeenCalled()
 })
