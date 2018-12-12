@@ -78,7 +78,7 @@ function cleanupAtWrapper (wrapper) {
 }
 
 Object.keys(fireEvent).forEach(fn => {
-  fireEvent[`_${fn}`] = fireEvent[fn];
+  fireEvent[`_${fn}`] = fireEvent[fn]
   fireEvent[fn] = async (...params) => {
     fireEvent[`_${fn}`](...params)
     await wait()
