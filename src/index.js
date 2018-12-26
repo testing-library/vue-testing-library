@@ -50,7 +50,15 @@ function render (TestComponent, {
 
   mountedWrappers.add(wrapper)
 
+  if (wrapper.element.parentNode === document.body) {
+    const div = document.createElement('div')
+    wrapper.element.parentNode.insertBefore(div, wrapper.element)
+    div.appendChild(wrapper.element)
+  }
+
   return {
+    container: wrapper.element.parentNode,
+    baseElement: document.body,
     debug: () => console.log(prettyDOM(wrapper.element)),
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
@@ -61,7 +69,7 @@ function render (TestComponent, {
       return wait()
     },
     updateState: _ => wrapper.setData(_),
-    ...getQueriesForElement(wrapper.element)
+    ...getQueriesForElement(wrapper.element.parentNode)
   }
 }
 
@@ -70,8 +78,8 @@ function cleanup () {
 }
 
 function cleanupAtWrapper (wrapper) {
-  if (wrapper.parentNode === document.body) {
-    document.body.removeChild(wrapper)
+  if (wrapper.element.parentNode && wrapper.element.parentNode.parentNode === document.body) {
+    document.body.removeChild(wrapper.element.parentNode)
   }
   wrapper.destroy()
   mountedWrappers.delete(wrapper)
