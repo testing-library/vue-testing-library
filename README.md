@@ -150,3 +150,13 @@ Feel free to contribute more!
 ## LICENSE
 
 MIT
+
+## CONTRIBUTORS
+
+[![dfcook](https://avatars0.githubusercontent.com/u/10348212?v=3&s=200)](https://github.com/dfcook)
+[![eunjae-lee](https://avatars0.githubusercontent.com/u/499898?v=3&s=200)](https://github.com/eunjae-lee)
+[![tim-maguire](https://avatars0.githubusercontent.com/u/29452317?v=3&s=200)](https://github.com/tim-maguire)
+[![samdelacruz](https://avatars0.githubusercontent.com/u/2040007?v=3&s=200)](https://github.com/samdelacruz)
+[![ankitsinghaniyaz](https://avatars0.githubusercontent.com/u/11331989?v=3&s=200)](https://github.com/ankitsinghaniyaz)
+[![lindgr3n](https://avatars0.githubusercontent.com/u/24882614?v=3&s=200)](https://github.com/lindgr3n)
+[![kentcdodds](https://avatars0.githubusercontent.com/u/1500684?v=3&s=200)](https://github.com/kentcdodds)
