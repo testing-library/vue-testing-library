@@ -1,1 +1,4 @@
 /src/
+/tests/
+/node_modules/
+/coverage/
