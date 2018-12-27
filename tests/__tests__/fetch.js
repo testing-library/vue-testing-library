@@ -10,7 +10,7 @@ test('Fetch makes an API call and displays the greeting when load-greeting is cl
     })
   )
 
-  const { html, getByText } = render(Fetch, { props: { url: '/greeting' } })
+  const { html, getByText } = render(Fetch, { propsData: { url: '/greeting' } })
 
   // Act
   await fireEvent.click(getByText('Fetch'))
