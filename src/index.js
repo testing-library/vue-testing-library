@@ -13,9 +13,9 @@ import {
 const mountedWrappers = new Set()
 
 function render (TestComponent, {
-  props = null,
   store = null,
-  routes = null
+  routes = null,
+  ...mountOptions
 } = {}, configurationCb) {
   const localVue = createLocalVue()
   let vuexStore = null
@@ -39,13 +39,15 @@ function render (TestComponent, {
     configurationCb(localVue)
   }
 
+  const { props, ...rest } = mountOptions
   const wrapper = mount(TestComponent, {
     localVue,
     router,
     store: vuexStore,
     propsData: { ...props },
     attachToDocument: true,
-    sync: false
+    sync: false,
+    ...rest
   })
 
   mountedWrappers.add(wrapper)

@@ -1,5 +1,5 @@
-import { render, cleanup, fireEvent } from '../../src';
-import SimpleButton from './components/Button';
+import { render, cleanup, fireEvent } from '../../src'
+import SimpleButton from './components/Button'
 
 afterEach(cleanup)
 
