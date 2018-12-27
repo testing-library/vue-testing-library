@@ -1,5 +1,8 @@
 <template>
-  <button :class="typeClass" @click="clicked">{{ text }}</button>
+  <button
+    :class="typeClass"
+    @click="clicked"
+  >{{ text }}</button>
 </template>
 
 <script>
@@ -7,7 +10,7 @@ export default {
   props: {
     text: {
       type: String,
-      default: '',
+      default: ''
     },
     clicked: {
       type: Function,
@@ -15,17 +18,16 @@ export default {
     },
     type: {
       validator: (value) => ['primary', 'secondary'].includes(value),
-    },
-
+      default: 'primary'
+    }
   },
   computed: {
-    typeClass: function() {
+    typeClass: function () {
       if (this.type) {
-        return `button button--${this.type}`;
+        return `button button--${this.type}`
       }
-      return 'button';
-    },
-  },
-  
-};
+      return 'button'
+    }
+  }
+}
 </script>
