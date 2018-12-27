@@ -116,9 +116,9 @@ The `render` function takes up to 3 parameters and returns an object with some h
 
 1. Component - the Vue component to be tested.
 2. RenderOptions - an object containing additional information to be passed to @vue/test-utils mount. This can be:
-* props - The component props to be passed to TestComponent
 * store - The object definition of a Vuex store, if present `render` will configure a Vuex store and pass to mount.
 * routes - A set of routes, if present render will configure VueRouter and pass to mount.
+All additional render options are passed to the vue-test-utils mount function in its options.
 3. configurationCb - A callback to be called passing the Vue instance when created. This allows 3rd party plugins to be installed prior to mount.
 
 ### fireEvent
