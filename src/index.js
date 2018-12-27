@@ -15,7 +15,8 @@ const mountedWrappers = new Set()
 function render (TestComponent, {
   props = null,
   store = null,
-  routes = null
+  routes = null,
+  stubs = [],
 } = {}, configurationCb) {
   const localVue = createLocalVue()
   let vuexStore = null
@@ -43,6 +44,7 @@ function render (TestComponent, {
     localVue,
     router,
     store: vuexStore,
+    stubs,
     propsData: { ...props },
     attachToDocument: true,
     sync: false

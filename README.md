@@ -119,6 +119,7 @@ The `render` function takes up to 3 parameters and returns an object with some h
 * props - The component props to be passed to TestComponent
 * store - The object definition of a Vuex store, if present `render` will configure a Vuex store and pass to mount.
 * routes - A set of routes, if present render will configure VueRouter and pass to mount.
+* stubs - [An Array of component names to stub, or an object.](https://vue-test-utils.vuejs.org/api/options.html#stubs)
 3. configurationCb - A callback to be called passing the Vue instance when created. This allows 3rd party plugins to be installed prior to mount.
 
 ### fireEvent
