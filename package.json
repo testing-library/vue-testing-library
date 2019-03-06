@@ -1,6 +1,6 @@
 {
   "name": "vue-testing-library",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
   "main": "npm/index.js",
   "scripts": {
