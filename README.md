@@ -99,12 +99,13 @@ npm install --save-dev vue-testing-library
 </template>
 
 // src/TestComponent.spec.js
+import 'jest-dom/extend-expect'
 import { render } from 'vue-testing-library'
 import TestComponent from './TestComponent'
 
 test('should render HelloWorld', () => {
   const { queryByTestId } = render(TestComponent)
-  expect(queryByTestId('test1').textContent).toBe('Hello World')
+  expect(queryByTestId('test1')).toHaveTextContent('Hello World')
 })
 
 ```
@@ -115,14 +116,14 @@ The `render` function takes up to 3 parameters and returns an object with some h
 
 1. Component - the Vue component to be tested.
 2. RenderOptions - an object containing additional information to be passed to @vue/test-utils mount. This can be:
-* props - The component props to be passed to TestComponent
 * store - The object definition of a Vuex store, if present `render` will configure a Vuex store and pass to mount.
 * routes - A set of routes, if present render will configure VueRouter and pass to mount.
+All additional render options are passed to the vue-test-utils mount function in its options.
 3. configurationCb - A callback to be called passing the Vue instance when created. This allows 3rd party plugins to be installed prior to mount.
 
 ### fireEvent
 
-Lightweight wrapper around DOM element events and methods
+Lightweight wrapper around DOM element events and methods. Will call wait, so can be awaited to allow effects to propagate.
 
 ### wait
 
@@ -149,3 +150,13 @@ Feel free to contribute more!
 ## LICENSE
 
 MIT
+
+## CONTRIBUTORS
+
+[![dfcook](https://avatars0.githubusercontent.com/u/10348212?v=3&s=200)](https://github.com/dfcook)
+[![eunjae-lee](https://avatars0.githubusercontent.com/u/499898?v=3&s=200)](https://github.com/eunjae-lee)
+[![tim-maguire](https://avatars0.githubusercontent.com/u/29452317?v=3&s=200)](https://github.com/tim-maguire)
+[![samdelacruz](https://avatars0.githubusercontent.com/u/2040007?v=3&s=200)](https://github.com/samdelacruz)
+[![ankitsinghaniyaz](https://avatars0.githubusercontent.com/u/11331989?v=3&s=200)](https://github.com/ankitsinghaniyaz)
+[![lindgr3n](https://avatars0.githubusercontent.com/u/24882614?v=3&s=200)](https://github.com/lindgr3n)
+[![kentcdodds](https://avatars0.githubusercontent.com/u/1500684?v=3&s=200)](https://github.com/kentcdodds)

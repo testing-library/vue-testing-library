@@ -1,6 +1,7 @@
 import VeeValidate from 'vee-validate'
+import 'jest-dom/extend-expect'
 
-import { render, fireEvent, wait } from '../../src'
+import { render, fireEvent } from '../../src'
 import Validate from './components/Validate'
 
 test('can validate using plugin', async () => {
@@ -8,9 +9,7 @@ test('can validate using plugin', async () => {
     vue => vue.use(VeeValidate, { events: 'blur' }))
 
   const usernameInput = getByPlaceholderText('Username...')
-  fireEvent.touch(usernameInput)
+  await fireEvent.touch(usernameInput)
 
-  await wait()
-
-  expect(queryByTestId('username-errors').textContent).toBe('The username field is required.')
+  expect(queryByTestId('username-errors')).toHaveTextContent('The username field is required.')
 })

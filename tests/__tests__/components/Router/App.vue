@@ -11,16 +11,6 @@
       About
     </RouterLink>
     <RouterView />
-    <LocationDisplay />
+    <div data-testid="location-display">{{ $route.fullPath }}</div>
   </div>
 </template>
-
-<script>
-import LocationDisplay from './LocationDisplay'
-
-export default {
-  components: {
-    LocationDisplay
-  }
-}
-</script>

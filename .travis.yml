@@ -1,13 +1,14 @@
 sudo: false
 language: node_js
 cache:
+  yarn: true
   directories:
     - ~/.npm
 notifications:
   email: false
 node_js: '8'
-install: npm install
-script: npm run test
-after_success: npm run coveralls
+install: yarn
+script: yarn test
+after_success: yarn coveralls
 branches:
 only: master
