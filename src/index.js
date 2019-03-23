@@ -36,7 +36,7 @@ function render (TestComponent, {
   }
 
   if (configurationCb && typeof configurationCb === 'function') {
-    configurationCb(localVue)
+    configurationCb(localVue, vuexStore, router)
   }
 
   if (!mountOptions.propsData && !!mountOptions.props) {

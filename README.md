@@ -119,7 +119,7 @@ The `render` function takes up to 3 parameters and returns an object with some h
 * store - The object definition of a Vuex store, if present `render` will configure a Vuex store and pass to mount.
 * routes - A set of routes, if present render will configure VueRouter and pass to mount.
 All additional render options are passed to the vue-test-utils mount function in its options.
-3. configurationCb - A callback to be called passing the Vue instance when created. This allows 3rd party plugins to be installed prior to mount.
+3. configurationCb - A callback to be called passing the Vue instance when created, plus the store and router if specified. This allows 3rd party plugins to be installed prior to mount.
 
 ### fireEvent
 

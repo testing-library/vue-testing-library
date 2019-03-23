@@ -9,7 +9,7 @@ import { render, fireEvent } from '../../src'
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
-  { path: '*', redirect: '/' }
+  { path: '*', redirect: '/about' }
 ]
 
 test('full app rendering/navigating', async () => {
@@ -18,6 +18,14 @@ test('full app rendering/navigating', async () => {
   // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(queryByTestId('location-display')).toHaveTextContent('/')
   await fireEvent.click(queryByTestId('about-link'))
+
+  expect(queryByTestId('location-display')).toHaveTextContent('/about')
+})
+
+test('setting initial route', () => {
+  const { queryByTestId } = render(App, { routes }, (vue, store, router) => {
+    router.push('/about')
+  })
 
   expect(queryByTestId('location-display')).toHaveTextContent('/about')
 })
