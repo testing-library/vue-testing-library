@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dfcook/vue-testing-library"
+    "url": "https://github.com/testing-library/vue-testing-library"
   },
   "keywords": [
     "vue.js",
