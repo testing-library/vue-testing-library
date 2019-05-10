@@ -7,12 +7,12 @@
 
 <hr />
 
-[![Build Status](https://travis-ci.org/dfcook/vue-testing-library.svg?branch=master)](https://travis-ci.org/dfcook/vue-testing-library)&nbsp;&nbsp;
-[![Coverage Status](https://coveralls.io/repos/github/dfcook/vue-testing-library/badge.svg?branch=master)](https://coveralls.io/github/dfcook/vue-testing-library?branch=master)&nbsp;&nbsp;
-[![GitHub version](https://badge.fury.io/gh/dfcook%2Fvue-testing-library.svg)](https://badge.fury.io/gh/dfcook%2Fvue-testing-library)
+[![Build Status](https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master)](https://travis-ci.org/testing-library/vue-testing-library)&nbsp;&nbsp;
+[![Coverage Status](https://coveralls.io/repos/github/testing-library/vue-testing-library/badge.svg?branch=master)](https://coveralls.io/github/testing-library/vue-testing-library?branch=master)&nbsp;&nbsp;
+[![GitHub version](https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg)](https://badge.fury.io/gh/testing-library%2Fvue-testing-library)
 
 [![npm version](https://badge.fury.io/js/vue-testing-library.svg)](https://badge.fury.io/js/vue-testing-library)&nbsp;&nbsp;
-[![license](https://img.shields.io/github/license/dfcook/vue-testing-library.svg)](https://img.shields.io/github/license/dfcook/vue-testing-library)
+[![license](https://img.shields.io/github/license/testing-library/vue-testing-library.svg)](https://img.shields.io/github/license/testing-library/vue-testing-library)
 
 ## This library
 
@@ -133,17 +133,17 @@ around the
 [`wait-for-expect`](https://github.com/TheBrainFamily/wait-for-expect) module.
 
 Waiting can be very important in Vue components, @vue/test-utils has succeeded in making the majority of updates happen
-synchronously however there are occasions when wait will allow the DOM to update. For example, see [`here`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
+synchronously however there are occasions when wait will allow the DOM to update. For example, see [`here`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
 
 ## Examples
 
 You'll find examples of testing with different libraries in
-[the test directory](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__).
+[the test directory](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__).
 Some included are:
 
-* [`vuex`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/vuex.js)
-* [`vue-router`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/vue-router.js)
-* [`vee-validate`](https://github.com/dfcook/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
+* [`vuex`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vuex.js)
+* [`vue-router`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vue-router.js)
+* [`vee-validate`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
 
 Feel free to contribute more!
 
