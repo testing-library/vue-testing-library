@@ -24,6 +24,7 @@ test('updates component state', async () => {
   expect(elapsedTime).toHaveTextContent('0ms')
 
   await fireEvent.click(startButton)
+  await wait()
   await fireEvent.click(startButton)
 
   expect(elapsedTime).not.toHaveTextContent('0ms')
