@@ -133,7 +133,7 @@ around the
 [`wait-for-expect`](https://github.com/TheBrainFamily/wait-for-expect) module.
 
 Waiting can be very important in Vue components, @vue/test-utils has succeeded in making the majority of updates happen
-synchronously however there are occasions when `wait` will allow the DOM to update. For example, see [`here`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/stopwatch.js)
+synchronously however there are occasions when `wait` will allow the DOM to update. For example, see [`here`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/end-to-end.js)
 
 ## Examples
 
