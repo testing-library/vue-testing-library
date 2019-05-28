@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>You are home</div>
-    <button data-testid="go-to-about" @click="goToAbout">About</button>
+    <button
+      data-testid="go-to-about"
+      @click="goToAbout">About</button>
   </div>
 </template>
 
@@ -14,4 +16,3 @@ export default {
   }
 }
 </script>
-

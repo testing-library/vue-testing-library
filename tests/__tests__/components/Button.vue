@@ -1,7 +1,7 @@
 <template>
   <button
     :class="typeClass"
-    @click="clicked"
+    @click="handleClick"
   >{{ text }}</button>
 </template>
 
@@ -11,10 +11,6 @@ export default {
     text: {
       type: String,
       default: ''
-    },
-    clicked: {
-      type: Function,
-      default: () => true
     },
     type: {
       validator: (value) => ['primary', 'secondary'].includes(value),
@@ -27,6 +23,11 @@ export default {
         return `button button--${this.type}`
       }
       return 'button'
+    }
+  },
+  methods: {
+    handleClick (e) {
+      this.$emit('click')
     }
   }
 }
