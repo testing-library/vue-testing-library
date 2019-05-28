@@ -1,5 +1,5 @@
 import StopWatch from './components/StopWatch.vue'
-import { render, wait, fireEvent } from '../../src'
+import { render, wait, fireEvent } from 'vue-testing-library'
 import 'jest-dom/extend-expect'
 
 test('unmounts a component', async () => {
