@@ -1,5 +1,5 @@
 import NumberDisplay from './components/NumberDisplay.vue'
-import { render } from '../../src'
+import { render } from 'vue-testing-library'
 import 'jest-dom/extend-expect'
 
 test('calling render with the same component but different props does not remount', async () => {

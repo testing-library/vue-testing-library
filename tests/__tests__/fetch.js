@@ -1,5 +1,5 @@
 import axiosMock from 'axios'
-import { render, fireEvent } from '../../src'
+import { render, fireEvent } from 'vue-testing-library'
 import Fetch from './components/Fetch.vue'
 import 'jest-dom/extend-expect'
 
