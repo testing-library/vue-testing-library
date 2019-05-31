@@ -1,7 +1,7 @@
 import VeeValidate from 'vee-validate'
 import 'jest-dom/extend-expect'
 
-import { render, fireEvent } from '../../src'
+import { render, fireEvent } from 'vue-testing-library'
 import Validate from './components/Validate'
 
 test('can validate using plugin', async () => {

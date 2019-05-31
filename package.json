@@ -2,7 +2,7 @@
   "name": "vue-testing-library",
   "version": "0.16.0",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
-  "main": "npm/index.js",
+  "main": "npm/vue-testing-library.js",
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
     "lint:fix": "eslint --ext .js,.vue . --fix",
