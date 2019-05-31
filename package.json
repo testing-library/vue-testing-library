@@ -30,8 +30,8 @@
   "author": "Daniel Cook",
   "license": "MIT",
   "dependencies": {
+    "@testing-library/dom": "^5.0.1",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "dom-testing-library": "^4.0.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },
