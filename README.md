@@ -33,7 +33,6 @@ should be installed as one of your project's `devDependencies`:
 
 ```
 npm install --save-dev vue-testing-library
-
 ```
 
 ## Usage
@@ -107,7 +106,6 @@ test('should render HelloWorld', () => {
   const { queryByTestId } = render(TestComponent)
   expect(queryByTestId('test1')).toHaveTextContent('Hello World')
 })
-
 ```
 
 ### render
