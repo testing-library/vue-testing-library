@@ -1,7 +1,7 @@
 <div align="center">
 <h1>vue-testing-library</h1>
 
-<p>Lightweight adapter allowing <a href="https://github.com/kentcdodds/dom-testing-library/">dom-testing-library</a> to be used to test <a href="https://github.com/vuejs/vue">Vue.js</a> components built on top of <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a></p>
+<p>Lightweight adapter allowing <a href="https://github.com/testing-library/dom-testing-library/">dom-testing-library</a> to be used to test <a href="https://github.com/vuejs/vue">Vue.js</a> components built on top of <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a></p>
 
 </div>
 
@@ -16,7 +16,7 @@
 
 ## This library
 
-The `vue-testing-library` is a an adapter that enables Vue testing using the framework-agnostic DOM testing library `dom-testing-library`
+The `vue-testing-library` is an adapter that enables Vue testing using the framework-agnostic DOM testing library `dom-testing-library`
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -112,18 +112,18 @@ test('should render HelloWorld', () => {
 
 ### render
 
-The `render` function takes up to 3 parameters and returns an object with some helper methods
+The `render` function takes up to 3 parameters and returns an object with some helper methods.
 
 1. Component - the Vue component to be tested.
 2. RenderOptions - an object containing additional information to be passed to @vue/test-utils mount. This can be:
-* store - The object definition of a Vuex store, if present `render` will configure a Vuex store and pass to mount.
-* routes - A set of routes, if present render will configure VueRouter and pass to mount.
+* store - The object definition of a Vuex store. If present, `render` will configure a Vuex store and pass to mount.
+* routes - A set of routes. If present, render will configure VueRouter and pass to mount.
 All additional render options are passed to the vue-test-utils mount function in its options.
 3. configurationCb - A callback to be called passing the Vue instance when created, plus the store and router if specified. This allows 3rd party plugins to be installed prior to mount.
 
 ### fireEvent
 
-Lightweight wrapper around DOM element events and methods. Will call wait, so can be awaited to allow effects to propagate.
+Lightweight wrapper around DOM element events and methods. Will call `wait`, so can be awaited to allow effects to propagate.
 
 ### wait
 
@@ -133,7 +133,7 @@ around the
 [`wait-for-expect`](https://github.com/TheBrainFamily/wait-for-expect) module.
 
 Waiting can be very important in Vue components, @vue/test-utils has succeeded in making the majority of updates happen
-synchronously however there are occasions when wait will allow the DOM to update. For example, see [`here`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
+synchronously however there are occasions when `wait` will allow the DOM to update. For example, see [`here`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/end-to-end.js)
 
 ## Examples
 
@@ -145,7 +145,7 @@ Some included are:
 * [`vue-router`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vue-router.js)
 * [`vee-validate`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
 
-Feel free to contribute more!
+Feel free to contribute with more!
 
 ## LICENSE
 
