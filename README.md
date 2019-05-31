@@ -154,6 +154,7 @@ MIT
 ## CONTRIBUTORS
 
 [![dfcook](https://avatars0.githubusercontent.com/u/10348212?v=3&s=200)](https://github.com/dfcook)
+[![afontcu](https://avatars3.githubusercontent.com/u/9197791?s=200&v=3)](https://github.com/afontcu)
 [![eunjae-lee](https://avatars0.githubusercontent.com/u/499898?v=3&s=200)](https://github.com/eunjae-lee)
 [![tim-maguire](https://avatars0.githubusercontent.com/u/29452317?v=3&s=200)](https://github.com/tim-maguire)
 [![samdelacruz](https://avatars0.githubusercontent.com/u/2040007?v=3&s=200)](https://github.com/samdelacruz)
