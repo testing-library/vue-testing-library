@@ -8,7 +8,7 @@ import {
   prettyDOM,
   wait,
   fireEvent
-} from 'dom-testing-library'
+} from '@testing-library/dom'
 
 const mountedWrappers = new Set()
 
@@ -103,7 +103,7 @@ fireEvent.touch = async (elem) => {
   await fireEvent.blur(elem)
 }
 
-export * from 'dom-testing-library'
+export * from '@testing-library/dom'
 export {
   cleanup,
   render
