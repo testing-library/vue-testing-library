@@ -103,6 +103,42 @@ fireEvent.touch = async (elem) => {
   await fireEvent.blur(elem)
 }
 
+fireEvent.update = async (elem, value) => {
+  const tagName = elem.tagName
+  const type = elem.type
+
+  switch (tagName) {
+    case 'OPTION':
+      elem.selected = value
+
+      const parentElement = this.element.parentElement.tagName === 'OPTGROUP'
+        ? this.element.parentElement.parentElement
+        : this.element.parentElement
+
+      return fireEvent.change(parentElement)
+
+    case 'INPUT':
+      if (type === 'checkbox') {
+        elem.checked = value
+        return fireEvent.change(elem)
+      } else if (type === 'radio') {
+        elem.selected = value
+        return fireEvent.change(elem)
+      } else {
+        elem.value = value
+        return fireEvent.input(elem)
+      }
+
+    case 'TEXTAREA':
+      elem.value = value
+      return fireEvent.input(elem)
+
+    case 'SELECT':
+      elem.value = value
+      await fireEvent.change(elem)
+  }
+}
+
 export * from '@testing-library/dom'
 export {
   cleanup,
