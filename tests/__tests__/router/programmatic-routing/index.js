@@ -4,7 +4,7 @@ import App from './components/App.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
 
-import { render, fireEvent } from 'vue-testing-library'
+import { render, fireEvent } from '@testing-library/vue'
 
 const routes = [
   { path: '/', component: Home },

@@ -1,6 +1,8 @@
 import StopWatch from './components/StopWatch.vue'
-import { render, wait, fireEvent } from 'vue-testing-library'
+import { cleanup, render, wait, fireEvent } from '@testing-library/vue'
 import 'jest-dom/extend-expect'
+
+afterEach(cleanup)
 
 test('unmounts a component', async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})

@@ -1,4 +1,4 @@
-import { render, fireEvent } from 'vue-testing-library'
+import { render, fireEvent } from '@testing-library/vue'
 import Login from './components/Login'
 
 test('login form submits', async () => {

@@ -1,4 +1,4 @@
-import { render, wait } from 'vue-testing-library'
+import { render, wait } from '@testing-library/vue'
 import EndToEnd from './components/EndToEnd'
 
 test('it waits for the data to be loaded', async () => {

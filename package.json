@@ -1,17 +1,18 @@
 {
   "name": "@testing-library/vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
-  "main": "npm/vue-testing-library.js",
+  "main": "dist/vue-testing-library.js",
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
     "lint:fix": "eslint --ext .js,.vue . --fix",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "version": "babel src --out-dir npm"
+    "prepublishOnly": "babel src --out-dir dist"
   },
   "files": [
-    "npm"
+    "dist",
+    "cleanup-after-each.js"
   ],
   "repository": {
     "type": "git",

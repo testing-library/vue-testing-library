@@ -1,4 +1,4 @@
-import { render, cleanup, fireEvent } from 'vue-testing-library'
+import { render, cleanup, fireEvent } from '@testing-library/vue'
 import SimpleButton from './components/Button'
 
 afterEach(cleanup)

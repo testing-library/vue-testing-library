@@ -4,13 +4,15 @@ import App from './components/Router/App.vue'
 import Home from './components/Router/Home.vue'
 import About from './components/Router/About.vue'
 
-import { render, fireEvent } from 'vue-testing-library'
+import { cleanup, render, fireEvent } from '@testing-library/vue'
 
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
   { path: '*', redirect: '/about' }
 ]
+
+afterEach(cleanup)
 
 test('full app rendering/navigating', async () => {
   const { queryByTestId } = render(App, { routes })
