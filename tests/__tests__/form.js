@@ -2,17 +2,22 @@ import { render, fireEvent } from '@testing-library/vue'
 import Login from './components/Login'
 
 test('login form submits', async () => {
-  const fakeUser = { username: 'jackiechan', password: 'hiya! 🥋' }
+  const fakeUser = { username: 'jackiechan', password: 'hiya! 🥋', rememberMe: true }
   const handleSubmit = jest.fn()
-  const { getByText, updateState } = render(
+  const { getByLabelText, getByText } = render(
     Login, { props: { onSubmit: handleSubmit } }
   )
 
   const submitButtonNode = getByText('Submit')
 
-  // Act - this is waiting on an issue in @vue/test-utils to allow v-model to be updated by
-  // changes to DOM elements
-  updateState(fakeUser)
+  const userNameInput = getByLabelText('Username')
+  await fireEvent.update(userNameInput, fakeUser.username)
+
+  const passwordInput = getByLabelText('Password')
+  await fireEvent.update(passwordInput, fakeUser.password)
+
+  const rememberMeInput = getByLabelText('Remember Me')
+  await fireEvent.update(rememberMeInput, true)
 
   // NOTE: in jsdom, it's not possible to trigger a form submission
   // by clicking on the submit button. This is really unfortunate.

@@ -16,6 +16,14 @@
         name="password"
         aria-labelledby="password-label"
       >
+      <label id="remember-me-label">Remember Me</label>
+      <input 
+        type="checkbox" 
+        id="remember-me" 
+        name="remember-me" 
+        aria-labelledby="remember-me-label" 
+        v-model="rememberMe" 
+      />
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -32,14 +40,16 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      rememberMe: false
     }
   },
   methods: {
     submit () {
       this.onSubmit({
         username: this.username,
-        password: this.password
+        password: this.password,
+        rememberMe: this.rememberMe
       })
     }
   }
