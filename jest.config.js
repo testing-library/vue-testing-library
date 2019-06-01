@@ -7,6 +7,9 @@ module.exports = {
     'js',
     'vue'
   ],
+  moduleNameMapper: {
+    '@testing-library/vue': '<rootDir>/src/vue-testing-library.js'
+  },
   coverageDirectory: './coverage',
   collectCoverageFrom: [
     '**/src/**/*.js',
@@ -15,7 +18,7 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     '/node_modules/',
-    '<rootDir>/npm/',
+    '<rootDir>/dist/',
     '<rootDir>/tests/__tests__/components/'
   ],
   transform: {

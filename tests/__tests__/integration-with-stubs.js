@@ -1,4 +1,4 @@
-import { render, cleanup } from 'vue-testing-library'
+import { render, cleanup } from '@testing-library/vue'
 import Form from './components/Form'
 
 afterEach(cleanup)

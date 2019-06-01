@@ -38,7 +38,7 @@ npm install --save-dev vue-testing-library
 ## Usage
 
 ```
-npm install --save-dev vue-testing-library
+npm install --save-dev @testing-library/vue
                        jest
                        vue-jest
                        babel-jest
@@ -99,7 +99,7 @@ npm install --save-dev vue-testing-library
 
 // src/TestComponent.spec.js
 import 'jest-dom/extend-expect'
-import { render } from 'vue-testing-library'
+import { render } from '@testing-library/vue'
 import TestComponent from './TestComponent'
 
 test('should render HelloWorld', () => {
