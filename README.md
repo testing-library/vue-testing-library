@@ -1,7 +1,14 @@
 <div align="center">
-<h1>vue-testing-library</h1>
+<h1>Vue Testing Library</h1>
 
-<p>Lightweight adapter allowing <a href="https://github.com/testing-library/dom-testing-library/">dom-testing-library</a> to be used to test <a href="https://github.com/vuejs/vue">Vue.js</a> components built on top of <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a></p>
+<p>Lightweight adapter allowing <a href="https://github.com/testing-library/dom-testing-library/">DOM Testing Library</a> to be used to test <a href="https://github.com/vuejs/vue">Vue.js</a> components. Built on top of <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a>.</p>
+
+<br />
+
+[**Read The Docs**](https://testing-library.com/vue) |
+[Edit the docs](https://github.com/testing-library/testing-library-docs)
+
+<br />
 
 </div>
 
@@ -14,17 +21,13 @@
 [![npm version](https://badge.fury.io/js/vue-testing-library.svg)](https://badge.fury.io/js/vue-testing-library)&nbsp;&nbsp;
 [![license](https://img.shields.io/github/license/testing-library/vue-testing-library.svg)](https://img.shields.io/github/license/testing-library/vue-testing-library)
 
-## This library
+<h2>Table of Contents</h2>
 
-The `vue-testing-library` is an adapter that enables Vue testing using the framework-agnostic DOM testing library `dom-testing-library`
-
-* [Installation](#installation)
-* [Usage](#usage)
-  * [`render`](#render)
-  * [`fireEvent`](#fireEvent)
-  * [`wait`](#wait)
-* [Examples](#examples)
-* [LICENSE](#license)
+- [Installation](#installation)
+- [Examples](#examples)
+- [Docs](#docs)
+- [License](#license)
+- [Contributors](#contributors)
 
 ## Installation
 
@@ -32,111 +35,66 @@ This module is distributed via npm which is bundled with node and
 should be installed as one of your project's `devDependencies`:
 
 ```
-npm install --save-dev vue-testing-library
-```
-
-## Usage
-
-```
 npm install --save-dev @testing-library/vue
-                       jest
-                       vue-jest
-                       babel-jest
-                       babel-preset-env
-                       babel-plugin-transform-runtime
 ```
 
-```javascript
-// package.json
-  "scripts": {
-    "test": "jest"
-  }
-
-  "jest": {
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "vue"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    }
-  }
-
-// .babelrc
-{
-  "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      }
-    }]
-  ],
-  "plugins": [
-    "transform-runtime"
-  ],
-  "env": {
-    "test": {
-      "presets": ["env"]
-    }
-  }
-}
-
-// src/TestComponent.vue
-<template>
-  <div>
-    <span data-testid="test1">Hello World</span>
-  </div>
-</template>
-
-// src/TestComponent.spec.js
-import 'jest-dom/extend-expect'
-import { render } from '@testing-library/vue'
-import TestComponent from './TestComponent'
-
-test('should render HelloWorld', () => {
-  const { queryByTestId } = render(TestComponent)
-  expect(queryByTestId('test1')).toHaveTextContent('Hello World')
-})
-```
-
-### render
-
-The `render` function takes up to 3 parameters and returns an object with some helper methods.
-
-1. Component - the Vue component to be tested.
-2. RenderOptions - an object containing additional information to be passed to @vue/test-utils mount. This can be:
-* store - The object definition of a Vuex store. If present, `render` will configure a Vuex store and pass to mount.
-* routes - A set of routes. If present, render will configure VueRouter and pass to mount.
-All additional render options are passed to the vue-test-utils mount function in its options.
-3. configurationCb - A callback to be called passing the Vue instance when created, plus the store and router if specified. This allows 3rd party plugins to be installed prior to mount.
-
-### fireEvent
-
-Lightweight wrapper around DOM element events and methods. Will call `wait`, so can be awaited to allow effects to propagate.
-
-### wait
-
-When in need to wait for non-deterministic periods of time you can use `wait`,
-to wait for your expectations to pass. The `wait` function is a small wrapper
-around the
-[`wait-for-expect`](https://github.com/TheBrainFamily/wait-for-expect) module.
-
-Waiting can be very important in Vue components, @vue/test-utils has succeeded in making the majority of updates happen
-synchronously however there are occasions when `wait` will allow the DOM to update. For example, see [`here`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/end-to-end.js)
+You may also be interested in installing `jest-dom` so you can use
+[the custom Jest matchers](https://github.com/gnapse/jest-dom#readme).
 
 ## Examples
 
+```html
+<!-- src/TestComponent.vue -->
+<template>
+  <div>
+    <p>Times clicked: {{ count }}</p>
+    <button @click="increment">increment</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    count: 0
+  }),
+  methods: {
+    increment () {
+      this.count++
+    }
+  }
+}
+</script>
+```
+
+```js
+// src/TestComponent.spec.js
+import { render, fireEvent, cleanup } from '@testing-library/vue'
+import TestComponent from './components/TestComponent.vue'
+
+// automatically unmount and cleanup DOM after the test is finished.
+afterEach(cleanup)
+
+it('increments value on click', async () => {
+  // The render method returns a collection of utilities to query your component.
+  const { getByText } = render(TestComponent)
+
+  // getByText returns the first matching node for the provided text, and
+  // throws an error if no elements match or if more than one match is found.
+  getByText('Times clicked: 0')
+
+  const button = getByText('increment')
+
+  // Dispatch a native click event to our button element.
+  await fireEvent.click(button)
+  await fireEvent.click(button)
+
+  getByText('Times clicked: 2')
+})
+```
+
 You'll find examples of testing with different libraries in
 [the test directory](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__).
+
 Some included are:
 
 * [`vuex`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vuex.js)
@@ -145,11 +103,16 @@ Some included are:
 
 Feel free to contribute with more!
 
-## LICENSE
+## Docs
+
+[**Read The Docs**](https://testing-library.com/vue) |
+[Edit the docs](https://github.com/testing-library/testing-library-docs)
+
+## License
 
 MIT
 
-## CONTRIBUTORS
+## Contributors
 
 [![dfcook](https://avatars0.githubusercontent.com/u/10348212?v=3&s=200)](https://github.com/dfcook)
 [![afontcu](https://avatars3.githubusercontent.com/u/9197791?s=200&v=3)](https://github.com/afontcu)
