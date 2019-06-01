@@ -135,7 +135,7 @@ fireEvent.update = async (elem, value) => {
 
     case 'SELECT':
       elem.value = value
-      await fireEvent.change(elem)
+      return fireEvent.change(elem)
   }
 }
 
