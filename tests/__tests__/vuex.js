@@ -1,7 +1,9 @@
 import 'jest-dom/extend-expect'
 
 import VuexTest from './components/VuexTest'
-import { render, fireEvent } from '@testing-library/vue'
+import { cleanup, render, fireEvent } from '@testing-library/vue'
+
+afterEach(cleanup)
 
 const store = {
   state: {
