@@ -73,7 +73,6 @@ function render (TestComponent, {
       wrapper.setProps(_)
       return wait()
     },
-    updateState: _ => wrapper.setData(_),
     ...getQueriesForElement(wrapper.element.parentNode)
   }
 }
