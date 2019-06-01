@@ -1,6 +1,6 @@
-{ 
+{
   "name": "@testing-library/vue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
   "main": "dist/vue-testing-library.js",
   "scripts": {
