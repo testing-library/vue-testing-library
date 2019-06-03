@@ -8,6 +8,7 @@
         data-testid="username-input"
         placeholder="Username..."
         name="username" >
+
       <label id="password-label">Password</label>
       <input
         v-model="password"
@@ -16,6 +17,29 @@
         name="password"
         aria-labelledby="password-label"
       >
+
+      <label id="about-me">About Me</label>
+      <textarea
+        v-model="about"
+        name="about-me"
+        aria-labelledby="about-me"
+      />
+
+      <label for="preference-select">I prefer...</label>
+      <select
+        id="preference-select"
+        v-model="selected"
+        name="preference-select"
+      >
+        <option
+          disabled
+          value=""
+        />
+        <option>Dogs</option>
+        <option>Cats</option>
+        <option>None of the above</option>
+      </select>
+
       <label id="remember-me-label">Remember Me</label>
       <input
         id="remember-me"
@@ -24,31 +48,42 @@
         name="remember-me"
         aria-labelledby="remember-me-label"
       >
-      <button type="submit">Submit</button>
+
+      <button
+        :disabled="submitDisabled"
+        type="submit"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    onSubmit: {
-      type: Function,
-      required: true
-    }
-  },
   data () {
     return {
       username: '',
       password: '',
+      about: '',
+      selected: '',
       rememberMe: false
+    }
+  },
+  computed: {
+    submitDisabled () {
+      return !this.username || !this.password || !this.about || !this.selected
     }
   },
   methods: {
     submit () {
-      this.onSubmit({
+      if (this.submitDisabled) return
+
+      this.$emit('submit', {
         username: this.username,
         password: this.password,
+        about: this.about,
+        selected: this.selected,
         rememberMe: this.rememberMe
       })
     }
