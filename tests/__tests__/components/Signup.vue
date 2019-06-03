@@ -17,13 +17,13 @@
         aria-labelledby="password-label"
       >
       <label id="remember-me-label">Remember Me</label>
-      <input 
-        type="checkbox" 
-        id="remember-me" 
-        name="remember-me" 
-        aria-labelledby="remember-me-label" 
-        v-model="rememberMe" 
-      />
+      <input
+        id="remember-me"
+        v-model="rememberMe"
+        type="checkbox"
+        name="remember-me"
+        aria-labelledby="remember-me-label"
+      >
       <button type="submit">Submit</button>
     </form>
   </div>
