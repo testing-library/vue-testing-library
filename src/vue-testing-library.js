@@ -64,7 +64,7 @@ function render (TestComponent, {
   return {
     container: wrapper.element.parentNode,
     baseElement: document.body,
-    debug: () => console.log(prettyDOM(wrapper.element)),
+    debug: (el = wrapper.element) => console.log(prettyDOM(el)),
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
