@@ -5,23 +5,13 @@
       <input
         id="username-input"
         v-model="username"
-        data-testid="username-input"
-        placeholder="Username..."
         name="username" >
-
-      <label id="password-label">Password</label>
-      <input
-        v-model="password"
-        placeholder="Password..."
-        type="password"
-        name="password"
-        aria-labelledby="password-label"
-      >
 
       <label id="about-me">About Me</label>
       <textarea
         v-model="about"
         name="about-me"
+        placeholder="I was born in..."
         aria-labelledby="about-me"
       />
 
@@ -46,7 +36,7 @@
         v-model="rememberMe"
         type="checkbox"
         name="remember-me"
-        aria-labelledby="remember-me-label"
+        data-testid="remember-input"
       >
 
       <button
@@ -64,15 +54,14 @@ export default {
   data () {
     return {
       username: '',
-      password: '',
       about: '',
-      selected: '',
+      selected: 'Dogs',
       rememberMe: false
     }
   },
   computed: {
     submitDisabled () {
-      return !this.username || !this.password || !this.about || !this.selected
+      return !this.username || !this.about || !this.selected
     }
   },
   methods: {
@@ -81,7 +70,6 @@ export default {
 
       this.$emit('submit', {
         username: this.username,
-        password: this.password,
         about: this.about,
         selected: this.selected,
         rememberMe: this.rememberMe

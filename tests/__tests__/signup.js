@@ -5,32 +5,42 @@ import Signup from './components/Signup'
 test('signup form submits', async () => {
   const fakeUser = {
     username: 'jackiechan',
-    password: 'hiya! 🥋',
     about: 'Lorem ipsum dolor sit amet',
     selected: 'None of the above',
     rememberMe: true
   }
 
-  const { getByLabelText, getByText, emitted } = render(Signup)
+  const {
+    getByLabelText,
+    getByText,
+    getByTestId,
+    getByDisplayValue,
+    getByPlaceholderText,
+    emitted
+  } = render(Signup)
 
   const submitButton = getByText('Submit')
 
   // Initially the form should be disabled
   expect(submitButton).toBeDisabled()
 
-  const userNameInput = getByLabelText('Username')
+  // We are gonna showcase several ways of targetting DOM elements.
+  // However, `getByLabelText` should be your top preference when handling
+  // form elements.
+  //
+  // Read 'What queries should I use?' for additional context:
+  // https://testing-library.com/docs/guide-which-query
+  const userNameInput = getByLabelText(/username/i)
   await fireEvent.update(userNameInput, fakeUser.username)
 
-  const passwordInput = getByLabelText('Password')
-  await fireEvent.update(passwordInput, fakeUser.password)
-
-  const aboutMeTextarea = getByLabelText('About Me')
+  const aboutMeTextarea = getByPlaceholderText('I was born in...')
   await fireEvent.update(aboutMeTextarea, fakeUser.about)
 
-  const rememberMeInput = getByLabelText('Remember Me')
+  const rememberMeInput = getByTestId('remember-input')
   await fireEvent.update(rememberMeInput, fakeUser.rememberMe)
 
-  const preferenceSelect = getByLabelText('I prefer...')
+  // Get the Select element by using the initially displayed value.
+  const preferenceSelect = getByDisplayValue('Dogs')
   await fireEvent.update(preferenceSelect, fakeUser.selected)
 
   // NOTE: in jsdom, it's not possible to trigger a form submission
@@ -39,6 +49,7 @@ test('signup form submits', async () => {
   // then ensure that there's a submit button.
   expect(submitButton).toBeEnabled()
   expect(submitButton).toHaveAttribute('type', 'submit')
+
   await fireEvent.click(submitButton)
 
   // Assert event has been emitted.
