@@ -16,6 +16,7 @@ export default {
   computed: {
     ...mapState(['count']),
   },
+
   methods: {
     ...mapActions(['decrement', 'increment']),
   },
