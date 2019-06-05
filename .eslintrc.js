@@ -20,12 +20,6 @@ module.exports = {
     'vue'
   ],
   rules: {
-    'no-console': 'off',
-    'arrow-parens': 0,
-    'generator-star-spacing': 0,
-    'vue/html-closing-bracket-newline': 0,
-    'vue/singleline-html-element-content-newline': 0,
-    'vue/multiline-html-element-content-newline': 0,
-    'vue/html-closing-bracket-spacing': 0
+    'no-console': 'off'
   }
 }

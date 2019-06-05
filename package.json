@@ -5,6 +5,7 @@
   "main": "dist/vue-testing-library.js",
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
+    "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "prepublishOnly": "babel src --out-dir dist",
