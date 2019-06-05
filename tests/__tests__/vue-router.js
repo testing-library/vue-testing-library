@@ -9,7 +9,7 @@ import { cleanup, render, fireEvent } from '@testing-library/vue'
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
-  { path: '*', redirect: '/about' }
+  { path: '*', redirect: '/about' },
 ]
 
 afterEach(cleanup)

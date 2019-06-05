@@ -12,12 +12,12 @@ afterEach(cleanup)
 //
 // Tests should be completely isolated from one another.
 // Read this for additional context: https://kentcdodds.com/blog/test-isolation-with-react
-function renderVuexTestComponent (customStore) {
+function renderVuexTestComponent(customStore) {
   // Render the component and merge the original store and the custom one
   // provided as a parameter. This way, we can alter some behaviors of the
   // initial implementation.
   return render(VuexTest, {
-    store: { ...store, ...customStore }
+    store: { ...store, ...customStore },
   })
 }
 
@@ -30,7 +30,7 @@ test('can render with vuex with defaults', async () => {
 
 test('can render with vuex with custom initial state', async () => {
   const { getByTestId, getByText } = renderVuexTestComponent({
-    state: { count: 3 }
+    state: { count: 3 },
   })
   await fireEvent.click(getByText('-'))
 
@@ -38,7 +38,7 @@ test('can render with vuex with custom initial state', async () => {
 })
 
 test('can render with vuex with custom store', async () => {
-  jest.spyOn(console, 'error').mockImplementation(() => { })
+  jest.spyOn(console, 'error').mockImplementation(() => {})
 
   // This is a silly store that can never be changed.
   const store = { state: { count: 1000 } }

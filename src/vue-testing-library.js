@@ -1,22 +1,19 @@
-import {
-  createLocalVue,
-  mount
-} from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
 
 import {
   getQueriesForElement,
   prettyDOM,
   wait,
-  fireEvent
+  fireEvent,
 } from '@testing-library/dom'
 
 const mountedWrappers = new Set()
 
-function render (TestComponent, {
-  store = null,
-  routes = null,
-  ...mountOptions
-} = {}, configurationCb) {
+function render(
+  TestComponent,
+  { store = null, routes = null, ...mountOptions } = {},
+  configurationCb
+) {
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
@@ -31,7 +28,7 @@ function render (TestComponent, {
     const VueRouter = require('vue-router')
     localVue.use(VueRouter)
     router = new VueRouter({
-      routes
+      routes,
     })
   }
 
@@ -50,7 +47,7 @@ function render (TestComponent, {
     store: vuexStore,
     attachToDocument: true,
     sync: false,
-    ...mountOptions
+    ...mountOptions,
   })
 
   mountedWrappers.add(wrapper)
@@ -73,16 +70,19 @@ function render (TestComponent, {
       wrapper.setProps(_)
       return wait()
     },
-    ...getQueriesForElement(wrapper.element.parentNode)
+    ...getQueriesForElement(wrapper.element.parentNode),
   }
 }
 
-function cleanup () {
+function cleanup() {
   mountedWrappers.forEach(cleanupAtWrapper)
 }
 
-function cleanupAtWrapper (wrapper) {
-  if (wrapper.element.parentNode && wrapper.element.parentNode.parentNode === document.body) {
+function cleanupAtWrapper(wrapper) {
+  if (
+    wrapper.element.parentNode &&
+    wrapper.element.parentNode.parentNode === document.body
+  ) {
     document.body.removeChild(wrapper.element.parentNode)
   }
   wrapper.destroy()
@@ -97,7 +97,7 @@ Object.keys(fireEvent).forEach(fn => {
   }
 })
 
-fireEvent.touch = async (elem) => {
+fireEvent.touch = async elem => {
   await fireEvent.focus(elem)
   await fireEvent.blur(elem)
 }
@@ -107,16 +107,18 @@ fireEvent.update = async (elem, value) => {
   const type = elem.type
 
   switch (tagName) {
-    case 'OPTION':
+    case 'OPTION': {
       elem.selected = value
 
-      const parentElement = this.element.parentElement.tagName === 'OPTGROUP'
-        ? this.element.parentElement.parentElement
-        : this.element.parentElement
+      const parentElement =
+        this.element.parentElement.tagName === 'OPTGROUP'
+          ? this.element.parentElement.parentElement
+          : this.element.parentElement
 
       return fireEvent.change(parentElement)
+    }
 
-    case 'INPUT':
+    case 'INPUT': {
       if (type === 'checkbox') {
         elem.checked = value
         return fireEvent.change(elem)
@@ -127,19 +129,19 @@ fireEvent.update = async (elem, value) => {
         elem.value = value
         return fireEvent.input(elem)
       }
+    }
 
-    case 'TEXTAREA':
+    case 'TEXTAREA': {
       elem.value = value
       return fireEvent.input(elem)
+    }
 
-    case 'SELECT':
+    case 'SELECT': {
       elem.value = value
       return fireEvent.change(elem)
+    }
   }
 }
 
 export * from '@testing-library/dom'
-export {
-  cleanup,
-  render
-}
+export { cleanup, render }

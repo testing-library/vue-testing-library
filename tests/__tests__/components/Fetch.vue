@@ -1,13 +1,9 @@
 <template>
   <div>
-    <button
-      data-testid="load-greeting"
-      @click="fetch">
+    <button data-testid="load-greeting" @click="fetch">
       Fetch
     </button>
-    <span
-      v-if="data"
-      data-testid="greeting-text">
+    <span v-if="data" data-testid="greeting-text">
       {{ data.greeting }}
     </span>
   </div>
@@ -20,20 +16,20 @@ export default {
   props: {
     url: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
-      data: null
+      data: null,
     }
   },
   methods: {
-    fetch () {
-      axios
-        .get(this.url)
-        .then(response => { this.data = response.data })
-    }
-  }
+    fetch() {
+      axios.get(this.url).then(response => {
+        this.data = response.data
+      })
+    },
+  },
 }
 </script>

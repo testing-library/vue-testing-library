@@ -3,11 +3,7 @@
     <h1>Movie Review</h1>
     <form @submit.prevent="submit">
       <label for="movie-input">Title of the movie</label>
-      <input
-        id="movie-input"
-        v-model="title"
-        name="title"
-      >
+      <input id="movie-input" v-model="title" name="title" />
 
       <label id="review-textarea">Your review</label>
       <textarea
@@ -18,35 +14,20 @@
       />
 
       <label>
-        <input
-          v-model="rating"
-          type="radio"
-          value="3"
-        >
+        <input v-model="rating" type="radio" value="3" />
         Wonderful
       </label>
       <label>
-        <input
-          v-model="rating"
-          type="radio"
-          value="2"
-        >
+        <input v-model="rating" type="radio" value="2" />
         Average
       </label>
       <label>
-        <input
-          v-model="rating"
-          type="radio"
-          value="1"
-        >
+        <input v-model="rating" type="radio" value="1" />
         Awful
       </label>
 
       <label for="genre-select">Movie genre</label>
-      <select
-        id="genre-select"
-        v-model="genre"
-      >
+      <select id="genre-select" v-model="genre">
         <option>Comedy</option>
         <option>Action</option>
         <option>Romance</option>
@@ -60,12 +41,9 @@
         type="checkbox"
         name="recommend"
         data-testid="recommend-checkbox"
-      >
+      />
 
-      <button
-        :disabled="submitDisabled"
-        type="submit"
-      >
+      <button :disabled="submitDisabled" type="submit">
         Submit
       </button>
     </form>
@@ -74,22 +52,22 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       title: '',
       review: '',
       rating: '1',
       genre: 'Comedy',
-      recommend: false
+      recommend: false,
     }
   },
   computed: {
-    submitDisabled () {
+    submitDisabled() {
       return !this.title || !this.review
-    }
+    },
   },
   methods: {
-    submit () {
+    submit() {
       if (this.submitDisabled) return
 
       this.$emit('submit', {
@@ -97,9 +75,9 @@ export default {
         review: this.review,
         rating: this.rating,
         genre: this.genre,
-        recommend: this.recommend
+        recommend: this.recommend,
       })
-    }
-  }
+    },
+  },
 }
 </script>

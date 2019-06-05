@@ -6,7 +6,7 @@ afterEach(cleanup)
 test('renders button with text', () => {
   const buttonText = "Click me; I'm sick"
   const { getByText } = render(SimpleButton, {
-    props: { text: buttonText }
+    props: { text: buttonText },
   })
 
   getByText(buttonText)
@@ -15,7 +15,7 @@ test('renders button with text', () => {
 test('click event is emitted when button is clicked', () => {
   const text = 'Click me'
   const { getByText, emitted } = render(SimpleButton, {
-    props: { text }
+    props: { text },
   })
   fireEvent.click(getByText(text))
   expect(emitted().click).toHaveLength(1)

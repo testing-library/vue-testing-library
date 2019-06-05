@@ -1,9 +1,7 @@
 <template>
   <div>
     <div v-if="loading">Loading...</div>
-    <div
-      v-else
-      data-testid="message">
+    <div v-else data-testid="message">
       Loaded this message: {{ data.returnedMessage }}
     </div>
   </div>
@@ -21,18 +19,18 @@ const fetchAMessage = () =>
   })
 
 export default {
-  data () {
+  data() {
     return {
       loading: true,
       data: {
-        returnedMessage: null
-      }
+        returnedMessage: null,
+      },
     }
   },
-  async mounted () {
+  async mounted() {
     const data = await fetchAMessage()
     this.loading = false
     this.data = data
-  }
+  },
 }
 </script>
