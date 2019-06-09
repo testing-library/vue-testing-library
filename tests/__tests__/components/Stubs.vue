@@ -11,6 +11,6 @@ import VButton from './Button'
 
 export default {
   name: 'SearchForm',
-  components: { VButton },
+  components: { VButton }
 }
 </script>

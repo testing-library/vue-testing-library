@@ -4,7 +4,7 @@ import 'jest-dom/extend-expect'
 
 test('calling render with the same component but different props does not remount', async () => {
   const { queryByTestId, updateProps } = render(NumberDisplay, {
-    props: { number: 1 },
+    props: { number: 1 }
   })
   expect(queryByTestId('number-display')).toHaveTextContent('1')
 

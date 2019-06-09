@@ -17,5 +17,5 @@ export {
   JestHelpers,
   Placeholder,
   TotallyEmptyLabel,
-  LabelWithNoFormControl,
+  LabelWithNoFormControl
 }

@@ -12,13 +12,13 @@ export default {
   props: {
     number: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      id: idCounter++,
+      id: idCounter++
     }
-  },
+  }
 }
 </script>

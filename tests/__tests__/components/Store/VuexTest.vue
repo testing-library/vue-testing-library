@@ -14,11 +14,11 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['count']),
+    ...mapState(['count'])
   },
 
   methods: {
-    ...mapActions(['decrement', 'increment']),
-  },
+    ...mapActions(['decrement', 'increment'])
+  }
 }
 </script>

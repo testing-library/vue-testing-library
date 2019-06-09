@@ -58,13 +58,13 @@ export default {
       review: '',
       rating: '1',
       genre: 'Comedy',
-      recommend: false,
+      recommend: false
     }
   },
   computed: {
     submitDisabled() {
       return !this.title || !this.review
-    },
+    }
   },
   methods: {
     submit() {
@@ -75,9 +75,9 @@ export default {
         review: this.review,
         rating: this.rating,
         genre: this.genre,
-        recommend: this.recommend,
+        recommend: this.recommend
       })
-    },
-  },
+    }
+  }
 }
 </script>

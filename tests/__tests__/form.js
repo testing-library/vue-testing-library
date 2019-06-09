@@ -8,7 +8,7 @@ test('Review form submits', async () => {
     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     rating: '3',
     genre: 'Action',
-    recommend: true,
+    recommend: true
   }
 
   const {
@@ -17,7 +17,7 @@ test('Review form submits', async () => {
     getByTestId,
     getByDisplayValue,
     getByPlaceholderText,
-    emitted,
+    emitted
   } = render(Form)
 
   const submitButton = getByText('Submit')

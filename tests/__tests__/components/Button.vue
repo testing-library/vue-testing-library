@@ -7,12 +7,12 @@ export default {
   props: {
     text: {
       type: String,
-      default: '',
+      default: ''
     },
     type: {
       validator: value => ['primary', 'secondary'].includes(value),
-      default: 'primary',
-    },
+      default: 'primary'
+    }
   },
   computed: {
     typeClass: function() {
@@ -20,12 +20,12 @@ export default {
         return `button button--${this.type}`
       }
       return 'button'
-    },
+    }
   },
   methods: {
     handleClick(e) {
       this.$emit('click')
-    },
-  },
+    }
+  }
 }
 </script>

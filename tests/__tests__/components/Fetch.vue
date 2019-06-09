@@ -16,12 +16,12 @@ export default {
   props: {
     url: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      data: null,
+      data: null
     }
   },
   methods: {
@@ -29,7 +29,7 @@ export default {
       axios.get(this.url).then(response => {
         this.data = response.data
       })
-    },
-  },
+    }
+  }
 }
 </script>

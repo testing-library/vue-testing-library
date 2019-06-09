@@ -28,7 +28,7 @@ test('can render with vuex with defaults', async () => {
 
 test('can render with vuex with custom initial state', async () => {
   const { getByTestId, getByText } = renderVuexTestComponent({
-    state: { count: 3 },
+    state: { count: 3 }
   })
   await fireEvent.click(getByText('-'))
 

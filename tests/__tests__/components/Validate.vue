@@ -30,7 +30,7 @@
 export default {
   data: () => ({
     username: '',
-    password: '',
-  }),
+    password: ''
+  })
 }
 </script>

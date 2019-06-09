@@ -23,14 +23,14 @@ export default {
     return {
       loading: true,
       data: {
-        returnedMessage: null,
-      },
+        returnedMessage: null
+      }
     }
   },
   async mounted() {
     const data = await fetchAMessage()
     this.loading = false
     this.data = data
-  },
+  }
 }
 </script>

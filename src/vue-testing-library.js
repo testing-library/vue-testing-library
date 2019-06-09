@@ -4,7 +4,7 @@ import {
   getQueriesForElement,
   prettyDOM,
   wait,
-  fireEvent,
+  fireEvent
 } from '@testing-library/dom'
 
 const mountedWrappers = new Set()
@@ -28,7 +28,7 @@ function render(
     const VueRouter = require('vue-router')
     localVue.use(VueRouter)
     router = new VueRouter({
-      routes,
+      routes
     })
   }
 
@@ -47,7 +47,7 @@ function render(
     store: vuexStore,
     attachToDocument: true,
     sync: false,
-    ...mountOptions,
+    ...mountOptions
   })
 
   mountedWrappers.add(wrapper)
@@ -70,7 +70,7 @@ function render(
       wrapper.setProps(_)
       return wait()
     },
-    ...getQueriesForElement(wrapper.element.parentNode),
+    ...getQueriesForElement(wrapper.element.parentNode)
   }
 }
 

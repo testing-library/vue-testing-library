@@ -5,7 +5,7 @@ afterEach(cleanup)
 
 test('Form contains search button', () => {
   const { getByText } = render(Stubs, {
-    stubs: ['FontAwesomeIcon'],
+    stubs: ['FontAwesomeIcon']
   })
   getByText('Search now')
 })

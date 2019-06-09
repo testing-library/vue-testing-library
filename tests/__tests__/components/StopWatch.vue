@@ -13,7 +13,7 @@ export default {
     return {
       running: false,
       lapse: 0,
-      timer: null,
+      timer: null
     }
   },
   beforeDestroy() {
@@ -32,7 +32,7 @@ export default {
       }
 
       this.running = !this.running
-    },
-  },
+    }
+  }
 }
 </script>
