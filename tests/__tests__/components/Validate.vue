@@ -10,7 +10,7 @@
       aria-labelledby="username-label"
     />
 
-    <span v-show="errors.has('username')" data-testid="username-errors">{{
+    <span v-if="errors.has('username')" data-testid="username-errors">{{
       errors.first('username')
     }}</span>
 
