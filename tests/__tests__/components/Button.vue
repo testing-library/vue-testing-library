@@ -1,8 +1,5 @@
 <template>
-  <button
-    :class="typeClass"
-    @click="handleClick"
-  >{{ text }}</button>
+  <button :class="typeClass" @click="handleClick">{{ text }}</button>
 </template>
 
 <script>
@@ -13,12 +10,12 @@ export default {
       default: ''
     },
     type: {
-      validator: (value) => ['primary', 'secondary'].includes(value),
+      validator: value => ['primary', 'secondary'].includes(value),
       default: 'primary'
     }
   },
   computed: {
-    typeClass: function () {
+    typeClass: function() {
       if (this.type) {
         return `button button--${this.type}`
       }
@@ -26,7 +23,7 @@ export default {
     }
   },
   methods: {
-    handleClick (e) {
+    handleClick(e) {
       this.$emit('click')
     }
   }

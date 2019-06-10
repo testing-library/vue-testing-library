@@ -58,5 +58,5 @@ test('Review form submits', async () => {
 
   // Assert event has been emitted.
   expect(emitted().submit).toHaveLength(1)
-  expect(emitted().submit[0]).toEqual([ fakeReview ])
+  expect(emitted().submit[0]).toEqual([fakeReview])
 })

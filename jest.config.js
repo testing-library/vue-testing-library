@@ -1,12 +1,6 @@
 module.exports = {
-  moduleDirectories: [
-    'node_modules',
-    'src'
-  ],
-  moduleFileExtensions: [
-    'js',
-    'vue'
-  ],
+  moduleDirectories: ['node_modules', 'src'],
+  moduleFileExtensions: ['js', 'vue'],
   moduleNameMapper: {
     '@testing-library/vue': '<rootDir>/src/vue-testing-library.js'
   },
@@ -25,7 +19,5 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
   },
-  snapshotSerializers: [
-    '<rootDir>/node_modules/jest-serializer-vue'
-  ]
+  snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue']
 }
