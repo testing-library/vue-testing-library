@@ -40,7 +40,6 @@
         v-model="recommend"
         type="checkbox"
         name="recommend"
-        data-testid="recommend-checkbox"
       />
 
       <button :disabled="submitDisabled" type="submit">

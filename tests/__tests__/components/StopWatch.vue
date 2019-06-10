@@ -1,7 +1,7 @@
 <template>
   <div>
     <span data-testid="elapsed">{{ lapse }}ms</span>
-    <button data-testid="start-stop-button" @click="handleRunClick">
+    <button @click="handleRunClick">
       {{ running ? 'Stop' : 'Start' }}
     </button>
   </div>
