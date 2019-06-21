@@ -5,14 +5,24 @@ import { render, fireEvent } from '@testing-library/vue'
 import Validate from './components/Validate'
 
 test('can validate using plugin', async () => {
-  const { getByPlaceholderText, queryByTestId } = render(Validate, {}, vue =>
-    vue.use(VeeValidate, { events: 'blur' })
+  // The third argument of `render` is a callback function that receives the
+  // Vue instance as a parameter. This way, we can register plugins such as
+  // VeeValidate.
+  const { getByPlaceholderText, queryByTestId, getByTestId } = render(
+    Validate,
+    {},
+    vue => vue.use(VeeValidate, { events: 'blur' })
   )
+
+  // Assert error messages are not in the DOM when rendering the component.
+  expect(queryByTestId('username-errors')).toBeNull()
 
   const usernameInput = getByPlaceholderText('Username...')
   await fireEvent.touch(usernameInput)
 
-  expect(queryByTestId('username-errors')).toHaveTextContent(
+  // After "touching" the input (focusing and blurring), validation error
+  // should appear.
+  expect(getByTestId('username-errors')).toHaveTextContent(
     'The username field is required.'
   )
 })

@@ -14,7 +14,7 @@ test('Review form submits', async () => {
   const {
     getByLabelText,
     getByText,
-    getByTestId,
+    getByRole,
     getByDisplayValue,
     getByPlaceholderText,
     emitted
@@ -44,7 +44,8 @@ test('Review form submits', async () => {
   const genreSelect = getByDisplayValue('Comedy')
   await fireEvent.update(genreSelect, fakeReview.genre)
 
-  const recommendInput = getByTestId('recommend-checkbox')
+  // Get the Input element by its implicit ARIA role.
+  const recommendInput = getByRole('checkbox')
   await fireEvent.update(recommendInput, fakeReview.recommend)
 
   // NOTE: in jsdom, it's not possible to trigger a form submission
