@@ -17,6 +17,7 @@ function render(
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
+  let additionalOptions = {}
 
   if (store) {
     const Vuex = require('vuex')
@@ -33,7 +34,7 @@ function render(
   }
 
   if (configurationCb && typeof configurationCb === 'function') {
-    configurationCb(localVue, vuexStore, router)
+    additionalOptions = configurationCb(localVue, vuexStore, router)
   }
 
   if (!mountOptions.propsData && !!mountOptions.props) {
@@ -47,7 +48,8 @@ function render(
     store: vuexStore,
     attachToDocument: true,
     sync: false,
-    ...mountOptions
+    ...mountOptions,
+    ...additionalOptions
   })
 
   mountedWrappers.add(wrapper)
