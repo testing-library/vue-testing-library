@@ -53,3 +53,10 @@ test('can render with vuex with custom store', async () => {
 
   expect(console.error).toHaveBeenCalled()
 })
+
+test('vuex store instance available to programmatically fire actions', () => {
+  const { store } = renderVuexTestComponent()
+  expect(store.state).toEqual({ count: 1 })
+  store.dispatch('increment')
+  expect(store.state).toEqual({ count: 2 })
+})

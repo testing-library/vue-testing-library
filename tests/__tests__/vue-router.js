@@ -14,6 +14,13 @@ const routes = [
 
 afterEach(cleanup)
 
+test('router instance available', async () => {
+  const { queryByTestId, router } = render(App, { routes })
+  expect(router.currentRoute.path).toBe('/')
+  await fireEvent.click(queryByTestId('about-link'))
+  expect(router.currentRoute.path).toBe('/about')
+})
+
 test('full app rendering/navigating', async () => {
   // Notice how we pass a `routes` object to our render function.
   const { queryByTestId } = render(App, { routes })

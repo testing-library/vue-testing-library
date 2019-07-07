@@ -72,6 +72,8 @@ function render(
       wrapper.setProps(_)
       return wait()
     },
+    ...(store ? { store: vuexStore } : {}),
+    ...(routes ? { router } : {}),
     ...getQueriesForElement(wrapper.element.parentNode)
   }
 }
