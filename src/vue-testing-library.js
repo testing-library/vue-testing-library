@@ -121,11 +121,8 @@ fireEvent.update = async (elem, value) => {
     }
 
     case 'INPUT': {
-      if (type === 'checkbox') {
-        elem.checked = value
-        return fireEvent.change(elem)
-      } else if (type === 'radio') {
-        elem.selected = value
+      if (['checkbox', 'radio'].includes(type)) {
+        elem.checked = true
         return fireEvent.change(elem)
       } else {
         elem.value = value
