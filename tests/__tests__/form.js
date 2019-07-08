@@ -37,8 +37,17 @@ test('Review form submits', async () => {
   const reviewTextarea = getByPlaceholderText('Write an awesome review')
   await fireEvent.update(reviewTextarea, fakeReview.review)
 
+  // Rating Radio buttons
+  const initiallySelectedInput = getByLabelText('Awful')
   const ratingSelect = getByLabelText('Wonderful')
-  await fireEvent.update(ratingSelect, fakeReview.rating)
+
+  expect(initiallySelectedInput.checked).toBe(true)
+  expect(ratingSelect.checked).toBe(false)
+
+  await fireEvent.update(ratingSelect)
+
+  expect(ratingSelect.checked).toBe(true)
+  expect(initiallySelectedInput.checked).toBe(false)
 
   // Get the Select element by using the initially displayed value.
   const genreSelect = getByDisplayValue('Comedy')
@@ -46,7 +55,10 @@ test('Review form submits', async () => {
 
   // Get the Input element by its implicit ARIA role.
   const recommendInput = getByRole('checkbox')
-  await fireEvent.update(recommendInput, fakeReview.recommend)
+
+  expect(recommendInput.checked).toBe(false)
+  await fireEvent.update(recommendInput)
+  expect(recommendInput.checked).toBe(true)
 
   // NOTE: in jsdom, it's not possible to trigger a form submission
   // by clicking on the submit button. This is really unfortunate.
