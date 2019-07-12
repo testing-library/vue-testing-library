@@ -44,7 +44,7 @@ You may also be interested in installing `jest-dom` so you can use
 ## Examples
 
 ```html
-<!-- src/TestComponent.vue -->
+<!-- TestComponent.vue -->
 <template>
   <div>
     <p>Times clicked: {{ count }}</p>
@@ -67,9 +67,9 @@ export default {
 ```
 
 ```js
-// src/TestComponent.spec.js
+// TestComponent.spec.js
 import { render, fireEvent, cleanup } from '@testing-library/vue'
-import TestComponent from './components/TestComponent.vue'
+import TestComponent from './TestComponent.vue'
 
 // automatically unmount and cleanup DOM after the test is finished.
 afterEach(cleanup)
