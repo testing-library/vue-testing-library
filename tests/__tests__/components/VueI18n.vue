@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2 data-testid="section-header">{{ $t('Hello') }}</h2>
-    <button data-testid="button-en" @click="switchLocale('en')">English</button>
-    <button data-testid="button-ja" @click="switchLocale('ja')">
+    <h2>{{ $t('Hello') }}</h2>
+    <button @click="switchLocale('en')">English</button>
+    <button @click="switchLocale('ja')">
       Japanese
     </button>
   </div>
