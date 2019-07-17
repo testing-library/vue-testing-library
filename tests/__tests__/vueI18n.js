@@ -5,25 +5,32 @@ import VueI18n from './components/VueI18n'
 
 afterEach(cleanup)
 
-const ja = {
-  Hello: 'こんにちは'
+const messages = {
+  en: {
+    Hello: 'Hello'
+  },
+  ja: {
+    Hello: 'こんにちは'
+  }
 }
 
 test('can render en and ja text in header', async () => {
-  const { queryByTestId, getByTestId } = render(VueI18n, {}, vue => {
+  const { queryByText, getByText } = render(VueI18n, {}, vue => {
     vue.use(Vuei18n)
     const i18n = new Vuei18n({
       locale: 'en',
-      messages: {
-        ja
-      }
+      fallbackLocale: 'en',
+      messages
     })
+    //return i18n object so that it will be available as an additional option on the created vue instance
     return { i18n }
   })
 
-  expect(queryByTestId('section-header')).toHaveTextContent('Hello')
+  expect(getByText('Hello')).toBeInTheDocument()
 
-  await fireEvent.click(getByTestId('button-ja'))
+  await fireEvent.click(getByText('Japanese'))
 
-  expect(queryByTestId('section-header')).toHaveTextContent('こんにちは')
+  expect(getByText('こんにちは')).toBeInTheDocument()
+
+  expect(queryByText('Hello')).toBeNull()
 })
