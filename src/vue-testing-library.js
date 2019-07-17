@@ -110,14 +110,14 @@ fireEvent.update = async (elem, value) => {
 
   switch (tagName) {
     case 'OPTION': {
-      elem.selected = value
+      elem.selected = true
 
-      const parentElement =
-        this.element.parentElement.tagName === 'OPTGROUP'
-          ? this.element.parentElement.parentElement
-          : this.element.parentElement
+      const parentSelectElement =
+        elem.parentElement.tagName === 'OPTGROUP'
+          ? elem.parentElement.parentElement
+          : elem.parentElement
 
-      return fireEvent.change(parentElement)
+      return fireEvent.change(parentSelectElement)
     }
 
     case 'INPUT': {
