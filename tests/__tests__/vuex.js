@@ -1,4 +1,4 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import { cleanup, render, fireEvent } from '@testing-library/vue'
 
 import VuexTest from './components/Store/VuexTest'
