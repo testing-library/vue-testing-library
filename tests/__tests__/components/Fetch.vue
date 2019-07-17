@@ -1,13 +1,9 @@
 <template>
   <div>
-    <button
-      data-testid="load-greeting"
-      @click="fetch">
+    <button @click="fetch">
       Fetch
     </button>
-    <span
-      v-if="data"
-      data-testid="greeting-text">
+    <span v-if="data">
       {{ data.greeting }}
     </span>
   </div>
@@ -23,16 +19,16 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       data: null
     }
   },
   methods: {
-    fetch () {
-      axios
-        .get(this.url)
-        .then(response => { this.data = response.data })
+    fetch() {
+      axios.get(this.url).then(response => {
+        this.data = response.data
+      })
     }
   }
 }

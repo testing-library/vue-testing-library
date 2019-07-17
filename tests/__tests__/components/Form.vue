@@ -1,22 +1,82 @@
 <template>
-  <form>
-    <label for="search">
-      <FontAwesomeIcon icon="search"/> Search
-    </label>
-    <input
-      id="search"
-      type="text"
-      name="search"
-    >
-    <VButton text="Search now" />
-  </form>
+  <div>
+    <h1>Movie Review</h1>
+    <form @submit.prevent="submit">
+      <label for="movie-input">Title of the movie</label>
+      <input id="movie-input" v-model="title" name="title" />
+
+      <label id="review-textarea">Your review</label>
+      <textarea
+        v-model="review"
+        name="review-textarea"
+        placeholder="Write an awesome review"
+        aria-labelledby="review-textarea"
+      />
+
+      <label>
+        <input v-model="rating" type="radio" value="3" />
+        Wonderful
+      </label>
+      <label>
+        <input v-model="rating" type="radio" value="2" />
+        Average
+      </label>
+      <label>
+        <input v-model="rating" type="radio" value="1" />
+        Awful
+      </label>
+
+      <label for="genre-select">Movie genre</label>
+      <select id="genre-select" v-model="genre">
+        <option>Comedy</option>
+        <option>Action</option>
+        <option>Romance</option>
+        <option>None of the above</option>
+      </select>
+
+      <label id="recommend-label">Would you recommend this movie?</label>
+      <input
+        id="recommend"
+        v-model="recommend"
+        type="checkbox"
+        name="recommend"
+      />
+
+      <button :disabled="submitDisabled" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
-import VButton from './Button'
-
 export default {
-  name: 'SearchForm',
-  components: { VButton }
+  data() {
+    return {
+      title: '',
+      review: '',
+      rating: '1',
+      genre: 'Comedy',
+      recommend: false
+    }
+  },
+  computed: {
+    submitDisabled() {
+      return !this.title || !this.review
+    }
+  },
+  methods: {
+    submit() {
+      if (this.submitDisabled) return
+
+      this.$emit('submit', {
+        title: this.title,
+        review: this.review,
+        rating: this.rating,
+        genre: this.genre,
+        recommend: this.recommend
+      })
+    }
+  }
 }
 </script>

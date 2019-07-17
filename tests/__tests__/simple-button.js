@@ -1,23 +1,29 @@
-import { render, cleanup, fireEvent } from '../../src'
-import SimpleButton from './components/Button'
+import { render, cleanup, fireEvent } from '@testing-library/vue'
+import Button from './components/Button'
+import 'jest-dom/extend-expect'
 
 afterEach(cleanup)
 
 test('renders button with text', () => {
-  const buttonText = "Click me; I'm sick"
-  const { getByText } = render(SimpleButton, {
-    props: { text: buttonText, clicked: () => true }
+  const text = "Click me; I'm sick"
+
+  // Set the prop value by using the second argument of `render()`
+  const { getByRole } = render(Button, {
+    props: { text }
   })
 
-  getByText(buttonText)
+  expect(getByRole('button')).toHaveTextContent(text)
 })
 
-test('clicked prop is called when button is clicked', () => {
-  const clicked = jest.fn()
+test('click event is emitted when button is clicked', async () => {
   const text = 'Click me'
-  const { getByText } = render(SimpleButton, {
-    props: { text, clicked }
+
+  const { getByRole, emitted } = render(Button, {
+    props: { text }
   })
-  fireEvent.click(getByText(text))
-  expect(clicked).toBeCalled()
+
+  // Send a click event to the element with a 'button' role
+  await fireEvent.click(getByRole('button'))
+
+  expect(emitted().click).toHaveLength(1)
 })

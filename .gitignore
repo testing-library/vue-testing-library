@@ -1,6 +1,6 @@
 node_modules
 coverage
-npm
+dist
 .opt-in
 .opt-out
 .DS_Store

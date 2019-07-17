@@ -1,12 +1,9 @@
 module.exports = {
-  moduleDirectories: [
-    'node_modules',
-    'src'
-  ],
-  moduleFileExtensions: [
-    'js',
-    'vue'
-  ],
+  moduleDirectories: ['node_modules', 'src'],
+  moduleFileExtensions: ['js', 'vue'],
+  moduleNameMapper: {
+    '@testing-library/vue': '<rootDir>/src/vue-testing-library.js'
+  },
   coverageDirectory: './coverage',
   collectCoverageFrom: [
     '**/src/**/*.js',
@@ -15,14 +12,12 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     '/node_modules/',
-    '<rootDir>/npm/',
+    '<rootDir>/dist/',
     '<rootDir>/tests/__tests__/components/'
   ],
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
   },
-  snapshotSerializers: [
-    '<rootDir>/node_modules/jest-serializer-vue'
-  ]
+  snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue']
 }

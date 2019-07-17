@@ -1,25 +1,23 @@
-import {
-  createLocalVue,
-  mount
-} from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
 
 import {
   getQueriesForElement,
   prettyDOM,
   wait,
   fireEvent
-} from 'dom-testing-library'
+} from '@testing-library/dom'
 
 const mountedWrappers = new Set()
 
-function render (TestComponent, {
-  store = null,
-  routes = null,
-  ...mountOptions
-} = {}, configurationCb) {
+function render(
+  TestComponent,
+  { store = null, routes = null, ...mountOptions } = {},
+  configurationCb
+) {
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
+  let additionalOptions = {}
 
   if (store) {
     const Vuex = require('vuex')
@@ -36,7 +34,7 @@ function render (TestComponent, {
   }
 
   if (configurationCb && typeof configurationCb === 'function') {
-    configurationCb(localVue)
+    additionalOptions = configurationCb(localVue, vuexStore, router)
   }
 
   if (!mountOptions.propsData && !!mountOptions.props) {
@@ -50,7 +48,8 @@ function render (TestComponent, {
     store: vuexStore,
     attachToDocument: true,
     sync: false,
-    ...mountOptions
+    ...mountOptions,
+    ...additionalOptions
   })
 
   mountedWrappers.add(wrapper)
@@ -64,7 +63,7 @@ function render (TestComponent, {
   return {
     container: wrapper.element.parentNode,
     baseElement: document.body,
-    debug: () => console.log(prettyDOM(wrapper.element)),
+    debug: (el = wrapper.element) => console.log(prettyDOM(el)),
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
@@ -73,17 +72,19 @@ function render (TestComponent, {
       wrapper.setProps(_)
       return wait()
     },
-    updateState: _ => wrapper.setData(_),
     ...getQueriesForElement(wrapper.element.parentNode)
   }
 }
 
-function cleanup () {
+function cleanup() {
   mountedWrappers.forEach(cleanupAtWrapper)
 }
 
-function cleanupAtWrapper (wrapper) {
-  if (wrapper.element.parentNode && wrapper.element.parentNode.parentNode === document.body) {
+function cleanupAtWrapper(wrapper) {
+  if (
+    wrapper.element.parentNode &&
+    wrapper.element.parentNode.parentNode === document.body
+  ) {
     document.body.removeChild(wrapper.element.parentNode)
   }
   wrapper.destroy()
@@ -98,13 +99,51 @@ Object.keys(fireEvent).forEach(fn => {
   }
 })
 
-fireEvent.touch = async (elem) => {
+fireEvent.touch = async elem => {
   await fireEvent.focus(elem)
   await fireEvent.blur(elem)
 }
 
-export * from 'dom-testing-library'
-export {
-  cleanup,
-  render
+fireEvent.update = async (elem, value) => {
+  const tagName = elem.tagName
+  const type = elem.type
+
+  switch (tagName) {
+    case 'OPTION': {
+      elem.selected = value
+
+      const parentElement =
+        this.element.parentElement.tagName === 'OPTGROUP'
+          ? this.element.parentElement.parentElement
+          : this.element.parentElement
+
+      return fireEvent.change(parentElement)
+    }
+
+    case 'INPUT': {
+      if (type === 'checkbox') {
+        elem.checked = value
+        return fireEvent.change(elem)
+      } else if (type === 'radio') {
+        elem.selected = value
+        return fireEvent.change(elem)
+      } else {
+        elem.value = value
+        return fireEvent.input(elem)
+      }
+    }
+
+    case 'TEXTAREA': {
+      elem.value = value
+      return fireEvent.input(elem)
+    }
+
+    case 'SELECT': {
+      elem.value = value
+      return fireEvent.change(elem)
+    }
+  }
 }
+
+export * from '@testing-library/dom'
+export { cleanup, render }
