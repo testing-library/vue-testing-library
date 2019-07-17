@@ -2,12 +2,16 @@ import { render, fireEvent } from '@testing-library/vue'
 import '@testing-library/jest-dom/extend-expect'
 import Form from './components/Form'
 
+// In this test we showcase several ways of targetting DOM elements.
+// However, `getByLabelText` should be your top preference when handling
+// form elements.
+// Read 'What queries should I use?' for additional context:
+// https://testing-library.com/docs/guide-which-query
 test('Review form submits', async () => {
   const fakeReview = {
     title: 'An Awesome Movie',
     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     rating: '3',
-    genre: 'Action',
     recommend: true
   }
 
@@ -15,7 +19,6 @@ test('Review form submits', async () => {
     getByLabelText,
     getByText,
     getByRole,
-    getByDisplayValue,
     getByPlaceholderText,
     emitted
   } = render(Form)
@@ -24,12 +27,6 @@ test('Review form submits', async () => {
 
   // Initially the submit button should be disabled
   expect(submitButton).toBeDisabled()
-
-  // In this test we showcase several ways of targetting DOM elements.
-  // However, `getByLabelText` should be your top preference when handling
-  // form elements.
-  // Read 'What queries should I use?' for additional context:
-  // https://testing-library.com/docs/guide-which-query
 
   const titleInput = getByLabelText(/title of the movie/i)
   await fireEvent.update(titleInput, fakeReview.title)
@@ -48,10 +45,6 @@ test('Review form submits', async () => {
 
   expect(ratingSelect.checked).toBe(true)
   expect(initiallySelectedInput.checked).toBe(false)
-
-  // Get the Select element by using the initially displayed value.
-  const genreSelect = getByDisplayValue('Comedy')
-  await fireEvent.update(genreSelect, fakeReview.genre)
 
   // Get the Input element by its implicit ARIA role.
   const recommendInput = getByRole('checkbox')
