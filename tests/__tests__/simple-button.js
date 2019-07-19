@@ -1,6 +1,6 @@
 import { render, cleanup, fireEvent } from '@testing-library/vue'
 import Button from './components/Button'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 afterEach(cleanup)
 

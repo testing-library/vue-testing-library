@@ -1,4 +1,4 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import { cleanup, render, fireEvent } from '@testing-library/vue'
 import Vuei18n from 'vue-i18n'
 import VueI18n from './components/VueI18n'

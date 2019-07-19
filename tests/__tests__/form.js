@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/vue'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import Form from './components/Form'
 
 test('Review form submits', async () => {
