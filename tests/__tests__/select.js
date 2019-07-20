@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/vue'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import Select from './components/Select'
 
 // There are several ways to interact with a Select component.
