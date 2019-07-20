@@ -1,4 +1,4 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 import App from './components/Router/App.vue'
 import Home from './components/Router/Home.vue'

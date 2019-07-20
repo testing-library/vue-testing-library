@@ -1,6 +1,6 @@
 import StopWatch from './components/StopWatch.vue'
 import { cleanup, render, wait, fireEvent } from '@testing-library/vue'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 afterEach(cleanup)
 
