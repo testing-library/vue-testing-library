@@ -122,3 +122,5 @@ MIT
 [![ankitsinghaniyaz](https://avatars0.githubusercontent.com/u/11331989?v=3&s=200)](https://github.com/ankitsinghaniyaz)
 [![lindgr3n](https://avatars0.githubusercontent.com/u/24882614?v=3&s=200)](https://github.com/lindgr3n)
 [![kentcdodds](https://avatars0.githubusercontent.com/u/1500684?v=3&s=200)](https://github.com/kentcdodds)
+[![brennj](https://avatars2.githubusercontent.com/u/29227924?v=3&s=200)](https://github.com/brennj)
+[![makeupsomething](https://avatars2.githubusercontent.com/u/7676733?v=3&s=200)](https://github.com/makeupsomething)
