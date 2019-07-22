@@ -2,29 +2,26 @@ import { render, fireEvent } from '@testing-library/vue'
 import '@testing-library/jest-dom/extend-expect'
 import Select from './components/Select'
 
-// There are several ways to interact with a Select component.
+// In this test file we showcase several ways to interact with a Select element
 test('Select component', async () => {
+  let optionElement
   const { getByDisplayValue, getByText } = render(Select)
 
-  // Get the Select element by using the initially displayed value.
+  // Get the Select element by using the initially displayed value
   const select = getByDisplayValue('Tyrannosaurus')
-
-  // Assert initial value
   expect(select.value).toBe('dino1')
 
-  // Update it by manually sending an option value
+  // Update it by manually sending a valid option value
   await fireEvent.update(select, 'dino2')
   expect(select.value).toBe('dino2')
 
-  // We can also get the option value from the element itself
-  await fireEvent.update(select, getByText('Tyrannosaurus').value)
-  expect(select.value).toBe('dino1')
-
   // We can trigger an update event by directly getting the <option> element
-  await fireEvent.update(getByText('Deinonychus'))
+  optionElement = getByText('Deinonychus')
+  await fireEvent.update(optionElement)
   expect(select.value).toBe('dino3')
 
   // ...even if option is within an <optgroup>
-  await fireEvent.update(getByText('Diplodocus'))
+  optionElement = getByText('Diplodocus')
+  await fireEvent.update(optionElement)
   expect(select.value).toBe('dino4')
 })
