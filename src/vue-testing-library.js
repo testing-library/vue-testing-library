@@ -110,22 +110,19 @@ fireEvent.update = async (elem, value) => {
 
   switch (tagName) {
     case 'OPTION': {
-      elem.selected = value
+      elem.selected = true
 
-      const parentElement =
-        this.element.parentElement.tagName === 'OPTGROUP'
-          ? this.element.parentElement.parentElement
-          : this.element.parentElement
+      const parentSelectElement =
+        elem.parentElement.tagName === 'OPTGROUP'
+          ? elem.parentElement.parentElement
+          : elem.parentElement
 
-      return fireEvent.change(parentElement)
+      return fireEvent.change(parentSelectElement)
     }
 
     case 'INPUT': {
-      if (type === 'checkbox') {
-        elem.checked = value
-        return fireEvent.change(elem)
-      } else if (type === 'radio') {
-        elem.selected = value
+      if (['checkbox', 'radio'].includes(type)) {
+        elem.checked = true
         return fireEvent.change(elem)
       } else {
         elem.value = value
