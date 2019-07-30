@@ -26,14 +26,6 @@
         Awful
       </label>
 
-      <label for="genre-select">Movie genre</label>
-      <select id="genre-select" v-model="genre">
-        <option>Comedy</option>
-        <option>Action</option>
-        <option>Romance</option>
-        <option>None of the above</option>
-      </select>
-
       <label id="recommend-label">Would you recommend this movie?</label>
       <input
         id="recommend"
@@ -56,7 +48,6 @@ export default {
       title: '',
       review: '',
       rating: '1',
-      genre: 'Comedy',
       recommend: false
     }
   },
@@ -73,7 +64,6 @@ export default {
         title: this.title,
         review: this.review,
         rating: this.rating,
-        genre: this.genre,
         recommend: this.recommend
       })
     }

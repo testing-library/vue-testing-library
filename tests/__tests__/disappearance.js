@@ -2,14 +2,14 @@ import { render, waitForElementToBeRemoved } from '@testing-library/vue'
 import Disappearance from './components/Disappearance'
 import '@testing-library/jest-dom/extend-expect'
 
-test('it waits for the data to be loaded', async () => {
+test('waits for the data to be loaded', async () => {
   const { getByText, queryByText, queryByTestId } = render(Disappearance)
 
   // Assert initial state
   getByText('Loading...')
   expect(queryByText(/Loaded this message/)).not.toBeInTheDocument()
 
-  // Line reads as follows "Wait until element with test 'Loading...' is gone."
+  // Line reads as follows: "Wait until element with text 'Loading...' is gone."
   await waitForElementToBeRemoved(() => queryByText('Loading...'))
   // It is equivalent to:
   //
@@ -19,8 +19,7 @@ test('it waits for the data to be loaded', async () => {
   //
   // `wait()` waits until the callback function passes or times out.
 
-  // After 'Loading...' element is gone, we can assert that fetched data is
-  // rendered.
+  // After 'Loading...' is gone, we can assert that fetched data is rendered.
   expect(queryByTestId('message')).toHaveTextContent(/Hello World/)
 
   // Read more about async utilities:
