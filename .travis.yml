@@ -6,9 +6,14 @@ cache:
     - ~/.npm
 notifications:
   email: false
-node_js: '8'
+node_js:
+  - '8'
+  - '10'
+  - '12'
 install: yarn
-script: yarn test
-after_success: yarn coveralls
+script:
+  - yarn test
+  - yarn global add codecov
+after_success: codecov
 branches:
-only: master
+  only: master
