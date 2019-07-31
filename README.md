@@ -15,7 +15,7 @@
 <hr />
 
 [![Build Status](https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master)](https://travis-ci.org/testing-library/vue-testing-library)&nbsp;&nbsp;
-[![Coverage Status](https://coveralls.io/repos/github/testing-library/vue-testing-library/badge.svg?branch=master)](https://coveralls.io/github/testing-library/vue-testing-library?branch=master)&nbsp;&nbsp;
+[![Coverage Status](https://img.shields.io/codecov/c/github/testing-library/vue-testing-library.svg)](https://codecov.io/github/testing-library/vue-testing-library)&nbsp;&nbsp;
 [![GitHub version](https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg)](https://badge.fury.io/gh/testing-library%2Fvue-testing-library)
 
 [![npm version](https://badge.fury.io/js/vue-testing-library.svg)](https://badge.fury.io/js/vue-testing-library)&nbsp;&nbsp;
