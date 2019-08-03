@@ -18,7 +18,7 @@
 [![Coverage Status](https://img.shields.io/codecov/c/github/testing-library/vue-testing-library.svg)](https://codecov.io/github/testing-library/vue-testing-library)&nbsp;&nbsp;
 [![GitHub version](https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg)](https://badge.fury.io/gh/testing-library%2Fvue-testing-library)
 
-[![npm version](https://badge.fury.io/js/vue-testing-library.svg)](https://badge.fury.io/js/vue-testing-library)&nbsp;&nbsp;
+[![npm version](https://badge.fury.io/js/%40testing-library%2Fvue.svg)](https://badge.fury.io/js/%40testing-library%2Fvue)&nbsp;&nbsp;
 [![license](https://img.shields.io/github/license/testing-library/vue-testing-library.svg)](https://img.shields.io/github/license/testing-library/vue-testing-library)
 
 <h2>Table of Contents</h2>
