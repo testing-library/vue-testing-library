@@ -82,13 +82,10 @@ export default {
 
 ```js
 // TestComponent.spec.js
-import { render, fireEvent, cleanup } from '@testing-library/vue'
+import { render, fireEvent } from '@testing-library/vue'
 import TestComponent from './TestComponent.vue'
 
-// automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup)
-
-it('increments value on click', async () => {
+test('increments value on click', async () => {
   // The render method returns a collection of utilities to query your component.
   const { getByText } = render(TestComponent)
 
@@ -96,9 +93,10 @@ it('increments value on click', async () => {
   // throws an error if no elements match or if more than one match is found.
   getByText('Times clicked: 0')
 
+  // `button` is the actual DOM element.
   const button = getByText('increment')
 
-  // Dispatch a native click event to our button element.
+  // Dispatch a native click event.
   await fireEvent.click(button)
   await fireEvent.click(button)
 
