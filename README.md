@@ -16,7 +16,7 @@
 
 <br />
 
-[**Read The Docs**][docs] |
+[**Read the Docs**][docs] |
 [Edit the docs][docs-edit]
 
 <br />
@@ -122,7 +122,7 @@ Feel free to contribute with more examples!
 
 ## Docs
 
-[**Read The Docs**][docs] |
+[**Read the Docs**][docs] |
 [Edit the docs][docs-edit]
 
 ## License
