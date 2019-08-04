@@ -1,7 +1,14 @@
 <div align="center">
 <h1>Vue Testing Library</h1>
 
-<p>Lightweight adapter allowing <a href="https://github.com/testing-library/dom-testing-library/">DOM Testing Library</a> to be used to test <a href="https://github.com/vuejs/vue">Vue.js</a> components. Built on top of <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a>.</p>
+<a href="https://www.joypixels.com/emoji/1F98E">
+  <img
+    height="80"
+    width="80"
+    alt="lizard"
+    src="https://raw.githubusercontent.com/testing-library/vue-testing-library/master/lizard.png"
+  />
+</a>
 
 <br />
 
