@@ -16,8 +16,7 @@
 
 <br />
 
-[**Read the Docs**][docs] |
-[Edit the docs][docs-edit]
+[**Read the Docs**][docs] | [Edit the docs][docs-edit]
 
 <br />
 
@@ -46,13 +45,15 @@
 
 ## Installation
 
-This module is distributed via npm and should be installed as one of your project's `devDependencies`:
+This module is distributed via npm and should be installed as one of your
+project's `devDependencies`:
 
 ```
 npm install --save-dev @testing-library/vue
 ```
 
-This library has `peerDependencies` listings for `Vue` and `vue-template-compiler`.
+This library has `peerDependencies` listings for `Vue` and
+`vue-template-compiler`.
 
 You may also be interested in installing `jest-dom` so you can use
 [the custom Jest matchers](https://github.com/gnapse/jest-dom#readme).
@@ -69,16 +70,16 @@ You may also be interested in installing `jest-dom` so you can use
 </template>
 
 <script>
-export default {
-  data: () => ({
-    count: 0
-  }),
-  methods: {
-    increment () {
-      this.count++
+  export default {
+    data: () => ({
+      count: 0
+    }),
+    methods: {
+      increment() {
+        this.count++
+      }
     }
   }
-}
 </script>
 ```
 
@@ -108,22 +109,21 @@ test('increments value on click', async () => {
 
 ### More examples
 
-You'll find examples of testing with different situations and popular libraries in
-[the test directory][test-directory].
+You'll find examples of testing with different situations and popular libraries
+in [the test directory][test-directory].
 
 Some included are:
 
-* [`vuex`][vuex-example]
-* [`vue-router`][vue-router-example]
-* [`vee-validate`][vee-validate-example]
-* [`vue-i18n`][vue-i18n-example]
+- [`vuex`][vuex-example]
+- [`vue-router`][vue-router-example]
+- [`vee-validate`][vee-validate-example]
+- [`vue-i18n`][vue-i18n-example]
 
 Feel free to contribute with more examples!
 
 ## Docs
 
-[**Read the Docs**][docs] |
-[Edit the docs][docs-edit]
+[**Read the Docs**][docs] | [Edit the docs][docs-edit]
 
 ## License
 

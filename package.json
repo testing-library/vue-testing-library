@@ -82,6 +82,10 @@
     "*.{js,vue}": [
       "eslint --fix",
       "git add"
+    ],
+    "*.{md,html}": [
+      "prettier --write",
+      "git add"
     ]
   }
 }
