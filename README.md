@@ -38,24 +38,26 @@
 <h2>Table of Contents</h2>
 
 - [Installation](#installation)
-- [Examples](#examples)
+- [A simple example](#a-simple-example)
+  - [More examples](#more-examples)
 - [Docs](#docs)
 - [License](#license)
 - [Contributors](#contributors)
 
 ## Installation
 
-This module is distributed via npm which is bundled with node and
-should be installed as one of your project's `devDependencies`:
+This module is distributed via npm and should be installed as one of your project's `devDependencies`:
 
 ```
 npm install --save-dev @testing-library/vue
 ```
 
+This library has `peerDependencies` listings for `Vue` and `vue-template-compiler`.
+
 You may also be interested in installing `jest-dom` so you can use
 [the custom Jest matchers](https://github.com/gnapse/jest-dom#readme).
 
-## Examples
+## A simple example
 
 ```html
 <!-- TestComponent.vue -->
@@ -104,6 +106,7 @@ test('increments value on click', async () => {
 })
 ```
 
+### More examples
 
 You'll find examples of testing with different situations and popular libraries in
 [the test directory][test-directory].
