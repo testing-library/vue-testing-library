@@ -23,6 +23,6 @@ test('can validate using plugin', async () => {
   // After "touching" the input (focusing and blurring), validation error
   // should appear.
   expect(getByTestId('username-errors')).toHaveTextContent(
-    'The username field is required.'
+    /the username field is required/i
   )
 })
