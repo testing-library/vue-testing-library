@@ -141,6 +141,7 @@ Feel free to contribute with more examples!
 [![kentcdodds](https://avatars0.githubusercontent.com/u/1500684?v=3&s=170)](https://github.com/kentcdodds)
 [![brennj](https://avatars2.githubusercontent.com/u/29227924?v=3&s=170)](https://github.com/brennj)
 [![makeupsomething](https://avatars2.githubusercontent.com/u/7676733?v=3&s=170)](https://github.com/makeupsomething)
+[![mb200](https://avatars2.githubusercontent.com/u/22549525?v=3&s=170)](https://github.com/mb200)
 
 <!-- prettier-ignore-start -->
 [build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
