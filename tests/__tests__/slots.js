@@ -8,7 +8,7 @@ import Card from './components/Card'
 // in the render options are directly passed through to the Utils mount().
 // For more, see: https://vue-test-utils.vuejs.org/api/options.html#slots
 test('Card component', () => {
-  const { getByText } = render(Card, {
+  const { getByText, queryByText } = render(Card, {
     slots: {
       header: '<h1>HEADER</h1>',
       footer: '<div>FOOTER</div>'
@@ -18,8 +18,13 @@ test('Card component', () => {
     }
   })
 
-  // The scoped prop "content" should be rendered in the given template above.
+  // The default slot should render the template above with the scoped prop "content".
   getByText('Yay! Scoped content!')
+
+  // Instead of the default slot's fallback content.
+  expect(
+    queryByText('Nothing used the Scoped content!')
+  ).not.toBeInTheDocument()
 
   // And the header and footer slots should be rendered with the given templates.
   getByText('HEADER')
