@@ -7,7 +7,7 @@ import Card from './components/Card'
 // Usage is the same as Vue Test Utils, since slots and scopedSlots
 // in the render options are directly passed through to the Utils mount().
 // For more, see: https://vue-test-utils.vuejs.org/api/options.html#slots
-test('Card component', async () => {
+test('Card component', () => {
   const { getByText } = render(Card, {
     slots: {
       header: '<h1>HEADER</h1>',
