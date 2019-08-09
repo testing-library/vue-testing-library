@@ -3,15 +3,18 @@
   "version": "1.2.0",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
   "main": "dist/vue-testing-library.js",
+  "types": "types",
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
     "lint:fix": "npm run lint -- --fix",
+    "dtslint": "dtslint types",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "prepublishOnly": "babel src --out-dir dist"
   },
   "files": [
     "dist",
+    "types/index.d.ts",
     "cleanup-after-each.js"
   ],
   "repository": {
@@ -46,6 +49,7 @@
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "coveralls": "^3.0.5",
+    "dtslint": "^0.9.1",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
