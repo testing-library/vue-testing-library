@@ -2,7 +2,7 @@ import { createLocalVue, mount } from '@vue/test-utils'
 
 import {
   getQueriesForElement,
-  prettyDOM,
+  logDOM,
   wait,
   fireEvent
 } from '@testing-library/dom'
@@ -63,7 +63,7 @@ function render(
   return {
     container: wrapper.element.parentNode,
     baseElement: document.body,
-    debug: (el = wrapper.element) => console.log(prettyDOM(el)),
+    debug: (el = wrapper.element) => logDOM(el),
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
