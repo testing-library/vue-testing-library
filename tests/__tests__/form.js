@@ -11,8 +11,7 @@ test('Review form submits', async () => {
   const fakeReview = {
     title: 'An Awesome Movie',
     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    rating: '3',
-    recommend: true
+    rating: '3'
   }
 
   const {
@@ -46,7 +45,7 @@ test('Review form submits', async () => {
   expect(ratingSelect.checked).toBe(true)
   expect(initiallySelectedInput.checked).toBe(false)
 
-  // Get the Input element by its implicit ARIA role.
+  // Get the Input element by its implicit ARIA role
   const recommendInput = getByRole('checkbox')
 
   expect(recommendInput.checked).toBe(false)
@@ -56,13 +55,13 @@ test('Review form submits', async () => {
   // NOTE: in jsdom, it's not possible to trigger a form submission
   // by clicking on the submit button. This is really unfortunate.
   // So the next best thing is to fireEvent a submit on the form itself
-  // then ensure that there's a submit button.
+  // then ensure that there's a submit button
   expect(submitButton).toBeEnabled()
   expect(submitButton).toHaveAttribute('type', 'submit')
 
   await fireEvent.click(submitButton)
 
-  // Assert event has been emitted.
-  expect(emitted().submit).toHaveLength(1)
-  expect(emitted().submit[0]).toEqual([fakeReview])
+  // Assert event has been emitted
+  expect(emitted()).toHaveProperty('submit')
+  expect(emitted().submit[0][0]).toMatchObject(fakeReview)
 })
