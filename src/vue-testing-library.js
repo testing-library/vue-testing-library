@@ -4,7 +4,7 @@ import {
   getQueriesForElement,
   prettyDOM,
   wait,
-  fireEvent
+  fireEvent as dtlFireEvent
 } from '@testing-library/dom'
 
 const mountedWrappers = new Set()
@@ -91,10 +91,16 @@ function cleanupAtWrapper(wrapper) {
   mountedWrappers.delete(wrapper)
 }
 
-Object.keys(fireEvent).forEach(fn => {
-  fireEvent[`_${fn}`] = fireEvent[fn]
-  fireEvent[fn] = async (...params) => {
-    fireEvent[`_${fn}`](...params)
+// Vue Testing Library's version of fireEvent will call DOM Testing Library's
+// version of fireEvent plus wait for one tick of the event loop so that...
+async function fireEvent(...args) {
+  dtlFireEvent(...args)
+  await wait()
+}
+
+Object.keys(dtlFireEvent).forEach(key => {
+  fireEvent[key] = async (...args) => {
+    dtlFireEvent[key](...args)
     await wait()
   }
 })
@@ -104,6 +110,9 @@ fireEvent.touch = async elem => {
   await fireEvent.blur(elem)
 }
 
+// Small utility to provide a better experience when working with v-model.
+// Related upstream issue: https://github.com/vuejs/vue-test-utils/issues/345#issuecomment-380588199
+// Examples: https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/form.js
 fireEvent.update = async (elem, value) => {
   const tagName = elem.tagName
   const type = elem.type
@@ -143,4 +152,4 @@ fireEvent.update = async (elem, value) => {
 }
 
 export * from '@testing-library/dom'
-export { cleanup, render }
+export { cleanup, render, fireEvent }
