@@ -92,7 +92,9 @@ function cleanupAtWrapper(wrapper) {
 }
 
 // Vue Testing Library's version of fireEvent will call DOM Testing Library's
-// version of fireEvent plus wait for one tick of the event loop so that...
+// version of fireEvent plus wait for one tick of the event loop to allow Vue
+// to asynchronously handle the event.
+// More info: https://vuejs.org/v2/guide/reactivity.html#Async-Update-Queue
 async function fireEvent(...args) {
   dtlFireEvent(...args)
   await wait()
