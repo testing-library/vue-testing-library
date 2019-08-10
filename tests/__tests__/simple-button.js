@@ -29,6 +29,6 @@ test('click event is emitted when button is clicked', async () => {
   await fireEvent.click(getByRole('button'))
 
   // Expect that the event emitted a "click" event. We should test for emitted
-  // events has they are part of the public API of the component.
+  // events has they are part of the public API of the component
   expect(emitted()).toHaveProperty('click')
 })
