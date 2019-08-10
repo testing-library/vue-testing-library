@@ -153,7 +153,7 @@ eventTypes.forEach(({ type, events, elementType = 'input', init }) => {
   })
 })
 
-// The event is called `dblclick`, while fireEvent exposes a "doubleClick"
+// The event is called `dblclick`, but fireEvent exposes a "doubleClick" method
 test('triggers dblclick on doubleClick', async () => {
   const spy = jest.fn()
 
