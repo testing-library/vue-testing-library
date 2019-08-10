@@ -160,5 +160,11 @@ fireEvent.update = (elem, value) => {
   return null
 }
 
+if (typeof afterEach === 'function' && !process.env.VTL_SKIP_AUTO_CLEANUP) {
+  afterEach(() => {
+    cleanup()
+  })
+}
+
 export * from '@testing-library/dom'
 export {cleanup, render, fireEvent}
