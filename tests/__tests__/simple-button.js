@@ -12,7 +12,10 @@ test('renders button with text', () => {
     props: { text }
   })
 
-  expect(getByRole('button')).toHaveTextContent(text)
+  // Get the only element with a 'button' role
+  const button = getByRole('button')
+
+  expect(button).toHaveTextContent(text)
 })
 
 test('click event is emitted when button is clicked', async () => {
@@ -22,8 +25,10 @@ test('click event is emitted when button is clicked', async () => {
     props: { text }
   })
 
-  // Send a click event to the element with a 'button' role
+  // Send a click event
   await fireEvent.click(getByRole('button'))
 
-  expect(emitted().click).toHaveLength(1)
+  // Expect that the event emitted a "click" event. We should test for emitted
+  // events has they are part of the public API of the component
+  expect(emitted()).toHaveProperty('click')
 })
