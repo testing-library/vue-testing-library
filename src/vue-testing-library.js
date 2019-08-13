@@ -81,13 +81,19 @@ function cleanup() {
 }
 
 function cleanupAtWrapper(wrapper) {
+  console.dir(wrapper)
+
   if (
     wrapper.element.parentNode &&
     wrapper.element.parentNode.parentNode === document.body
   ) {
     document.body.removeChild(wrapper.element.parentNode)
   }
-  wrapper.destroy()
+
+  if (wrapper.isVueInstance()) {
+    wrapper.destroy()
+  }
+
   mountedWrappers.delete(wrapper)
 }
 
