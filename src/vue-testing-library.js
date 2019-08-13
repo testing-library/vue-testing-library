@@ -81,8 +81,6 @@ function cleanup() {
 }
 
 function cleanupAtWrapper(wrapper) {
-  console.dir(wrapper)
-
   if (
     wrapper.element.parentNode &&
     wrapper.element.parentNode.parentNode === document.body
