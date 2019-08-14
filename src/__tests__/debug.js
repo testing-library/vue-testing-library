@@ -1,4 +1,4 @@
-import {cleanup, render} from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 import HelloWorld from './components/HelloWorld'
 
 beforeEach(() => {
@@ -6,7 +6,6 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  cleanup()
   console.log.mockRestore()
 })
 

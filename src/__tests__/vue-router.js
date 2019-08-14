@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect'
+import {render, fireEvent} from '@testing-library/vue'
 
-import {cleanup, render, fireEvent} from '@testing-library/vue'
 import App from './components/Router/App.vue'
 import Home from './components/Router/Home.vue'
 import About from './components/Router/About.vue'
@@ -10,8 +10,6 @@ const routes = [
   {path: '/about', component: About},
   {path: '*', redirect: '/about'},
 ]
-
-afterEach(cleanup)
 
 test('full app rendering/navigating', async () => {
   // Notice how we pass a `routes` object to our render function.
