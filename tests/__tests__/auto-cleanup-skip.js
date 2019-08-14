@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom/extend-expect'
-
 let render
 beforeAll(async () => {
   process.env.VTL_SKIP_AUTO_CLEANUP = 'true'
