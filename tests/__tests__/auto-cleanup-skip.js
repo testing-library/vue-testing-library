@@ -1,0 +1,20 @@
+import '@testing-library/jest-dom/extend-expect'
+
+let render
+beforeAll(async () => {
+  process.env.VTL_SKIP_AUTO_CLEANUP = 'true'
+  const vtl = await import('@testing-library/vue')
+  render = vtl.render
+})
+
+// This one verifies that if VTL_SKIP_AUTO_CLEANUP is set
+// then we DON'T auto-wire up the afterEach for folks
+test('first test render a vue component', () => {
+  render({
+    template: `<h1>Hello World</h1>`
+  })
+})
+
+test('no cleanup should have happened, renders the first component still', () => {
+  expect(document.body.innerHTML).toEqual('<div><h1>Hello World</h1></div>')
+})
