@@ -11,8 +11,18 @@ test('first test render a vue component', () => {
   render({
     template: `<h1>Hello World</h1>`
   })
+
+  expect(document.body.innerHTML).toMatchInlineSnapshot(`
+        <div>
+          <h1>Hello World</h1>
+        </div>
+    `)
 })
 
 test('no cleanup should have happened, renders the first component still', () => {
-  expect(document.body.innerHTML).toEqual('<div><h1>Hello World</h1></div>')
+  expect(document.body.innerHTML).toMatchInlineSnapshot(`
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  `)
 })

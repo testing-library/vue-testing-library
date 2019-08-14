@@ -5,14 +5,16 @@ import '@testing-library/jest-dom/extend-expect'
 // environment which supports afterEach (like jest)
 // we'll get automatic cleanup between tests.
 test('render the first component', () => {
-  const { container } = render({
+  render({
     template: `<h1>Hello World</h1>`
   })
-
-  const h1 = container.querySelector('h1')
-  expect(h1).toHaveTextContent('Hello World')
+  expect(document.body.innerHTML).toMatchInlineSnapshot(`
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  `)
 })
 
 test('cleans up after each test by default', () => {
-  expect(document.body.innerHTML).toEqual('')
+  expect(document.body.innerHTML).toMatchInlineSnapshot(`""`)
 })
