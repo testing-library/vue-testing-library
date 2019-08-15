@@ -47,6 +47,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
+    "commitizen": "^4.0.3",
     "coveralls": "^3.0.5",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
@@ -79,7 +80,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "lint-staged": {
