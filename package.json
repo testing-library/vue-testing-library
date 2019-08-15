@@ -1,6 +1,6 @@
 {
   "name": "@testing-library/vue",
-  "version": "2.0.0",
+  "version": "0.0.0-development",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
   "main": "dist/vue-testing-library.js",
   "scripts": {
@@ -8,7 +8,9 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "prepublishOnly": "babel src --out-dir dist"
+    "prepublishOnly": "babel src --out-dir dist",
+    "semantic-release": "semantic-release",
+    "cm": "npx git-cz"
   },
   "files": [
     "dist",
@@ -46,6 +48,7 @@
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "coveralls": "^3.0.5",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
@@ -61,6 +64,7 @@
     "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
+    "semantic-release": "^15.13.21",
     "vee-validate": "^2.2.13",
     "vue": "^2.6.10",
     "vue-i18n": "^8.13.0",
@@ -87,5 +91,10 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
