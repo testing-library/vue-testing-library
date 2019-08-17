@@ -1,7 +1,6 @@
 sudo: false
 language: node_js
 cache:
-  yarn: true
   directories:
     - ~/.npm
 notifications:
@@ -10,10 +9,8 @@ node_js:
   - '8'
   - '10'
   - '12'
-install: yarn
-script:
-  - yarn test
-  - yarn global add codecov
-after_success: codecov
+install: npm install
+script: npm run validate
+after_success: kcd-scripts travis-after-success
 branches:
   only: master
