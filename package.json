@@ -5,7 +5,7 @@
   "main": "dist/vue-testing-library.js",
   "scripts": {
     "format": "kcd-scripts format",
-    "build": "kcd-scripts build && kcd-scripts build --bundle --no-clean",
+    "build": "kcd-scripts build",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
     "test:update": "npm test -- --updateSnapshot --coverage",
