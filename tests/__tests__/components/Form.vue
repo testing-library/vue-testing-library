@@ -56,8 +56,12 @@ export default {
       return !this.title || !this.review
     }
   },
+
+
+
+
   methods: {
-    submit() {
+    submit () {
       if (this.submitDisabled) return
 
       this.$emit('submit', {
