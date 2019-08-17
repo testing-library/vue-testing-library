@@ -39,6 +39,7 @@ test('can render with vuex with custom store', async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 
   // This is a silly store that can never be changed.
+  // eslint-disable-next-line no-shadow
   const store = { state: { count: 1000 } }
 
   // Notice how here we are not using the helper method, because there's no
@@ -51,5 +52,5 @@ test('can render with vuex with custom store', async () => {
   await fireEvent.click(getByText('-'))
   expect(getByTestId('count-value')).toHaveTextContent('1000')
 
-  expect(console.error).toHaveBeenCalled()
+  expect(console.error).toHaveBeenCalledTimes(1)
 })

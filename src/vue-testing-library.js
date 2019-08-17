@@ -119,7 +119,7 @@ fireEvent.touch = async elem => {
 // Small utility to provide a better experience when working with v-model.
 // Related upstream issue: https://github.com/vuejs/vue-test-utils/issues/345#issuecomment-380588199
 // Examples: https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/form.js
-fireEvent.update = async (elem, value) => {
+fireEvent.update = (elem, value) => {
   const tagName = elem.tagName
   const type = elem.type
 
@@ -154,7 +154,12 @@ fireEvent.update = async (elem, value) => {
       elem.value = value
       return fireEvent.change(elem)
     }
+
+    default:
+      // do nothing
   }
+
+  return null
 }
 
 export * from '@testing-library/dom'

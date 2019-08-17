@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom/extend-expect'
 
+import { cleanup, render, fireEvent } from '@testing-library/vue'
 import App from './components/Router/App.vue'
 import Home from './components/Router/Home.vue'
 import About from './components/Router/About.vue'
 
-import { cleanup, render, fireEvent } from '@testing-library/vue'
 
 const routes = [
   { path: '/', component: Home },

@@ -1,5 +1,5 @@
-import HelloWorld from './components/HelloWorld'
 import { cleanup, render } from '@testing-library/vue'
+import HelloWorld from './components/HelloWorld'
 
 beforeEach(() => {
   jest.spyOn(console, 'log').mockImplementation(() => {})
