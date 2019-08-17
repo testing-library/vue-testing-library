@@ -1,11 +1,11 @@
-import { render, fireEvent } from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import '@testing-library/jest-dom/extend-expect'
 import Select from './components/Select'
 
 // In this test file we showcase several ways to interact with a Select element
 test('Select component', async () => {
   let optionElement
-  const { getByDisplayValue, getByText } = render(Select)
+  const {getByDisplayValue, getByText} = render(Select)
 
   // Get the Select element by using the initially displayed value
   const select = getByDisplayValue('Tyrannosaurus')

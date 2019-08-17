@@ -1,15 +1,15 @@
-import { render } from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 import NumberDisplay from './components/NumberDisplay.vue'
 import '@testing-library/jest-dom/extend-expect'
 
 test('calling render with the same component but different props does not remount', async () => {
-  const { getByTestId, updateProps } = render(NumberDisplay, {
-    props: { number: 1 }
+  const {getByTestId, updateProps} = render(NumberDisplay, {
+    props: {number: 1},
   })
 
   expect(getByTestId('number-display')).toHaveTextContent('1')
 
-  await updateProps({ number: 2 })
+  await updateProps({number: 2})
 
   expect(getByTestId('number-display')).toHaveTextContent('2')
 

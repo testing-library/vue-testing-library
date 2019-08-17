@@ -1,4 +1,4 @@
-import { cleanup, render } from '@testing-library/vue'
+import {cleanup, render} from '@testing-library/vue'
 import HelloWorld from './components/HelloWorld'
 
 beforeEach(() => {
@@ -11,32 +11,32 @@ afterEach(() => {
 })
 
 test('debug pretty prints the container if no parameter is provided', () => {
-  const { debug } = render(HelloWorld)
+  const {debug} = render(HelloWorld)
 
   debug()
 
   expect(console.log).toHaveBeenCalledTimes(1)
   expect(console.log).toHaveBeenCalledWith(
-    expect.stringContaining('Hello World')
+    expect.stringContaining('Hello World'),
   )
   expect(console.log).toHaveBeenCalledWith(
-    expect.stringContaining('Lorem ipsum dolor sit amet')
+    expect.stringContaining('Lorem ipsum dolor sit amet'),
   )
 })
 
 test('debug pretty prints the provided parameter', () => {
-  const { getByText, debug } = render(HelloWorld)
+  const {getByText, debug} = render(HelloWorld)
 
   // debug accepts a DOM node as a parameter.
   debug(getByText('Lorem ipsum dolor sit amet'))
 
   expect(console.log).toHaveBeenCalledTimes(1)
   expect(console.log).toHaveBeenCalledWith(
-    expect.stringContaining('Lorem ipsum dolor sit amet')
+    expect.stringContaining('Lorem ipsum dolor sit amet'),
   )
 
   // Notice the 'not' particle
   expect(console.log).not.toHaveBeenCalledWith(
-    expect.stringContaining('Hello World')
+    expect.stringContaining('Hello World'),
   )
 })
