@@ -1,18 +1,18 @@
-import { createLocalVue, mount } from '@vue/test-utils'
+import {createLocalVue, mount} from '@vue/test-utils'
 
 import {
   getQueriesForElement,
   logDOM,
   wait,
-  fireEvent as dtlFireEvent
+  fireEvent as dtlFireEvent,
 } from '@testing-library/dom'
 
 const mountedWrappers = new Set()
 
 function render(
   TestComponent,
-  { store = null, routes = null, ...mountOptions } = {},
-  configurationCb
+  {store = null, routes = null, ...mountOptions} = {},
+  configurationCb,
 ) {
   const localVue = createLocalVue()
   let vuexStore = null
@@ -29,7 +29,7 @@ function render(
     const VueRouter = require('vue-router')
     localVue.use(VueRouter)
     router = new VueRouter({
-      routes
+      routes,
     })
   }
 
@@ -49,16 +49,14 @@ function render(
     attachToDocument: true,
     sync: false,
     ...mountOptions,
-    ...additionalOptions
+    ...additionalOptions,
   })
 
   mountedWrappers.add(wrapper)
 
-  if (wrapper.element.parentNode === document.body) {
-    const div = document.createElement('div')
-    wrapper.element.parentNode.insertBefore(div, wrapper.element)
-    div.appendChild(wrapper.element)
-  }
+  const div = document.createElement('div')
+  wrapper.element.parentNode.insertBefore(div, wrapper.element)
+  div.appendChild(wrapper.element)
 
   return {
     container: wrapper.element.parentNode,
@@ -72,7 +70,7 @@ function render(
       wrapper.setProps(_)
       return wait()
     },
-    ...getQueriesForElement(wrapper.element.parentNode)
+    ...getQueriesForElement(wrapper.element.parentNode),
   }
 }
 
@@ -156,11 +154,11 @@ fireEvent.update = (elem, value) => {
     }
 
     default:
-      // do nothing
+    // do nothing
   }
 
   return null
 }
 
 export * from '@testing-library/dom'
-export { cleanup, render, fireEvent }
+export {cleanup, render, fireEvent}
