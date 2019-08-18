@@ -130,7 +130,7 @@ Feel free to contribute with more examples!
 
 The TypeScript type definitions are in the
 [DefinitelyTyped repo](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue)
-and bundled in Vue Testing Library.
+and bundled with Vue Testing Library.
 
 ## License
 
