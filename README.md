@@ -40,6 +40,7 @@
 - [A simple example](#a-simple-example)
   - [More examples](#more-examples)
 - [Docs](#docs)
+- [Typings](#typings)
 - [License](#license)
 - [Contributors](#contributors)
 
@@ -124,6 +125,12 @@ Feel free to contribute with more examples!
 ## Docs
 
 [**Read the Docs**][docs] | [Edit the docs][docs-edit]
+
+## Typings
+
+The TypeScript type definitions are in the
+[DefinitelyTyped repo](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue)
+and bundled with Vue Testing Library.
 
 ## License
 
