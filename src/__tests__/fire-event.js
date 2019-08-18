@@ -1,36 +1,36 @@
-import { render, fireEvent } from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import Button from './components/Button'
 
 const eventTypes = [
   {
     type: 'Clipboard',
-    events: ['copy', 'paste']
+    events: ['copy', 'paste'],
   },
   {
     type: 'Composition',
-    events: ['compositionEnd', 'compositionStart', 'compositionUpdate']
+    events: ['compositionEnd', 'compositionStart', 'compositionUpdate'],
   },
   {
     type: 'Keyboard',
     events: ['keyDown', 'keyPress', 'keyUp'],
-    init: { keyCode: 13 }
+    init: {keyCode: 13},
   },
   {
     type: 'Focus',
-    events: ['focus', 'blur']
+    events: ['focus', 'blur'],
   },
   {
     type: 'Form',
-    events: ['focus', 'blur']
+    events: ['focus', 'blur'],
   },
   {
     type: 'Focus',
-    events: ['input', 'invalid']
+    events: ['input', 'invalid'],
   },
   {
     type: 'Focus',
     events: ['submit'],
-    elementType: 'form'
+    elementType: 'form',
   },
   {
     type: 'Mouse',
@@ -51,28 +51,28 @@ const eventTypes = [
       'mouseMove',
       'mouseOut',
       'mouseOver',
-      'mouseUp'
+      'mouseUp',
     ],
-    elementType: 'button'
+    elementType: 'button',
   },
   {
     type: 'Selection',
-    events: ['select']
+    events: ['select'],
   },
   {
     type: 'Touch',
     events: ['touchCancel', 'touchEnd', 'touchMove', 'touchStart'],
-    elementType: 'button'
+    elementType: 'button',
   },
   {
     type: 'UI',
     events: ['scroll'],
-    elementType: 'div'
+    elementType: 'div',
   },
   {
     type: 'Wheel',
     events: ['wheel'],
-    elementType: 'div'
+    elementType: 'div',
   },
   {
     type: 'Media',
@@ -99,30 +99,30 @@ const eventTypes = [
       'suspend',
       'timeUpdate',
       'volumeChange',
-      'waiting'
+      'waiting',
     ],
-    elementType: 'video'
+    elementType: 'video',
   },
   {
     type: 'Image',
     events: ['load', 'error'],
-    elementType: 'img'
+    elementType: 'img',
   },
   {
     type: 'Animation',
     events: ['animationStart', 'animationEnd', 'animationIteration'],
-    elementType: 'div'
+    elementType: 'div',
   },
   {
     type: 'Transition',
     events: ['transitionEnd'],
-    elementType: 'div'
-  }
+    elementType: 'div',
+  },
 ]
 
 // For each event type, we assert that the right events are being triggered
 // when the associated fireEvent method is called.
-eventTypes.forEach(({ type, events, elementType = 'input', init }) => {
+eventTypes.forEach(({type, events, elementType = 'input', init}) => {
   describe(`${type} Events`, () => {
     events.forEach(eventName => {
       it(`triggers ${eventName}`, async () => {
@@ -131,17 +131,17 @@ eventTypes.forEach(({ type, events, elementType = 'input', init }) => {
 
         // Render an element with a listener of the event under testing and a
         // test-id attribute, so that we can get the DOM node afterwards.
-        const { getByTestId } = render({
+        const {getByTestId} = render({
           render(h) {
             return h(elementType, {
               on: {
-                [eventName.toLowerCase()]: spy
+                [eventName.toLowerCase()]: spy,
               },
               attrs: {
-                'data-testid': testId
-              }
+                'data-testid': testId,
+              },
             })
-          }
+          },
         })
 
         const elem = getByTestId(testId)
@@ -157,12 +157,12 @@ eventTypes.forEach(({ type, events, elementType = 'input', init }) => {
 test('triggers dblclick on doubleClick', async () => {
   const spy = jest.fn()
 
-  const { getByRole } = render({
+  const {getByRole} = render({
     render(h) {
       return h('input', {
-        on: { dblclick: spy }
+        on: {dblclick: spy},
       })
-    }
+    },
   })
 
   const elem = getByRole('textbox')
@@ -173,11 +173,25 @@ test('triggers dblclick on doubleClick', async () => {
 
 // fireEvent(node, event) is also a valid API
 test('calling `fireEvent` directly works too', async () => {
-  const { getByRole, emitted } = render(Button)
+  const {getByRole, emitted} = render(Button)
 
   const button = getByRole('button')
 
   await fireEvent(button, new Event('click'))
 
   expect(emitted()).toHaveProperty('click')
+})
+
+test('fireEvent.update does not crash if non-input element is passed in', async () => {
+  const {getByText} = render({
+    template: `<div>Hi</div>`,
+  })
+
+  await fireEvent.update(getByText('Hi'))
+
+  expect(getByText('Hi')).toMatchInlineSnapshot(`
+    <div>
+      Hi
+    </div>
+  `)
 })

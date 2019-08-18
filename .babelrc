@@ -1,19 +1,8 @@
 {
   "presets": [
-    ["@babel/env", {
-      "modules": "commonjs",
-      "targets": {
-        "node": "current",
-        "browsers": [
-          "> 1%",
-          "last 2 versions",
-          "not ie <= 8"
-        ]
-      }
-    }]
+    ["@babel/env"]
   ],
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-transform-runtime"
   ]
 }

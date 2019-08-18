@@ -48,14 +48,15 @@ export default {
       title: '',
       review: '',
       rating: '1',
-      recommend: false
+      recommend: false,
     }
   },
   computed: {
     submitDisabled() {
       return !this.title || !this.review
-    }
+    },
   },
+
   methods: {
     submit() {
       if (this.submitDisabled) return
@@ -64,9 +65,9 @@ export default {
         title: this.title,
         review: this.review,
         rating: this.rating,
-        recommend: this.recommend
+        recommend: this.recommend,
       })
-    }
-  }
+    },
+  },
 }
 </script>

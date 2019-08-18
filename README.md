@@ -72,25 +72,25 @@ You may also be interested in installing `jest-dom` so you can use
 <script>
   export default {
     data: () => ({
-      count: 0
+      count: 0,
     }),
     methods: {
       increment() {
         this.count++
-      }
-    }
+      },
+    },
   }
 </script>
 ```
 
 ```js
 // TestComponent.spec.js
-import { render, fireEvent } from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import TestComponent from './TestComponent.vue'
 
 test('increments value on click', async () => {
   // The render method returns a collection of utilities to query your component.
-  const { getByText } = render(TestComponent)
+  const {getByText} = render(TestComponent)
 
   // getByText returns the first matching node for the provided text, and
   // throws an error if no elements match or if more than one match is found.

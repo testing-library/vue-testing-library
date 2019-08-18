@@ -1,25 +1,12 @@
 module.exports = {
-  root: true,
-  parserOptions: {
-    parser: 'babel-eslint',
-    ecmaVersion: 2017,
-    sourceType: 'module'
-  },
-  env: {
-    browser: true,
-    jest: true
-  },
   extends: [
-    'standard',
+    './node_modules/kcd-scripts/eslint.js',
     'plugin:vue/recommended',
-    'eslint:recommended',
     'prettier/vue',
-    'plugin:prettier/recommended'     
   ],
-  plugins: [
-    'vue'
-  ],
+  plugins: ['vue'],
   rules: {
-    'no-console': 'off'
-  }
+    'no-console': 'off',
+    'import/no-unresolved': 'off',
+  },
 }

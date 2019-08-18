@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
-import { cleanup, render, fireEvent } from '@testing-library/vue'
+import {cleanup, render, fireEvent} from '@testing-library/vue'
 import Vuei18n from 'vue-i18n'
 import VueI18n from './components/VueI18n'
 
@@ -7,23 +7,23 @@ afterEach(cleanup)
 
 const messages = {
   en: {
-    Hello: 'Hello'
+    Hello: 'Hello',
   },
   ja: {
-    Hello: 'こんにちは'
-  }
+    Hello: 'こんにちは',
+  },
 }
 
 test('can render en and ja text in header', async () => {
-  const { queryByText, getByText } = render(VueI18n, {}, vue => {
+  const {queryByText, getByText} = render(VueI18n, {}, vue => {
     vue.use(Vuei18n)
     const i18n = new Vuei18n({
       locale: 'en',
       fallbackLocale: 'en',
-      messages
+      messages,
     })
     //return i18n object so that it will be available as an additional option on the created vue instance
-    return { i18n }
+    return {i18n}
   })
 
   expect(getByText('Hello')).toBeInTheDocument()
