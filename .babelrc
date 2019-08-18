@@ -1,8 +1,6 @@
 {
   "presets": [
-    ["@babel/env", {
-      "modules": "commonjs",
-    }]
+    ["@babel/env"]
   ],
   "plugins": [
     "@babel/plugin-transform-runtime"
