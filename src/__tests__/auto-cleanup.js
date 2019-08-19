@@ -1,9 +1,8 @@
 import {render} from '@testing-library/vue'
 import '@testing-library/jest-dom/extend-expect'
 
-// This just verifies that by importing VTL in an
-// environment which supports afterEach (like jest)
-// we'll get automatic cleanup between tests.
+// This just verifies that by importing VTL in an environment which supports
+// afterEach (like jest) we'll get automatic cleanup between tests.
 test('render the first component', () => {
   render({
     template: `<h1>Hello World</h1>`,

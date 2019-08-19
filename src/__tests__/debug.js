@@ -34,7 +34,7 @@ test('debug pretty prints the provided parameter', () => {
     expect.stringContaining('Lorem ipsum dolor sit amet'),
   )
 
-  // Notice the 'not' particle
+  // Notice the 'not' particle.
   expect(console.log).not.toHaveBeenCalledWith(
     expect.stringContaining('Hello World'),
   )

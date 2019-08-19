@@ -24,7 +24,7 @@ test('Review form submits', async () => {
 
   const submitButton = getByText('Submit')
 
-  // Initially the submit button should be disabled
+  // Initially the submit button should be disabled.
   expect(submitButton).toBeDisabled()
 
   const titleInput = getByLabelText(/title of the movie/i)
@@ -33,7 +33,7 @@ test('Review form submits', async () => {
   const reviewTextarea = getByPlaceholderText('Write an awesome review')
   await fireEvent.update(reviewTextarea, fakeReview.review)
 
-  // Rating Radio buttons
+  // Rating Radio buttons.
   const initiallySelectedInput = getByLabelText('Awful')
   const ratingSelect = getByLabelText('Wonderful')
 
@@ -45,23 +45,20 @@ test('Review form submits', async () => {
   expect(ratingSelect.checked).toBe(true)
   expect(initiallySelectedInput.checked).toBe(false)
 
-  // Get the Input element by its implicit ARIA role
+  // Get the Input element by its implicit ARIA role.
   const recommendInput = getByRole('checkbox')
 
   expect(recommendInput.checked).toBe(false)
   await fireEvent.update(recommendInput)
   expect(recommendInput.checked).toBe(true)
 
-  // NOTE: in jsdom, it's not possible to trigger a form submission
-  // by clicking on the submit button. This is really unfortunate.
-  // So the next best thing is to fireEvent a submit on the form itself
-  // then ensure that there's a submit button
+  // Make sure the submit button is enabled.
   expect(submitButton).toBeEnabled()
   expect(submitButton).toHaveAttribute('type', 'submit')
 
   await fireEvent.click(submitButton)
 
-  // Assert event has been emitted
+  // Assert the right event has been emitted.
   expect(emitted()).toHaveProperty('submit')
   expect(emitted().submit[0][0]).toMatchObject(fakeReview)
 })
