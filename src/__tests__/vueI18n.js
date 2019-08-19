@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
-import { render, fireEvent } from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import Vuei18n from 'vue-i18n'
 import VueI18n from './components/VueI18n'
 
@@ -14,7 +14,6 @@ const messages = {
 
 test('renders translations', async () => {
   const {queryByText, getByText} = render(VueI18n, {}, vue => {
-
     // Let's register Vuei18n normally
     vue.use(Vuei18n)
 

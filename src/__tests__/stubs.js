@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 import Stubs from './components/Stubs'
 
 test('Form contains search button', () => {

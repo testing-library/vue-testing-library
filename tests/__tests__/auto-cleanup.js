@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 import '@testing-library/jest-dom/extend-expect'
 
 // This just verifies that by importing VTL in an
@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/extend-expect'
 // we'll get automatic cleanup between tests.
 test('render the first component', () => {
   render({
-    template: `<h1>Hello World</h1>`
+    template: `<h1>Hello World</h1>`,
   })
   expect(document.body.innerHTML).toMatchInlineSnapshot(`
     <div>

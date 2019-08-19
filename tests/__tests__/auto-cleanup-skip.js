@@ -1,7 +1,8 @@
 let render
 beforeAll(async () => {
   process.env.VTL_SKIP_AUTO_CLEANUP = 'true'
-  const vtl = await import('@testing-library/vue')
+  // eslint-disable-next-line
+  const vtl = await require('@testing-library/vue')
   render = vtl.render
 })
 
@@ -9,7 +10,7 @@ beforeAll(async () => {
 // then we DON'T auto-wire up the afterEach for folks
 test('first test render a vue component', () => {
   render({
-    template: `<h1>Hello World</h1>`
+    template: `<h1>Hello World</h1>`,
   })
 
   expect(document.body.innerHTML).toMatchInlineSnapshot(`

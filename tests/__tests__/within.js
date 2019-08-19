@@ -1,19 +1,19 @@
-import { render, within } from '@testing-library/vue'
+import {render, within} from '@testing-library/vue'
 
 test('within() returns an object with all queries bound to the DOM node', () => {
-  const { getByTestId, getByText } = render({
+  const {getByTestId, getByText} = render({
     template: `
       <div>
         <p>repeated text</p>
         <div data-testid="div">repeated text</div>
       </div>
-    `
+    `,
   })
 
   // getByText() provided by render() fails because it finds multiple elements
   // with the same text (as expected).
   expect(() => getByText('repeated text')).toThrow(
-    'Found multiple elements with the text: repeated text'
+    'Found multiple elements with the text: repeated text',
   )
 
   const divNode = getByTestId('div')
