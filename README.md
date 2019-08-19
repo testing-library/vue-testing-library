@@ -1,18 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Vue Testing Library](#vue-testing-library)
-  - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-  - [A simple example](#a-simple-example)
-    - [More examples](#more-examples)
-  - [Docs](#docs)
-  - [Typings](#typings)
-  - [License](#license)
-  - [Contributors](#contributors)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 <div align="center">
 <h1>Vue Testing Library</h1>
 
@@ -53,6 +38,9 @@
 
 <h2>Table of Contents</h2>
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [Installation](#installation)
 - [A simple example](#a-simple-example)
   - [More examples](#more-examples)
@@ -60,6 +48,8 @@
 - [Typings](#typings)
 - [License](#license)
 - [Contributors](#contributors)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
 
