@@ -138,17 +138,20 @@ and bundled with Vue Testing Library.
 
 ## Contributors
 
-[![dfcook](https://avatars0.githubusercontent.com/u/10348212?v=3&s=170)](https://github.com/dfcook)
-[![afontcu](https://avatars3.githubusercontent.com/u/9197791?s=170&v=3)](https://github.com/afontcu)
-[![eunjae-lee](https://avatars0.githubusercontent.com/u/499898?v=3&s=170)](https://github.com/eunjae-lee)
-[![tim-maguire](https://avatars0.githubusercontent.com/u/29452317?v=3&s=170)](https://github.com/tim-maguire)
-[![samdelacruz](https://avatars0.githubusercontent.com/u/2040007?v=3&s=170)](https://github.com/samdelacruz)
-[![ankitsinghaniyaz](https://avatars0.githubusercontent.com/u/11331989?v=3&s=170)](https://github.com/ankitsinghaniyaz)
-[![lindgr3n](https://avatars0.githubusercontent.com/u/24882614?v=3&s=170)](https://github.com/lindgr3n)
-[![kentcdodds](https://avatars0.githubusercontent.com/u/1500684?v=3&s=170)](https://github.com/kentcdodds)
-[![brennj](https://avatars2.githubusercontent.com/u/29227924?v=3&s=170)](https://github.com/brennj)
-[![makeupsomething](https://avatars2.githubusercontent.com/u/7676733?v=3&s=170)](https://github.com/makeupsomething)
-[![mb200](https://avatars2.githubusercontent.com/u/22549525?v=3&s=170)](https://github.com/mb200)
+[![dfcook](https://avatars0.githubusercontent.com/u/10348212?v=3&s=120)](https://github.com/dfcook)
+[![afontcu](https://avatars3.githubusercontent.com/u/9197791?v=3&s=120)](https://github.com/afontcu)
+[![eunjae-lee](https://avatars0.githubusercontent.com/u/499898?v=3&s=120)](https://github.com/eunjae-lee)
+[![tim-maguire](https://avatars0.githubusercontent.com/u/29452317?v=3&s=120)](https://github.com/tim-maguire)
+[![samdelacruz](https://avatars0.githubusercontent.com/u/2040007?v=3&s=120)](https://github.com/samdelacruz)
+[![ankitsinghaniyaz](https://avatars0.githubusercontent.com/u/11331989?v=3&s=120)](https://github.com/ankitsinghaniyaz)
+[![lindgr3n](https://avatars0.githubusercontent.com/u/24882614?v=3&s=120)](https://github.com/lindgr3n)
+[![kentcdodds](https://avatars0.githubusercontent.com/u/1500684?v=3&s=120)](https://github.com/kentcdodds)
+[![brennj](https://avatars2.githubusercontent.com/u/29227924?v=3&s=120)](https://github.com/brennj)
+[![makeupsomething](https://avatars2.githubusercontent.com/u/7676733?v=3&s=120)](https://github.com/makeupsomething)
+[![mb200](https://avatars2.githubusercontent.com/u/22549525?v=3&s=120)](https://github.com/mb200)
+[![Oluwasetemi](https://avatars2.githubusercontent.com/u/10030028?v=3&s=120)](https://github.com/Oluwasetemi)
+[![cimbul](https://avatars2.githubusercontent.com/u/927923?v=3&s=120)](https://github.com/cimbul)
+[![alexkrolick](https://avatars2.githubusercontent.com/u/1571667?v=3&s=120)](https://github.com/alexkrolick)
 
 <!-- prettier-ignore-start -->
 [build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
