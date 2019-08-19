@@ -8,13 +8,13 @@ const Functional = {
   },
 }
 
-test('renders functional comp', () => {
+test('renders functional component', () => {
   const {getByText} = render(Functional)
 
   getByText('Hi!')
 })
 
-test('renders functional SFC comp', () => {
+test('renders functional SFC component', () => {
   const {getByText} = render(FunctionalSFC)
 
   getByText('Hi!')

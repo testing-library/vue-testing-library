@@ -5,8 +5,8 @@ beforeAll(async () => {
   render = vtl.render
 })
 
-// This one verifies that if VTL_SKIP_AUTO_CLEANUP is set
-// then we DON'T auto-wire up the afterEach for folks
+// This test verifies that if VTL_SKIP_AUTO_CLEANUP is set then we DON'T
+// auto-wire up the afterEach cleanup for folks.
 test('first test render a vue component', () => {
   render({
     template: `<h1>Hello World</h1>`,

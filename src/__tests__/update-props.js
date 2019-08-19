@@ -1,7 +1,11 @@
+import '@testing-library/jest-dom/extend-expect'
 import {render} from '@testing-library/vue'
 import NumberDisplay from './components/NumberDisplay.vue'
-import '@testing-library/jest-dom/extend-expect'
 
+// It'd probably be better if you test the component that's doing the prop
+// updating to ensure that the props are being updated correctly.
+// That said, if you'd prefer to update the props of a rendered component, this
+// function can be used to update props of the rendered component.
 test('calling render with the same component but different props does not remount', async () => {
   const {getByTestId, updateProps} = render(NumberDisplay, {
     props: {number: 1},

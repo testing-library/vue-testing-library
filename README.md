@@ -1,6 +1,8 @@
 <div align="center">
 <h1>Vue Testing Library</h1>
 
+<br />
+
 <a href="https://www.joypixels.com/emoji/1F98E">
   <img
     height="80"
@@ -16,7 +18,7 @@
 
 <br />
 
-[**Read the Docs**][docs] | [Edit the docs][docs-edit]
+[**Read the docs**][docs] | [Edit the docs][docs-edit]
 
 <br />
 
@@ -36,6 +38,9 @@
 
 <h2>Table of Contents</h2>
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [Installation](#installation)
 - [A simple example](#a-simple-example)
   - [More examples](#more-examples)
@@ -44,9 +49,11 @@
 - [License](#license)
 - [Contributors](#contributors)
 
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Installation
 
-This module is distributed via npm and should be installed as one of your
+This module is distributed via `npm` and should be installed as one of your
 project's `devDependencies`:
 
 ```
@@ -57,7 +64,7 @@ This library has `peerDependencies` listings for `Vue` and
 `vue-template-compiler`.
 
 You may also be interested in installing `jest-dom` so you can use
-[the custom Jest matchers](https://github.com/gnapse/jest-dom#readme).
+[the custom Jest matchers](https://github.com/testing-library/jest-dom#readme).
 
 ## A simple example
 
@@ -90,7 +97,7 @@ import {render, fireEvent} from '@testing-library/vue'
 import TestComponent from './TestComponent.vue'
 
 test('increments value on click', async () => {
-  // The render method returns a collection of utilities to query your component.
+  // The render method returns a collection of utilities to query the component.
   const {getByText} = render(TestComponent)
 
   // getByText returns the first matching node for the provided text, and
@@ -100,7 +107,7 @@ test('increments value on click', async () => {
   // `button` is the actual DOM element.
   const button = getByText('increment')
 
-  // Dispatch a native click event.
+  // Dispatch a couple of native click events.
   await fireEvent.click(button)
   await fireEvent.click(button)
 
@@ -124,12 +131,12 @@ Feel free to contribute with more examples!
 
 ## Docs
 
-[**Read the Docs**][docs] | [Edit the docs][docs-edit]
+[**Read the docs**][docs] | [Edit the docs][docs-edit]
 
 ## Typings
 
 The TypeScript type definitions are in the
-[DefinitelyTyped repo](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue)
+[DefinitelyTyped repo][types]
 and bundled with Vue Testing Library.
 
 ## License
@@ -166,13 +173,14 @@ and bundled with Vue Testing Library.
 [npm]: https://badge.fury.io/js/%40testing-library%2Fvue
 [license-badge]: https://img.shields.io/github/license/testing-library/vue-testing-library.svg
 [license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
+[types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
 
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
 
-[test-directory]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__
-[vuex-example]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vuex.js
-[vue-router-example]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vue-router.js
-[vee-validate-example]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js
+[test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
+[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
+[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
+[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
 [vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/vueI18n.js
 <!-- prettier-ignore-end -->
