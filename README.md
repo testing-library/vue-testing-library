@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Vue Testing Library](#vue-testing-library)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [A simple example](#a-simple-example)
+    - [More examples](#more-examples)
+  - [Docs](#docs)
+  - [Typings](#typings)
+  - [License](#license)
+  - [Contributors](#contributors)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 <div align="center">
 <h1>Vue Testing Library</h1>
 
@@ -170,9 +185,9 @@ and bundled with Vue Testing Library.
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
 
-[test-directory]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__
-[vuex-example]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vuex.js
-[vue-router-example]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vue-router.js
-[vee-validate-example]: https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js
+[test-directory]: https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__
+[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
+[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
+[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
 [vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/vueI18n.js
 <!-- prettier-ignore-end -->
