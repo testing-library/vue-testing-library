@@ -1,9 +1,7 @@
 import '@testing-library/jest-dom/extend-expect'
-import {cleanup, render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import Vuei18n from 'vue-i18n'
 import VueI18n from './components/VueI18n'
-
-afterEach(cleanup)
 
 const messages = {
   en: {
@@ -14,15 +12,19 @@ const messages = {
   },
 }
 
-test('can render en and ja text in header', async () => {
+test('renders translations', async () => {
   const {queryByText, getByText} = render(VueI18n, {}, vue => {
+    // Let's register Vuei18n normally
     vue.use(Vuei18n)
+
     const i18n = new Vuei18n({
       locale: 'en',
       fallbackLocale: 'en',
       messages,
     })
-    //return i18n object so that it will be available as an additional option on the created vue instance
+
+    // Notice how we return an object from the callback function. It will be
+    // available as an additional option on the created Vue instance.
     return {i18n}
   })
 

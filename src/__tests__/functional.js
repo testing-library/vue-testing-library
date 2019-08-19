@@ -1,4 +1,4 @@
-import {cleanup, render} from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 import FunctionalSFC from './components/FunctionalSFC'
 
 const Functional = {
@@ -8,15 +8,13 @@ const Functional = {
   },
 }
 
-afterEach(cleanup)
-
-it('renders functional comp', () => {
+test('renders functional comp', () => {
   const {getByText} = render(Functional)
 
   getByText('Hi!')
 })
 
-it('renders functional SFC comp', () => {
+test('renders functional SFC comp', () => {
   const {getByText} = render(FunctionalSFC)
 
   getByText('Hi!')

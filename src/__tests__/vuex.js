@@ -1,10 +1,8 @@
 import '@testing-library/jest-dom/extend-expect'
-import {cleanup, render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 
 import VuexTest from './components/Store/VuexTest'
 import {store} from './components/Store/store'
-
-afterEach(cleanup)
 
 // A common testing pattern is to create a custom renderer for a specific test
 // file. This way, common operations such as registering a Vuex store can be
