@@ -1,7 +1,6 @@
 let render
 beforeAll(async () => {
   process.env.VTL_SKIP_AUTO_CLEANUP = 'true'
-  // eslint-disable-next-line
   const vtl = await require('@testing-library/vue')
   render = vtl.render
 })
