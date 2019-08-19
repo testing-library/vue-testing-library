@@ -178,7 +178,7 @@ and bundled with Vue Testing Library.
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
 
-[test-directory]: https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__
+[test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
 [vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
 [vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
 [vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
