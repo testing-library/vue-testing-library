@@ -182,5 +182,5 @@ and bundled with Vue Testing Library.
 [vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
 [vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
 [vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
-[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/vueI18n.js
+[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vueI18n.js
 <!-- prettier-ignore-end -->
