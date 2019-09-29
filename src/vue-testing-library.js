@@ -14,6 +14,10 @@ function render(
   {store = null, routes = null, ...mountOptions} = {},
   configurationCb,
 ) {
+  const div = document.createElement('div')
+  const baseElement = mountOptions.baseElement || document.body
+  const container = baseElement.appendChild(div)
+
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
@@ -53,15 +57,12 @@ function render(
   })
 
   mountedWrappers.add(wrapper)
-
-  const div = document.createElement('div')
-  wrapper.element.parentNode.insertBefore(div, wrapper.element)
-  div.appendChild(wrapper.element)
+  container.appendChild(wrapper.element)
 
   return {
-    container: wrapper.element.parentNode,
-    baseElement: document.body,
-    debug: (el = wrapper.element) => logDOM(el),
+    container,
+    baseElement,
+    debug: (el = baseElement) => logDOM(el),
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
@@ -70,7 +71,7 @@ function render(
       wrapper.setProps(_)
       return wait()
     },
-    ...getQueriesForElement(wrapper.element.parentNode),
+    ...getQueriesForElement(baseElement),
   }
 }
 
