@@ -11,12 +11,18 @@ const mountedWrappers = new Set()
 
 function render(
   TestComponent,
-  {store = null, routes = null, ...mountOptions} = {},
+  {
+    store = null,
+    routes = null,
+    container: customContainer,
+    baseElement: customBaseElement,
+    ...mountOptions
+  } = {},
   configurationCb,
 ) {
   const div = document.createElement('div')
-  const baseElement = mountOptions.baseElement || document.body
-  const container = baseElement.appendChild(div)
+  const baseElement = customBaseElement || customContainer || document.body
+  const container = customContainer || baseElement.appendChild(div)
 
   const localVue = createLocalVue()
   let vuexStore = null
