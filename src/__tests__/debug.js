@@ -1,5 +1,7 @@
 import {render} from '@testing-library/vue'
 import HelloWorld from './components/HelloWorld'
+import MultipleHelloWorld from './components/MultipleHelloWorld'
+
 
 beforeEach(() => {
   jest.spyOn(console, 'log').mockImplementation(() => {})
@@ -37,5 +39,22 @@ test('debug pretty prints the provided parameter', () => {
   // Notice the 'not' particle.
   expect(console.log).not.toHaveBeenCalledWith(
     expect.stringContaining('Hello World'),
+  )
+})
+
+test('debug pretty prints multiple nodes with the given parameter', () => {
+  const {getAllByText, debug} = render(MultipleHelloWorld)
+
+  // debug accepts a DOM node as a parameter.
+  debug(getAllByText('Hello World!'))
+  
+  expect(console.log).toHaveBeenCalledTimes(4)
+  expect(console.log).toHaveBeenCalledWith(
+      expect.stringContaining('Hello World!'),
+  )
+
+  // Notice the 'not' particle.
+  expect(console.log).not.toHaveBeenCalledWith(
+      expect.stringContaining('Lorem ipsum dolor sit amet'),
   )
 })
