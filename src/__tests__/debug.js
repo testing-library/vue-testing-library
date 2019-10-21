@@ -1,6 +1,5 @@
 import {render} from '@testing-library/vue'
 import HelloWorld from './components/HelloWorld'
-import MultipleHelloWorld from './components/MultipleHelloWorld'
 
 
 beforeEach(() => {
@@ -43,18 +42,18 @@ test('debug pretty prints the provided parameter', () => {
 })
 
 test('debug pretty prints multiple nodes with the given parameter', () => {
-  const {getAllByText, debug} = render(MultipleHelloWorld)
+  const {getAllByText, debug} = render(HelloWorld)
+  const multipleElements = getAllByText(/.+/)
 
-  // debug accepts a DOM node as a parameter.
-  debug(getAllByText('Hello World!'))
+  // debug also accepts an array of DOM nodes as a parameter.
+  debug(multipleElements)
   
-  expect(console.log).toHaveBeenCalledTimes(4)
+  expect(console.log).toHaveBeenCalledTimes(2)
   expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('Hello World!'),
+      expect.stringContaining('Hello World'),
   )
 
-  // Notice the 'not' particle.
-  expect(console.log).not.toHaveBeenCalledWith(
+  expect(console.log).toHaveBeenCalledWith(
       expect.stringContaining('Lorem ipsum dolor sit amet'),
   )
 })
