@@ -1,7 +1,6 @@
 import {render} from '@testing-library/vue'
 import HelloWorld from './components/HelloWorld'
 
-
 beforeEach(() => {
   jest.spyOn(console, 'log').mockImplementation(() => {})
 })
@@ -47,13 +46,13 @@ test('debug pretty prints multiple nodes with the given parameter', () => {
 
   // debug also accepts an array of DOM nodes as a parameter.
   debug(multipleElements)
-  
+
   expect(console.log).toHaveBeenCalledTimes(2)
   expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('Hello World'),
+    expect.stringContaining('Hello World'),
   )
 
   expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('Lorem ipsum dolor sit amet'),
+    expect.stringContaining('Lorem ipsum dolor sit amet'),
   )
 })
