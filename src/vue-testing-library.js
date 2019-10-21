@@ -68,7 +68,8 @@ function render(
   return {
     container,
     baseElement,
-    debug: (el = baseElement) => logDOM(el),
+    debug: (el = baseElement) =>
+      Array.isArray(el) ? el.forEach(e => logDOM(e)) : logDOM(el),
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),

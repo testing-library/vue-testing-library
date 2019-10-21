@@ -39,3 +39,20 @@ test('debug pretty prints the provided parameter', () => {
     expect.stringContaining('Hello World'),
   )
 })
+
+test('debug pretty prints multiple nodes with the given parameter', () => {
+  const {getAllByText, debug} = render(HelloWorld)
+  const multipleElements = getAllByText(/.+/)
+
+  // debug also accepts an array of DOM nodes as a parameter.
+  debug(multipleElements)
+
+  expect(console.log).toHaveBeenCalledTimes(2)
+  expect(console.log).toHaveBeenCalledWith(
+    expect.stringContaining('Hello World'),
+  )
+
+  expect(console.log).toHaveBeenCalledWith(
+    expect.stringContaining('Lorem ipsum dolor sit amet'),
+  )
+})
