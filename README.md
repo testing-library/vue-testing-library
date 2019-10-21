@@ -160,6 +160,10 @@ and bundled with Vue Testing Library.
 [![cimbul](https://avatars2.githubusercontent.com/u/927923?v=3&s=120)](https://github.com/cimbul)
 [![alexkrolick](https://avatars2.githubusercontent.com/u/1571667?v=3&s=120)](https://github.com/alexkrolick)
 [![edufarre](https://avatars2.githubusercontent.com/u/25011566?v=3&s=120)](https://github.com/edufarre)
+[![SandraDml](https://avatars2.githubusercontent.com/u/5694169?v=3&s=120)](https://github.com/SandraDml)
+[![arnaublanche](https://avatars2.githubusercontent.com/u/24812315?v=3&s=120)](https://github.com/arnaublanche)
+[![NoelDeMartin](https://avatars2.githubusercontent.com/u/1517677?v=3&s=120)](https://github.com/NoelDeMartin)
+
 
 <!-- prettier-ignore-start -->
 [build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
