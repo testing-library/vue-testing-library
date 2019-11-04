@@ -168,6 +168,7 @@ If you want to lint test files that use Vue Testing Library, you can use the off
 [![SandraDml](https://avatars2.githubusercontent.com/u/5694169?v=3&s=120)](https://github.com/SandraDml)
 [![arnaublanche](https://avatars2.githubusercontent.com/u/24812315?v=3&s=120)](https://github.com/arnaublanche)
 [![NoelDeMartin](https://avatars2.githubusercontent.com/u/1517677?v=3&s=120)](https://github.com/NoelDeMartin)
+[![chiptus](https://avatars2.githubusercontent.com/u/1381655?v=3&s=120)](https://github.com/chiptus)
 
 
 <!-- prettier-ignore-start -->
