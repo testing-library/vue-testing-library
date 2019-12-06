@@ -127,6 +127,7 @@ Some included are:
 - [`vue-router`][vue-router-example]
 - [`vee-validate`][vee-validate-example]
 - [`vue-i18n`][vue-i18n-example]
+- [`vuetify`][vuetify-example]
 
 Feel free to contribute with more examples!
 
@@ -194,4 +195,5 @@ If you want to lint test files that use Vue Testing Library, you can use the off
 [vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
 [vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
 [vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vueI18n.js
+[vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuetify.js
 <!-- prettier-ignore-end -->
