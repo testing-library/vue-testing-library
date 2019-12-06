@@ -127,7 +127,7 @@ Some included are:
 - [`vue-router`][vue-router-example]
 - [`vee-validate`][vee-validate-example]
 - [`vue-i18n`][vue-i18n-example]
-- [`vuetify`][vuetify]
+- [`vuetify`][vuetify-example]
 
 Feel free to contribute with more examples!
 
