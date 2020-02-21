@@ -17,5 +17,6 @@ module.exports = merge(config, {
   testPathIgnorePatterns: [
     '<rootDir>/node_modules',
     '<rootDir>/src/__tests__/components',
+    '<rootDir>/src/__tests__/directives',
   ],
 })
