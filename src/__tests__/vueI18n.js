@@ -1,31 +1,31 @@
-import '@testing-library/jest-dom/extend-expect'
-import {render, fireEvent} from '@testing-library/vue'
+import '@testing-library/jest-dom'
+import { render, fireEvent } from '@testing-library/vue'
 import Vuei18n from 'vue-i18n'
 import VueI18n from './components/VueI18n'
 
 const messages = {
   en: {
-    Hello: 'Hello',
+    Hello: 'Hello'
   },
   ja: {
-    Hello: 'こんにちは',
-  },
+    Hello: 'こんにちは'
+  }
 }
 
 test('renders translations', async () => {
-  const {queryByText, getByText} = render(VueI18n, {}, vue => {
+  const { queryByText, getByText } = render(VueI18n, {}, vue => {
     // Let's register Vuei18n normally
     vue.use(Vuei18n)
 
     const i18n = new Vuei18n({
       locale: 'en',
       fallbackLocale: 'en',
-      messages,
+      messages
     })
 
     // Notice how we return an object from the callback function. It will be
     // available as an additional option on the created Vue instance.
-    return {i18n}
+    return { i18n }
   })
 
   expect(getByText('Hello')).toBeInTheDocument()

@@ -1,5 +1,5 @@
-import {render, fireEvent} from '@testing-library/vue'
-import '@testing-library/jest-dom/extend-expect'
+import { render, fireEvent } from '@testing-library/vue'
+import '@testing-library/jest-dom'
 import Form from './components/Form'
 
 // In this test we showcase several ways of targetting DOM elements.
@@ -11,7 +11,7 @@ test('Review form submits', async () => {
   const fakeReview = {
     title: 'An Awesome Movie',
     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    rating: '3',
+    rating: '3'
   }
 
   const {
@@ -19,7 +19,7 @@ test('Review form submits', async () => {
     getByText,
     getByRole,
     getByPlaceholderText,
-    emitted,
+    emitted
   } = render(Form)
 
   const submitButton = getByText('Submit')

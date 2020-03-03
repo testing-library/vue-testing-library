@@ -1,9 +1,9 @@
-import '@testing-library/jest-dom/extend-expect'
-import {render, wait, fireEvent} from '@testing-library/vue'
+import '@testing-library/jest-dom'
+import { render, wait, fireEvent } from '@testing-library/vue'
 import StopWatch from './components/StopWatch.vue'
 
 test('updates component state', async () => {
-  const {getByTestId, getByText} = render(StopWatch)
+  const { getByTestId, getByText } = render(StopWatch)
 
   const startButton = getByText('Start')
   const elapsedTime = getByTestId('elapsed')
@@ -30,7 +30,7 @@ test('updates component state', async () => {
 test('unmounts a component', async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 
-  const {unmount, isUnmounted, getByText} = render(StopWatch)
+  const { unmount, isUnmounted, getByText } = render(StopWatch)
   await fireEvent.click(getByText('Start'))
 
   // Destroys a Vue component instance.

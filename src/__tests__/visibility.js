@@ -1,5 +1,5 @@
-import {render, fireEvent} from '@testing-library/vue'
-import '@testing-library/jest-dom/extend-expect'
+import { render, fireEvent } from '@testing-library/vue'
+import '@testing-library/jest-dom'
 import Collapsible from './components/Collapsible'
 
 // Using the query `getByText` here is completely right because
@@ -8,7 +8,7 @@ import Collapsible from './components/Collapsible'
 // we should use the `queryByText` and expect it to be `null` because
 // the element won't be rendered
 test('Collapsible component', async () => {
-  const {getByText} = render(Collapsible)
+  const { getByText } = render(Collapsible)
 
   // Check that text element is not initially visible.
   expect(getByText('Text')).not.toBeVisible()

@@ -1,16 +1,16 @@
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import axiosMock from 'axios'
-import {render, fireEvent} from '@testing-library/vue'
+import { render, fireEvent } from '@testing-library/vue'
 import Component from './components/Fetch.vue'
 
 test('mocks an API call when load-greeting is clicked', async () => {
   axiosMock.get.mockImplementationOnce(() =>
     Promise.resolve({
-      data: {greeting: 'hello there'},
-    }),
+      data: { greeting: 'hello there' }
+    })
   )
 
-  const {html, getByText} = render(Component, {props: {url: '/greeting'}})
+  const { html, getByText } = render(Component, { props: { url: '/greeting' } })
 
   await fireEvent.click(getByText('Fetch'))
 

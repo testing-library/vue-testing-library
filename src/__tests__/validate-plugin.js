@@ -1,6 +1,6 @@
 // Notice this example is using vee-validate v2.X
 import VeeValidate from 'vee-validate'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 
 import { render, fireEvent } from '@testing-library/vue'
 import Validate from './components/Validate'
