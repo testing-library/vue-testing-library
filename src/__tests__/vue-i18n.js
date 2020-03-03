@@ -1,32 +1,32 @@
 import '@testing-library/jest-dom'
-import { render, fireEvent } from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import Vuei18n from 'vue-i18n'
 import Translations from './components/Translations'
 
 const messages = {
   en: {
-    Hello: 'Hello'
+    Hello: 'Hello',
   },
   ja: {
-    Hello: 'こんにちは'
-  }
+    Hello: 'こんにちは',
+  },
 }
 
 test('renders translations', async () => {
-  const { queryByText, getByText } = render(Translations, {}, vue => {
+  const {queryByText, getByText} = render(Translations, {}, vue => {
     // Let's register and configure Vuei18n normally
     vue.use(Vuei18n)
 
     const i18n = new Vuei18n({
       locale: 'en',
       fallbackLocale: 'en',
-      messages
+      messages,
     })
 
     // Notice how we return an object from the callback function. It will be
     // merged as an additional option on the created Vue instance.
     return {
-      i18n
+      i18n,
     }
   })
 

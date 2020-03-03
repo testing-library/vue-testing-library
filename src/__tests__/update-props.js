@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render } from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 import NumberDisplay from './components/NumberDisplay.vue'
 
 // It'd probably be better if you test the component that's doing the prop
@@ -7,13 +7,13 @@ import NumberDisplay from './components/NumberDisplay.vue'
 // That said, if you'd prefer to update the props of a rendered component, this
 // function can be used to update props of the rendered component.
 test('calling render with the same component but different props does not remount', async () => {
-  const { getByTestId, updateProps } = render(NumberDisplay, {
-    props: { number: 1 }
+  const {getByTestId, updateProps} = render(NumberDisplay, {
+    props: {number: 1},
   })
 
   expect(getByTestId('number-display')).toHaveTextContent('1')
 
-  await updateProps({ number: 2 })
+  await updateProps({number: 2})
 
   expect(getByTestId('number-display')).toHaveTextContent('2')
 

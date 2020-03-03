@@ -1,16 +1,16 @@
-import { render } from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 import '@testing-library/jest-dom'
 
 test('baseElement defaults to document.body', () => {
-  const { baseElement } = render({ template: '<div />' })
+  const {baseElement} = render({template: '<div />'})
   expect(baseElement).toBe(document.body)
 })
 
 test('renders custom baseElement', () => {
-  const Component = { template: '<span />' }
+  const Component = {template: '<span />'}
 
-  const { baseElement, container } = render(Component, {
-    baseElement: document.createElement('blink')
+  const {baseElement, container} = render(Component, {
+    baseElement: document.createElement('blink'),
   })
 
   expect(baseElement).toMatchInlineSnapshot(`
@@ -29,27 +29,27 @@ test('renders custom baseElement', () => {
 })
 
 test('renders container', () => {
-  const { container, getByTestId } = render({
-    template: '<div data-testid="myDiv">my content</div>'
+  const {container, getByTestId} = render({
+    template: '<div data-testid="myDiv">my content</div>',
   })
 
   expect(container.firstChild).toHaveTextContent(
-    getByTestId('myDiv').textContent
+    getByTestId('myDiv').textContent,
   )
 })
 
 test('container defaults to div', () => {
-  const { container } = render({ template: '<div />' })
+  const {container} = render({template: '<div />'})
 
   expect(container.tagName).toBe('DIV')
 })
 
 test('renders custom container', () => {
   const blink = document.createElement('blink')
-  const Component = { template: '<div />' }
+  const Component = {template: '<div />'}
 
-  const { container } = render(Component, {
-    container: document.body.appendChild(blink)
+  const {container} = render(Component, {
+    container: document.body.appendChild(blink),
   })
 
   expect(container).toBe(blink)
@@ -57,10 +57,10 @@ test('renders custom container', () => {
 
 test('baseElement matches container if not custom baseElement is provided', () => {
   const blink = document.createElement('blink')
-  const Component = { template: '<div />' }
+  const Component = {template: '<div />'}
 
-  const { container, baseElement } = render(Component, {
-    container: document.body.appendChild(blink)
+  const {container, baseElement} = render(Component, {
+    container: document.body.appendChild(blink),
   })
 
   expect(container).toMatchInlineSnapshot(`

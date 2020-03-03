@@ -20,11 +20,9 @@ assignees: ''
   repository instead. Thanks :)
 --->
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Describe the bug** A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
+**To Reproduce** Steps to reproduce the behavior:
 
 <!-- Please try to provide a working demo using Codesandbox, a GitHub repo or similar! -->
 

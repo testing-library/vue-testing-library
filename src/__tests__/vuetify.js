@@ -13,7 +13,7 @@ Vue.use(Vuetify)
 // Custom render wrapper to integrate Vuetify with Vue Testing Library.
 // Vuetify requires you to wrap your app with a v-app component that provides
 // a <div data-app="true"> node.
-export const renderWithVuetify = (component, options, callback) => {
+const renderWithVuetify = (component, options, callback) => {
   return render(
     // anonymous component
     {
