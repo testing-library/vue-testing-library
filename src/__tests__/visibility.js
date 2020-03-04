@@ -1,5 +1,5 @@
 import {render, fireEvent} from '@testing-library/vue'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import Collapsible from './components/Collapsible'
 
 // Using the query `getByText` here is completely right because

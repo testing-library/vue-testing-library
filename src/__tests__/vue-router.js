@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import {render, fireEvent} from '@testing-library/vue'
 
 import App from './components/Router/App.vue'

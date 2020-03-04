@@ -1,6 +1,6 @@
 import {render, waitForElementToBeRemoved} from '@testing-library/vue'
 import Disappearance from './components/Disappearance'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 
 test('waits for the data to be loaded', async () => {
   const {getByText, queryByText, queryByTestId} = render(Disappearance)

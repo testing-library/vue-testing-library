@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import {render, wait, fireEvent} from '@testing-library/vue'
 import StopWatch from './components/StopWatch.vue'
 

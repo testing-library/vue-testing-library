@@ -46,7 +46,7 @@
   - [More examples](#more-examples)
 - [Docs](#docs)
 - [Typings](#typings)
-- [ESLint](#eslint-support)
+- [ESLint support](#eslint-support)
 - [License](#license)
 - [Contributors](#contributors)
 
@@ -137,13 +137,14 @@ Feel free to contribute with more examples!
 
 ## Typings
 
-The TypeScript type definitions are in the
-[DefinitelyTyped repo][types]
-and bundled with Vue Testing Library.
+The TypeScript type definitions are in the [DefinitelyTyped repo][types] and
+bundled with Vue Testing Library.
 
 ## ESLint support
 
-If you want to lint test files that use Vue Testing Library, you can use the official plugin: [eslint-plugin-testing-library](https://github.com/Belco90/eslint-plugin-testing-library).
+If you want to lint test files that use Vue Testing Library, you can use the
+official plugin:
+[eslint-plugin-testing-library](https://github.com/Belco90/eslint-plugin-testing-library).
 
 ## License
 
