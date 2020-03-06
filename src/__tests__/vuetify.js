@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import Vue from 'vue'
 import {render, fireEvent} from '@testing-library/vue'
 import Vuetify from 'vuetify'
@@ -10,23 +11,18 @@ import VuetifyDemoComponent from './components/Vuetify'
 //            https://vuetifyjs.com/en/getting-started/unit-testing
 Vue.use(Vuetify)
 
-// Custom render wrapper to integrate Vuetify with Vue Testing Library.
+// Custom container to integrate Vuetify with Vue Testing Library.
 // Vuetify requires you to wrap your app with a v-app component that provides
 // a <div data-app="true"> node.
 const renderWithVuetify = (component, options, callback) => {
   return render(
-    // anonymous component
+    component,
     {
-      // Vue's render function
-      render(createElement) {
-        // wrap the component with a <div data-app="true"> node and render the test component
-        return createElement('div', {attrs: {'data-app': true}}, [
-          createElement(component),
-        ])
-      },
+      container: document.createElement('div').setAttribute('data-app', 'true'),
+      // for Vuetify components that use the $vuetify instance property
+      vuetify: new Vuetify(),
+      ...options,
     },
-    // for Vuetify components that use the $vuetify instance property
-    {vuetify: new Vuetify(), ...options},
     callback,
   )
 }
@@ -43,4 +39,14 @@ test('renders a Vuetify-powered component', async () => {
       Lorem ipsum dolor sit amet.
     </div>
   `)
+})
+
+test('allows changing props', async () => {
+  const {queryByText, updateProps} = renderWithVuetify(VuetifyDemoComponent)
+
+  expect(queryByText('This is a hint')).not.toBeInTheDocument()
+
+  await updateProps({showHint: true})
+
+  expect(queryByText('This is a hint')).toBeInTheDocument()
 })
