@@ -10,15 +10,15 @@ import VuetifyDemoComponent from './components/Vuetify'
 //            https://vuetifyjs.com/en/getting-started/unit-testing
 Vue.use(Vuetify)
 
-// Custom render wrapper to integrate Vuetify with Vue Testing Library.
+// Custom container to integrate Vuetify with Vue Testing Library.
 // Vuetify requires you to wrap your app with a v-app component that provides
 // a <div data-app="true"> node.
 const renderWithVuetify = (component, options, callback) => {
   return render(
     component,
-    // for Vuetify components that use the $vuetify instance property
     {
       container: document.createElement('div').setAttribute('data-app', 'true'),
+      // for Vuetify components that use the $vuetify instance property
       vuetify: new Vuetify(),
       ...options,
     },
