@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import Vue from 'vue'
 import {render, fireEvent} from '@testing-library/vue'
 import Vuetify from 'vuetify'
@@ -43,9 +44,9 @@ test('renders a Vuetify-powered component', async () => {
 test('allows changing props', async () => {
   const {queryByText, updateProps} = renderWithVuetify(VuetifyDemoComponent)
 
-  expect(queryByText('This is a hint')).toBe(null)
+  expect(queryByText('This is a hint')).not.toBeInTheDocument()
 
   await updateProps({showHint: true})
 
-  expect(queryByText('This is a hint')).not.toBe(null)
+  expect(queryByText('This is a hint')).toBeInTheDocument()
 })
