@@ -15,18 +15,13 @@ Vue.use(Vuetify)
 // a <div data-app="true"> node.
 const renderWithVuetify = (component, options, callback) => {
   return render(
-    // anonymous component
-    {
-      // Vue's render function
-      render(createElement) {
-        // wrap the component with a <div data-app="true"> node and render the test component
-        return createElement('div', {attrs: {'data-app': true}}, [
-          createElement(component),
-        ])
-      },
-    },
+    component,
     // for Vuetify components that use the $vuetify instance property
-    {vuetify: new Vuetify(), ...options},
+    {
+      container: document.createElement('div').setAttribute('data-app', 'true'),
+      vuetify: new Vuetify(),
+      ...options
+    },
     callback,
   )
 }
