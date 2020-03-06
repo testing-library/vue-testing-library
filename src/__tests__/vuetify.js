@@ -20,7 +20,7 @@ const renderWithVuetify = (component, options, callback) => {
     {
       container: document.createElement('div').setAttribute('data-app', 'true'),
       vuetify: new Vuetify(),
-      ...options
+      ...options,
     },
     callback,
   )
@@ -38,4 +38,14 @@ test('renders a Vuetify-powered component', async () => {
       Lorem ipsum dolor sit amet.
     </div>
   `)
+})
+
+test('allows changing props', async () => {
+  const {queryByText, updateProps} = renderWithVuetify(VuetifyDemoComponent)
+
+  expect(queryByText('This is a hint')).toBe(null)
+
+  await updateProps({showHint: true})
+
+  expect(queryByText('This is a hint')).not.toBe(null)
 })
