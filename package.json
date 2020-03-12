@@ -12,6 +12,9 @@
     "validate": "kcd-scripts validate",
     "setup": "npm install && npm run validate -s"
   },
+  "engines": {
+    "node": ">10.18"
+  },
   "files": [
     "dist",
     "cleanup-after-each.js"
