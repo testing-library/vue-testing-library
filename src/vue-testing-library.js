@@ -76,7 +76,7 @@ function render(
     emitted: () => wrapper.emitted(),
     updateProps: _ => {
       wrapper.setProps(_)
-      return wait()
+      return wait(() => {})
     },
     ...getQueriesForElement(baseElement),
   }
@@ -107,13 +107,13 @@ function cleanupAtWrapper(wrapper) {
 // More info: https://vuejs.org/v2/guide/reactivity.html#Async-Update-Queue
 async function fireEvent(...args) {
   dtlFireEvent(...args)
-  await wait()
+  await wait(() => {})
 }
 
 Object.keys(dtlFireEvent).forEach(key => {
   fireEvent[key] = async (...args) => {
     dtlFireEvent[key](...args)
-    await wait()
+    await wait(() => {})
   }
 })
 
