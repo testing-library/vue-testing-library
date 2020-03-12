@@ -2,6 +2,8 @@ import '@testing-library/jest-dom'
 import {render, wait, fireEvent} from '@testing-library/vue'
 import StopWatch from './components/StopWatch.vue'
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 test('updates component state', async () => {
   const {getByTestId, getByText} = render(StopWatch)
 
@@ -17,14 +19,20 @@ test('updates component state', async () => {
   getByText('Stop')
 
   // Wait for one tick of the event loop.
-  await wait(() => {})
+  await wait(() => {
+    expect(elapsedTime).not.toHaveTextContent('0ms')
+  })
+  const timeBeforeStop = elapsedTime.textContent
 
   // Stop the timer.
   await fireEvent.click(startButton)
+  
+  // Wait for a few milliseconds
+  await sleep(5)
 
   // We can't assert a specific amount of time. Instead, we assert that the
   // content has changed.
-  expect(elapsedTime).not.toHaveTextContent('0ms')
+  expect(elapsedTime).toHaveTextContent(timeBeforeStop)
 })
 
 test('unmounts a component', async () => {
@@ -38,7 +46,8 @@ test('unmounts a component', async () => {
 
   expect(isUnmounted()).toBe(true)
 
-  await wait(() => {})
+  // Wait for a few milliseconds
+  await sleep(5)
 
   expect(console.error).not.toHaveBeenCalled()
 })
