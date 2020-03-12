@@ -17,7 +17,7 @@ test('updates component state', async () => {
   getByText('Stop')
 
   // Wait for one tick of the event loop.
-  await wait()
+  await wait(() => {})
 
   // Stop the timer.
   await fireEvent.click(startButton)
@@ -38,7 +38,7 @@ test('unmounts a component', async () => {
 
   expect(isUnmounted()).toBe(true)
 
-  await wait()
+  await wait(() => {})
 
   expect(console.error).not.toHaveBeenCalled()
 })
