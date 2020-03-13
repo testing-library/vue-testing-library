@@ -11,14 +11,12 @@ test('waits for the data to be loaded', async () => {
 
   // Following line reads as follows:
   // "Wait until element with text 'Loading...' is gone."
-  await waitForElementToBeRemoved(() => queryByText('Loading...'))
+  await waitForElementToBeRemoved(getByText('Loading...'))
   // It is equivalent to:
   //
   // await waitFor(() => {
   //   expect(queryByText('Loading...')).not.toBeInTheDocument()
   // })
-  //
-  // because `waitFor()` waits until the callback function passes or times out.
 
   // After 'Loading...' is gone, we can assert that fetched data is rendered.
   expect(queryByTestId('message')).toHaveTextContent(/Hello World/)
