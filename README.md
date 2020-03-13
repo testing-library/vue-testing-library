@@ -143,8 +143,7 @@ bundled with Vue Testing Library.
 ## ESLint support
 
 If you want to lint test files that use Vue Testing Library, you can use the
-official plugin:
-[eslint-plugin-testing-library](https://github.com/Belco90/eslint-plugin-testing-library).
+official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
 
 ## License
 
@@ -191,6 +190,7 @@ official plugin:
 
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
+[eslint-plugin-testing-library]: https://github.com/testing-library/eslint-plugin-testing-library
 
 [test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
 [vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
