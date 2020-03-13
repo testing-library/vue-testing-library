@@ -36,7 +36,7 @@ function render(
   }
 
   if (routes) {
-    const VueRouter = require('vue-router')
+    const VueRouter = require('vue-router') || require('vue-router').default
     localVue.use(VueRouter)
     router = new VueRouter({
       routes,
