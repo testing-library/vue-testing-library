@@ -33,7 +33,7 @@ const renderWithVuetify = (component, options, callback) => {
 test('should set [data-app] attribute on outer most div', () => {
   const {container} = renderWithVuetify(VuetifyDemoComponent)
 
-  expect(container.attributes.getNamedItem('data-app')).toBeDefined()
+  expect(container.getAttribute('data-app')).toEqual('true')
 })
 
 test('renders a Vuetify-powered component', async () => {
