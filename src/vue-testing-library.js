@@ -3,7 +3,7 @@ import {createLocalVue, mount} from '@vue/test-utils'
 import {
   getQueriesForElement,
   logDOM,
-  wait,
+  waitFor,
   fireEvent as dtlFireEvent,
 } from '@testing-library/dom'
 
@@ -36,7 +36,8 @@ function render(
   }
 
   if (routes) {
-    const VueRouter = require('vue-router')
+    const requiredRouter = require('vue-router')
+    const VueRouter = requiredRouter.default || requiredRouter
     localVue.use(VueRouter)
     router = new VueRouter({
       routes,
@@ -76,7 +77,7 @@ function render(
     emitted: () => wrapper.emitted(),
     updateProps: _ => {
       wrapper.setProps(_)
-      return wait()
+      return waitFor(() => {})
     },
     ...getQueriesForElement(baseElement),
   }
@@ -107,13 +108,13 @@ function cleanupAtWrapper(wrapper) {
 // More info: https://vuejs.org/v2/guide/reactivity.html#Async-Update-Queue
 async function fireEvent(...args) {
   dtlFireEvent(...args)
-  await wait()
+  await waitFor(() => {})
 }
 
 Object.keys(dtlFireEvent).forEach(key => {
   fireEvent[key] = async (...args) => {
     dtlFireEvent[key](...args)
-    await wait()
+    await waitFor(() => {})
   }
 })
 

@@ -159,13 +159,13 @@ test('triggers dblclick on doubleClick', async () => {
 
   const {getByRole} = render({
     render(h) {
-      return h('input', {
+      return h('button', {
         on: {dblclick: spy},
       })
     },
   })
 
-  const elem = getByRole('textbox')
+  const elem = getByRole('button')
 
   await fireEvent.doubleClick(elem)
   expect(spy).toHaveBeenCalledTimes(1)
