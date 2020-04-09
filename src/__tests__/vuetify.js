@@ -15,10 +15,13 @@ Vue.use(Vuetify)
 // Vuetify requires you to wrap your app with a v-app component that provides
 // a <div data-app="true"> node.
 const renderWithVuetify = (component, options, callback) => {
+  const root = document.createElement('div')
+  root.setAttribute('data-app', 'true')
+
   return render(
     component,
     {
-      container: document.createElement('div').setAttribute('data-app', 'true'),
+      container: document.body.appendChild(root),
       // for Vuetify components that use the $vuetify instance property
       vuetify: new Vuetify(),
       ...options,
@@ -26,6 +29,12 @@ const renderWithVuetify = (component, options, callback) => {
     callback,
   )
 }
+
+test('should set [data-app] attribute on outer most div', () => {
+  const {container} = renderWithVuetify(VuetifyDemoComponent)
+
+  expect(container.getAttribute('data-app')).toEqual('true')
+})
 
 test('renders a Vuetify-powered component', async () => {
   const {getByText} = renderWithVuetify(VuetifyDemoComponent)
@@ -49,4 +58,16 @@ test('allows changing props', async () => {
   await updateProps({showHint: true})
 
   expect(queryByText('This is a hint')).toBeInTheDocument()
+})
+
+test('opens a menu', async () => {
+  const {getByText, queryByText} = renderWithVuetify(VuetifyDemoComponent)
+
+  await fireEvent.click(getByText('menu'))
+
+  const menuItem = queryByText('menu item')
+  expect(menuItem).toBeInTheDocument()
+
+  await fireEvent.click(menuItem)
+  expect(queryByText('menu item')).not.toBeInTheDocument()
 })

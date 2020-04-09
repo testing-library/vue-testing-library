@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <v-btn @click="show = true">open</v-btn>
     <v-dialog v-model="show">
       <v-card>
@@ -8,7 +8,17 @@
       </v-card>
     </v-dialog>
     <span v-if="showHint">This is a hint</span>
-  </v-app>
+    <v-menu bottom offset-y>
+      <template v-slot:activator="{on}">
+        <v-btn icon v-on="on">menu</v-btn>
+      </template>
+      <v-list>
+        <v-list-item @click="() => {}">
+          <v-list-item-title>menu item</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </div>
 </template>
 
 <script>
