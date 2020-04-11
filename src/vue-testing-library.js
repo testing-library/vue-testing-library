@@ -9,7 +9,7 @@ import {
 
 const mountedWrappers = new Set()
 
-async function render(
+function render(
   TestComponent,
   {
     store = null,
@@ -45,7 +45,7 @@ async function render(
   }
 
   if (configurationCb && typeof configurationCb === 'function') {
-    additionalOptions = await configurationCb(localVue, vuexStore, router)
+    additionalOptions = configurationCb(localVue, vuexStore, router)
   }
 
   if (!mountOptions.propsData && !!mountOptions.props) {

@@ -14,7 +14,7 @@ const routes = [
 
 test('full app rendering/navigating', async () => {
   // Notice how we pass a `routes` object to our render function.
-  const {queryByTestId} = await render(App, {routes})
+  const {queryByTestId} = render(App, {routes})
 
   expect(queryByTestId('location-display')).toHaveTextContent('/')
 
@@ -23,11 +23,11 @@ test('full app rendering/navigating', async () => {
   expect(queryByTestId('location-display')).toHaveTextContent('/about')
 })
 
-test('setting initial route', async () => {
+test('setting initial route', () => {
   // The callback function receives three parameters: the Vue instance where
   // the component is mounted, the store instance (if any) and the router
   // object.
-  const {queryByTestId} = await render(App, {routes}, (vue, store, router) => {
+  const {queryByTestId} = render(App, {routes}, (vue, store, router) => {
     router.push('/about')
   })
 
@@ -35,7 +35,7 @@ test('setting initial route', async () => {
 })
 
 test('setting initial route for nested routes with async component import', async () => {
-  const {queryByTestId} = await render(
+  const {queryByTestId} = render(
     App,
     {
       routes: [
@@ -51,8 +51,8 @@ test('setting initial route for nested routes with async component import', asyn
         },
       ],
     },
-    async (vue, store, router) => {
-      await router.push('/about/me')
+    (vue, store, router) => {
+      router.push('/about/me')
     },
   )
 
