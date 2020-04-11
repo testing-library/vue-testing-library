@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import {render, fireEvent} from '@testing-library/vue'
 import {waitFor} from '@testing-library/dom'
+import VueRouter from 'vue-router'
 
 import App from './components/Router/App.vue'
 import Home from './components/Router/Home.vue'
@@ -35,26 +36,25 @@ test('setting initial route', () => {
 })
 
 test('setting initial route for nested routes with async component import', async () => {
-  const {queryByTestId} = render(
-    App,
-    {
-      routes: [
-        {
-          path: '/about',
-          component: () => import('./components/Router/AboutWrapper.vue'),
-          children: [
-            {
-              path: 'me',
-              component: () => import('./components/Router/About.vue'),
-            },
-          ],
-        },
-      ],
-    },
-    (vue, store, router) => {
-      router.push('/about/me')
-    },
-  )
+  const router = new VueRouter({
+    routes: [
+      {
+        path: '/about',
+        component: () => import('./components/Router/AboutWrapper.vue'),
+        children: [
+          {
+            path: 'me',
+            component: () => import('./components/Router/About.vue'),
+          },
+        ],
+      },
+    ],
+  })
+  await router.push('/about/me')
+
+  const {queryByTestId} = render(App, {
+    router,
+  })
 
   await waitFor(() =>
     expect(queryByTestId('location-display')).toHaveTextContent('/about/me'),

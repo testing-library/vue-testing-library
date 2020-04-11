@@ -14,6 +14,7 @@ function render(
   {
     store = null,
     routes = null,
+    router = null,
     container: customContainer,
     baseElement: customBaseElement,
     ...mountOptions
@@ -26,7 +27,6 @@ function render(
 
   const localVue = createLocalVue()
   let vuexStore = null
-  let router = null
   let additionalOptions = {}
 
   if (store) {
@@ -35,7 +35,11 @@ function render(
     vuexStore = new Vuex.Store(store)
   }
 
-  if (routes) {
+  if (router) {
+    const requiredRouter = require('vue-router')
+    const VueRouter = requiredRouter.default || requiredRouter
+    localVue.use(VueRouter)
+  } else if (routes) {
     const requiredRouter = require('vue-router')
     const VueRouter = requiredRouter.default || requiredRouter
     localVue.use(VueRouter)
