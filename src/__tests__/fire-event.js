@@ -1,3 +1,4 @@
+import {h} from 'vue'
 import {render, fireEvent} from '@testing-library/vue'
 import Button from './components/Button'
 
@@ -120,6 +121,8 @@ const eventTypes = [
   },
 ]
 
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
+
 // For each event type, we assert that the right events are being triggered
 // when the associated fireEvent method is called.
 eventTypes.forEach(({type, events, elementType = 'input', init}) => {
@@ -128,21 +131,20 @@ eventTypes.forEach(({type, events, elementType = 'input', init}) => {
       it(`triggers ${eventName}`, async () => {
         const testId = `${type}-${eventName}`
         const spy = jest.fn()
+        const eventNameHandler = `on${capitalize(eventName)}`
+
+        const componentWithEvent = {
+          render() {
+            return h(elementType, {
+              [eventNameHandler]: spy,
+              'data-testid': testId,
+            })
+          },
+        }
 
         // Render an element with a listener of the event under testing and a
         // test-id attribute, so that we can get the DOM node afterwards.
-        const {getByTestId} = render({
-          render(h) {
-            return h(elementType, {
-              on: {
-                [eventName.toLowerCase()]: spy,
-              },
-              attrs: {
-                'data-testid': testId,
-              },
-            })
-          },
-        })
+        const {getByTestId} = render(componentWithEvent)
 
         const elem = getByTestId(testId)
 
@@ -157,13 +159,13 @@ eventTypes.forEach(({type, events, elementType = 'input', init}) => {
 test('triggers dblclick on doubleClick', async () => {
   const spy = jest.fn()
 
-  const {getByRole} = render({
-    render(h) {
-      return h('button', {
-        on: {dblclick: spy},
-      })
+  const componentWithDblClick = {
+    render() {
+      return h('button', {onDblClick: spy}, 'Click me')
     },
-  })
+  }
+
+  const {getByRole} = render(componentWithDblClick)
 
   const elem = getByRole('button')
 
