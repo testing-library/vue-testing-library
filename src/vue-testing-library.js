@@ -22,6 +22,7 @@ function render(
   configurationCb,
 ) {
   // TODO: Can we simplify this by using attachTo?
+  // Related: https://github.com/vuejs/vue-test-utils-next/issues/10
   const div = document.createElement('div')
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
