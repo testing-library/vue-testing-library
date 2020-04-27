@@ -1,6 +1,5 @@
 /* eslint-disable testing-library/no-wait-for-empty-callback */
 import {mount} from '@vue/test-utils'
-// import {createLocalVue, mount} from '@vue/test-utils'
 
 import {
   getQueriesForElement,
