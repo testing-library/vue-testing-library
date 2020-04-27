@@ -56,9 +56,12 @@ function render(
     additionalOptions = configurationCb(vuexStore, router)
   }
 
-  if (!mountOptions.propsData && !!mountOptions.props) {
-    mountOptions.propsData = mountOptions.props
-    delete mountOptions.props
+  // If `propsData` is provided, rename it to `props`
+  // Since this is gonna be a breaking channge, we can remove the
+  // whole thing.
+  if (!mountOptions.props && !!mountOptions.propsData) {
+    mountOptions.props = mountOptions.propsData
+    delete mountOptions.propsData
   }
 
   const wrapper = mount(TestComponent, {
