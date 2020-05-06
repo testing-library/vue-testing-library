@@ -1,4 +1,4 @@
-import {createLocalVue, mount, config} from '@vue/test-utils'
+import {createLocalVue, mount} from '@vue/test-utils'
 
 import {
   getQueriesForElement,
@@ -8,10 +8,6 @@ import {
 } from '@testing-library/dom'
 
 const mountedWrappers = new Set()
-
-// Added to remove warnings about usage of isVueInstance which is
-// still used internally by @vue/test-utils
-config.showDeprecationWarnings = false
 
 function render(
   TestComponent,
