@@ -69,5 +69,5 @@ test('opens a menu', async () => {
   expect(menuItem).toBeInTheDocument()
 
   await fireEvent.click(menuItem)
-  expect(queryByText('menu item')).not.toBeInTheDocument()
+  expect(queryByText('menu item')).not.toBeVisible()
 })

@@ -1,4 +1,4 @@
-import {createLocalVue, mount} from '@vue/test-utils'
+import {createLocalVue, mount, config} from '@vue/test-utils'
 
 import {
   getQueriesForElement,
@@ -8,6 +8,10 @@ import {
 } from '@testing-library/dom'
 
 const mountedWrappers = new Set()
+
+// Added to remove warnings about usage of isVueInstance which is
+// still used internally by @vue/test-utils
+config.showDeprecationWarnings = false
 
 function render(
   TestComponent,
@@ -23,6 +27,9 @@ function render(
   const div = document.createElement('div')
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
+
+  const attachTo = document.createElement('div')
+  container.appendChild(attachTo)
 
   const localVue = createLocalVue()
   let vuexStore = null
@@ -57,7 +64,7 @@ function render(
     localVue,
     router,
     store: vuexStore,
-    attachToDocument: true,
+    attachTo,
     sync: false,
     ...mountOptions,
     ...additionalOptions,
@@ -95,9 +102,7 @@ function cleanupAtWrapper(wrapper) {
     document.body.removeChild(wrapper.element.parentNode)
   }
 
-  if (wrapper.isVueInstance()) {
-    wrapper.destroy()
-  }
+  wrapper.destroy()
 
   mountedWrappers.delete(wrapper)
 }
