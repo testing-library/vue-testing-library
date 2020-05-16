@@ -59,9 +59,8 @@ function render(
   const wrapper = mount(TestComponent, {
     localVue,
     router,
-    store: vuexStore,
     attachTo,
-    sync: false,
+    store: vuexStore,
     ...mountOptions,
     ...additionalOptions,
   })
