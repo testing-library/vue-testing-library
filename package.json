@@ -43,7 +43,7 @@
     "@babel/runtime": "^7.9.6",
     "@testing-library/dom": "^7.5.6",
     "@types/testing-library__vue": "^2.0.1",
-    "@vue/test-utils": "^1.0.2"
+    "@vue/test-utils": "^1.0.3"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.9.6",
