@@ -7,7 +7,6 @@
         <v-card-text>Lorem ipsum dolor sit amet.</v-card-text>
       </v-card>
     </v-dialog>
-    <span v-if="showHint">This is a hint</span>
     <v-menu bottom offset-y>
       <template v-slot:activator="{on}">
         <v-btn icon v-on="on">open menu</v-btn>
@@ -24,12 +23,6 @@
 <script>
 export default {
   name: 'VuetifyDemoComponent',
-  props: {
-    showHint: {
-      type: Boolean,
-      default: false,
-    },
-  },
   data() {
     return {
       show: false,

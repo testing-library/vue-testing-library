@@ -50,16 +50,6 @@ test('renders a Vuetify-powered component', async () => {
   `)
 })
 
-test('allows changing props', async () => {
-  const {queryByText, updateProps} = renderWithVuetify(VuetifyDemoComponent)
-
-  expect(queryByText('This is a hint')).not.toBeInTheDocument()
-
-  await updateProps({showHint: true})
-
-  expect(queryByText('This is a hint')).toBeInTheDocument()
-})
-
 test('opens a menu', async () => {
   const {getByRole, getByText, queryByText} = renderWithVuetify(
     VuetifyDemoComponent,
