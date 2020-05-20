@@ -57,7 +57,7 @@ function render(
   }
 
   // If `propsData` is provided, rename it to `props`
-  // Since this is gonna be a breaking channge, we can remove the
+  // Since this is gonna be a breaking change, we can remove the
   // whole thing.
   if (!mountOptions.props && !!mountOptions.propsData) {
     mountOptions.props = mountOptions.propsData
@@ -111,7 +111,7 @@ function cleanupAtWrapper(wrapper) {
   }
 
   try {
-    wrapper.destroy()
+    wrapper.unmount()
   } finally {
     mountedWrappers.delete(wrapper)
   }
