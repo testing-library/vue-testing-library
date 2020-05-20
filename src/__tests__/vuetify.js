@@ -50,24 +50,23 @@ test('renders a Vuetify-powered component', async () => {
   `)
 })
 
-test('allows changing props', async () => {
-  const {queryByText, updateProps} = renderWithVuetify(VuetifyDemoComponent)
-
-  expect(queryByText('This is a hint')).not.toBeInTheDocument()
-
-  await updateProps({showHint: true})
-
-  expect(queryByText('This is a hint')).toBeInTheDocument()
-})
-
 test('opens a menu', async () => {
-  const {getByText, queryByText} = renderWithVuetify(VuetifyDemoComponent)
+  const {getByRole, getByText, queryByText} = renderWithVuetify(
+    VuetifyDemoComponent,
+  )
 
-  await fireEvent.click(getByText('menu'))
+  const openMenuButton = getByRole('button', {name: 'open menu'})
 
-  const menuItem = queryByText('menu item')
+  // Menu item is not rendered initially
+  expect(queryByText('menu item')).not.toBeInTheDocument()
+
+  await fireEvent.click(openMenuButton)
+
+  const menuItem = getByText('menu item')
   expect(menuItem).toBeInTheDocument()
 
-  await fireEvent.click(menuItem)
-  expect(queryByText('menu item')).not.toBeInTheDocument()
+  await fireEvent.click(openMenuButton)
+
+  expect(menuItem).toBeInTheDocument()
+  expect(menuItem).not.toBeVisible()
 })

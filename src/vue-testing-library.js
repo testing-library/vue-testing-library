@@ -24,6 +24,9 @@ function render(
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
+  const attachTo = document.createElement('div')
+  container.appendChild(attachTo)
+
   const localVue = createLocalVue()
   let vuexStore = null
   let router = null
@@ -56,9 +59,8 @@ function render(
   const wrapper = mount(TestComponent, {
     localVue,
     router,
+    attachTo,
     store: vuexStore,
-    attachToDocument: true,
-    sync: false,
     ...mountOptions,
     ...additionalOptions,
   })
@@ -95,9 +97,7 @@ function cleanupAtWrapper(wrapper) {
     document.body.removeChild(wrapper.element.parentNode)
   }
 
-  if (wrapper.isVueInstance()) {
-    wrapper.destroy()
-  }
+  wrapper.destroy()
 
   mountedWrappers.delete(wrapper)
 }
