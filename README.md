@@ -172,6 +172,7 @@ official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
 [![chiptus](https://avatars2.githubusercontent.com/u/1381655?v=3&s=120)](https://github.com/chiptus)
 [![bennettdams](https://avatars2.githubusercontent.com/u/29319414?v=3&s=120)](https://github.com/bennettdams)
 [![mediafreakch](https://avatars2.githubusercontent.com/u/777093?v=3&s=120)](https://github.com/mediafreakch)
+[![afenton90](https://avatars2.githubusercontent.com/u/8963736?v=3&s=120)](https://github.com/afenton90)
 
 <!-- prettier-ignore-start -->
 [build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
