@@ -41,7 +41,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.9.6",
-    "@testing-library/dom": "^7.5.6",
+    "@testing-library/dom": "^7.5.7",
     "@types/testing-library__vue": "^2.0.1",
     "@vue/test-utils": "^1.0.3"
   },
