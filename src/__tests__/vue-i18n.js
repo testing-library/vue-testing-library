@@ -1,40 +1,42 @@
-import '@testing-library/jest-dom'
-import {render, fireEvent} from '@testing-library/vue'
-import Vuei18n from 'vue-i18n'
-import Translations from './components/Translations'
+test.todo('Your test suite must contain at least one test.')
 
-const messages = {
-  en: {
-    Hello: 'Hello',
-  },
-  ja: {
-    Hello: 'こんにちは',
-  },
-}
+// import '@testing-library/jest-dom'
+// import {render, fireEvent} from '@testing-library/vue'
+// import Vuei18n from 'vue-i18n'
+// import Translations from './components/Translations'
 
-test('renders translations', async () => {
-  const {queryByText, getByText} = render(Translations, {}, vue => {
-    // Let's register and configure Vuei18n normally
-    vue.use(Vuei18n)
+// const messages = {
+//   en: {
+//     Hello: 'Hello',
+//   },
+//   ja: {
+//     Hello: 'こんにちは',
+//   },
+// }
 
-    const i18n = new Vuei18n({
-      locale: 'en',
-      fallbackLocale: 'en',
-      messages,
-    })
+// test('renders translations', async () => {
+//   const {queryByText, getByText} = render(Translations, {}, vue => {
+//     // Let's register and configure Vuei18n normally
+//     vue.use(Vuei18n)
 
-    // Notice how we return an object from the callback function. It will be
-    // merged as an additional option on the created Vue instance.
-    return {
-      i18n,
-    }
-  })
+//     const i18n = new Vuei18n({
+//       locale: 'en',
+//       fallbackLocale: 'en',
+//       messages,
+//     })
 
-  expect(getByText('Hello')).toBeInTheDocument()
+//     // Notice how we return an object from the callback function. It will be
+//     // merged as an additional option on the created Vue instance.
+//     return {
+//       i18n,
+//     }
+//   })
 
-  await fireEvent.click(getByText('Japanese'))
+//   expect(getByText('Hello')).toBeInTheDocument()
 
-  expect(getByText('こんにちは')).toBeInTheDocument()
+//   await fireEvent.click(getByText('Japanese'))
 
-  expect(queryByText('Hello')).toBeNull()
-})
+//   expect(getByText('こんにちは')).toBeInTheDocument()
+
+//   expect(queryByText('Hello')).toBeNull()
+// })
