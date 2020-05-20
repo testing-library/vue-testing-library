@@ -10,10 +10,10 @@
     <span v-if="showHint">This is a hint</span>
     <v-menu bottom offset-y>
       <template v-slot:activator="{on}">
-        <v-btn icon v-on="on">menu</v-btn>
+        <v-btn icon v-on="on">open menu</v-btn>
       </template>
       <v-list>
-        <v-list-item @click="() => {}">
+        <v-list-item>
           <v-list-item-title>menu item</v-list-item-title>
         </v-list-item>
       </v-list>
