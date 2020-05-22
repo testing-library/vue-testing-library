@@ -1,22 +1,26 @@
-import {render} from '@testing-library/vue'
-import '@testing-library/jest-dom'
-import FunctionalSFC from './components/FunctionalSFC'
+test.todo('Your test suite must contain at least one test.')
+// import {render} from '@testing-library/vue'
+// import '@testing-library/jest-dom'
+// import FunctionalSFC from './components/FunctionalSFC'
 
-const Functional = {
-  functional: true,
-  render(createElement) {
-    return createElement('p', null, 'Hi!')
-  },
-}
+// import {render} from '@testing-library/vue'
+// import FunctionalSFC from './components/FunctionalSFC'
 
-test('renders functional component', () => {
-  const {getByText} = render(Functional)
+// const Functional = {
+//   functional: true,
+//   render(createElement) {
+//     return createElement('p', null, 'Hi!')
+//   },
+// }
 
-  expect(getByText('Hi!')).toBeInTheDocument()
-})
+// test('renders functional component', () => {
+//   const {getByText} = render(Functional)
 
-test('renders functional SFC component', () => {
-  const {getByText} = render(FunctionalSFC)
+//   expect(getByText('Hi!')).toBeInTheDocument()
+// })
 
-  expect(getByText('Hi!')).toBeInTheDocument()
-})
+// test('renders functional SFC component', () => {
+//   const {getByText} = render(FunctionalSFC)
+
+//   expect(getByText('Hi!')).toBeInTheDocument()
+// })
