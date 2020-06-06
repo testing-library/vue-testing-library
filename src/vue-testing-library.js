@@ -97,9 +97,11 @@ function cleanupAtWrapper(wrapper) {
     document.body.removeChild(wrapper.element.parentNode)
   }
 
-  wrapper.destroy()
-
-  mountedWrappers.delete(wrapper)
+  try {
+    wrapper.destroy()
+  } finally {
+    mountedWrappers.delete(wrapper)
+  }
 }
 
 // Vue Testing Library's version of fireEvent will call DOM Testing Library's
