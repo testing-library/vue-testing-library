@@ -12,8 +12,10 @@ test('cleanup re-throws errors from async lifecycle hooks', async () => {
   // thrown errors are logged redundantly by vue-test-utils injected Vue.config.errorHandler
   // mute console
   const spy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
   await Vue.nextTick()
   expect(cleanup).toThrow(err)
+
   // unmute console
   spy.mockReset()
 })
