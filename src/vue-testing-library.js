@@ -25,9 +25,6 @@ function render(
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  const attachTo = document.createElement('div')
-  container.appendChild(attachTo)
-
   // const localVue = createLocalVue()
   let vuexStore = null
   let router = null
@@ -66,13 +63,16 @@ function render(
     // localVue,
     // router,
     // store: vuexStore,
-    attachTo,
+    attachTo: container,
     ...mountOptions,
     ...additionalOptions,
   })
 
   mountedWrappers.add(wrapper)
-  container.appendChild(wrapper.element)
+
+  // hack to remove id="app"
+  // this fixes tests in auto-cleanup.js and auto-cleanup-skip.js
+  wrapper.parentElement.removeAttribute('id')
 
   return {
     container,
