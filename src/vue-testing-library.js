@@ -104,6 +104,9 @@ function cleanupAtWrapper(wrapper) {
   }
 }
 
+// The suggested way to interact with elements is by using userEvent.
+//
+// That being said,
 // Vue Testing Library's version of fireEvent will call DOM Testing Library's
 // version of fireEvent plus wait for one tick of the event loop to allow Vue
 // to asynchronously handle the event.
