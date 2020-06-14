@@ -2,7 +2,7 @@
 // This approach only works with apollo-client 2.x and vue-apollo 3.x
 
 import '@testing-library/jest-dom'
-import {render, fireEvent, screen} from '@testing-library/vue'
+import {render, userEvent, screen} from '@testing-library/vue'
 import VueApollo from 'vue-apollo'
 
 // Since vue-apollo doesn't provides a MockProvider for Vue,
@@ -50,12 +50,9 @@ test('mocking queries and mutations', async () => {
     await screen.findByText('Email: alice@example.com'),
   ).toBeInTheDocument()
 
-  await fireEvent.update(
-    screen.getByLabelText('Email'),
-    'alice+new@example.com',
-  )
+  await userEvent.type(screen.getByLabelText('Email'), 'alice+new@example.com')
 
-  await fireEvent.click(screen.getByRole('button', {name: 'Change email'}))
+  await userEvent.click(screen.getByRole('button', {name: 'Change email'}))
 
   expect(
     await screen.findByText('Email: alice+new@example.com'),

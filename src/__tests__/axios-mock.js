@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import axiosMock from 'axios'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 import Component from './components/Fetch.vue'
 
 test('mocks an API call when load-greeting is clicked', async () => {
@@ -12,7 +12,7 @@ test('mocks an API call when load-greeting is clicked', async () => {
 
   const {html, getByText} = render(Component, {props: {url: '/greeting'}})
 
-  await fireEvent.click(getByText('Fetch'))
+  await userEvent.click(getByText('Fetch'))
 
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
   expect(axiosMock.get).toHaveBeenCalledWith('/greeting')

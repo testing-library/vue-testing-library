@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import Vue from 'vue'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 import Vuetify from 'vuetify'
 import VuetifyDemoComponent from './components/Vuetify'
 
@@ -39,7 +39,7 @@ test('should set [data-app] attribute on outer most div', () => {
 test('renders a Vuetify-powered component', async () => {
   const {getByText} = renderWithVuetify(VuetifyDemoComponent)
 
-  await fireEvent.click(getByText('open'))
+  await userEvent.click(getByText('open'))
 
   expect(getByText('Lorem ipsum dolor sit amet.')).toMatchInlineSnapshot(`
     <div
@@ -60,12 +60,12 @@ test('opens a menu', async () => {
   // Menu item is not rendered initially
   expect(queryByText('menu item')).not.toBeInTheDocument()
 
-  await fireEvent.click(openMenuButton)
+  await userEvent.click(openMenuButton)
 
   const menuItem = getByText('menu item')
   expect(menuItem).toBeInTheDocument()
 
-  await fireEvent.click(openMenuButton)
+  await userEvent.click(openMenuButton)
 
   expect(menuItem).toBeInTheDocument()
   expect(menuItem).not.toBeVisible()

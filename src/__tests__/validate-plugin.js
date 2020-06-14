@@ -2,7 +2,7 @@
 import VeeValidate from 'vee-validate'
 import '@testing-library/jest-dom'
 
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 import Validate from './components/Validate'
 
 test('can validate using plugin', async () => {
@@ -19,7 +19,8 @@ test('can validate using plugin', async () => {
   expect(queryByTestId('username-errors')).toBeNull()
 
   const usernameInput = getByPlaceholderText('Username...')
-  await fireEvent.touch(usernameInput)
+  await userEvent.focus(usernameInput)
+  await userEvent.blur(usernameInput)
 
   // After "touching" the input (focusing and blurring), validation error
   // should appear.

@@ -1,8 +1,8 @@
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import Form from './components/Form'
 
-// In this test we showcase several ways of targetting DOM elements.
+// In this test we showcase several ways of targeting DOM elements.
 // However, `getByLabelText` should be your top preference when handling
 // form elements.
 // Read 'What queries should I use?' for additional context:
@@ -28,10 +28,10 @@ test('Review form submits', async () => {
   expect(submitButton).toBeDisabled()
 
   const titleInput = getByLabelText(/title of the movie/i)
-  await fireEvent.update(titleInput, fakeReview.title)
+  await userEvent.type(titleInput, fakeReview.title)
 
   const reviewTextarea = getByPlaceholderText('Write an awesome review')
-  await fireEvent.update(reviewTextarea, fakeReview.review)
+  await userEvent.type(reviewTextarea, fakeReview.review)
 
   // Rating Radio buttons.
   const initiallySelectedInput = getByLabelText('Awful')
@@ -40,7 +40,7 @@ test('Review form submits', async () => {
   expect(initiallySelectedInput.checked).toBe(true)
   expect(ratingSelect.checked).toBe(false)
 
-  await fireEvent.update(ratingSelect)
+  await userEvent.click(ratingSelect)
 
   expect(ratingSelect.checked).toBe(true)
   expect(initiallySelectedInput.checked).toBe(false)
@@ -49,14 +49,14 @@ test('Review form submits', async () => {
   const recommendInput = getByRole('checkbox')
 
   expect(recommendInput.checked).toBe(false)
-  await fireEvent.update(recommendInput)
+  await userEvent.click(recommendInput)
   expect(recommendInput.checked).toBe(true)
 
   // Make sure the submit button is enabled.
   expect(submitButton).toBeEnabled()
   expect(submitButton).toHaveAttribute('type', 'submit')
 
-  await fireEvent.click(submitButton)
+  await userEvent.click(submitButton)
 
   // Assert the right event has been emitted.
   expect(emitted()).toHaveProperty('submit')

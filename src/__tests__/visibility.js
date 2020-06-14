@@ -1,4 +1,4 @@
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import Collapsible from './components/Collapsible'
 
@@ -15,13 +15,13 @@ test('Collapsible component', async () => {
 
   // Click button in order to display the collapsed text element
   const button = getByText('Click me')
-  await fireEvent.click(button)
+  await userEvent.click(button)
 
   // Check that text element is visible
   expect(getByText('Text')).toBeVisible()
 
   // Click button to hide the visible text element
-  await fireEvent.click(button)
+  await userEvent.click(button)
 
   // Check that text element is not visible again
   expect(getByText('Text')).not.toBeVisible()

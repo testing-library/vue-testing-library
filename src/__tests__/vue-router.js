@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 
 import App from './components/Router/App.vue'
 import Home from './components/Router/Home.vue'
@@ -17,7 +17,7 @@ test('full app rendering/navigating', async () => {
 
   expect(queryByTestId('location-display')).toHaveTextContent('/')
 
-  await fireEvent.click(queryByTestId('about-link'))
+  await userEvent.click(queryByTestId('about-link'))
 
   expect(queryByTestId('location-display')).toHaveTextContent('/about')
 })

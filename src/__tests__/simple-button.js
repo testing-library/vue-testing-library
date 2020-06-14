@@ -1,4 +1,4 @@
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 import Button from './components/Button'
 import '@testing-library/jest-dom'
 
@@ -24,7 +24,7 @@ test('emits click event when button is clicked', async () => {
   })
 
   // Send a click event.
-  await fireEvent.click(getByRole('button'))
+  await userEvent.click(getByRole('button'))
 
   // Expect that the event emitted a "click" event. We should test for emitted
   // events has they are part of the public API of the component.

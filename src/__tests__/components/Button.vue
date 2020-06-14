@@ -7,13 +7,13 @@ export default {
   props: {
     text: {
       type: String,
-      default: 'Button Text'
-    }
+      default: 'Button Text',
+    },
   },
   methods: {
-    handleClick(e) {
+    handleClick() {
       this.$emit('click')
-    }
-  }
+    },
+  },
 }
 </script>

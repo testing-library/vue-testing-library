@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, userEvent} from '@testing-library/vue'
 import Vuei18n from 'vue-i18n'
 import Translations from './components/Translations'
 
@@ -32,7 +32,7 @@ test('renders translations', async () => {
 
   expect(getByText('Hello')).toBeInTheDocument()
 
-  await fireEvent.click(getByText('Japanese'))
+  await userEvent.click(getByText('Japanese'))
 
   expect(getByText('こんにちは')).toBeInTheDocument()
 
