@@ -42,7 +42,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Installation](#installation)
-- [A simple example](#a-simple-example)
+- [A basic example](#a-basic-example)
   - [More examples](#more-examples)
 - [Docs](#docs)
 - [Typings](#typings)
@@ -67,10 +67,9 @@ This library has `peerDependencies` listings for `Vue` and
 You may also be interested in installing `jest-dom` so you can use
 [the custom Jest matchers](https://github.com/testing-library/jest-dom#readme).
 
-## A simple example
+## A basic example
 
 ```html
-<!-- TestComponent.vue -->
 <template>
   <div>
     <p>Times clicked: {{ count }}</p>
@@ -80,6 +79,7 @@ You may also be interested in installing `jest-dom` so you can use
 
 <script>
   export default {
+    name: 'Button',
     data: () => ({
       count: 0,
     }),
@@ -93,26 +93,26 @@ You may also be interested in installing `jest-dom` so you can use
 ```
 
 ```js
-// TestComponent.spec.js
-import {render, fireEvent} from '@testing-library/vue'
-import TestComponent from './TestComponent.vue'
+import {screen, render, userEvent} from '@testing-library/vue'
+import Button from './Button'
 
 test('increments value on click', async () => {
-  // The render method returns a collection of utilities to query the component.
-  const {getByText} = render(TestComponent)
+  // The render method renders the provided component into the document
+  render(Button)
 
-  // getByText returns the first matching node for the provided text, and
-  // throws an error if no elements match or if more than one match is found.
-  getByText('Times clicked: 0')
+  // queryByText returns the first matching node for the provided text
+  // or returns null.
+  expect(screen.queryByText('Times clicked: 0')).toBeTruthy()
 
-  // `button` is the actual DOM element.
-  const button = getByText('increment')
+  // getByText returns the first matching node for the provided text
+  // or throws an error.
+  const button = screen.getByText('increment')
 
-  // Dispatch a couple of native click events.
-  await fireEvent.click(button)
-  await fireEvent.click(button)
+  // Click a couple of times.
+  await userEvent.click(button)
+  await userEvent.click(button)
 
-  getByText('Times clicked: 2')
+  expect(screen.queryByText('Times clicked: 2')).toBeTruthy()
 })
 ```
 
