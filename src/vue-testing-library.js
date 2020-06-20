@@ -47,7 +47,11 @@ function render(
     })
   }
 
-  if (configurationCb && typeof configurationCb === 'function') {
+  if (configurationCb) {
+    if (Array.isArray(configurationCb)) {
+      configurationCb = composeConfigurationCallbacks(configurationCb)
+    }
+
     additionalOptions = configurationCb(localVue, vuexStore, router)
   }
 
@@ -83,6 +87,14 @@ function render(
     },
     ...getQueriesForElement(baseElement),
   }
+}
+
+function composeConfigurationCallbacks(callbacks) {
+  return (...args) =>
+    callbacks.reduce(
+      (mergedReturns, cb) => ({...mergedReturns, ...cb(...args)}),
+      {},
+    )
 }
 
 function cleanup() {
