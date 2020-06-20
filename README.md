@@ -74,7 +74,6 @@ Jest matchers][jest-dom].
 ## A basic example
 
 ```html
-<!-- TestComponent.vue -->
 <template>
   <div>
     <p>Times clicked: {{ count }}</p>
@@ -163,8 +162,8 @@ principles:
 1.  If it relates to rendering components, it deals with DOM nodes rather than
     component instances, nor should it encourage dealing with component
     instances.
-2.  It should be generally useful for testing individual Vue components or
-    full Vue applications.
+2.  It should be generally useful for testing individual Vue components or full
+    Vue applications.
 3.  Utility implementations and APIs should be simple and flexible.
 
 At the end of the day, what we want is for this library to be pretty
