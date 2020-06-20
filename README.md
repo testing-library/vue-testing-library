@@ -33,7 +33,6 @@
 [![npm version][npm-badge]][npm]
 
 [![MIT License][license-badge]][license]
-[![Join the community on Spectrum][spectrum-badge]][spectrum]
 <!-- prettier-ignore-end -->
 
 <h2>Table of Contents</h2>
@@ -47,6 +46,10 @@
 - [Docs](#docs)
 - [Typings](#typings)
 - [ESLint support](#eslint-support)
+- [Issues](#issues)
+  - [🐛 Bugs](#-bugs)
+  - [💡 Feature Requests](#-feature-requests)
+  - [❓ Questions](#-questions)
 - [License](#license)
 - [Contributors](#contributors)
 
@@ -145,6 +148,30 @@ bundled with Vue Testing Library.
 If you want to lint test files that use Vue Testing Library, you can use the
 official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
 
+## Issues
+
+_Looking to contribute? Look for the [Good First Issue][good-first-issue]
+label._
+
+### 🐛 Bugs
+
+Please [file an issue][add-issue-bug] for bugs, missing documentation, or
+unexpected behavior.
+
+[**See Bugs**][bugs]
+
+### 💡 Feature Requests
+
+Please [file an issue][add-issue] to suggest new features. Vote on feature
+requests by adding a 👍. This helps maintainers prioritize what to work on.
+
+### ❓ Questions
+
+For questions related to using the library, please visit a support community
+instead of filling an issue on GitHub.
+
+- [Discord][discord]
+
 ## License
 
 [MIT][license]
@@ -178,8 +205,6 @@ official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
 <!-- prettier-ignore-start -->
 [build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
 [build]: https://travis-ci.org/testing-library/vue-testing-library
-[spectrum-badge]: https://withspectrum.github.io/badge/badge.svg
-[spectrum]: https://spectrum.chat/testing-library
 [coverage-badge]: https://img.shields.io/codecov/c/github/testing-library/vue-testing-library.svg
 [coverage]: https://codecov.io/github/testing-library/vue-testing-library
 [github-badge]: https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg
@@ -189,10 +214,15 @@ official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
 [license-badge]: https://img.shields.io/github/license/testing-library/vue-testing-library.svg
 [license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
 [types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
+[discord]: https://testing-library.com/discord
 
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
 [eslint-plugin-testing-library]: https://github.com/testing-library/eslint-plugin-testing-library
+
+[bugs]: https://github.com/testing-library/vue-testing-library/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Acreated-desc
+[add-issue-bug]: https://github.com/testing-library/vue-testing-library/issues/new?assignees=&labels=bug&template=bug_report.md&title=
+[add-issue]: (https://github.com/testing-library/vue-testing-library/issues/new)
 
 [test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
 [vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
