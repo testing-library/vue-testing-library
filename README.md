@@ -122,16 +122,14 @@ test('increments value on click', async () => {
 })
 ```
 
-> You might want to install jest-dom[jest-dom] to add handy assertions such as
+> You might want to install [jest-dom][jest-dom] to add handy assertions such as
 > `.toBeInTheDocument()`:
 > `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
 
 > Using `byText` queries it's not the only nor the best way to query for
-> elements. Read
-> [Which query should I use?](https://testing-library.com/docs/guide-which-query)
-> to discover alternatives. In the example above,
-> `getByRole('button', {name: 'increment'})` is possibly the best option to get
-> the button element.
+> elements. Read [Which query should I use?][which-query] to discover
+> alternatives. In the example above, `getByRole('button', {name: 'increment'})`
+> is possibly the best option to get the button element.
 
 ### More examples
 
@@ -251,6 +249,7 @@ instead of filling an issue on GitHub.
 [types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
 [discord]: https://testing-library.com/discord
 [jest-dom]: https://github.com/testing-library/jest-dom
+[which-query]: https://testing-library.com/docs/guide-which-query
 [guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
 
 [docs]: https://testing-library.com/vue
