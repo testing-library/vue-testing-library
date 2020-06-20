@@ -201,7 +201,7 @@ requests by adding a 👍. This helps maintainers prioritize what to work on.
 ### ❓ Questions
 
 For questions related to using the library, please visit a support community
-instead of filling an issue on GitHub.
+instead of filing an issue on GitHub.
 
 - [Discord][discord]
 
