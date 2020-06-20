@@ -41,8 +41,9 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Installation](#installation)
-- [A simple example](#a-simple-example)
+- [A basic example](#a-basic-example)
   - [More examples](#more-examples)
+- [Guiding Principles](#guiding-principles)
 - [Docs](#docs)
 - [Typings](#typings)
 - [ESLint support](#eslint-support)
@@ -67,10 +68,10 @@ npm install --save-dev @testing-library/vue
 This library has `peerDependencies` listings for `Vue` and
 `vue-template-compiler`.
 
-You may also be interested in installing `jest-dom` so you can use
-[the custom Jest matchers](https://github.com/testing-library/jest-dom#readme).
+You may also be interested in installing `jest-dom` so you can use [the custom
+Jest matchers][jest-dom].
 
-## A simple example
+## A basic example
 
 ```html
 <!-- TestComponent.vue -->
@@ -83,6 +84,7 @@ You may also be interested in installing `jest-dom` so you can use
 
 <script>
   export default {
+    name: 'Button',
     data: () => ({
       count: 0,
     }),
@@ -96,28 +98,41 @@ You may also be interested in installing `jest-dom` so you can use
 ```
 
 ```js
-// TestComponent.spec.js
-import {render, fireEvent} from '@testing-library/vue'
-import TestComponent from './TestComponent.vue'
+import {render, screen, fireEvent} from '@testing-library/vue'
+import Button from './Button'
 
 test('increments value on click', async () => {
-  // The render method returns a collection of utilities to query the component.
-  const {getByText} = render(TestComponent)
+  // The `render` method renders the component into the document.
+  // It also binds to `screen` all the available queries to interact with
+  // the component.
+  render(Button)
 
-  // getByText returns the first matching node for the provided text, and
-  // throws an error if no elements match or if more than one match is found.
-  getByText('Times clicked: 0')
+  // queryByText returns the first matching node for the provided text
+  // or returns null.
+  expect(screen.queryByText('Times clicked: 0')).toBeTruthy()
 
-  // `button` is the actual DOM element.
-  const button = getByText('increment')
+  // getByText returns the first matching node for the provided text
+  // or throws an error.
+  const button = screen.getByText('increment')
 
-  // Dispatch a couple of native click events.
+  // Click a couple of times.
   await fireEvent.click(button)
   await fireEvent.click(button)
 
-  getByText('Times clicked: 2')
+  expect(screen.queryByText('Times clicked: 2')).toBeTruthy()
 })
 ```
+
+> You might want to install jest-dom[jest-dom] to add handy assertions such as
+> `.toBeInTheDocument()`:
+> `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
+
+> Using `byText` queries it's not the only nor the best way to query for
+> elements. Read
+> [Which query should I use?](https://testing-library.com/docs/guide-which-query)
+> to discover alternatives. In the example above,
+> `getByRole('button', {name: 'increment'})` is possibly the best option to get
+> the button element.
 
 ### More examples
 
@@ -133,6 +148,27 @@ Some included are:
 - [`vuetify`][vuetify-example]
 
 Feel free to contribute with more examples!
+
+## Guiding Principles
+
+> [The more your tests resemble the way your software is used, the more
+> confidence they can give you.][guiding-principle]
+
+We try to only expose methods and utilities that encourage you to write tests
+that closely resemble how your Vue components are used.
+
+Utilities are included in this project based on the following guiding
+principles:
+
+1.  If it relates to rendering components, it deals with DOM nodes rather than
+    component instances, nor should it encourage dealing with component
+    instances.
+2.  It should be generally useful for testing individual Vue components or
+    full Vue applications.
+3.  Utility implementations and APIs should be simple and flexible.
+
+At the end of the day, what we want is for this library to be pretty
+light-weight, simple, and understandable.
 
 ## Docs
 
@@ -215,6 +251,8 @@ instead of filling an issue on GitHub.
 [license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
 [types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
 [discord]: https://testing-library.com/discord
+[jest-dom]: https://github.com/testing-library/jest-dom
+[guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
 
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
