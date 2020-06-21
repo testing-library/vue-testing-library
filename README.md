@@ -31,6 +31,7 @@
 [![Coverage Status][coverage-badge]][coverage]
 [![GitHub version][github-badge]][github]
 [![npm version][npm-badge]][npm]
+[![Discord][discord-badge]][discord]
 
 [![MIT License][license-badge]][license]
 <!-- prettier-ignore-end -->
@@ -246,8 +247,9 @@ instead of filing an issue on GitHub.
 [npm]: https://badge.fury.io/js/%40testing-library%2Fvue
 [license-badge]: https://img.shields.io/github/license/testing-library/vue-testing-library.svg
 [license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
-[types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
 [discord]: https://testing-library.com/discord
+[discord-badge]: https://img.shields.io/discord/723559267868737556.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2&style=flat-square
+[types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
 [jest-dom]: https://github.com/testing-library/jest-dom
 [which-query]: https://testing-library.com/docs/guide-which-query
 [guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
