@@ -31,9 +31,9 @@
 [![Coverage Status][coverage-badge]][coverage]
 [![GitHub version][github-badge]][github]
 [![npm version][npm-badge]][npm]
+[![Discord][discord-badge]][discord]
 
 [![MIT License][license-badge]][license]
-[![Join the community on Spectrum][spectrum-badge]][spectrum]
 <!-- prettier-ignore-end -->
 
 <h2>Table of Contents</h2>
@@ -42,11 +42,16 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Installation](#installation)
-- [A simple example](#a-simple-example)
+- [A basic example](#a-basic-example)
   - [More examples](#more-examples)
+- [Guiding Principles](#guiding-principles)
 - [Docs](#docs)
 - [Typings](#typings)
 - [ESLint support](#eslint-support)
+- [Issues](#issues)
+  - [🐛 Bugs](#-bugs)
+  - [💡 Feature Requests](#-feature-requests)
+  - [❓ Questions](#-questions)
 - [License](#license)
 - [Contributors](#contributors)
 
@@ -64,13 +69,12 @@ npm install --save-dev @testing-library/vue
 This library has `peerDependencies` listings for `Vue` and
 `vue-template-compiler`.
 
-You may also be interested in installing `jest-dom` so you can use
-[the custom Jest matchers](https://github.com/testing-library/jest-dom#readme).
+You may also be interested in installing `jest-dom` so you can use [the custom
+Jest matchers][jest-dom].
 
-## A simple example
+## A basic example
 
 ```html
-<!-- TestComponent.vue -->
 <template>
   <div>
     <p>Times clicked: {{ count }}</p>
@@ -80,6 +84,7 @@ You may also be interested in installing `jest-dom` so you can use
 
 <script>
   export default {
+    name: 'Button',
     data: () => ({
       count: 0,
     }),
@@ -93,28 +98,39 @@ You may also be interested in installing `jest-dom` so you can use
 ```
 
 ```js
-// TestComponent.spec.js
-import {render, fireEvent} from '@testing-library/vue'
-import TestComponent from './TestComponent.vue'
+import {render, screen, fireEvent} from '@testing-library/vue'
+import Button from './Button'
 
 test('increments value on click', async () => {
-  // The render method returns a collection of utilities to query the component.
-  const {getByText} = render(TestComponent)
+  // The `render` method renders the component into the document.
+  // It also binds to `screen` all the available queries to interact with
+  // the component.
+  render(Button)
 
-  // getByText returns the first matching node for the provided text, and
-  // throws an error if no elements match or if more than one match is found.
-  getByText('Times clicked: 0')
+  // queryByText returns the first matching node for the provided text
+  // or returns null.
+  expect(screen.queryByText('Times clicked: 0')).toBeTruthy()
 
-  // `button` is the actual DOM element.
-  const button = getByText('increment')
+  // getByText returns the first matching node for the provided text
+  // or throws an error.
+  const button = screen.getByText('increment')
 
-  // Dispatch a couple of native click events.
+  // Click a couple of times.
   await fireEvent.click(button)
   await fireEvent.click(button)
 
-  getByText('Times clicked: 2')
+  expect(screen.queryByText('Times clicked: 2')).toBeTruthy()
 })
 ```
+
+> You might want to install [`jest-dom`][jest-dom] to add handy assertions such
+> as `.toBeInTheDocument()`. In the example above, you could write
+> `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
+
+> Using `byText` queries it's not the only nor the best way to query for
+> elements. Read [Which query should I use?][which-query] to discover
+> alternatives. In the example above, `getByRole('button', {name: 'increment'})`
+> is possibly the best option to get the button element.
 
 ### More examples
 
@@ -131,6 +147,27 @@ Some included are:
 
 Feel free to contribute with more examples!
 
+## Guiding Principles
+
+> [The more your tests resemble the way your software is used, the more
+> confidence they can give you.][guiding-principle]
+
+We try to only expose methods and utilities that encourage you to write tests
+that closely resemble how your Vue components are used.
+
+Utilities are included in this project based on the following guiding
+principles:
+
+1.  If it relates to rendering components, it deals with DOM nodes rather than
+    component instances, nor should it encourage dealing with component
+    instances.
+2.  It should be generally useful for testing individual Vue components or full
+    Vue applications.
+3.  Utility implementations and APIs should be simple and flexible.
+
+At the end of the day, what we want is for this library to be pretty
+light-weight, simple, and understandable.
+
 ## Docs
 
 [**Read the docs**][docs] | [Edit the docs][docs-edit]
@@ -144,6 +181,30 @@ bundled with Vue Testing Library.
 
 If you want to lint test files that use Vue Testing Library, you can use the
 official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
+
+## Issues
+
+_Looking to contribute? Look for the [Good First Issue][good-first-issue]
+label._
+
+### 🐛 Bugs
+
+Please [file an issue][add-issue-bug] for bugs, missing documentation, or
+unexpected behavior.
+
+[**See Bugs**][bugs]
+
+### 💡 Feature Requests
+
+Please [file an issue][add-issue] to suggest new features. Vote on feature
+requests by adding a 👍. This helps maintainers prioritize what to work on.
+
+### ❓ Questions
+
+For questions related to using the library, please visit a support community
+instead of filing an issue on GitHub.
+
+- [Discord][discord]
 
 ## License
 
@@ -178,8 +239,6 @@ official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
 <!-- prettier-ignore-start -->
 [build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
 [build]: https://travis-ci.org/testing-library/vue-testing-library
-[spectrum-badge]: https://withspectrum.github.io/badge/badge.svg
-[spectrum]: https://spectrum.chat/testing-library
 [coverage-badge]: https://img.shields.io/codecov/c/github/testing-library/vue-testing-library.svg
 [coverage]: https://codecov.io/github/testing-library/vue-testing-library
 [github-badge]: https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg
@@ -188,11 +247,20 @@ official plugin: [eslint-plugin-testing-library][eslint-plugin-testing-library].
 [npm]: https://badge.fury.io/js/%40testing-library%2Fvue
 [license-badge]: https://img.shields.io/github/license/testing-library/vue-testing-library.svg
 [license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
+[discord]: https://testing-library.com/discord
+[discord-badge]: https://img.shields.io/discord/723559267868737556.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2&style=flat-square
 [types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
+[jest-dom]: https://github.com/testing-library/jest-dom
+[which-query]: https://testing-library.com/docs/guide-which-query
+[guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
 
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
 [eslint-plugin-testing-library]: https://github.com/testing-library/eslint-plugin-testing-library
+
+[bugs]: https://github.com/testing-library/vue-testing-library/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Acreated-desc
+[add-issue-bug]: https://github.com/testing-library/vue-testing-library/issues/new?assignees=&labels=bug&template=bug_report.md&title=
+[add-issue]: (https://github.com/testing-library/vue-testing-library/issues/new)
 
 [test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
 [vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
