@@ -253,6 +253,7 @@ instead of filing an issue on GitHub.
 [jest-dom]: https://github.com/testing-library/jest-dom
 [which-query]: https://testing-library.com/docs/guide-which-query
 [guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
+[good-first-issue]: https://github.com/testing-library/vue-testing-library/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 
 [docs]: https://testing-library.com/vue
 [docs-edit]: https://github.com/testing-library/testing-library-docs
