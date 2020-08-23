@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Movie Review</h1>
-    <form>
+    <form onsubmit="return false">
       <label for="movie-input">Title of the movie</label>
       <input id="movie-input" v-model="title" name="title" />
 
