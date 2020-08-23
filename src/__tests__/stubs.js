@@ -2,15 +2,16 @@ import {render} from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import Stubs from './components/Stubs'
 
-test('Form contains search button', () => {
-  const DirectiveMock = {
-    template: '<p>fake template</p>',
+test('Stubs out a component', () => {
+  const CustomStub = {
+    template: '<p>Search now</p>',
   }
 
   const {getByText} = render(Stubs, {
     global: {
       stubs: {
-        directive: DirectiveMock,
+        // "Directive" is the stubbed out component
+        Directive: CustomStub,
       },
     },
   })
