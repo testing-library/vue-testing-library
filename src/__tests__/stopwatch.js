@@ -12,11 +12,11 @@ test('updates component state', async () => {
 
   // Assert initial state.
   expect(elapsedTime).toHaveTextContent('0ms')
-  getByText('Start')
+  expect(getByText('Start')).toBeInTheDocument()
 
   await fireEvent.click(startButton)
 
-  getByText('Stop')
+  expect(getByText('Stop')).toBeInTheDocument()
 
   // Wait for one tick of the event loop.
   await waitFor(() => {

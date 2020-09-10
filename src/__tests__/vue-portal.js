@@ -21,7 +21,7 @@ test('portal', async () => {
   // wait until PortalVue has removed content from the source element
   // and moved it to the target one.
   await waitFor(() => {
-    expect(getByTestId('portal')).toBeEmpty()
+    expect(getByTestId('portal')).toBeEmptyDOMElement()
   })
 
   expect(getByTestId('target')).toHaveTextContent(

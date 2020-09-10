@@ -19,7 +19,7 @@ test('Card component', () => {
   })
 
   // The default slot should render the template above with the scoped prop "content".
-  getByText('Yay! Scoped content!')
+  expect(getByText('Yay! Scoped content!')).toBeInTheDocument()
 
   // Instead of the default slot's fallback content.
   expect(
@@ -27,6 +27,6 @@ test('Card component', () => {
   ).not.toBeInTheDocument()
 
   // And the header and footer slots should be rendered with the given templates.
-  getByText('HEADER')
-  getByText('FOOTER')
+  expect(getByText('HEADER')).toBeInTheDocument()
+  expect(getByText('FOOTER')).toBeInTheDocument()
 })

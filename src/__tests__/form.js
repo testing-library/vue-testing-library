@@ -37,20 +37,20 @@ test('Review form submits', async () => {
   const initiallySelectedInput = getByLabelText('Awful')
   const ratingSelect = getByLabelText('Wonderful')
 
-  expect(initiallySelectedInput.checked).toBe(true)
-  expect(ratingSelect.checked).toBe(false)
+  expect(initiallySelectedInput).toBeChecked()
+  expect(ratingSelect).not.toBeChecked()
 
   await fireEvent.update(ratingSelect)
 
-  expect(ratingSelect.checked).toBe(true)
-  expect(initiallySelectedInput.checked).toBe(false)
+  expect(ratingSelect).toBeChecked()
+  expect(initiallySelectedInput).not.toBeChecked()
 
   // Get the Input element by its implicit ARIA role.
   const recommendInput = getByRole('checkbox')
 
-  expect(recommendInput.checked).toBe(false)
+  expect(recommendInput).not.toBeChecked()
   await fireEvent.update(recommendInput)
-  expect(recommendInput.checked).toBe(true)
+  expect(recommendInput).toBeChecked()
 
   // Make sure the submit button is enabled.
   expect(submitButton).toBeEnabled()

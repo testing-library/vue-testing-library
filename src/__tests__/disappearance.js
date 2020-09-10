@@ -6,7 +6,7 @@ test('waits for the data to be loaded', async () => {
   const {getByText, queryByText, queryByTestId} = render(Disappearance)
 
   // Assert initial state
-  getByText('Loading...')
+  expect(getByText('Loading...')).toBeInTheDocument()
   expect(queryByText(/Loaded this message/)).not.toBeInTheDocument()
 
   // Following line reads as follows:
