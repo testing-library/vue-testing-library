@@ -16,7 +16,7 @@ test('mocks an API call when load-greeting is clicked', async () => {
 
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
   expect(axiosMock.get).toHaveBeenCalledWith('/greeting')
-  getByText('hello there')
+  expect(getByText('hello there')).toBeInTheDocument()
 
   // You can render component snapshots by using html(). However, bear in mind
   // that Snapshot Testing should not be treated as a replacement for regular

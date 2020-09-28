@@ -1,4 +1,5 @@
 import {render} from '@testing-library/vue'
+import '@testing-library/jest-dom'
 import FunctionalSFC from './components/FunctionalSFC'
 
 const Functional = {
@@ -11,11 +12,11 @@ const Functional = {
 test('renders functional component', () => {
   const {getByText} = render(Functional)
 
-  getByText('Hi!')
+  expect(getByText('Hi!')).toBeInTheDocument()
 })
 
 test('renders functional SFC component', () => {
   const {getByText} = render(FunctionalSFC)
 
-  getByText('Hi!')
+  expect(getByText('Hi!')).toBeInTheDocument()
 })

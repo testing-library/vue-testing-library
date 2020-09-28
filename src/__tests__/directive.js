@@ -8,7 +8,7 @@ import Directive from './components/Directive'
 test('Component with a custom directive', () => {
   // Do not forget to add the new custom directive to the render function as
   // the third parameter.
-  const {queryByText} = render(Directive, {}, vue =>
+  const {queryByText, getByText} = render(Directive, {}, vue =>
     vue.directive('uppercase', uppercaseDirective),
   )
 
@@ -16,5 +16,5 @@ test('Component with a custom directive', () => {
   expect(queryByText('example text')).not.toBeInTheDocument()
 
   // Test that the text in upper case does appear in the DOM thanks to the directive
-  expect(queryByText('EXAMPLE TEXT')).toBeInTheDocument()
+  expect(getByText('EXAMPLE TEXT')).toBeInTheDocument()
 })

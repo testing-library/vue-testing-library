@@ -2,7 +2,10 @@ import '@testing-library/jest-dom'
 import {render, waitFor, fireEvent} from '@testing-library/vue'
 import StopWatch from './components/StopWatch.vue'
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = ms =>
+  new Promise(resolve => {
+    setTimeout(resolve, ms)
+  })
 
 test('updates component state', async () => {
   const {getByTestId, getByText} = render(StopWatch)
@@ -12,11 +15,11 @@ test('updates component state', async () => {
 
   // Assert initial state.
   expect(elapsedTime).toHaveTextContent('0ms')
-  getByText('Start')
+  expect(getByText('Start')).toBeInTheDocument()
 
   await fireEvent.click(startButton)
 
-  getByText('Stop')
+  expect(getByText('Stop')).toBeInTheDocument()
 
   // Wait for one tick of the event loop.
   await waitFor(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-wait-for-empty-callback */
 import {createLocalVue, mount} from '@vue/test-utils'
 
 import {

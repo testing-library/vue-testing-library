@@ -21,6 +21,7 @@ test('within() returns an object with all queries bound to the DOM node', () => 
   // within() returns queries bound to the provided DOM node, so the following
   // assertion passes. Notice how we are not using the getByText() function
   // provided by render(), but the one coming from within().
+  // eslint-disable-next-line testing-library/prefer-explicit-assert
   within(divNode).getByText('repeated text')
 
   // Here, proof that there's only one match for the specified text.
