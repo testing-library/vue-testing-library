@@ -5,7 +5,9 @@ test('cleanup re-throws errors from async lifecycle hooks', async () => {
   const err = new Error('foo')
   render({
     async mounted() {
-      await new Promise((resolve, reject) => reject(err))
+      await new Promise((resolve, reject) => {
+        reject(err)
+      })
     },
     template: `<h1>Hello World</h1>`,
   })

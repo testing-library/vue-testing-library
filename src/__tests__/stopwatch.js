@@ -2,7 +2,10 @@ import '@testing-library/jest-dom'
 import {render, waitFor, fireEvent} from '@testing-library/vue'
 import StopWatch from './components/StopWatch.vue'
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = ms =>
+  new Promise(resolve => {
+    setTimeout(resolve, ms)
+  })
 
 test('updates component state', async () => {
   const {getByTestId, getByText} = render(StopWatch)
