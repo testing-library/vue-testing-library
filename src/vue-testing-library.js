@@ -83,14 +83,6 @@ function render(
     // isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
-
-    // TODO: Is this unnecessary now? No need to await for a tick because
-    //       setProps() handles it for us now.
-    // We can simply expose setProps.
-    updateProps: _ => {
-      wrapper.setProps(_)
-      return waitFor(() => {})
-    },
     setProps: props => wrapper.setProps(props),
     ...getQueriesForElement(baseElement),
   }
