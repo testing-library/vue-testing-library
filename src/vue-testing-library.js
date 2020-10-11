@@ -1,5 +1,6 @@
 /* eslint-disable testing-library/no-wait-for-empty-callback */
 import {mount} from '@vue/test-utils'
+import merge from 'lodash.merge'
 
 import {
   getQueriesForElement,
@@ -26,15 +27,14 @@ function render(
   const container = customContainer || baseElement.appendChild(div)
 
   // const localVue = createLocalVue()
-  let vuexStore = null
   let router = null
   let additionalOptions = {}
 
-  // TODO: Fix VTL + Vuex (v4?)
+  const plugins = []
+
   if (store) {
-    const Vuex = require('vuex')
-    // localVue.use(Vuex)
-    vuexStore = new Vuex.Store(store)
+    const { createStore } = require('vuex')
+    plugins.push(createStore(store))
   }
 
   // TODO: Fix VTL + Vue-router(next?)
@@ -47,8 +47,9 @@ function render(
     })
   }
 
+  // Should we expose vue 3 app? if so, how?
   if (configurationCb && typeof configurationCb === 'function') {
-    additionalOptions = configurationCb(vuexStore, router)
+    additionalOptions = configurationCb(router)
   }
 
   // If `propsData` is provided, rename it to `props`
@@ -59,14 +60,16 @@ function render(
     delete mountOptions.propsData
   }
 
-  const wrapper = mount(TestComponent, {
+  const wrapper = mount(TestComponent, merge({
     // localVue,
     // router,
-    // store: vuexStore,
     attachTo: container,
+    global: {
+      plugins
+    },
     ...mountOptions,
     ...additionalOptions,
-  })
+  }))
 
   mountedWrappers.add(wrapper)
 

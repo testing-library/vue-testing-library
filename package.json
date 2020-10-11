@@ -47,6 +47,7 @@
     "@testing-library/dom": "^7.24.3",
     "@babel/runtime": "^7.9.6",
     "@types/testing-library__vue": "*",
+    "lodash.merge": "^4.6.2",
     "@vue/test-utils": "^2.0.0-beta.2"
   },
   "devDependencies": {
@@ -63,7 +64,6 @@
     "isomorphic-unfetch": "^3.0.0",
     "jest-serializer-vue": "^2.0.2",
     "kcd-scripts": "^6.5.1",
-    "lodash.merge": "^4.6.2",
     "msw": "^0.21.2",
     "portal-vue": "^2.1.7",
     "typescript": "^3.8.3",
@@ -74,7 +74,7 @@
     "vue-jest": "^5.0.0-alpha.4",
     "vue-router": "^3.4.5",
     "vuetify": "^2.3.10",
-    "vuex": "^3.5.1"
+    "vuex": "^4.0.0-beta.4"
   },
   "peerDependencies": {
     "vue": "^3.0",
