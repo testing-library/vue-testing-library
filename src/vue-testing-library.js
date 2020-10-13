@@ -52,14 +52,6 @@ function render(
     additionalOptions = configurationCb(router)
   }
 
-  // If `propsData` is provided, rename it to `props`
-  // Since this is gonna be a breaking change, we can remove the
-  // whole thing.
-  if (!mountOptions.props && !!mountOptions.propsData) {
-    mountOptions.props = mountOptions.propsData
-    delete mountOptions.propsData
-  }
-
   const wrapper = mount(
     TestComponent,
     merge({
