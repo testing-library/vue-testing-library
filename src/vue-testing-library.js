@@ -33,7 +33,7 @@ function render(
   const plugins = []
 
   if (store) {
-    const { createStore } = require('vuex')
+    const {createStore} = require('vuex')
     plugins.push(createStore(store))
   }
 
@@ -60,22 +60,25 @@ function render(
     delete mountOptions.propsData
   }
 
-  const wrapper = mount(TestComponent, merge({
-    // localVue,
-    // router,
-    attachTo: container,
-    global: {
-      plugins
-    },
-    ...mountOptions,
-    ...additionalOptions,
-  }))
+  const wrapper = mount(
+    TestComponent,
+    merge({
+      // localVue,
+      // router,
+      attachTo: container,
+      global: {
+        plugins,
+      },
+      ...mountOptions,
+      ...additionalOptions,
+    }),
+  )
+
+  // this removes the additional "data-v-app" div node from VTU:
+  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
+  unwrapNode(wrapper.parentElement)
 
   mountedWrappers.add(wrapper)
-
-  // hack to remove id="app"
-  // this fixes tests in auto-cleanup.js and auto-cleanup-skip.js
-  wrapper.parentElement.removeAttribute('id')
 
   return {
     container,
@@ -89,6 +92,10 @@ function render(
     setProps: props => wrapper.setProps(props),
     ...getQueriesForElement(baseElement),
   }
+}
+
+function unwrapNode(node) {
+  node.replaceWith(...node.childNodes)
 }
 
 function cleanup() {
