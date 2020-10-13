@@ -78,7 +78,6 @@ function render(
     debug: (el = baseElement) =>
       Array.isArray(el) ? el.forEach(e => logDOM(e)) : logDOM(el),
     unmount: () => wrapper.unmount(),
-    // isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
     setProps: props => wrapper.setProps(props),
