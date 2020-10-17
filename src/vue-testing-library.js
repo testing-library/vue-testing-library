@@ -26,7 +26,6 @@ function render(
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  // const localVue = createLocalVue()
   let router = null
   let additionalOptions = {}
 
@@ -41,7 +40,6 @@ function render(
   if (routes) {
     const requiredRouter = require('vue-router')
     const VueRouter = requiredRouter.default || requiredRouter
-    // localVue.use(VueRouter)
     router = new VueRouter({
       routes,
     })
@@ -55,7 +53,6 @@ function render(
   const wrapper = mount(
     TestComponent,
     merge({
-      // localVue,
       // router,
       attachTo: container,
       global: {
