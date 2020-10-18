@@ -15,19 +15,18 @@ function render(
   TestComponent,
   {
     store = null,
-    routes = null,
+    // routes = null,
     container: customContainer,
     baseElement: customBaseElement,
     ...mountOptions
   } = {},
-  configurationCb,
+  // configurationCb,
 ) {
   const div = document.createElement('div')
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  let router = null
-  let additionalOptions = {}
+  // let additionalOptions = {}
 
   const plugins = []
 
@@ -36,30 +35,27 @@ function render(
     plugins.push(createStore(store))
   }
 
-  // TODO: Fix VTL + Vue-router(next?)
-  if (routes) {
-    const requiredRouter = require('vue-router')
-    const VueRouter = requiredRouter.default || requiredRouter
-    router = new VueRouter({
-      routes,
-    })
-  }
+  // if (routes) {
+  //   const requiredRouter = require('vue-router')
+  //   const {createRouter, createWebHistory} =
+  //     requiredRouter.default || requiredRouter
+  //   plugins.push(createRouter({history: createWebHistory(), routes}))
+  // }
 
   // Should we expose vue 3 app? if so, how?
-  if (configurationCb && typeof configurationCb === 'function') {
-    additionalOptions = configurationCb(router)
-  }
+  // if (configurationCb && typeof configurationCb === 'function') {
+  //   additionalOptions = configurationCb(router)
+  // }
 
   const wrapper = mount(
     TestComponent,
     merge({
-      // router,
       attachTo: container,
       global: {
         plugins,
       },
       ...mountOptions,
-      ...additionalOptions,
+      // ...additionalOptions,
     }),
   )
 

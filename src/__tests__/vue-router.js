@@ -1,8 +1,11 @@
 test.todo('Your test suite must contain at least one test.')
 
+// // Please notice that this example is a draft example on how to test
+// // the router.
+// // Related issue on Vue Test Utils: https://github.com/vuejs/vue-test-utils-next/issues/152
+
 // import '@testing-library/jest-dom'
 // import {render, fireEvent} from '@testing-library/vue'
-
 // import App from './components/Router/App.vue'
 // import Home from './components/Router/Home.vue'
 // import About from './components/Router/About.vue'
@@ -10,7 +13,6 @@ test.todo('Your test suite must contain at least one test.')
 // const routes = [
 //   {path: '/', component: Home},
 //   {path: '/about', component: About},
-//   {path: '*', redirect: '/about'},
 // ]
 
 // test('full app rendering/navigating', async () => {
