@@ -1,16 +1,15 @@
 <template>
-  <form>
-    <label for="search"> <FontAwesomeIcon icon="search" /> Search </label>
-    <input id="search" type="text" name="search" />
-    <VButton text="Search now" />
-  </form>
+  <directive />
 </template>
 
 <script>
-import VButton from './Button'
+import Directive from './Directive'
 
 export default {
-  name: 'SearchForm',
-  components: { VButton }
+  name: 'Stubs',
+
+  components: {
+    Directive,
+  },
 }
 </script>

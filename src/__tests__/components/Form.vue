@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Movie Review</h1>
-    <form @submit.prevent="submit">
+    <form onsubmit="return false">
       <label for="movie-input">Title of the movie</label>
       <input id="movie-input" v-model="title" name="title" />
 
@@ -34,7 +34,7 @@
         name="recommend"
       />
 
-      <button :disabled="submitDisabled" type="submit">
+      <button :disabled="submitDisabled" type="submit" @click="submit">
         Submit
       </button>
     </form>

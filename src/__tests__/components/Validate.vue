@@ -1,36 +1,35 @@
 <template>
-  <form>
-    <label id="username-label" for="username">Username</label>
+  <Form>
+    <Field :rules="validateEmail" name="email" as="input" type="email" />
 
-    <input
-      v-model="username"
-      v-validate="'required|email'"
-      placeholder="Username..."
-      name="username"
-      aria-labelledby="username-label"
-    />
+    <error-message name="email" data-testid="error-message" />
 
-    <span v-if="errors.has('username')" data-testid="username-errors">{{
-      errors.first('username')
-    }}</span>
-
-    <label id="password-label" for="password">Password</label>
-    <input
-      v-model="password"
-      placeholder="Password..."
-      type="password"
-      name="password"
-      aria-labelledby="password-label"
-    />
-    <button type="submit">Submit</button>
-  </form>
+    <button>Sign up</button>
+  </Form>
 </template>
 
 <script>
+import {Form, Field, ErrorMessage} from 'vee-validate'
+
 export default {
-  data: () => ({
-    username: '',
-    password: ''
-  })
+  name: 'VeeValidate',
+  components: {
+    Form,
+    Field,
+    ErrorMessage,
+  },
+  methods: {
+    validateEmail(value) {
+      if (!value) {
+        return 'This field is required'
+      }
+
+      if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+        return 'This field must be a valid email'
+      }
+
+      return true
+    },
+  },
 }
 </script>
