@@ -19,3 +19,11 @@ branches:
   only:
     - master
     - beta
+    - next
+
+jobs:
+  include:
+    - stage: release
+      node_js: 14
+      script: kcd-scripts travis-release
+      if: fork = false
