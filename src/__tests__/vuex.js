@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom'
 import {render, fireEvent} from '@testing-library/vue'
-
 import VuexTest from './components/Store/VuexTest'
 import {store} from './components/Store/store'
 
@@ -19,6 +18,7 @@ function renderVuexTestComponent(customStore) {
 
 test('can render with vuex with defaults', async () => {
   const {getByTestId, getByText} = renderVuexTestComponent()
+
   await fireEvent.click(getByText('+'))
 
   expect(getByTestId('count-value')).toHaveTextContent('1')
@@ -28,6 +28,7 @@ test('can render with vuex with custom initial state', async () => {
   const {getByTestId, getByText} = renderVuexTestComponent({
     state: {count: 3},
   })
+
   await fireEvent.click(getByText('-'))
 
   expect(getByTestId('count-value')).toHaveTextContent('2')
@@ -44,8 +45,8 @@ test('can render with vuex with custom store', async () => {
     },
   }
 
-  // Notice how here we are not using the helper method, because there's no
-  // need to do that.
+  // Notice how here we are not using the helper rendering method, because
+  // there's no need to do that here. We're passing a whole store.
   const {getByTestId, getByText} = render(VuexTest, {store})
 
   await fireEvent.click(getByText('+'))

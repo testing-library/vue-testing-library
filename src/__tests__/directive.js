@@ -1,16 +1,14 @@
 import {render} from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import {uppercaseDirective} from './directives/uppercase-directive'
-import Directive from './components/Directive'
+import ComponentUsingDirective from './components/Directive'
 
-// We are about to test an easy vue directive, that we have implemented,
-// named v-uppercawse.
 test('Component with a custom directive', () => {
-  // Do not forget to add the new custom directive to the render function as
-  // the third parameter.
-  const {queryByText, getByText} = render(Directive, {}, vue =>
-    vue.directive('uppercase', uppercaseDirective),
-  )
+  const {queryByText, getByText} = render(ComponentUsingDirective, {
+    global: {
+      directives: {uppercase: uppercaseDirective},
+    },
+  })
 
   // Test that the text in lower case does not appear in the DOM
   expect(queryByText('example text')).not.toBeInTheDocument()

@@ -1,5 +1,6 @@
 /* eslint-disable testing-library/no-wait-for-empty-callback */
-import {createLocalVue, mount} from '@vue/test-utils'
+import {mount} from '@vue/test-utils'
+import merge from 'lodash.merge'
 
 import {
   getQueriesForElement,
@@ -14,76 +15,71 @@ function render(
   TestComponent,
   {
     store = null,
-    routes = null,
+    // routes = null,
     container: customContainer,
     baseElement: customBaseElement,
     ...mountOptions
   } = {},
-  configurationCb,
+  // configurationCb,
 ) {
   const div = document.createElement('div')
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  const attachTo = document.createElement('div')
-  container.appendChild(attachTo)
+  // let additionalOptions = {}
 
-  const localVue = createLocalVue()
-  let vuexStore = null
-  let router = null
-  let additionalOptions = {}
+  const plugins = []
 
   if (store) {
-    const Vuex = require('vuex')
-    localVue.use(Vuex)
-    vuexStore = new Vuex.Store(store)
+    const {createStore} = require('vuex')
+    plugins.push(createStore(store))
   }
 
-  if (routes) {
-    const requiredRouter = require('vue-router')
-    const VueRouter = requiredRouter.default || requiredRouter
-    localVue.use(VueRouter)
-    router = new VueRouter({
-      routes,
-    })
-  }
+  // if (routes) {
+  //   const requiredRouter = require('vue-router')
+  //   const {createRouter, createWebHistory} =
+  //     requiredRouter.default || requiredRouter
+  //   plugins.push(createRouter({history: createWebHistory(), routes}))
+  // }
 
-  if (configurationCb && typeof configurationCb === 'function') {
-    additionalOptions = configurationCb(localVue, vuexStore, router)
-  }
+  // Should we expose vue 3 app? if so, how?
+  // if (configurationCb && typeof configurationCb === 'function') {
+  //   additionalOptions = configurationCb(router)
+  // }
 
-  if (!mountOptions.propsData && !!mountOptions.props) {
-    mountOptions.propsData = mountOptions.props
-    delete mountOptions.props
-  }
+  const wrapper = mount(
+    TestComponent,
+    merge({
+      attachTo: container,
+      global: {
+        plugins,
+      },
+      ...mountOptions,
+      // ...additionalOptions,
+    }),
+  )
 
-  const wrapper = mount(TestComponent, {
-    localVue,
-    router,
-    attachTo,
-    store: vuexStore,
-    ...mountOptions,
-    ...additionalOptions,
-  })
+  // this removes the additional "data-v-app" div node from VTU:
+  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
+  unwrapNode(wrapper.parentElement)
 
   mountedWrappers.add(wrapper)
-  container.appendChild(wrapper.element)
 
   return {
     container,
     baseElement,
     debug: (el = baseElement) =>
       Array.isArray(el) ? el.forEach(e => logDOM(e)) : logDOM(el),
-    unmount: () => wrapper.destroy(),
-    isUnmounted: () => wrapper.vm._isDestroyed,
+    unmount: () => wrapper.unmount(),
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
-    updateProps: _ => {
-      wrapper.setProps(_)
-      return waitFor(() => {})
-    },
+    setProps: props => wrapper.setProps(props),
     ...getQueriesForElement(baseElement),
   }
+}
+
+function unwrapNode(node) {
+  node.replaceWith(...node.childNodes)
 }
 
 function cleanup() {
@@ -99,7 +95,7 @@ function cleanupAtWrapper(wrapper) {
   }
 
   try {
-    wrapper.destroy()
+    wrapper.unmount()
   } finally {
     mountedWrappers.delete(wrapper)
   }

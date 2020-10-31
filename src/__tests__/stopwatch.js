@@ -37,20 +37,3 @@ test('updates component state', async () => {
   // content has changed.
   expect(elapsedTime).toHaveTextContent(timeBeforeStop)
 })
-
-test('unmounts a component', async () => {
-  jest.spyOn(console, 'error').mockImplementation(() => {})
-
-  const {unmount, isUnmounted, getByText} = render(StopWatch)
-  await fireEvent.click(getByText('Start'))
-
-  // Destroys a Vue component instance.
-  unmount()
-
-  expect(isUnmounted()).toBe(true)
-
-  // Wait for a few milliseconds
-  await sleep(5)
-
-  expect(console.error).not.toHaveBeenCalled()
-})
