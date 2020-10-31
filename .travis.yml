@@ -8,9 +8,14 @@ notifications:
 node_js:
   - 10.18
   - 12
-  - node
+  - 14
+  - 15
+before_install:
+  - nvm install-latest-npm
 install: npm install
 script: npm run validate
 after_success: kcd-scripts travis-after-success
 branches:
-  only: master
+  only:
+    - master
+    - beta
