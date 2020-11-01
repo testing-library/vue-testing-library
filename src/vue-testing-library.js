@@ -3,7 +3,7 @@ import {createLocalVue, mount} from '@vue/test-utils'
 
 import {
   getQueriesForElement,
-  logDOM,
+  prettyDOM,
   waitFor,
   fireEvent as dtlFireEvent,
 } from '@testing-library/dom'
@@ -72,8 +72,10 @@ function render(
   return {
     container,
     baseElement,
-    debug: (el = baseElement) =>
-      Array.isArray(el) ? el.forEach(e => logDOM(e)) : logDOM(el),
+    debug: (el = baseElement, maxLength, options) =>
+      Array.isArray(el)
+        ? el.forEach(e => console.log(prettyDOM(e, maxLength, options)))
+        : console.log(prettyDOM(el, maxLength, options)),
     unmount: () => wrapper.destroy(),
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
