@@ -26,7 +26,9 @@
         Awful
       </label>
 
-      <label id="recommend-label">Would you recommend this movie?</label>
+      <label id="recommend-label" for="recommend">
+        Would you recommend this movie?
+      </label>
       <input
         id="recommend"
         v-model="recommend"
@@ -34,9 +36,7 @@
         name="recommend"
       />
 
-      <button :disabled="submitDisabled" type="submit">
-        Submit
-      </button>
+      <button :disabled="submitDisabled" type="submit">Submit</button>
     </form>
   </div>
 </template>
