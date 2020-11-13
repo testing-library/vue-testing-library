@@ -80,10 +80,7 @@ function render(
     isUnmounted: () => wrapper.vm._isDestroyed,
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
-    updateProps: _ => {
-      wrapper.setProps(_)
-      return waitFor(() => {})
-    },
+    updateProps: _ => wrapper.setProps(_),
     ...getQueriesForElement(baseElement),
   }
 }
