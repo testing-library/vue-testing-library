@@ -1,4 +1,7 @@
 module.exports = {
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+  },
   extends: [
     './node_modules/kcd-scripts/eslint.js',
     'plugin:vue/recommended',
