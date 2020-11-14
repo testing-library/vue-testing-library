@@ -122,7 +122,7 @@ test('increments value on click', async () => {
 })
 ```
 
-> You might want to install [`jest-dom`][jest-dom] to add handy assertions such
+> You might want to install [`@testing-library/jest-dom`][jest-dom] to add handy assertions such
 > as `.toBeInTheDocument()`. In the example above, you could write
 > `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
 
