@@ -32,7 +32,6 @@
 [![GitHub version][github-badge]][github]
 [![npm version][npm-badge]][npm]
 [![Discord][discord-badge]][discord]
-
 [![MIT License][license-badge]][license]
 <!-- prettier-ignore-end -->
 
@@ -237,8 +236,8 @@ instead of filing an issue on GitHub.
 [![cilice](https://avatars2.githubusercontent.com/u/835588?v=3&s=120)](https://github.com/cilice)
 
 <!-- prettier-ignore-start -->
-[build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
-[build]: https://travis-ci.org/testing-library/vue-testing-library
+[build-badge]: https://img.shields.io/github/workflow/status/testing-library/vue-testing-library/validate?logo=github
+[build]: https://github.com/testing-library/vue-testing-library/actions?query=workflow%3Avalidate
 [coverage-badge]: https://img.shields.io/codecov/c/github/testing-library/vue-testing-library.svg
 [coverage]: https://codecov.io/github/testing-library/vue-testing-library
 [github-badge]: https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg
