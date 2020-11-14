@@ -6,12 +6,12 @@ declare const elem: HTMLElement
 const SomeComponent = Vue.extend({
   name: 'SomeComponent',
   props: {
-    foo: Number,
-    bar: String,
+    foo: {type: Number, default: 0},
+    bar: {type: String, default: '0'},
   },
 })
 
-async function testRender() {
+export async function testRender() {
   const page = render({template: '<div />'})
 
   // single queries
@@ -27,22 +27,26 @@ async function testRender() {
   // helpers
   const {container, unmount, debug} = page
 
+  debug(container)
+
   debug(elem) // $ExpectType void
   debug([elem, elem], 100, {highlight: false}) // $ExpectType void
+
+  unmount()
 }
 
-async function testRenderOptions() {
+export function testRenderOptions() {
   const container = document.createElement('div')
   const options = {container}
   render({template: 'div'}, options)
 }
 
-async function testFireEvent() {
+export async function testFireEvent() {
   const {container} = render({template: 'button'})
   await fireEvent.click(container)
 }
 
-async function testDebug() {
+export function testDebug() {
   const {debug, getAllByTestId} = render({
     render(h) {
       return h('div', [
@@ -55,19 +59,19 @@ async function testDebug() {
   debug(getAllByTestId('testid'))
 }
 
-async function testScreen() {
+export async function testScreen() {
   render({template: 'button'})
 
   await screen.findByRole('button')
 }
 
-async function testWaitFor() {
+export async function testWaitFor() {
   const {container} = render({template: 'button'})
-  fireEvent.click(container)
+  await fireEvent.click(container)
   await waitFor(() => {})
 }
 
-async function testOptions() {
+export function testOptions() {
   render(SomeComponent, {
     // options for new Vue()
     name: 'SomeComponent',
@@ -114,7 +118,7 @@ async function testOptions() {
   })
 }
 
-function testConfigCallback() {
+export function testConfigCallback() {
   const ExamplePlugin: Vue.PluginFunction<never> = () => {}
   render(SomeComponent, {}, (localVue, store, router) => {
     localVue.use(ExamplePlugin)
@@ -122,3 +126,12 @@ function testConfigCallback() {
     router.onError(error => console.log(error.message))
   })
 }
+
+/*
+eslint
+  testing-library/prefer-explicit-assert: "off",
+  testing-library/no-wait-for-empty-callback: "off",
+  testing-library/no-debug: "off",
+  testing-library/prefer-screen-queries: "off",
+  @typescript-eslint/unbound-method: "off",
+*/

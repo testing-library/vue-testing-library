@@ -1,9 +1,10 @@
-// TypeScript Version: 3.8
+// TypeScript Version: 4.0
 
 import Vue, {ComponentOptions} from 'vue'
 import {ThisTypedMountOptions, VueClass} from '@vue/test-utils'
 import {Store, StoreOptions} from 'vuex'
 import Router, {RouteConfig} from 'vue-router'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
 import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 
@@ -24,6 +25,7 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
   unmount(): void
   isUnmounted(): boolean
   html(): string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   emitted(): {[name: string]: any[][]}
   updateProps(props: object): Promise<void>
 }
@@ -40,6 +42,7 @@ export interface RenderOptions<V extends Vue, S = {}>
 
 export type ConfigurationCallback<V extends Vue> = (
   localVue: typeof Vue,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   store: Store<any>,
   router: Router,
 ) => Partial<ThisTypedMountOptions<V>> | void
