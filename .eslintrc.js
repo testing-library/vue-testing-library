@@ -12,5 +12,7 @@ module.exports = {
     'testing-library/no-dom-import': 'off',
     'testing-library/prefer-screen-queries': 'off',
     'testing-library/no-manual-cleanup': 'off',
+    'testing-library/no-await-sync-events': 'off',
+    'testing-library/await-fire-event': 'error',
   },
 }
