@@ -68,7 +68,7 @@ npm install --save-dev @testing-library/vue
 This library has `peerDependencies` listings for `Vue` and
 `vue-template-compiler`.
 
-You may also be interested in installing `jest-dom` so you can use [the custom
+You may also be interested in installing `@testing-library/jest-dom` so you can use [the custom
 Jest matchers][jest-dom].
 
 ## A basic example
