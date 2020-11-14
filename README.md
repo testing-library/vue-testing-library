@@ -68,7 +68,7 @@ npm install --save-dev @testing-library/vue
 This library has `peerDependencies` listings for `Vue` and
 `vue-template-compiler`.
 
-You may also be interested in installing `jest-dom` so you can use [the custom
+You may also be interested in installing `@testing-library/jest-dom` so you can use [the custom
 Jest matchers][jest-dom].
 
 ## A basic example
@@ -122,7 +122,7 @@ test('increments value on click', async () => {
 })
 ```
 
-> You might want to install [`jest-dom`][jest-dom] to add handy assertions such
+> You might want to install [`@testing-library/jest-dom`][jest-dom] to add handy assertions such
 > as `.toBeInTheDocument()`. In the example above, you could write
 > `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
 
