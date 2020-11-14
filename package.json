@@ -56,7 +56,7 @@
     "axios": "^0.20.0",
     "dtslint": "^4.0.5",
     "eslint": "^7.13.0",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.1.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "isomorphic-unfetch": "^3.0.0",
