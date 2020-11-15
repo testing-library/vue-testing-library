@@ -40,7 +40,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Installation](#installation)
 - [A basic example](#a-basic-example)
   - [More examples](#more-examples)
@@ -69,8 +68,8 @@ npm install --save-dev @testing-library/vue
 This library has `peerDependencies` listings for `Vue` and
 `vue-template-compiler`.
 
-You may also be interested in installing `@testing-library/jest-dom` so you can use [the custom
-Jest matchers][jest-dom].
+You may also be interested in installing `@testing-library/jest-dom` so you can
+use [the custom Jest matchers][jest-dom].
 
 ## A basic example
 
@@ -123,9 +122,9 @@ test('increments value on click', async () => {
 })
 ```
 
-> You might want to install [`@testing-library/jest-dom`][jest-dom] to add handy assertions such
-> as `.toBeInTheDocument()`. In the example above, you could write
-> `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
+> You might want to install [`@testing-library/jest-dom`][jest-dom] to add handy
+> assertions such as `.toBeInTheDocument()`. In the example above, you could
+> write `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
 
 > Using `byText` queries it's not the only nor the best way to query for
 > elements. Read [Which query should I use?][which-query] to discover
@@ -234,6 +233,7 @@ instead of filing an issue on GitHub.
 [![mediafreakch](https://avatars2.githubusercontent.com/u/777093?v=3&s=120)](https://github.com/mediafreakch)
 [![afenton90](https://avatars2.githubusercontent.com/u/8963736?v=3&s=120)](https://github.com/afenton90)
 [![cilice](https://avatars2.githubusercontent.com/u/835588?v=3&s=120)](https://github.com/cilice)
+[![ITenthusiasm](https://avatars2.githubusercontent.com/u/47364027?v3&s=120)](https://github.com/ITenthusiasm)
 
 <!-- prettier-ignore-start -->
 [build-badge]: https://img.shields.io/github/workflow/status/testing-library/vue-testing-library/validate?logo=github
