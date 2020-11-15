@@ -47,23 +47,29 @@ function render(
   //   additionalOptions = configurationCb(router)
   // }
 
-  const wrapper = mount(
-    TestComponent,
-    merge({
-      attachTo: container,
-      global: {
-        plugins,
-      },
-      ...mountOptions,
-      // ...additionalOptions,
-    }),
-  )
+  const mountComponent = (Component, newProps) => {
+    const wrapper = mount(
+      Component,
+      merge({
+        attachTo: container,
+        global: {
+          plugins,
+        },
+        ...mountOptions,
+        props: newProps || mountOptions.props,
+        // ...additionalOptions,
+      }),
+    )
 
-  // this removes the additional "data-v-app" div node from VTU:
-  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
-  unwrapNode(wrapper.parentElement)
+    // this removes the additional "data-v-app" div node from VTU:
+    // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
+    unwrapNode(wrapper.parentElement)
 
-  mountedWrappers.add(wrapper)
+    mountedWrappers.add(wrapper)
+    return wrapper
+  }
+
+  let wrapper = mountComponent(TestComponent)
 
   return {
     container,
@@ -73,7 +79,12 @@ function render(
     unmount: () => wrapper.unmount(),
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
-    setProps: props => wrapper.setProps(props),
+    rerender: ({props}) => {
+      wrapper.unmount()
+      mountedWrappers.delete(wrapper)
+
+      wrapper = mountComponent(TestComponent, props)
+    },
     ...getQueriesForElement(baseElement),
   }
 }
