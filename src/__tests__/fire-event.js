@@ -200,7 +200,7 @@ typingEvents.forEach(event => {
     expect(console.warn).toHaveBeenCalledTimes(1)
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        'By using "change" or "input", there may be unexpected issues. Please use "update" for a better experience.',
+        'Using "fireEvent.{$key} may lead to unexpected results. Please use fireEvent.update() instead.',
       ),
     )
   })
