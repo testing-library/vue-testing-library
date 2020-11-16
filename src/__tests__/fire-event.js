@@ -195,12 +195,12 @@ typingEvents.forEach(event => {
       template: `<input type="text" data-testid=test-${event}></input>`,
     })
 
-    await fireEvent.change(getByTestId(`test-${event}`), 'hello')
+    await fireEvent[event](getByTestId(`test-${event}`), 'hello')
 
     expect(console.warn).toHaveBeenCalledTimes(1)
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        'Using "fireEvent.{$key} may lead to unexpected results. Please use fireEvent.update() instead.',
+        `Using "fireEvent.${event} may lead to unexpected results. Please use fireEvent.update() instead.`,
       ),
     )
   })
