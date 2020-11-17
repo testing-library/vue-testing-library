@@ -112,9 +112,16 @@ async function fireEvent(...args) {
   dtlFireEvent(...args)
   await waitFor(() => {})
 }
+const changeOrInputEventCalledDirectly = (eventValue, eventKey) =>
+  eventValue && (eventKey === 'change' || eventKey === 'input')
 
 Object.keys(dtlFireEvent).forEach(key => {
   fireEvent[key] = async (...args) => {
+    if (changeOrInputEventCalledDirectly(args[1], key)) {
+      console.warn(
+        `Using "fireEvent.${key} may lead to unexpected results. Please use fireEvent.update() instead.`,
+      )
+    }
     dtlFireEvent[key](...args)
     await waitFor(() => {})
   }
