@@ -12,13 +12,13 @@ import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 export * from '@testing-library/dom'
 
 export interface RenderResult extends BoundFunctions<typeof queries> {
-  container: HTMLElement
-  baseElement: HTMLElement
+  container: Element
+  baseElement: Element
   debug: (
     baseElement?:
-      | HTMLElement
+      | Element
       | DocumentFragment
-      | Array<HTMLElement | DocumentFragment>,
+      | Array<Element | DocumentFragment>,
     maxLength?: number,
     options?: PrettyFormatOptions,
   ) => void
@@ -36,8 +36,8 @@ export interface RenderOptions<V extends Vue, S = {}>
   props?: object
   store?: StoreOptions<S>
   routes?: RouteConfig[]
-  container?: HTMLElement
-  baseElement?: HTMLElement
+  container?: Element
+  baseElement?: Element
 }
 
 export type ConfigurationCallback<V extends Vue> = (
@@ -68,7 +68,7 @@ export interface VueFireEventObject extends AsyncFireObject {
     element: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement,
     value: string,
   ): Promise<void>
-  update(element: HTMLElement, value?: string): Promise<void>
+  update(element: Element, value?: string): Promise<void>
 }
 
 export const fireEvent: VueFireEventObject
