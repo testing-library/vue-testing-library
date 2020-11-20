@@ -18,8 +18,8 @@
 export default {
   data() {
     return {
-      selectedDino: 'dino1'
+      selectedDino: 'dino1',
     }
-  }
+  },
 }
 </script>

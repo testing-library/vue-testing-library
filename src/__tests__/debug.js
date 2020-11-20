@@ -57,3 +57,19 @@ test('debug pretty prints multiple nodes with the given parameter', () => {
     expect.stringContaining('Lorem ipsum dolor sit amet'),
   )
 })
+
+test('allows same arguments as prettyDOM', () => {
+  const {debug, container} = render(HelloWorld)
+
+  // debug accepts a maxLength and an options parameters:
+  // https://testing-library.com/docs/dom-testing-library/api-helpers#prettydom
+  debug(container, 6, {highlight: false})
+
+  expect(console.log).toHaveBeenCalledTimes(1)
+  expect(console.log.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      <div>
+      ...,
+    ]
+  `)
+})

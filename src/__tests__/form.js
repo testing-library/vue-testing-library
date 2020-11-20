@@ -8,6 +8,8 @@ import Form from './components/Form'
 // Read 'What queries should I use?' for additional context:
 // https://testing-library.com/docs/guide-which-query
 test('Review form submits', async () => {
+  jest.spyOn(console, 'warn').mockImplementation(() => {})
+
   const fakeReview = {
     title: 'An Awesome Movie',
     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -61,4 +63,5 @@ test('Review form submits', async () => {
   // Assert the right event has been emitted.
   expect(emitted()).toHaveProperty('submit')
   expect(emitted().submit[0][0]).toMatchObject(fakeReview)
+  expect(console.warn).not.toHaveBeenCalled()
 })

@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Vue Testing Library</h1>
+<h1>Vue Testing Library for Vue 3</h1>
 
 <br />
 
@@ -32,7 +32,6 @@
 [![GitHub version][github-badge]][github]
 [![npm version][npm-badge]][npm]
 [![Discord][discord-badge]][discord]
-
 [![MIT License][license-badge]][license]
 <!-- prettier-ignore-end -->
 
@@ -66,7 +65,7 @@ project's `devDependencies`:
 npm install --save-dev @testing-library/vue
 ```
 
-This library has `peerDependencies` listings for `Vue` and
+This library has `peerDependencies` listings for `Vue 3` and
 `vue-template-compiler`.
 
 You may also be interested in installing `jest-dom` so you can use [the custom
@@ -76,10 +75,8 @@ Jest matchers][jest-dom].
 
 ```html
 <template>
-  <div>
-    <p>Times clicked: {{ count }}</p>
-    <button @click="increment">increment</button>
-  </div>
+  <p>Times clicked: {{ count }}</p>
+  <button @click="increment">increment</button>
 </template>
 
 <script>
@@ -235,10 +232,11 @@ instead of filing an issue on GitHub.
 [![mediafreakch](https://avatars2.githubusercontent.com/u/777093?v=3&s=120)](https://github.com/mediafreakch)
 [![afenton90](https://avatars2.githubusercontent.com/u/8963736?v=3&s=120)](https://github.com/afenton90)
 [![cilice](https://avatars2.githubusercontent.com/u/835588?v=3&s=120)](https://github.com/cilice)
+[![ITenthusiasm](https://avatars2.githubusercontent.com/u/47364027?v3&s=120)](https://github.com/ITenthusiasm)
 
 <!-- prettier-ignore-start -->
-[build-badge]: https://travis-ci.org/testing-library/vue-testing-library.svg?branch=master
-[build]: https://travis-ci.org/testing-library/vue-testing-library
+[build-badge]: https://img.shields.io/github/workflow/status/testing-library/vue-testing-library/validate?logo=github
+[build]: https://github.com/testing-library/vue-testing-library/actions?query=workflow%3Avalidate
 [coverage-badge]: https://img.shields.io/codecov/c/github/testing-library/vue-testing-library.svg
 [coverage]: https://codecov.io/github/testing-library/vue-testing-library
 [github-badge]: https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg

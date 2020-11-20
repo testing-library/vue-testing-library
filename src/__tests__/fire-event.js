@@ -121,6 +121,14 @@ const eventTypes = [
   },
 ]
 
+beforeEach(() => {
+  jest.spyOn(console, 'warn').mockImplementation(() => {})
+})
+
+afterEach(() => {
+  console.warn.mockRestore()
+})
+
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
 // For each event type, we assert that the right events are being triggered
@@ -184,6 +192,30 @@ test('calling `fireEvent` directly works too', async () => {
   expect(emitted()).toHaveProperty('click')
 })
 
+test.each(['input', 'change'])(
+  `fireEvent.%s prints a warning message to use fireEvent.update instead`,
+  async event => {
+    const {getByRole} = render({template: `<input type="text" />`})
+
+    await fireEvent[event](getByRole('textbox'), 'hello')
+
+    expect(console.warn).toHaveBeenCalledTimes(1)
+    expect(console.warn).toHaveBeenCalledWith(
+      `Using fireEvent.${event}() may lead to unexpected results. Please use fireEvent.update() instead.`,
+    )
+  },
+)
+
+test('fireEvent.update does not trigger warning messages', async () => {
+  const {getByTestId} = render({
+    template: `<input type="text" data-testid="test-update" />`,
+  })
+
+  await fireEvent.update(getByTestId('test-update'), 'hello')
+
+  expect(console.warn).not.toHaveBeenCalled()
+})
+
 test('fireEvent.update does not crash if non-input element is passed in', async () => {
   const {getByText} = render({
     template: `<div>Hi</div>`,
@@ -196,4 +228,6 @@ test('fireEvent.update does not crash if non-input element is passed in', async 
       Hi
     </div>
   `)
+
+  expect(console.warn).not.toHaveBeenCalled()
 })
