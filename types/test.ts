@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {render, fireEvent, screen, waitFor} from '@testing-library/vue'
 
-declare const elem: HTMLElement
+declare const elem: Element
 
 const SomeComponent = Vue.extend({
   name: 'SomeComponent',
