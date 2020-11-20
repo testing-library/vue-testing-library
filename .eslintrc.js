@@ -1,7 +1,8 @@
 module.exports = {
   extends: [
     './node_modules/kcd-scripts/eslint.js',
-    'plugin:vue/recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:testing-library/vue',
     'prettier/vue',
   ],
   plugins: ['vue'],
@@ -12,5 +13,6 @@ module.exports = {
     'testing-library/no-dom-import': 'off',
     'testing-library/prefer-screen-queries': 'off',
     'testing-library/no-manual-cleanup': 'off',
+    'testing-library/no-await-sync-events': 'off',
   },
 }

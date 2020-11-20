@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <span data-testid="number-display">{{ number }}</span>
-    <span data-testid="instance-id">{{ id }}</span>
-  </div>
+  <span data-testid="number-display">{{ number }}</span>
+  <span data-testid="instance-id">{{ id }}</span>
 </template>
 
 <script>
@@ -12,13 +10,13 @@ export default {
   props: {
     number: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      id: idCounter++
+      id: idCounter++,
     }
-  }
+  },
 }
 </script>

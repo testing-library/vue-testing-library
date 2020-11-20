@@ -4,7 +4,7 @@ import merge from 'lodash.merge'
 
 import {
   getQueriesForElement,
-  logDOM,
+  prettyDOM,
   waitFor,
   fireEvent as dtlFireEvent,
 } from '@testing-library/dom'
@@ -74,8 +74,10 @@ function render(
   return {
     container,
     baseElement,
-    debug: (el = baseElement) =>
-      Array.isArray(el) ? el.forEach(e => logDOM(e)) : logDOM(el),
+    debug: (el = baseElement, maxLength, options) =>
+      Array.isArray(el)
+        ? el.forEach(e => console.log(prettyDOM(e, maxLength, options)))
+        : console.log(prettyDOM(el, maxLength, options)),
     unmount: () => wrapper.unmount(),
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
@@ -121,8 +123,20 @@ async function fireEvent(...args) {
   await waitFor(() => {})
 }
 
+function suggestUpdateIfNecessary(eventValue, eventKey) {
+  const changeOrInputEventCalledDirectly =
+    eventValue && (eventKey === 'change' || eventKey === 'input')
+
+  if (changeOrInputEventCalledDirectly) {
+    console.warn(
+      `Using fireEvent.${eventKey}() may lead to unexpected results. Please use fireEvent.update() instead.`,
+    )
+  }
+}
+
 Object.keys(dtlFireEvent).forEach(key => {
   fireEvent[key] = async (...args) => {
+    suggestUpdateIfNecessary(args[1], key)
     dtlFireEvent[key](...args)
     await waitFor(() => {})
   }
