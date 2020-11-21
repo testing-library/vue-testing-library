@@ -232,11 +232,17 @@ test('fireEvent.update should not crash with input file', async () => {
   const changeSpy = jest.fn();
 
   const {getByTestId} = render({
-    template: `<input type="file" @change="$emit('change', $event)" @input="$emit('input, $event)" data-testid=test-update></input>`,
-  }, {
-    on: {
-      input: inputSpy,
-      change: changeSpy
+    render(h) {
+      return h('input', {
+        on: {
+          input: inputSpy,
+          change: changeSpy
+        },
+        attrs: {
+          type: 'file',
+          'data-testid': 'test-update',
+        },
+      })
     }
   })
 
