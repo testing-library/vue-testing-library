@@ -124,12 +124,12 @@ const mockFile = ({
   name,
   size = 0,
   type = 'text/plain',
-  lastModified = new Date()
+  lastModified = new Date(),
 }) => {
-  const blob = new Blob(['0'.repeat(size)], { type });
-  blob.lastModifiedDate = lastModified;
-  return new File([blob], name);
-};
+  const blob = new Blob(['0'.repeat(size)], {type})
+  blob.lastModifiedDate = lastModified
+  return new File([blob], name)
+}
 
 beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {})
@@ -228,27 +228,28 @@ test('fireEvent.update does not trigger warning messages', async () => {
 })
 
 test('fireEvent.update should not crash with input file', async () => {
-  const inputSpy = jest.fn();
-  const changeSpy = jest.fn();
+  const spy = jest.fn()
 
   const {getByTestId} = render({
     render(h) {
       return h('input', {
         on: {
-          input: inputSpy,
-          change: changeSpy
+          change: spy,
         },
         attrs: {
           type: 'file',
           'data-testid': 'test-update',
         },
       })
-    }
+    },
   })
 
-  // should expect a array of list since it's a fileList
-  await fireEvent.update(getByTestId('test-update'), [mockFile({ name: 'random.txt', size: 524288 })])
+  // should expect an array of list since it's a fileList
+  await fireEvent.update(getByTestId('test-update'), [
+    mockFile({name: 'random.txt', size: 524288}),
+  ])
 
+  expect(spy).toHaveBeenCalledTimes(1)
   expect(console.warn).not.toHaveBeenCalled()
 })
 
