@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
-import {render, fireEvent} from '..'
 import {createI18n} from 'vue-i18n'
+import {render, fireEvent} from '..'
 import Translations from './components/Translations'
 
 const i18n = createI18n({
@@ -29,5 +29,5 @@ test('renders translations', async () => {
 
   expect(getByText('こんにちは')).toBeInTheDocument()
 
-  expect(queryByText('Hello')).toBeNull()
+  expect(queryByText('Hello')).not.toBeInTheDocument()
 })
