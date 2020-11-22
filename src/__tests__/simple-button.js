@@ -1,4 +1,4 @@
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import Button from './components/Button'
 import '@testing-library/jest-dom'
 

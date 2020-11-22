@@ -1,4 +1,4 @@
-import {render, within} from '@testing-library/vue'
+import {render, within} from '..'
 
 test('within() returns an object with all queries bound to the DOM node', () => {
   const {getByTestId, getByText} = render({

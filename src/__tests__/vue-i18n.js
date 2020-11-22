@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import {createI18n} from 'vue-i18n'
 import Translations from './components/Translations'
 

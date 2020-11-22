@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import userEvent from '@testing-library/user-event'
 import Form from './components/Form'
 import Select from './components/Select'

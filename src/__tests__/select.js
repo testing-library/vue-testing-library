@@ -1,4 +1,4 @@
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import '@testing-library/jest-dom'
 import Select from './components/Select'
 

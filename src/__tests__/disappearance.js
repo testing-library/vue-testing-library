@@ -1,4 +1,4 @@
-import {render, waitForElementToBeRemoved} from '@testing-library/vue'
+import {render, waitForElementToBeRemoved} from '..'
 import Disappearance from './components/Disappearance'
 import '@testing-library/jest-dom'
 

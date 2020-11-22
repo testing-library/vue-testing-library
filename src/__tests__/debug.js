@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-debug */
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import HelloWorld from './components/HelloWorld'
 
 beforeEach(() => {

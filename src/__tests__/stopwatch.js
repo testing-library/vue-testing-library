@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render, waitFor, fireEvent} from '@testing-library/vue'
+import {render, waitFor, fireEvent} from '..'
 import StopWatch from './components/StopWatch.vue'
 
 const sleep = ms =>

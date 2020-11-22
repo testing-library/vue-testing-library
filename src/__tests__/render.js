@@ -1,4 +1,4 @@
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import '@testing-library/jest-dom'
 
 test('baseElement defaults to document.body', () => {

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import {defineComponent, h, computed} from 'vue'
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import NumberDisplay from './components/NumberDisplay'
 
 // It'd probably be better if you test the component that's doing the rerendering

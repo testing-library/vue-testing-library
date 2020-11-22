@@ -4,9 +4,6 @@ const config = require('kcd-scripts/jest')
 module.exports = merge(config, {
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'vue'],
-  moduleNameMapper: {
-    '@testing-library/vue': '<rootDir>/src/vue-testing-library.js',
-  },
   coverageDirectory: './coverage',
   collectCoverageFrom: ['**/src/**/*.js', '!**/src/__tests__/**'],
   transform: {

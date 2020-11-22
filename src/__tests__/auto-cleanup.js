@@ -1,4 +1,4 @@
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import '@testing-library/jest-dom'
 
 // This verifies that by importing VTL in an environment which supports

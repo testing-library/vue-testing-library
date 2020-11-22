@@ -1,5 +1,5 @@
 import {h} from 'vue'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import Button from './components/Button'
 
 const eventTypes = [
