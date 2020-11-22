@@ -266,6 +266,6 @@ instead of filing an issue on GitHub.
 [vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
 [vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
 [vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
-[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vueI18n.js
+[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js
 [vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuetify.js
 <!-- prettier-ignore-end -->
