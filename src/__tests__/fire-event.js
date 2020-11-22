@@ -229,3 +229,15 @@ test('fireEvent.update does not crash if non-input element is passed in', async 
   `)
   expect(console.warn).not.toHaveBeenCalled()
 })
+
+test('fireEvent change/input should not throw warning when env is set', async () => {
+  process.env.VTL_WARN_EVENT_UPDATE = 'false'
+  const {getByTestId} = render({
+    template: `<input type="text" data-testid=test-input></input>`,
+  })
+
+  await fireEvent.input(getByTestId('test-input'), { target: { value: 'hello' } })
+  await fireEvent.change(getByTestId('test-input'), { target: { value: 'hello' } })
+
+  expect(console.warn).not.toHaveBeenCalled();
+});

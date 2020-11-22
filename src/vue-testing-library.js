@@ -117,7 +117,7 @@ const changeOrInputEventCalledDirectly = (eventValue, eventKey) =>
 
 Object.keys(dtlFireEvent).forEach(key => {
   fireEvent[key] = async (...args) => {
-    if (changeOrInputEventCalledDirectly(args[1], key)) {
+    if (process.env.VTL_WARN_EVENT_UPDATE === 'true' && changeOrInputEventCalledDirectly(args[1], key)) {
       console.warn(
         `Using "fireEvent.${key} may lead to unexpected results. Please use fireEvent.update() instead.`,
       )
@@ -186,6 +186,10 @@ if (typeof afterEach === 'function' && !process.env.VTL_SKIP_AUTO_CLEANUP) {
   afterEach(() => {
     cleanup()
   })
+}
+
+if (!process.env.VTL_WARN_EVENT_UPDATE) {
+  process.env.VTL_WARN_EVENT_UPDATE = 'true';
 }
 
 export * from '@testing-library/dom'
