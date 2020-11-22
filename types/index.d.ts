@@ -1,74 +1,19 @@
 // TypeScript Version: 4.1
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import {
-  VNode,
-  Component,
-  Directive,
-  Plugin,
-  AppConfig,
-  EmitsOptions,
-  ComponentOptions,
-} from 'vue'
+import {EmitsOptions} from 'vue'
 import {} from '@vue/test-utils'
 import {StoreOptions} from 'vuex'
 import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
 
+// Here until https://github.com/vuejs/vue-test-utils-next/pull/252
+// is released
+import {MountingOptions} from 'vtu-next'
+
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
-
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-/** vvvvvvvvv THIS SHOULD COME FROM VUE TEST UTILS vvvvvvvvvvvvv */
-
-type GlobalMountOptions = {
-  plugins?: (Plugin | [Plugin, ...any[]])[]
-  config?: Partial<Omit<AppConfig, 'isNativeTag'>> // isNativeTag is readonly, so we omit it
-  mixins?: ComponentOptions[]
-  mocks?: Record<string, any>
-  provide?: Record<any, any>
-  components?: Record<string, Component | object>
-  directives?: Record<string, Directive>
-  stubs?: Record<any, any>
-  renderStubDefaultSlot?: boolean
-}
-
-type Slot = VNode | string | {render: Function} | Function | Component
-
-type SlotDictionary = {
-  [key: string]: Slot
-}
-
-interface MountingOptions<Props, Data = {}> {
-  data?: () => {} extends Data ? any : Data extends object ? Partial<Data> : any
-  props?: Props
-  attrs?: Record<string, unknown>
-  slots?: SlotDictionary & {
-    default?: Slot
-  }
-  global?: GlobalMountOptions
-  attachTo?: HTMLElement | string
-  shallow?: boolean
-}
-
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
-/** ^^^^^^^^^^^^ THIS SHOULD COME FROM VUE TEST UTILS ^^^^^^^^^^^^ */
 
 type Debug = (
   baseElement?: Element | DocumentFragment | Array<Element | DocumentFragment>,
