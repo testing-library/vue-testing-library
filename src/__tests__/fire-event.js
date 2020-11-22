@@ -120,17 +120,6 @@ const eventTypes = [
   },
 ]
 
-const mockFile = ({
-  name,
-  size = 0,
-  type = 'text/plain',
-  lastModified = new Date(),
-}) => {
-  const blob = new Blob(['0'.repeat(size)], {type})
-  blob.lastModifiedDate = lastModified
-  return new File([blob], name)
-}
-
 beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {})
 })
@@ -228,28 +217,22 @@ test('fireEvent.update does not trigger warning messages', async () => {
 })
 
 test('fireEvent.update should not crash with input file', async () => {
-  const spy = jest.fn()
-
   const {getByTestId} = render({
-    render(h) {
-      return h('input', {
-        on: {
-          change: spy,
-        },
-        attrs: {
-          type: 'file',
-          'data-testid': 'test-update',
-        },
-      })
-    },
+    template: `<input type="file" data-testid="test-update" />`,
   })
 
-  // should expect an array of list since it's a fileList
-  await fireEvent.update(getByTestId('test-update'), [
-    mockFile({name: 'random.txt', size: 524288}),
-  ])
+  const file = new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})
 
-  expect(spy).toHaveBeenCalledTimes(1)
+  const inputEl = getByTestId('test-update')
+
+  // You could replace the lines below with
+  // userEvent.upload(inputEl, file)
+  Object.defineProperty(inputEl, 'files', {
+    value: [file],
+  })
+
+  await fireEvent.update(inputEl)
+
   expect(console.warn).not.toHaveBeenCalled()
 })
 

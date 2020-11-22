@@ -156,7 +156,6 @@ fireEvent.update = (elem, value) => {
         elem.checked = true
         return fireEvent.change(elem)
       } else if (type === 'file') {
-        Object.defineProperty(elem, 'files', {value})
         return fireEvent.change(elem)
       } else {
         elem.value = value
