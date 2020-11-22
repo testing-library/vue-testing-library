@@ -117,7 +117,10 @@ const changeOrInputEventCalledDirectly = (eventValue, eventKey) =>
 
 Object.keys(dtlFireEvent).forEach(key => {
   fireEvent[key] = async (...args) => {
-    if (changeOrInputEventCalledDirectly(args[1], key)) {
+    if (
+      changeOrInputEventCalledDirectly(args[1], key) &&
+      !process.env.VTL_SKIP_WARN_EVENT_UPDATE
+    ) {
       console.warn(
         `Using "fireEvent.${key} may lead to unexpected results. Please use fireEvent.update() instead.`,
       )
