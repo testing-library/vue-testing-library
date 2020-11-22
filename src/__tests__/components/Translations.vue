@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'VueI18n',
+  name: 'Translations',
 
   methods: {
     switchLocale(locale) {
