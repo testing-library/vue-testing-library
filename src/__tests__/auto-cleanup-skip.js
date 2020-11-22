@@ -1,7 +1,7 @@
 let render
-beforeAll(async () => {
+beforeAll(() => {
   process.env.VTL_SKIP_AUTO_CLEANUP = 'true'
-  const vtl = await require('@testing-library/vue')
+  const vtl = require('..')
   render = vtl.render
 })
 
