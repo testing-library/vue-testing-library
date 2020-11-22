@@ -231,7 +231,7 @@ test('fireEvent.update does not crash if non-input element is passed in', async 
 })
 
 test('fireEvent change/input should not throw warning when env is set', async () => {
-  process.env.VTL_WARN_EVENT_UPDATE = 'false'
+  process.env.WARN_EVENT_UPDATE = 'false'
   const {getByTestId} = render({
     template: `<input type="text" data-testid=test-input></input>`,
   })
