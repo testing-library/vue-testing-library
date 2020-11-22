@@ -1,4 +1,5 @@
-import {defineComponent, h} from 'vue'
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+import {defineComponent} from 'vue'
 import {render, fireEvent, screen, waitFor} from '@testing-library/vue'
 
 declare const elem: Element
@@ -25,16 +26,18 @@ export async function testRender() {
   await page.findAllByText('bar')
 
   // helpers
-  const {container, unmount, debug, rerender} = page
+  const {container, baseElement, unmount, debug, rerender} = page
 
-  debug(container)
+  await rerender({a: 1}) // $ExpectType Promise<void>
 
-  await rerender({a: 1})
-
-  debug(elem) // $ExpectType void
+  debug() // $ExpectType void
+  debug(container) // $ExpectType void
   debug([elem, elem], 100, {highlight: false}) // $ExpectType void
 
   unmount() // $ExpectType void
+
+  container // $ExpectType Element
+  baseElement // $ExpectType Element
 }
 
 export function testRenderOptions() {
@@ -46,31 +49,19 @@ export function testRenderOptions() {
 
 export async function testFireEvent() {
   const {container} = render({template: 'button'})
-  await fireEvent.click(container)
-}
-
-export function testDebug() {
-  const {debug, getAllByTestId} = render({
-    render() {
-      return h('div', [
-        h('h1', {attrs: {'data-testid': 'testid'}}, 'hello world'),
-        h('h2', {attrs: {'data-testid': 'testid'}}, 'hello world'),
-      ])
-    },
-  })
-
-  debug(getAllByTestId('testid'))
+  await fireEvent.click(container) // $ExpectType Promise<void>
+  await fireEvent.touch(elem) // $ExpectType Promise<void>
 }
 
 export async function testScreen() {
   render({template: 'button'})
 
-  await screen.findByRole('button')
+  await screen.findByRole('button') // $ExpectType Promise<HTMLElement>
 }
 
 export async function testWaitFor() {
   const {container} = render({template: 'button'})
-  await fireEvent.click(container)
+  await fireEvent.update(container) // $ExpectType Promise<void>
   await waitFor(() => {})
 }
 

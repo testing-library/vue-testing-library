@@ -1,4 +1,4 @@
-// TypeScript Version: 4.1
+// Minimum TypeScript Version: 4.0
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {EmitsOptions} from 'vue'
