@@ -162,12 +162,18 @@ fireEvent.update = (elem, value) => {
         return fireEvent.change(elem)
       } else {
         elem.value = value
+        if (elem._vModifiers && elem._vModifiers.lazy) {
+          return fireEvent.change(elem)
+        }
         return fireEvent.input(elem)
       }
     }
 
     case 'TEXTAREA': {
       elem.value = value
+      if (elem._vModifiers && elem._vModifiers.lazy) {
+        return fireEvent.change(elem)
+      }
       return fireEvent.input(elem)
     }
 

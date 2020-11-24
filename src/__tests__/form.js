@@ -11,7 +11,9 @@ test('Review form submits', async () => {
   jest.spyOn(console, 'warn').mockImplementation(() => {})
   const fakeReview = {
     title: 'An Awesome Movie',
+    director: 'Stephen Spielberg',
     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    notes: 'Add something',
     rating: '3',
   }
 
@@ -31,8 +33,14 @@ test('Review form submits', async () => {
   const titleInput = getByLabelText(/title of the movie/i)
   await fireEvent.update(titleInput, fakeReview.title)
 
+  const directorInput = getByLabelText(/director of the movie/i)
+  await fireEvent.update(directorInput, fakeReview.director)
+
   const reviewTextarea = getByPlaceholderText('Write an awesome review')
   await fireEvent.update(reviewTextarea, fakeReview.review)
+
+  const notesTextarea = getByPlaceholderText('Add some notes')
+  await fireEvent.update(notesTextarea, fakeReview.notes)
 
   // Rating Radio buttons.
   const initiallySelectedInput = getByLabelText('Awful')
