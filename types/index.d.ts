@@ -5,8 +5,12 @@ import {ThisTypedMountOptions, VueClass} from '@vue/test-utils'
 import {Store, StoreOptions} from 'vuex'
 import Router, {RouteConfig} from 'vue-router'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
-import {queries, EventType, BoundFunctions} from '@testing-library/dom'
+import {
+  queries,
+  EventType,
+  BoundFunctions,
+  prettyFormat,
+} from '@testing-library/dom'
 
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
@@ -20,7 +24,7 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
       | DocumentFragment
       | Array<Element | DocumentFragment>,
     maxLength?: number,
-    options?: PrettyFormatOptions,
+    options?: prettyFormat.OptionsReceived,
   ) => void
   unmount(): void
   isUnmounted(): boolean
