@@ -158,6 +158,8 @@ fireEvent.update = (elem, value) => {
       if (['checkbox', 'radio'].includes(type)) {
         elem.checked = true
         return fireEvent.change(elem)
+      } else if (type === 'file') {
+        return fireEvent.change(elem)
       } else {
         elem.value = value
         if (elem._vModifiers && elem._vModifiers.lazy) {
