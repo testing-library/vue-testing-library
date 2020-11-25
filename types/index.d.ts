@@ -15,6 +15,8 @@ import {
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
 
+export function cleanup(): void
+
 export interface RenderResult extends BoundFunctions<typeof queries> {
   container: Element
   baseElement: Element
