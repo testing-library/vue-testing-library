@@ -46,12 +46,16 @@ export interface RenderOptions<V extends Vue, S = {}>
   baseElement?: Element
 }
 
-export type ConfigurationCallback<V extends Vue> = (
+type ConfigurationArgs = [
   localVue: typeof Vue,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   store: Store<any>,
   router: Router,
-) => Partial<ThisTypedMountOptions<V>> | void
+]
+
+export type ConfigurationCallback<V extends Vue> =
+  | ((...args: ConfigurationArgs) => Partial<ThisTypedMountOptions<V>>)
+  | ((...args: ConfigurationArgs) => void)
 
 export function render<V extends Vue>(
   TestComponent: VueClass<V> | ComponentOptions<V>,
