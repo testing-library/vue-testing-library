@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render} from '@testing-library/vue'
+import {render, waitFor} from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import Form from './components/Form'
 import Select from './components/Select'
@@ -12,7 +12,7 @@ afterEach(() => {
   console.warn.mockRestore()
 })
 
-test('User events in a form', () => {
+test('User events in a form', async () => {
   const fakeReview = {
     title: 'An Awesome Movie',
     review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -43,7 +43,7 @@ test('User events in a form', () => {
 
   userEvent.click(wonderfulRadioInput)
   expect(wonderfulRadioInput).toBeChecked()
-  expect(initialSelectedRating).not.toBeChecked()
+  await waitFor(() => expect(initialSelectedRating).not.toBeChecked())
 
   const recommendInput = getByLabelText(/Would you recommend this movie?/i)
   userEvent.click(recommendInput)
