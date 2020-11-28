@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
-import {render} from '..'
 import userEvent from '@testing-library/user-event'
+import {render} from '..'
 import Form from './components/Form'
 import Select from './components/Select'
 

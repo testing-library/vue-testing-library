@@ -1,6 +1,6 @@
+import {h} from 'vue'
 import {render} from '..'
 import '@testing-library/jest-dom'
-import {h} from 'vue'
 
 // From docs: Performance gains from 2.x for functional components are now
 // negligible in 3.x, so we recommend just using stateful components.

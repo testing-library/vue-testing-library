@@ -2,15 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {EmitsOptions} from 'vue'
-import {} from '@vue/test-utils'
+import {MountingOptions} from '@vue/test-utils'
 import {StoreOptions} from 'vuex'
 import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
-
-// Here until https://github.com/vuejs/vue-test-utils-next/pull/252
-// is released
-import {MountingOptions} from 'vtu-next'
 
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'

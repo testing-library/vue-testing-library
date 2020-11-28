@@ -48,8 +48,8 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.12.1",
-    "@testing-library/dom": "^7.26.3",
-    "@vue/test-utils": "^2.0.0-beta.10",
+    "@testing-library/dom": "^7.28.1",
+    "@vue/test-utils": "^2.0.0-beta.11",
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
@@ -57,7 +57,7 @@
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/user-event": "^12.2.2",
     "@types/estree": "0.0.45",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/compiler-sfc": "^3.0.3",
     "apollo-boost": "^0.4.9",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
@@ -68,18 +68,18 @@
     "graphql-tag": "^2.11.0",
     "isomorphic-unfetch": "^3.1.0",
     "jest-serializer-vue": "^2.0.2",
-    "kcd-scripts": "^7.0.3",
+    "kcd-scripts": "^7.3.0",
     "msw": "^0.21.3",
     "portal-vue": "^2.1.7",
     "typescript": "^4.1.2",
-    "vee-validate": "^4.0.0-beta.16",
-    "vue": "^3.0.2",
+    "vee-validate": "^4.0.2",
+    "vue": "^3.0.3",
     "vue-apollo": "^3.0.5",
     "vue-i18n": "^9.0.0-beta.6",
     "vue-jest": "^5.0.0-alpha.5",
     "vue-router": "^4.0.0-rc.1",
-    "vuetify": "^2.3.16",
-    "vuex": "^4.0.0-rc.1"
+    "vuetify": "^2.3.19",
+    "vuex": "^4.0.0-rc.2"
   },
   "peerDependencies": {
     "vue": ">= 3",
