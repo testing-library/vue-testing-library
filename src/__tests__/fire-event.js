@@ -119,6 +119,7 @@ const eventTypes = [
     elementType: 'div',
   },
 ]
+
 beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {})
 })
@@ -211,6 +212,26 @@ test('fireEvent.update does not trigger warning messages', async () => {
   })
 
   await fireEvent.update(getByTestId('test-update'), 'hello')
+
+  expect(console.warn).not.toHaveBeenCalled()
+})
+
+test('fireEvent.update should not crash with input file', async () => {
+  const {getByTestId} = render({
+    template: `<input type="file" data-testid="test-update" />`,
+  })
+
+  const file = new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})
+
+  const inputEl = getByTestId('test-update')
+
+  // You could replace the lines below with
+  // userEvent.upload(inputEl, file)
+  Object.defineProperty(inputEl, 'files', {
+    value: [file],
+  })
+
+  await fireEvent.update(inputEl)
 
   expect(console.warn).not.toHaveBeenCalled()
 })

@@ -5,11 +5,17 @@ import {ThisTypedMountOptions, VueClass} from '@vue/test-utils'
 import {Store, StoreOptions} from 'vuex'
 import Router, {RouteConfig} from 'vue-router'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
-import {queries, EventType, BoundFunctions} from '@testing-library/dom'
+import {
+  queries,
+  EventType,
+  BoundFunctions,
+  prettyFormat,
+} from '@testing-library/dom'
 
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
+
+export function cleanup(): void
 
 export interface RenderResult extends BoundFunctions<typeof queries> {
   container: Element
@@ -20,7 +26,7 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
       | DocumentFragment
       | Array<Element | DocumentFragment>,
     maxLength?: number,
-    options?: PrettyFormatOptions,
+    options?: prettyFormat.OptionsReceived,
   ) => void
   unmount(): void
   isUnmounted(): boolean
@@ -40,12 +46,16 @@ export interface RenderOptions<V extends Vue, S = {}>
   baseElement?: Element
 }
 
-export type ConfigurationCallback<V extends Vue> = (
+type ConfigurationArgs = [
   localVue: typeof Vue,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   store: Store<any>,
   router: Router,
-) => Partial<ThisTypedMountOptions<V>> | void
+]
+
+export type ConfigurationCallback<V extends Vue> =
+  | ((...args: ConfigurationArgs) => Partial<ThisTypedMountOptions<V>>)
+  | ((...args: ConfigurationArgs) => void)
 
 export function render<V extends Vue>(
   TestComponent: VueClass<V> | ComponentOptions<V>,

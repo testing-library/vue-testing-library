@@ -36,5 +36,5 @@ test('renders translations', async () => {
 
   expect(getByText('こんにちは')).toBeInTheDocument()
 
-  expect(queryByText('Hello')).toBeNull()
+  expect(queryByText('Hello')).not.toBeInTheDocument()
 })

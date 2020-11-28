@@ -5,12 +5,23 @@
       <label for="movie-input">Title of the movie</label>
       <input id="movie-input" v-model="title" name="title" />
 
+      <label for="director-input">Director of the movie</label>
+      <input id="director-input" v-model.lazy="director" name="director" />
+
       <label id="review-textarea">Your review</label>
       <textarea
         v-model="review"
         name="review-textarea"
         placeholder="Write an awesome review"
         aria-labelledby="review-textarea"
+      />
+
+      <label id="notes-textarea">Add some notes</label>
+      <textarea
+        v-model.lazy="notes"
+        name="notes-textarea"
+        placeholder="Add some notes"
+        aria-labelledby="notes-textarea"
       />
 
       <label>
@@ -46,7 +57,9 @@ export default {
   data() {
     return {
       title: '',
+      director: '',
       review: '',
+      notes: '',
       rating: '1',
       recommend: false,
     }
@@ -63,7 +76,9 @@ export default {
 
       this.$emit('submit', {
         title: this.title,
+        director: this.director,
         review: this.review,
+        notes: this.notes,
         rating: this.rating,
         recommend: this.recommend,
       })
