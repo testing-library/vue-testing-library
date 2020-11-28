@@ -16,7 +16,7 @@ test('can validate using plugin', async () => {
   )
 
   // Assert error messages are not in the DOM when rendering the component.
-  expect(queryByTestId('username-errors')).toBeNull()
+  expect(queryByTestId('username-errors')).not.toBeInTheDocument()
 
   const usernameInput = getByPlaceholderText('Username...')
   await fireEvent.touch(usernameInput)
