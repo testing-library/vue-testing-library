@@ -1,7 +1,7 @@
 test.todo('Your test suite must contain at least one test.')
 
 // import '@testing-library/jest-dom'
-// import {render} from '@testing-library/vue'
+// import {render} from '..'
 
 // import About from './components/Router/About.vue'
 

@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import Card from './components/Card'
 
 // Usage is the same as Vue Test Utils, since slots values are passed using the `slots`

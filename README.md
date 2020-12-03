@@ -171,8 +171,7 @@ light-weight, simple, and understandable.
 
 ## Typings
 
-The TypeScript type definitions are in the [DefinitelyTyped repo][types] and
-bundled with Vue Testing Library.
+The TypeScript type definitions are in the [types][types-directory] directory.
 
 ## ESLint support
 
@@ -247,7 +246,6 @@ instead of filing an issue on GitHub.
 [license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
 [discord]: https://testing-library.com/discord
 [discord-badge]: https://img.shields.io/discord/723559267868737556.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2&style=flat-square
-[types]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__vue
 [jest-dom]: https://github.com/testing-library/jest-dom
 [which-query]: https://testing-library.com/docs/guide-which-query
 [guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
@@ -261,10 +259,11 @@ instead of filing an issue on GitHub.
 [add-issue-bug]: https://github.com/testing-library/vue-testing-library/issues/new?assignees=&labels=bug&template=bug_report.md&title=
 [add-issue]: (https://github.com/testing-library/vue-testing-library/issues/new)
 
+[types-directory]: https://github.com/testing-library/vue-testing-library/blob/master/types
 [test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
 [vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
 [vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
 [vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
-[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vueI18n.js
+[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js
 [vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuetify.js
 <!-- prettier-ignore-end -->

@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import VuexTest from './components/Store/VuexTest'
 import {store} from './components/Store/store'
 

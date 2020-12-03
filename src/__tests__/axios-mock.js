@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import axiosMock from 'axios'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import Component from './components/Fetch.vue'
 
 test('mocks an API call when load-greeting is clicked', async () => {

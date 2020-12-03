@@ -5,7 +5,7 @@ test.todo('Your test suite must contain at least one test.')
 // // Related issue on Vue Test Utils: https://github.com/vuejs/vue-test-utils-next/issues/152
 
 // import '@testing-library/jest-dom'
-// import {render, fireEvent} from '@testing-library/vue'
+// import {render, fireEvent} from '..'
 // import App from './components/Router/App.vue'
 // import Home from './components/Router/Home.vue'
 // import About from './components/Router/About.vue'

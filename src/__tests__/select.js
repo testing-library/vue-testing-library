@@ -1,4 +1,4 @@
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import '@testing-library/jest-dom'
 import Select from './components/Select'
 
@@ -9,19 +9,19 @@ test('Select component', async () => {
 
   // Get the Select element by using the initially displayed value.
   const select = getByDisplayValue('Tyrannosaurus')
-  expect(select.value).toBe('dino1')
+  expect(select).toHaveValue('dino1')
 
   // Update it by manually sending a valid option value.
   await fireEvent.update(select, 'dino2')
-  expect(select.value).toBe('dino2')
+  expect(select).toHaveValue('dino2')
 
   // We can trigger an update event by directly getting the <option> element.
   optionElement = getByText('Deinonychus')
   await fireEvent.update(optionElement)
-  expect(select.value).toBe('dino3')
+  expect(select).toHaveValue('dino3')
 
   // ...even if option is within an <optgroup>.
   optionElement = getByText('Diplodocus')
   await fireEvent.update(optionElement)
-  expect(select.value).toBe('dino4')
+  expect(select).toHaveValue('dino4')
 })

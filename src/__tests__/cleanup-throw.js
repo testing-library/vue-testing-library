@@ -1,6 +1,6 @@
 test.todo('check if this test still makes sense')
 
-// import {render, cleanup} from '@testing-library/vue'
+// import {render, cleanup} from '..'
 // import {nextTick} from 'vue'
 
 // test('cleanup re-throws errors from async lifecycle hooks', async () => {

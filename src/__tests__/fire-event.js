@@ -1,5 +1,5 @@
 import {h} from 'vue'
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import Button from './components/Button'
 
 const eventTypes = [
@@ -228,6 +228,23 @@ test('fireEvent.update does not crash if non-input element is passed in', async 
       Hi
     </div>
   `)
+
+  expect(console.warn).not.toHaveBeenCalled()
+})
+
+test('fireEvent.update handles input file', async () => {
+  const {getByTestId} = render({
+    template: `<input type="file" data-testid="test-update" />`,
+  })
+
+  const file = new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})
+
+  const inputEl = getByTestId('test-update')
+
+  // You could replace the lines below with
+  // userEvent.upload(inputEl, file)
+  Object.defineProperty(inputEl, 'files', {value: [file]})
+  await fireEvent.update(inputEl)
 
   expect(console.warn).not.toHaveBeenCalled()
 })

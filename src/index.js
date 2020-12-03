@@ -170,6 +170,8 @@ fireEvent.update = (elem, value) => {
       if (['checkbox', 'radio'].includes(type)) {
         elem.checked = true
         return fireEvent.change(elem)
+      } else if (type === 'file') {
+        return fireEvent.change(elem)
       } else {
         elem.value = value
         return fireEvent.input(elem)

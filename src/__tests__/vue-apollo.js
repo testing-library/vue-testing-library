@@ -1,7 +1,7 @@
 test.todo('Your test suite must contain at least one test.')
 // import '@testing-library/jest-dom'
 // import fetch from 'isomorphic-unfetch'
-// import {render, fireEvent, screen} from '@testing-library/vue'
+// import {render, fireEvent, screen} from '..'
 // import VueApollo from 'vue-apollo'
 // import {InMemoryCache} from 'apollo-cache-inmemory'
 // import ApolloClient from 'apollo-boost'

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent} from '..'
 import VeeValidate from './components/Validate'
 
 test('can validate using plugin', async () => {

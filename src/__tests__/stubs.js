@@ -1,4 +1,4 @@
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import '@testing-library/jest-dom'
 import Stubs from './components/Stubs'
 

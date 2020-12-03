@@ -1,7 +1,7 @@
 test.todo('Your test suite must contain at least one test.')
 // import '@testing-library/jest-dom'
 // import Vue from 'vue'
-// import {render, fireEvent} from '@testing-library/vue'
+// import {render, fireEvent} from '..'
 // import Vuetify from 'vuetify'
 // import VuetifyDemoComponent from './components/Vuetify'
 

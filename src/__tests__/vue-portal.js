@@ -1,6 +1,6 @@
 test.todo('Your test suite must contain at least one test.')
 
-// import {render, waitFor} from '@testing-library/vue'
+// import {render, waitFor} from '..'
 // import '@testing-library/jest-dom/extend-expect'
 // import PortalVue from 'portal-vue'
 
