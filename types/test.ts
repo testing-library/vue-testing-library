@@ -28,7 +28,8 @@ export async function testRender() {
   // helpers
   const {container, baseElement, unmount, debug, rerender} = page
 
-  await rerender({a: 1}) // $ExpectType Promise<void>
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  rerender({a: 1}) // $ExpectType Promise<void>
 
   debug() // $ExpectType void
   debug(container) // $ExpectType void
