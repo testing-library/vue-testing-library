@@ -41,6 +41,7 @@
 
 <script>
 export default {
+  emits: {submit: null},
   data() {
     return {
       title: '',
@@ -49,13 +50,11 @@ export default {
       recommend: false,
     }
   },
-
   computed: {
     submitDisabled() {
       return !this.title || !this.review
     },
   },
-
   methods: {
     submit() {
       if (this.submitDisabled) return

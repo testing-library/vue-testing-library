@@ -8,7 +8,7 @@
       </v-card>
     </v-dialog>
     <v-menu bottom offset-y>
-      <template v-slot:activator="{on}">
+      <template #activator="{on}">
         <v-btn icon v-on="on">open menu</v-btn>
       </template>
       <v-list>

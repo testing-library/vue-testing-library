@@ -10,8 +10,9 @@ export default {
       default: 'Button Text',
     },
   },
+  emits: {click: null},
   methods: {
-    handleClick(e) {
+    handleClick(_e) {
       this.$emit('click')
     },
   },
