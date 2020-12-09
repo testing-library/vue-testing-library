@@ -24,7 +24,7 @@ test('full app rendering/navigating', async () => {
 
   await fireEvent.click(getByTestId('about-link'))
 
-  // Same thing hereVue Router navigation is async, so we need to wait until the
+  // Same thing here: Vue Router navigation is async, so we need to wait until the
   // navigation happens
   await waitFor(() =>
     expect(getByTestId('location-display')).toHaveTextContent('/about'),
