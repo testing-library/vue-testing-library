@@ -98,11 +98,8 @@ function cleanupAtWrapper(wrapper) {
     document.body.removeChild(wrapper.element.parentNode)
   }
 
-  try {
-    wrapper.unmount()
-  } finally {
-    mountedWrappers.delete(wrapper)
-  }
+  wrapper.unmount()
+  mountedWrappers.delete(wrapper)
 }
 
 // Vue Testing Library's version of fireEvent will call DOM Testing Library's
