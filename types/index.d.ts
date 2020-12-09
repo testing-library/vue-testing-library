@@ -4,6 +4,7 @@
 import {EmitsOptions} from 'vue'
 import {MountingOptions} from '@vue/test-utils'
 import {StoreOptions} from 'vuex'
+import {RouteRecordRaw} from 'vue-router'
 import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
@@ -33,7 +34,7 @@ type VueTestUtilsRenderOptions = Omit<
 >
 type VueTestingLibraryRenderOptions = {
   store?: StoreOptions<{}>
-  // router?: ¿¿¿???
+  routes?: RouteRecordRaw[]
   container?: Element
   baseElement?: Element
 }
