@@ -15,18 +15,15 @@ function render(
   TestComponent,
   {
     store = null,
-    // routes = null,
+    routes = null,
     container: customContainer,
     baseElement: customBaseElement,
     ...mountOptions
   } = {},
-  // configurationCb,
 ) {
   const div = document.createElement('div')
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
-
-  // let additionalOptions = {}
 
   const plugins = []
 
@@ -35,29 +32,23 @@ function render(
     plugins.push(createStore(store))
   }
 
-  // if (routes) {
-  //   const requiredRouter = require('vue-router')
-  //   const {createRouter, createWebHistory} =
-  //     requiredRouter.default || requiredRouter
-  //   plugins.push(createRouter({history: createWebHistory(), routes}))
-  // }
+  if (routes) {
+    const requiredRouter = require('vue-router')
+    const {createRouter, createWebHistory} =
+      requiredRouter.default || requiredRouter
 
-  // Should we expose vue 3 app? if so, how?
-  // if (configurationCb && typeof configurationCb === 'function') {
-  //   additionalOptions = configurationCb(router)
-  // }
+    const routerPlugin = createRouter({history: createWebHistory(), routes})
+    plugins.push(routerPlugin)
+  }
 
   const mountComponent = (Component, newProps) => {
     const wrapper = mount(
       Component,
       merge({
         attachTo: container,
-        global: {
-          plugins,
-        },
+        global: {plugins},
         ...mountOptions,
         props: newProps || mountOptions.props,
-        // ...additionalOptions,
       }),
     )
 
