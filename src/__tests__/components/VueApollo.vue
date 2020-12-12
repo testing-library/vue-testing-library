@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-if="$apollo.queries.user.loading">Loading</div>
+    <div v-if="loading">Loading</div> 
+
     <div v-if="user">
       <div>Email: {{ user.email }}</div>
       <form @submit.prevent="updateUser">
@@ -15,47 +16,43 @@
 </template>
 
 <script>
-import {userQuery, updateUserMutation} from './VueApollo/queries'
+import { reactive, ref } from 'vue'
+import { useQuery, useMutation, useResult } from "@vue/apollo-composable";
+import {updateUserMutation, getUserQuery} from './VueApollo/queries'
+import {gql} from 'apollo-boost'
+
 
 export default {
-  apollo: {
-    user: {
-      query: userQuery,
-      variables() {
-        return {id: this.id}
-      },
-    },
-  },
   props: {
     id: {
       type: String,
       required: true,
     },
   },
-  data() {
-    return {
-      user: null,
-      email: '',
-    }
-  },
-  methods: {
-    async updateUser() {
-      const {
-        data: {
-          updateUser: {email},
-        },
-      } = await this.$apollo.mutate({
-        mutation: updateUserMutation,
-        variables: {
-          input: {
-            email: this.email,
-            id: this.id,
-          },
-        },
-      })
+  setup(props) {
+    const email = ref('')
+      
+    const { result, loading, error } = useQuery(getUserQuery, {id: props.id})
+    const user = useResult(result, null, data => data.user)
 
-      this.user.email = email
-    },
+    const {mutate: updateUser} = useMutation(updateUserMutation, 
+        ()=> ({variables: 
+          {
+            input: {
+              email: email.value,
+              id: props.id,
+            },
+          }
+        })
+    )
+
+    return {
+      email,
+      user,
+      loading,
+      error,
+      updateUser,
+    }
   },
 }
 </script>

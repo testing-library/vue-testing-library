@@ -1,75 +1,104 @@
-test.todo('Your test suite must contain at least one test.')
-// import '@testing-library/jest-dom'
-// import fetch from 'isomorphic-unfetch'
-// import {render, fireEvent, screen} from '..'
-// import VueApollo from 'vue-apollo'
-// import {InMemoryCache} from 'apollo-cache-inmemory'
-// import ApolloClient from 'apollo-boost'
+import '@testing-library/jest-dom'
+import fetch from 'isomorphic-unfetch'
+import {render, fireEvent, screen} from '..'
+import { DefaultApolloClient } from '@vue/apollo-composable'
+import ApolloClient from 'apollo-boost'
+import {setupServer} from 'msw/node'
+import {graphql} from 'msw'
+import { provide, h } from 'vue'
+import Component from './components/VueApollo.vue'
 
-// // Since vue-apollo doesn't provides a MockProvider for Vue,
-// // you need to use some kind of mocks for the queries.
+// Since vue-apollo doesn't provide a MockProvider for Vue,
+// you need to use some kind of mocks for the queries.
 
-// // We recommend using Mock Service Worker library to declaratively mock API communication
-// // in your tests instead of stubbing window.fetch, or relying on third-party adapters.
+// We are using Mock Service Worker (aka MSW) library to declaratively mock API communication
+// in your tests instead of stubbing window.fetch, or relying on third-party adapters.
 
-// import {setupServer} from 'msw/node'
-// import {graphql} from 'msw'
+const server = setupServer(
+  ...[
+    graphql.query('getUser', (req, res, ctx) => {
+      const {variables} = req
 
-// import Component from './components/VueApollo.vue'
+      if (variables.id !== '1') {
+        return res(
+          ctx.errors([
+            {
+              message: 'User not found',
+            },
+          ]),
+        )
+      }
 
-// const apolloClient = new ApolloClient({
-//   uri: 'http://localhost:3020/graphql',
-//   cache: new InMemoryCache({
-//     addTypename: false,
-//   }),
-//   fetch,
-// })
+      return res(
+        ctx.data({
+          user: 
+            {
+              id: 1,
+              email: 'alice@example.com',
+              __typename: 'User'
+            },
+        }),
+      )
+    }),
 
-// const server = setupServer(
-//   ...[
-//     graphql.mutation('updateUser', (req, res, ctx) => {
-//       const {variables} = req
+    graphql.mutation('updateUser', (req, res, ctx) => {
+      const {variables} = req
 
-//       return res(
-//         ctx.data({
-//           updateUser: {id: variables.input.id, email: variables.input.email},
-//         }),
-//       )
-//     }),
-//     graphql.query('User', (req, res, ctx) => {
-//       return res(ctx.data({user: {id: '1', email: 'alice@example.com'}}))
-//     }),
-//   ],
-// )
+      return res(
+        ctx.data({
+          updateUser: {
+            id: variables.input.id, 
+            email: variables.input.email,
+            __typename: 'User'
+          },
+        }),
+        )
+      }),
 
-// beforeAll(() => server.listen())
-// afterEach(() => server.resetHandlers())
-// afterAll(() => server.close())
+  ],
+)
 
-// test('mocking queries and mutations', async () => {
-//   render(Component, {props: {id: '1'}}, localVue => {
-//     localVue.use(VueApollo)
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
-//     return {
-//       apolloProvider: new VueApollo({defaultClient: apolloClient}),
-//     }
-//   })
+const apolloClient = new ApolloClient({
+    uri: "http://localhost:3000",
+    fetch,
+})
 
-//   //Initial rendering will be in the loading state,
-//   expect(screen.getByText('Loading')).toBeInTheDocument()
+const ComponentWithInjectedApollo = {
+  // It would be preferable to use global.provide when we pass options to VTU options
+  // to testing library render function but that option is not yet supported by VTU
+  setup () {
+    provide(DefaultApolloClient, apolloClient)
+  },
+  render() {
+    return h(Component)
+  }
+}
 
-//   expect(
-//     await screen.findByText('Email: alice@example.com'),
-//   ).toBeInTheDocument()
+test('mocking queries and mutations', async () => {
 
-//   await fireEvent.update(
-//     screen.getByLabelText('Email'),
-//     'alice+new@example.com',
-//   )
+  render(ComponentWithInjectedApollo, {
+      props: {id: '1'}
+  })
 
-//   await fireEvent.click(screen.getByRole('button', {name: 'Change email'}))
+  //Initial rendering will be in the loading state,
+  expect(screen.getByText('Loading')).toBeInTheDocument()
 
-//   expect(
-//     await screen.findByText('Email: alice+new@example.com'),
-//   ).toBeInTheDocument()
-// })
+  expect(
+    await screen.findByText('Email: alice@example.com')
+  ).toBeInTheDocument()
+
+  await fireEvent.update(
+    screen.getByLabelText('Email'),
+    'alice+new@example.com',
+  )
+
+  await fireEvent.click(screen.getByRole('button', {name: 'Change email'}))
+
+  expect(
+     await screen.findByText('Email: alice+new@example.com'),
+  ).toBeInTheDocument()
+})
