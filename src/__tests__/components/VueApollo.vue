@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading">Loading</div> 
+    <div v-if="loading">Loading</div>
 
     <div v-if="user">
       <div>Email: {{ user.email }}</div>
@@ -16,11 +16,9 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
-import { useQuery, useMutation, useResult } from "@vue/apollo-composable";
+import {reactive, ref} from 'vue'
+import {useQuery, useMutation, useResult} from '@vue/apollo-composable'
 import {updateUserMutation, getUserQuery} from './VueApollo/queries'
-import {gql} from 'apollo-boost'
-
 
 export default {
   props: {
@@ -31,20 +29,18 @@ export default {
   },
   setup(props) {
     const email = ref('')
-      
-    const { result, loading, error } = useQuery(getUserQuery, {id: props.id})
+
+    const {result, loading, error} = useQuery(getUserQuery, {id: props.id})
     const user = useResult(result, null, data => data.user)
 
-    const {mutate: updateUser} = useMutation(updateUserMutation, 
-        ()=> ({variables: 
-          {
-            input: {
-              email: email.value,
-              id: props.id,
-            },
-          }
-        })
-    )
+    const {mutate: updateUser} = useMutation(updateUserMutation, () => ({
+      variables: {
+        input: {
+          email: email.value,
+          id: props.id,
+        },
+      },
+    }))
 
     return {
       email,
