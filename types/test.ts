@@ -82,6 +82,7 @@ export function testOptions() {
       state: {count: 3},
       strict: true,
     },
+    routes: [{path: '/', component: () => SomeComponent, name: 'route name'}],
     baseElement: document.createElement('div'),
     container: document.createElement('div'),
   })
