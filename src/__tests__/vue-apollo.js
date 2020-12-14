@@ -1,11 +1,10 @@
 import '@testing-library/jest-dom'
 import fetch from 'isomorphic-unfetch'
 import {render, fireEvent, screen} from '..'
-import { DefaultApolloClient } from '@vue/apollo-composable'
+import {DefaultApolloClient} from '@vue/apollo-composable'
 import ApolloClient from 'apollo-boost'
 import {setupServer} from 'msw/node'
 import {graphql} from 'msw'
-import { provide, h } from 'vue'
 import Component from './components/VueApollo.vue'
 
 // Since vue-apollo doesn't provide a MockProvider for Vue,
@@ -31,12 +30,11 @@ const server = setupServer(
 
       return res(
         ctx.data({
-          user: 
-            {
-              id: 1,
-              email: 'alice@example.com',
-              __typename: 'User'
-            },
+          user: {
+            id: 1,
+            email: 'alice@example.com',
+            __typename: 'User',
+          },
         }),
       )
     }),
@@ -47,14 +45,13 @@ const server = setupServer(
       return res(
         ctx.data({
           updateUser: {
-            id: variables.input.id, 
+            id: variables.input.id,
             email: variables.input.email,
-            __typename: 'User'
+            __typename: 'User',
           },
         }),
-        )
-      }),
-
+      )
+    }),
   ],
 )
 
@@ -62,33 +59,26 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
-const apolloClient = new ApolloClient({
-    uri: "http://localhost:3000",
-    fetch,
-})
-
-const ComponentWithInjectedApollo = {
-  // It would be preferable to use global.provide when we pass options to VTU options
-  // to testing library render function but that option is not yet supported by VTU
-  setup () {
-    provide(DefaultApolloClient, apolloClient)
-  },
-  render() {
-    return h(Component)
-  }
-}
-
 test('mocking queries and mutations', async () => {
+  const apolloClient = new ApolloClient({
+    uri: 'http://localhost:3000',
+    fetch,
+  })
 
-  render(ComponentWithInjectedApollo, {
-      props: {id: '1'}
+  render(Component, {
+    props: {id: '1'},
+    global: {
+      provide: {
+        [DefaultApolloClient]: apolloClient,
+      },
+    },
   })
 
   //Initial rendering will be in the loading state,
   expect(screen.getByText('Loading')).toBeInTheDocument()
 
   expect(
-    await screen.findByText('Email: alice@example.com')
+    await screen.findByText('Email: alice@example.com'),
   ).toBeInTheDocument()
 
   await fireEvent.update(
@@ -99,6 +89,6 @@ test('mocking queries and mutations', async () => {
   await fireEvent.click(screen.getByRole('button', {name: 'Change email'}))
 
   expect(
-     await screen.findByText('Email: alice+new@example.com'),
+    await screen.findByText('Email: alice+new@example.com'),
   ).toBeInTheDocument()
 })
