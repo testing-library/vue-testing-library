@@ -4,7 +4,6 @@ const config = require('kcd-scripts/jest')
 module.exports = merge(config, {
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'vue'],
-  coverageProvider: 'v8',
   coverageDirectory: './coverage',
   collectCoverageFrom: ['**/src/**/*.js', '!**/src/__tests__/**'],
   transform: {
@@ -13,7 +12,7 @@ module.exports = merge(config, {
   },
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
   testPathIgnorePatterns: [
-    '/node_modules/',
+    '<rootDir>/node_modules/',
     '<rootDir>/src/__tests__/components',
     '<rootDir>/src/__tests__/directives',
   ],
