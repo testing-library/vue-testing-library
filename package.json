@@ -53,7 +53,7 @@
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
-    "@apollo/client": "3.2.3",
+    "@apollo/client": "3.0.0",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/user-event": "^12.4.0",
