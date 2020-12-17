@@ -61,7 +61,6 @@
     "@vue/apollo-composable": "^4.0.0-alpha.12",
     "@vue/compiler-sfc": "^3.0.4",
     "apollo-boost": "^0.4.9",
-    "apollo-cache-inmemory": "^1.6.6",
     "axios": "^0.20.0",
     "dtslint": "^4.0.6",
     "element-plus": "^1.0.1-beta.7",
