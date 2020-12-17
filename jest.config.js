@@ -12,8 +12,14 @@ module.exports = merge(config, {
   },
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
   testPathIgnorePatterns: [
-    '<rootDir>/node_modules',
+    '<rootDir>/node_modules/',
     '<rootDir>/src/__tests__/components',
     '<rootDir>/src/__tests__/directives',
   ],
+  moduleNameMapper: {
+    '@vue/apollo-composable': [
+      '<rootDir>/node_modules/@vue/apollo-composable/dist/index.js',
+    ],
+  },
+  transformIgnorePatterns: ['node_modules/(?!(@vue/apollo-composable)/)'],
 })
