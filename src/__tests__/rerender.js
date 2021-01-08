@@ -7,25 +7,24 @@ import NumberDisplay from './components/NumberDisplay'
 // to ensure that the rerendered component is being updated correctly.
 // That said, if you'd prefer to, for example, update the props of a rendered
 // component, this function can be used to do so.
-test('calling rerender remounts the component and updates the props', () => {
+test('rerender re-renders the element', async () => {
   const {rerender, getByTestId} = render(NumberDisplay, {
     props: {number: 1},
   })
 
   expect(getByTestId('number-display')).toHaveTextContent('1')
 
-  rerender({props: {number: 3}})
+  await rerender({number: 3})
   expect(getByTestId('number-display')).toHaveTextContent('3')
 
-  rerender({props: {number: 5}})
+  await rerender({number: 5})
   expect(getByTestId('number-display')).toHaveTextContent('5')
 
-  // Assert that, after rerendering and updating props, the component has been remounted,
-  // meaning we are testing a different component instance than we rendered initially.
-  expect(getByTestId('instance-id')).toHaveTextContent('3')
+  // Notice we don't remount a different instance
+  expect(getByTestId('instance-id')).toHaveTextContent('1')
 })
 
-test('rerender works with composition API', () => {
+test('rerender works with composition API', async () => {
   const Component = defineComponent({
     props: {
       foo: {type: String, default: 'foo'},
@@ -43,11 +42,11 @@ test('rerender works with composition API', () => {
 
   const {rerender, getByTestId} = render(Component)
 
-  const originalNode = getByTestId('node')
-  expect(originalNode).toHaveTextContent('Foo is: foo. Foobar is: foo-bar')
+  const getContent = () => getByTestId('node')
 
-  rerender({props: {foo: 'qux'}})
+  expect(getContent()).toHaveTextContent('Foo is: foo. Foobar is: foo-bar')
 
-  const newNode = getByTestId('node')
-  expect(newNode).toHaveTextContent('Foo is: qux. Foobar is: qux-bar')
+  await rerender({foo: 'qux'})
+
+  expect(getContent()).toHaveTextContent('Foo is: qux. Foobar is: qux-bar')
 })
