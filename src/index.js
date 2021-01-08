@@ -12,7 +12,7 @@ import {
 const mountedWrappers = new Set()
 
 function render(
-  TestComponent,
+  Component,
   {
     store = null,
     routes = null,
@@ -25,7 +25,7 @@ function render(
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  const plugins = []
+  const plugins = mountOptions.global?.plugins || []
 
   if (store) {
     const {createStore} = require('vuex')
@@ -41,26 +41,20 @@ function render(
     plugins.push(routerPlugin)
   }
 
-  const mountComponent = (Component, newProps) => {
-    const wrapper = mount(
-      Component,
-      merge({
-        attachTo: container,
-        global: {plugins},
-        ...mountOptions,
-        props: newProps || mountOptions.props,
-      }),
-    )
+  const wrapper = mount(
+    Component,
+    merge({
+      attachTo: container,
+      global: {plugins},
+      ...mountOptions,
+    }),
+  )
 
-    // this removes the additional "data-v-app" div node from VTU:
-    // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
-    unwrapNode(wrapper.parentElement)
+  // this removes the additional "data-v-app" div node from VTU:
+  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
+  unwrapNode(wrapper.parentElement)
 
-    mountedWrappers.add(wrapper)
-    return wrapper
-  }
-
-  let wrapper = mountComponent(TestComponent)
+  mountedWrappers.add(wrapper)
 
   return {
     container,
@@ -72,12 +66,7 @@ function render(
     unmount: () => wrapper.unmount(),
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
-    rerender: ({props}) => {
-      wrapper.unmount()
-      mountedWrappers.delete(wrapper)
-
-      wrapper = mountComponent(TestComponent, props)
-    },
+    rerender: props => wrapper.setProps(props),
     ...getQueriesForElement(baseElement),
   }
 }
