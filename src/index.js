@@ -1,6 +1,5 @@
 /* eslint-disable testing-library/no-wait-for-empty-callback */
 import {mount} from '@vue/test-utils'
-import merge from 'lodash.merge'
 
 import {
   getQueriesForElement,
@@ -41,14 +40,11 @@ function render(
     plugins.push(routerPlugin)
   }
 
-  const wrapper = mount(
-    Component,
-    merge({
-      attachTo: container,
-      global: {plugins},
-      ...mountOptions,
-    }),
-  )
+  const wrapper = mount(Component, {
+    attachTo: container,
+    global: {plugins},
+    ...mountOptions,
+  })
 
   // this removes the additional "data-v-app" div node from VTU:
   // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
