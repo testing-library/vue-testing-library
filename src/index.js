@@ -25,7 +25,7 @@ function render(
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  const plugins = []
+  const plugins = mountOptions.global?.plugins || []
 
   if (store) {
     const {createStore} = require('vuex')
