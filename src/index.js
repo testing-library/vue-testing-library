@@ -41,9 +41,9 @@ function render(
   }
 
   const wrapper = mount(Component, {
-    attachTo: container,
-    global: {plugins},
     ...mountOptions,
+    attachTo: container,
+    global: {...mountOptions.global, plugins},
   })
 
   // this removes the additional "data-v-app" div node from VTU:

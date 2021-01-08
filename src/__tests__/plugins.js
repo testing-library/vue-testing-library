@@ -5,7 +5,7 @@ import {defineComponent} from 'vue'
 import {render, screen, fireEvent, waitFor} from '..'
 import {store} from './components/Store/store'
 
-test('setting a plugin + a custom option such as store sets both plugins', async () => {
+test('can set global options and custom options such as a store', async () => {
   const ComponentWithStore = defineComponent({
     template: `
       <el-popover trigger="hover" content="this is content">
@@ -16,15 +16,25 @@ test('setting a plugin + a custom option such as store sets both plugins', async
         </template>
       </el-popover>
       <span data-testid="count-value">{{ $store.state.count }}</span>
+      <directive />
     `,
   })
+
+  const DirectiveStub = {
+    template: '<p>Search now</p>',
+  }
 
   render(ComponentWithStore, {
     store,
     global: {
       plugins: [ElementPlus],
+      stubs: {
+        Directive: DirectiveStub,
+      },
     },
   })
+
+  expect(screen.getByText('Search now')).toBeInTheDocument()
 
   const button = screen.getByText('Hover to activate')
   userEvent.hover(button)
