@@ -13,22 +13,22 @@ const routes = [
 
 test('full app rendering/navigating', async () => {
   // Notice how we pass a `routes` object to our render function.
-  const {queryByTestId} = render(App, {routes})
+  const {getByTestId} = render(App, {routes})
 
-  expect(queryByTestId('location-display')).toHaveTextContent('/')
+  expect(getByTestId('location-display')).toHaveTextContent('/')
 
-  await fireEvent.click(queryByTestId('about-link'))
+  await fireEvent.click(getByTestId('about-link'))
 
-  expect(queryByTestId('location-display')).toHaveTextContent('/about')
+  expect(getByTestId('location-display')).toHaveTextContent('/about')
 })
 
 test('setting initial route', () => {
   // The callback function receives three parameters: the Vue instance where
   // the component is mounted, the store instance (if any) and the router
   // object.
-  const {queryByTestId} = render(App, {routes}, (vue, store, router) => {
+  const {getByTestId} = render(App, {routes}, (vue, store, router) => {
     router.push('/about')
   })
 
-  expect(queryByTestId('location-display')).toHaveTextContent('/about')
+  expect(getByTestId('location-display')).toHaveTextContent('/about')
 })
