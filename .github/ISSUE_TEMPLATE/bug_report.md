@@ -9,7 +9,7 @@ assignees: ''
 <!-- Thanks for your interest in the project. We appreciate bugs filed and PRs submitted! -->
 
 <!--
-- For questions related to using the library, please join the Discord server (https://testing-library.com/discord) instead of filing an issue on GitHub.
+- For questions related to using the library, please join the Discord server (https://discord.gg/testing-library) instead of filing an issue on GitHub.
 
 - Please fill out this template with all the relevant information so we can
   understand what's going on and fix the issue.

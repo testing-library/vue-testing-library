@@ -246,7 +246,7 @@ instead of filing an issue on GitHub.
 [npm]: https://badge.fury.io/js/%40testing-library%2Fvue
 [license-badge]: https://img.shields.io/github/license/testing-library/vue-testing-library.svg
 [license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
-[discord]: https://testing-library.com/discord
+[discord]: https://discord.gg/testing-library
 [discord-badge]: https://img.shields.io/discord/723559267868737556.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2&style=flat-square
 [jest-dom]: https://github.com/testing-library/jest-dom
 [which-query]: https://testing-library.com/docs/guide-which-query
