@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+import {createStore} from 'vuex'
 import {render, fireEvent} from '..'
 import VuexTest from './components/Store/VuexTest'
 import {store} from './components/Store/store'
@@ -10,10 +11,15 @@ import {store} from './components/Store/store'
 // Tests should be completely isolated from one another.
 // Read this for additional context: https://kentcdodds.com/blog/test-isolation-with-react
 function renderVuexTestComponent(customStore) {
-  // Render the component and merge the original store and the custom one
-  // provided as a parameter. This way, we can alter some behaviors of the
-  // initial implementation.
-  return render(VuexTest, {store: {...store, ...customStore}})
+  // Create a custom store with the original one and the one coming as a
+  // parameter. This way we can alter some of its values.
+  const mergedStore = createStore({...store, ...customStore})
+
+  return render(VuexTest, {
+    global: {
+      plugins: [mergedStore],
+    },
+  })
 }
 
 test('can render with vuex with defaults', async () => {
@@ -26,7 +32,7 @@ test('can render with vuex with defaults', async () => {
 
 test('can render with vuex with custom initial state', async () => {
   const {getByTestId, getByText} = renderVuexTestComponent({
-    state: {count: 3},
+    state: () => ({count: 3}),
   })
 
   await fireEvent.click(getByText('-'))
@@ -37,17 +43,21 @@ test('can render with vuex with custom initial state', async () => {
 test('can render with vuex with custom store', async () => {
   // This is a silly store that can never be changed.
   // eslint-disable-next-line no-shadow
-  const store = {
-    state: {count: 1000},
+  const store = createStore({
+    state: () => ({count: 1000}),
     actions: {
       increment: () => jest.fn(),
       decrement: () => jest.fn(),
     },
-  }
+  })
 
   // Notice how here we are not using the helper rendering method, because
   // there's no need to do that here. We're passing a whole store.
-  const {getByTestId, getByText} = render(VuexTest, {store})
+  const {getByTestId, getByText} = render(VuexTest, {
+    global: {
+      plugins: [store],
+    },
+  })
 
   await fireEvent.click(getByText('+'))
   expect(getByTestId('count-value')).toHaveTextContent('1000')
