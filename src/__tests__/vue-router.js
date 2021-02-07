@@ -13,7 +13,7 @@ import About from './components/Router/About.vue'
 test('full app rendering/navigating from base URL', async () => {
   // Create a Router instance
   // https://next.router.vuejs.org/api/#createrouter
-  // using the a HTML5 history.
+  // using a HTML5 history.
   // https://next.router.vuejs.org/api/#createwebhistory
   const router = createRouter({
     history: createWebHistory(),

@@ -22,7 +22,7 @@ function render(
   if (store || routes) {
     console.warn(`Providing 'store' or 'routes' options is now deprecated.
 You need to create a router/vuex plugin and provide it through 'global.plugins'.
-See here for more information:`)
+Check out the test examples on GitHub for further details.`)
   }
 
   const wrapper = mount(Component, {
