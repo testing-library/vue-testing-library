@@ -1,9 +1,7 @@
 <template>
   <Form>
     <Field :rules="validateEmail" name="email" as="input" type="email" />
-
-    <error-message name="email" data-testid="error-message" />
-
+    <ErrorMessage name="email" data-testid="error-message" />
     <button>Sign up</button>
   </Form>
 </template>
