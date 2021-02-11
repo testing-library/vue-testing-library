@@ -4,10 +4,10 @@ import {render, fireEvent} from '..'
 import VeeValidate from './components/Validate'
 
 test('can validate using plugin', async () => {
-  const {findByText, getByRole, getByTestId} = render(VeeValidate)
+  const {findByText, getByRole, queryByTestId} = render(VeeValidate)
 
   // Assert error messages are not in the DOM when rendering the component.
-  expect(getByTestId('error-message')).toBeEmptyDOMElement()
+  expect(queryByTestId('error-message')).not.toBeInTheDocument()
 
   const emailInput = getByRole('textbox')
 
