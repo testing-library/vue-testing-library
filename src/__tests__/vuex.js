@@ -4,6 +4,27 @@ import {render, fireEvent} from '..'
 import VuexTest from './components/Store/VuexTest'
 import {store} from './components/Store/store'
 
+test('basic test with Vuex store', async () => {
+  const storeInstance = createStore(store)
+
+  const {getByTestId, getByText} = render(VuexTest, {
+    global: {
+      plugins: [storeInstance],
+    },
+  })
+
+  expect(getByTestId('count-value')).toHaveTextContent('0')
+
+  await fireEvent.click(getByText('+'))
+  expect(getByTestId('count-value')).toHaveTextContent('1')
+
+  await fireEvent.click(getByText('+'))
+  expect(getByTestId('count-value')).toHaveTextContent('2')
+
+  await fireEvent.click(getByText('-'))
+  expect(getByTestId('count-value')).toHaveTextContent('1')
+})
+
 // A common testing pattern is to create a custom renderer for a specific test
 // file. This way, common operations such as registering a Vuex store can be
 // abstracted out while avoiding sharing mutable state.
@@ -13,11 +34,11 @@ import {store} from './components/Store/store'
 function renderVuexTestComponent(customStore) {
   // Create a custom store with the original one and the one coming as a
   // parameter. This way we can alter some of its values.
-  const mergedStore = createStore({...store, ...customStore})
+  const mergedStoreInstance = createStore({...store, ...customStore})
 
   return render(VuexTest, {
     global: {
-      plugins: [mergedStore],
+      plugins: [mergedStoreInstance],
     },
   })
 }
