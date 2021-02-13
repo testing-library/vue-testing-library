@@ -20,8 +20,8 @@ function render(
   const container = customContainer || baseElement.appendChild(div)
 
   if (store || routes) {
-    console.warn(`Providing 'store' or 'routes' options is now deprecated.
-You need to create a router/vuex plugin and provide it through 'global.plugins'.
+    console.warn(`Providing 'store' or 'routes' options is no longer available.
+You need to create a router/vuex instance and provide it through 'global.plugins'.
 Check out the test examples on GitHub for further details.`)
   }
 

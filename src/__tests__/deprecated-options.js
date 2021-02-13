@@ -18,7 +18,7 @@ test('warns on deprecated store option', () => {
   expect(console.warn).toHaveBeenCalledTimes(1)
   expect(console.warn).toHaveBeenCalledWith(
     expect.stringContaining(
-      `Providing 'store' or 'routes' options is now deprecated`,
+      `Providing 'store' or 'routes' options is no longer available`,
     ),
   )
 })
@@ -33,7 +33,7 @@ test('warns on deprecated routes option', () => {
   expect(console.warn).toHaveBeenCalledTimes(1)
   expect(console.warn).toHaveBeenCalledWith(
     expect.stringContaining(
-      `Providing 'store' or 'routes' options is now deprecated`,
+      `Providing 'store' or 'routes' options is no longer available`,
     ),
   )
 })

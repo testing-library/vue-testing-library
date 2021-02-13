@@ -32,11 +32,11 @@ type VueTestUtilsRenderOptions = Omit<
 >
 type VueTestingLibraryRenderOptions = {
   /**
-   * @deprecated Use `global.plugins` array instead.
+   * @deprecated Add a Vuex instance through `global.plugins` array instead.
    */
   store: any
   /**
-   * @deprecated Use `global.plugins` array instead.
+   * @deprecated Add a Router instance through `global.plugins` array instead.
    */
   routes?: any
   container?: Element
