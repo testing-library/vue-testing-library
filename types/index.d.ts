@@ -30,11 +30,11 @@ type VueTestUtilsRenderOptions = Omit<
   MountingOptions<Record<string, any>>,
   'attachTo' | 'shallow' | 'propsData'
 >
-type VueTestingLibraryRenderOptions = {
+interface VueTestingLibraryRenderOptions {
   /**
    * @deprecated Add a Vuex instance through `global.plugins` array instead.
    */
-  store: any
+  store?: any
   /**
    * @deprecated Add a Router instance through `global.plugins` array instead.
    */
