@@ -201,7 +201,7 @@ typingEvents.forEach(event => {
     expect(console.warn).toHaveBeenCalledTimes(1)
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        `Using "fireEvent.${event} may lead to unexpected results. Please use fireEvent.update() instead.`,
+        `Using "fireEvent.${event}" may lead to unexpected results. Please use fireEvent.update() instead.`,
       ),
     )
   })
