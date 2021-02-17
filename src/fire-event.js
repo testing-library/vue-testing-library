@@ -85,7 +85,7 @@ function warnOnChangeOrInputEventCalledDirectly(eventValue, eventKey) {
 
   if (eventValue && (eventKey === 'change' || eventKey === 'input')) {
     console.warn(
-      `Using "fireEvent.${eventKey} may lead to unexpected results. Please use fireEvent.update() instead.`,
+      `Using "fireEvent.${eventKey}" may lead to unexpected results. Please use fireEvent.update() instead.`,
     )
   }
 }
