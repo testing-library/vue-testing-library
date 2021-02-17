@@ -2,7 +2,7 @@
   "name": "@testing-library/vue",
   "version": "0.0.0-semantically-released",
   "description": "Simple and complete Vue DOM testing utilities that encourage good testing practices.",
-  "main": "dist/vue-testing-library.js",
+  "main": "dist/index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "format": "kcd-scripts format",
