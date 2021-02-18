@@ -206,6 +206,18 @@ test.each(['input', 'change'])(
   },
 )
 
+test('does not warn when disabled via env var', async () => {
+  process.env.VTL_SKIP_WARN_EVENT_UPDATE = 'true'
+
+  const {getByTestId} = render({
+    template: `<input type="text" data-testid="test-update" />`,
+  })
+
+  await fireEvent.input(getByTestId('test-update'), 'hello')
+
+  expect(console.warn).not.toHaveBeenCalled()
+})
+
 test('fireEvent.update does not trigger warning messages', async () => {
   const {getByTestId} = render({
     template: `<input type="text" data-testid="test-update" />`,

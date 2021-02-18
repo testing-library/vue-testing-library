@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom'
 import fetch from 'isomorphic-unfetch'
-import {render, fireEvent, screen} from '..'
 import {DefaultApolloClient} from '@vue/apollo-composable'
 import ApolloClient from 'apollo-boost'
 import {setupServer} from 'msw/node'
 import {graphql} from 'msw'
+import {render, fireEvent, screen} from '..'
 import Component from './components/VueApollo.vue'
 
 // Since vue-apollo doesn't provide a MockProvider for Vue,
