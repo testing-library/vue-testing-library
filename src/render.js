@@ -19,26 +19,15 @@ function render(
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  const plugins = mountOptions.global?.plugins || []
-
-  if (store) {
-    const {createStore} = require('vuex')
-    plugins.push(createStore(store))
-  }
-
-  if (routes) {
-    const requiredRouter = require('vue-router')
-    const {createRouter, createWebHistory} =
-      requiredRouter.default || requiredRouter
-
-    const routerPlugin = createRouter({history: createWebHistory(), routes})
-    plugins.push(routerPlugin)
+  if (store || routes) {
+    console.warn(`Providing 'store' or 'routes' options is now deprecated.
+You need to create a router/vuex plugin and provide it through 'global.plugins'.
+See here for more information:`)
   }
 
   const wrapper = mount(Component, {
     ...mountOptions,
     attachTo: container,
-    global: {...mountOptions.global, plugins},
   })
 
   // this removes the additional "data-v-app" div node from VTU:
