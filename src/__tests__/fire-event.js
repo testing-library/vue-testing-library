@@ -201,7 +201,7 @@ test.each(['input', 'change'])(
 
     expect(console.warn).toHaveBeenCalledTimes(1)
     expect(console.warn).toHaveBeenCalledWith(
-      `Using fireEvent.${event}() may lead to unexpected results. Please use fireEvent.update() instead.`,
+      `Using "fireEvent.${event}" may lead to unexpected results. Please use fireEvent.update() instead.`,
     )
   },
 )
