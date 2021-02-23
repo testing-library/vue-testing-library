@@ -3,8 +3,6 @@
 
 import {EmitsOptions} from 'vue'
 import {MountingOptions} from '@vue/test-utils'
-import {StoreOptions} from 'vuex'
-import {RouteRecordRaw} from 'vue-router'
 import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
@@ -32,9 +30,15 @@ type VueTestUtilsRenderOptions = Omit<
   MountingOptions<Record<string, any>>,
   'attachTo' | 'shallow' | 'propsData'
 >
-type VueTestingLibraryRenderOptions = {
-  store?: StoreOptions<{}>
-  routes?: RouteRecordRaw[]
+interface VueTestingLibraryRenderOptions {
+  /**
+   * @deprecated Add a Vuex instance through `global.plugins` array instead.
+   */
+  store?: any
+  /**
+   * @deprecated Add a Router instance through `global.plugins` array instead.
+   */
+  routes?: any
   container?: Element
   baseElement?: Element
 }
