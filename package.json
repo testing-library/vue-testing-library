@@ -18,7 +18,7 @@
     "node": ">10.18"
   },
   "files": [
-    "types",
+    "types/*.d.ts",
     "dist",
     "cleanup-after-each.js"
   ],
