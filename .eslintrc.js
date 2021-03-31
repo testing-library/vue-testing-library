@@ -11,6 +11,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'import/no-unresolved': 'off',
+    'jest/unbound-method': 'off',
 
     'testing-library/no-dom-import': 'off',
     'testing-library/prefer-screen-queries': 'off',
