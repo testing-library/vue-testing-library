@@ -2,7 +2,6 @@ import '@testing-library/jest-dom'
 import {render, waitFor} from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import Form from './components/Form'
-import Select from './components/Select'
 
 beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {})
@@ -56,17 +55,4 @@ test('User events in a form', async () => {
   expect(emitted().submit[0][0]).toMatchObject(fakeReview)
 
   expect(console.warn).not.toHaveBeenCalled()
-})
-
-test('selecting option with user events', () => {
-  const {getByDisplayValue} = render(Select)
-  const select = getByDisplayValue('Tyrannosaurus')
-  expect(select.value).toBe('dino1')
-
-  userEvent.selectOptions(select, 'dino2')
-  expect(select.value).toBe('dino2')
-
-  userEvent.selectOptions(select, 'dino3')
-  expect(select.value).not.toBe('dino2')
-  expect(select.value).toBe('dino3')
 })
