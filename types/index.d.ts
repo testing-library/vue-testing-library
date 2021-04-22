@@ -11,7 +11,7 @@ import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
 export * from '@testing-library/dom'
 
 type Debug = (
-  baseElement?: Element | DocumentFragment | Array<Element | DocumentFragment>,
+  baseElement?: Array<DocumentFragment | Element> | DocumentFragment | Element,
   maxLength?: number,
   options?: PrettyFormatOptions,
 ) => void
@@ -28,7 +28,7 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
 
 type VueTestUtilsRenderOptions = Omit<
   MountingOptions<Record<string, any>>,
-  'attachTo' | 'shallow' | 'propsData'
+  'attachTo' | 'propsData' | 'shallow'
 >
 interface VueTestingLibraryRenderOptions {
   /**
@@ -42,7 +42,7 @@ interface VueTestingLibraryRenderOptions {
   container?: Element
   baseElement?: Element
 }
-type RenderOptions = VueTestUtilsRenderOptions & VueTestingLibraryRenderOptions
+type RenderOptions = VueTestingLibraryRenderOptions & VueTestUtilsRenderOptions
 
 export function render(
   TestComponent: any, // this makes me sad :sob:
