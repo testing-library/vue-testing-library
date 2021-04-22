@@ -84,6 +84,11 @@ export function testOptions() {
   })
 }
 
+export function testEmitted() {
+  const {emitted} = render(SomeComponent)
+  emitted().foo; // $ExpectType unknown[]
+}
+
 /*
 eslint
   testing-library/prefer-explicit-assert: "off",
