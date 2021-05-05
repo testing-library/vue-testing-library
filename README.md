@@ -8,7 +8,7 @@
     height="80"
     width="80"
     alt="lizard"
-    src="https://raw.githubusercontent.com/testing-library/vue-testing-library/master/lizard.png"
+    src="https://raw.githubusercontent.com/testing-library/vue-testing-library/main/lizard.png"
   />
 </a>
 
@@ -245,7 +245,7 @@ instead of filing an issue on GitHub.
 [npm-badge]: https://badge.fury.io/js/%40testing-library%2Fvue.svg
 [npm]: https://badge.fury.io/js/%40testing-library%2Fvue
 [license-badge]: https://img.shields.io/github/license/testing-library/vue-testing-library.svg
-[license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
+[license]: https://github.com/testing-library/vue-testing-library/blob/main/LICENSE
 [discord]: https://discord.gg/testing-library
 [discord-badge]: https://img.shields.io/discord/723559267868737556.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2&style=flat-square
 [jest-dom]: https://github.com/testing-library/jest-dom
@@ -261,11 +261,11 @@ instead of filing an issue on GitHub.
 [add-issue-bug]: https://github.com/testing-library/vue-testing-library/issues/new?assignees=&labels=bug&template=bug_report.md&title=
 [add-issue]: (https://github.com/testing-library/vue-testing-library/issues/new)
 
-[types-directory]: https://github.com/testing-library/vue-testing-library/blob/master/types
-[test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
-[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
-[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
-[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
-[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js
-[vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuetify.js
+[types-directory]: https://github.com/testing-library/vue-testing-library/blob/main/types
+[test-directory]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__
+[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuex.js
+[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vue-router.js
+[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/validate-plugin.js
+[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vue-i18n.js
+[vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuetify.js
 <!-- prettier-ignore-end -->
