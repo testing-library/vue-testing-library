@@ -27,7 +27,7 @@ test('within() returns an object with all queries bound to the DOM node', () => 
   // Here, proof that there's only one match for the specified text.
   expect(divNode).toMatchInlineSnapshot(`
     <div
-      data-testid="div"
+      data-testid=div
     >
       repeated text
     </div>

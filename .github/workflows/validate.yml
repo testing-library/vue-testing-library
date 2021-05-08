@@ -17,14 +17,14 @@ jobs:
   main:
     strategy:
       matrix:
-        node: [10.13, 12, 14]
+        node: [10.13, 12, 14, 15, 16]
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v2
 
       - name: ⎔ Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
 
@@ -32,6 +32,9 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
+          # Needed because @vue/apollo-composable requires @vue/composition-api
+          # which has a peerDep on Vue 2.
+          install-command: npm i --legacy-peer-deps
 
       - name: ▶️ Run validate script
         run: npm run validate
@@ -47,11 +50,14 @@ jobs:
       contains('refs/heads/master,refs/heads/beta,refs/heads/next,refs/heads/alpha',
       github.ref) && github.event_name == 'push' }}
     steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.0
+
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v2
 
       - name: ⎔ Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 

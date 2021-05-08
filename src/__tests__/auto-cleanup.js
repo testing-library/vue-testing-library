@@ -14,5 +14,5 @@ test('renders the component', () => {
 })
 
 test('cleans up after each test by default', () => {
-  expect(document.body.innerHTML).toMatchInlineSnapshot(`""`)
+  expect(document.body.innerHTML).toMatchInlineSnapshot(``)
 })

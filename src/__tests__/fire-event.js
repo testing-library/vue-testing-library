@@ -5,7 +5,7 @@ import Button from './components/Button'
 const eventTypes = [
   {
     type: 'Clipboard',
-    events: ['copy', 'paste'],
+    events: ['copy', 'cut', 'paste'],
   },
   {
     type: 'Composition',
@@ -18,20 +18,16 @@ const eventTypes = [
   },
   {
     type: 'Focus',
-    events: ['focus', 'blur'],
-  },
-  {
-    type: 'Form',
-    events: ['focus', 'blur'],
-  },
-  {
-    type: 'Focus',
-    events: ['input', 'invalid'],
+    events: ['focus', 'blur', 'focusIn', 'focusOut'],
   },
   {
     type: 'Focus',
     events: ['submit'],
     elementType: 'form',
+  },
+  {
+    type: 'Form',
+    events: ['change', 'input', 'invalid', 'submit', 'reset'],
   },
   {
     type: 'Mouse',
@@ -119,6 +115,22 @@ const eventTypes = [
     events: ['transitionEnd'],
     elementType: 'div',
   },
+  {
+    type: 'Pointer',
+    events: [
+      'pointerOver',
+      'pointerEnter',
+      'pointerDown',
+      'pointerMove',
+      'pointerUp',
+      'pointerCancel',
+      'pointerOut',
+      'pointerLeave',
+      'gotPointerCapture',
+      'lostPointerCapture',
+    ],
+    elementType: 'div',
+  },
 ]
 
 beforeEach(() => {
@@ -139,7 +151,9 @@ eventTypes.forEach(({type, events, elementType = 'input', init}) => {
       it(`triggers ${eventName}`, async () => {
         const testId = `${type}-${eventName}`
         const spy = jest.fn()
-        const eventNameHandler = `on${capitalize(eventName)}`
+        const eventNameHandler = `on${capitalize(
+          eventName.toLocaleLowerCase(),
+        )}`
 
         const componentWithEvent = {
           render() {
@@ -169,7 +183,7 @@ test('triggers dblclick on doubleClick', async () => {
 
   const componentWithDblClick = {
     render() {
-      return h('button', {onDblClick: spy}, 'Click me')
+      return h('button', {onDblclick: spy}, 'Click me')
     },
   }
 
