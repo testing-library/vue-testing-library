@@ -6,7 +6,7 @@ module.exports = {
     './node_modules/kcd-scripts/eslint.js',
     'plugin:vue/vue3-recommended',
     'plugin:testing-library/vue',
-    'prettier/vue',
+    'prettier',
   ],
   plugins: ['vue'],
   rules: {
@@ -18,5 +18,6 @@ module.exports = {
     'testing-library/prefer-screen-queries': 'off',
     'testing-library/no-manual-cleanup': 'off',
     'testing-library/no-await-sync-events': 'off',
+    'testing-library/prefer-user-event': 'off',
   },
 }

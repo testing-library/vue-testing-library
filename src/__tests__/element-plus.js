@@ -6,9 +6,9 @@ import {render, screen, waitFor} from '..'
 
 const Component = defineComponent({
   template: `
-    <el-popover trigger="hover" content="this is content">
+    <el-popover trigger="click" content="this is content">
       <template #reference>
-        <el-button>Hover to activate</el-button>
+        <el-button>Click to activate</el-button>
       </template>
     </el-popover>
   `,
@@ -21,17 +21,17 @@ test('Stubs out a component', async () => {
     },
   })
 
-  const button = screen.getByText('Hover to activate')
+  const button = screen.getByRole('button')
   const getContent = () => screen.getByText('this is content')
 
   expect(getContent()).toBeInTheDocument()
   expect(getContent()).not.toBeVisible()
 
-  userEvent.hover(button)
+  userEvent.click(button)
 
   await waitFor(() => expect(getContent()).toBeVisible())
 
-  userEvent.unhover(button)
+  userEvent.click(button)
 
   await waitFor(() => expect(getContent()).not.toBeVisible())
 })
