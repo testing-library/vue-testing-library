@@ -1,7 +1,6 @@
 // Minimum TypeScript Version: 4.0
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import {EmitsOptions} from 'vue'
 import {MountingOptions} from '@vue/test-utils'
 import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -22,7 +21,7 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
   debug: Debug
   unmount(): void
   html(): string
-  emitted(): EmitsOptions
+  emitted<T = unknown>(): Record<string, T[]>
   rerender(props: object): Promise<void>
 }
 
