@@ -13,20 +13,20 @@ const SomeComponent = defineComponent({
 })
 
 export async function testRender() {
-  const page = render({template: '<div />'})
+  const utils = render({template: '<div />'})
 
   // single queries
-  page.getByText('foo')
-  page.queryByText('foo')
-  await page.findByText('foo')
+  utils.getByText('foo')
+  utils.queryByText('foo')
+  await utils.findByText('foo')
 
   // multiple queries
-  page.getAllByText('bar')
-  page.queryAllByText('bar')
-  await page.findAllByText('bar')
+  utils.getAllByText('bar')
+  utils.queryAllByText('bar')
+  await utils.findAllByText('bar')
 
   // helpers
-  const {container, baseElement, unmount, debug, rerender} = page
+  const {container, baseElement, unmount, debug, rerender} = utils
 
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   rerender({a: 1}) // $ExpectType Promise<void>
