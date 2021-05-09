@@ -41,7 +41,7 @@ interface VueTestingLibraryRenderOptions {
   container?: Element
   baseElement?: Element
 }
-type RenderOptions = VueTestingLibraryRenderOptions & VueTestUtilsRenderOptions
+export type RenderOptions = VueTestingLibraryRenderOptions & VueTestUtilsRenderOptions
 
 export function render(
   TestComponent: any, // this makes me sad :sob:
