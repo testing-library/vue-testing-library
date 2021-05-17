@@ -40,6 +40,7 @@ export interface RenderOptions<V extends Vue, S = {}>
   // The props and store options special-cased by Vue Testing Library and NOT passed to mount().
   extends Omit<ThisTypedMountOptions<V>, 'store' | 'props'> {
   props?: object
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   store?: StoreOptions<S>
   routes?: RouteConfig[]
   container?: Element
