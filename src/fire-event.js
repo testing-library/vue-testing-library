@@ -83,9 +83,12 @@ fireEvent.update = (elem, value) => {
 // fireEvent.emit is a syntax sugar to fire custom events on vue-elements.
 // Custom events can't be fired just with fireEvent, event it has the same name
 // as native one.
+// Examples: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-custom-event.js
 fireEvent.emit = async (elem, eventName, value) => {
   if (!elem.__vue__) {
-    throw new Error(`Unable to fire a ${eventName} event – please provide a VUE component.`)
+    throw new Error(
+      `Unable to fire a ${eventName} event – please provide a VUE component.`,
+    )
   }
 
   await elem.__vue__.$emit(eventName, value)
