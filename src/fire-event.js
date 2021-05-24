@@ -80,6 +80,17 @@ fireEvent.update = (elem, value) => {
   return null
 }
 
+// fireEvent.emit is a syntax sugar to fire custom events on vue-elements.
+// Custom events can't be fired just with fireEvent, event it has the same name
+// as native one.
+fireEvent.emit = async (elem, eventName, value) => {
+  if (!elem.__vue__) {
+    throw new Error(`Unable to fire a ${eventName} event – please provide a VUE component.`)
+  }
+
+  await elem.__vue__.$emit(eventName, value)
+}
+
 function warnOnChangeOrInputEventCalledDirectly(eventValue, eventKey) {
   if (process.env.VTL_SKIP_WARN_EVENT_UPDATE) return
 
