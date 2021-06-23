@@ -32,3 +32,9 @@ test('setting initial route', () => {
 
   expect(getByTestId('location-display')).toHaveTextContent('/about')
 })
+
+test('router state is not shared between tests', () => {
+  const {getByTestId} = render(App, {routes})
+
+  expect(getByTestId('location-display')).toHaveTextContent('/')
+})

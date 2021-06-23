@@ -39,7 +39,8 @@ function render(
     const VueRouter = requiredRouter.default || requiredRouter
     localVue.use(VueRouter)
 
-    router = new VueRouter({routes})
+    router = new VueRouter({routes, mode: 'abstract'})
+    router.push('/')
   }
 
   if (configurationCb && typeof configurationCb === 'function') {
