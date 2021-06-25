@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import {render, fireEvent, screen, waitFor} from '@testing-library/vue'
 
 declare const elem: Element
@@ -124,6 +125,30 @@ export function testConfigCallback() {
     localVue.use(ExamplePlugin)
     store.replaceState({foo: 'bar'})
     router.onError(error => console.log(error.message))
+  })
+}
+
+export function testInstantiatedStore() {
+  render(SomeComponent, {
+    store: new Vuex.Store({
+      state: {count: 3},
+      mutations: {
+        increment(state) {
+          state.count++
+        },
+        decrement(state) {
+          state.count--
+        },
+      },
+      actions: {
+        increment(context) {
+          context.commit('increment')
+        },
+        decrement(context) {
+          context.commit('decrement')
+        },
+      },
+    }),
   })
 }
 

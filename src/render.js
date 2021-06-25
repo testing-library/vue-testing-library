@@ -31,7 +31,7 @@ function render(
     const Vuex = require('vuex')
     localVue.use(Vuex)
 
-    vuexStore = new Vuex.Store(store)
+    vuexStore = store instanceof Vuex.Store ? store : new Vuex.Store(store)
   }
 
   if (routes) {
