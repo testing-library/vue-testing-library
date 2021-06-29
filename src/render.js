@@ -39,7 +39,7 @@ function render(
     const VueRouter = requiredRouter.default || requiredRouter
     localVue.use(VueRouter)
 
-    router = new VueRouter({routes})
+    router = routes instanceof VueRouter ? routes : new VueRouter({routes})
   }
 
   if (configurationCb && typeof configurationCb === 'function') {

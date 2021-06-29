@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VueRouter from 'vue-router'
 import {render, fireEvent, screen, waitFor} from '@testing-library/vue'
 
 declare const elem: Element
@@ -148,6 +149,14 @@ export function testInstantiatedStore() {
           context.commit('decrement')
         },
       },
+    }),
+  })
+}
+
+export function testInstantiatedRouter() {
+  render(SomeComponent, {
+    routes: new VueRouter({
+      routes: [{path: '/', name: 'home', component: SomeComponent}],
     }),
   })
 }
