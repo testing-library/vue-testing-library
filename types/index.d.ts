@@ -41,7 +41,7 @@ export interface RenderOptions<V extends Vue, S = {}>
   extends Omit<ThisTypedMountOptions<V>, 'store' | 'props'> {
   props?: object
   store?: StoreOptions<S>
-  routes?: RouteConfig[]
+  routes?: RouteConfig[] | Router
   container?: Element
   baseElement?: Element
 }
