@@ -31,7 +31,7 @@ function render(
     const Vuex = require('vuex')
     localVue.use(Vuex)
 
-    vuexStore = new Vuex.Store(store)
+    vuexStore = store instanceof Vuex.Store ? store : new Vuex.Store(store)
   }
 
   if (routes) {
@@ -39,7 +39,7 @@ function render(
     const VueRouter = requiredRouter.default || requiredRouter
     localVue.use(VueRouter)
 
-    router = new VueRouter({routes})
+    router = routes instanceof VueRouter ? routes : new VueRouter({routes})
   }
 
   if (configurationCb && typeof configurationCb === 'function') {
