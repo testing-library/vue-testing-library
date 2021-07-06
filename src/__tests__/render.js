@@ -33,9 +33,7 @@ test('renders container', () => {
     template: '<div data-testid="myDiv">my content</div>',
   })
 
-  expect(container.firstChild).toHaveTextContent(
-    getByTestId('myDiv').textContent,
-  )
+  expect(container).toHaveTextContent(getByTestId('myDiv').textContent)
 })
 
 test('container defaults to div', () => {

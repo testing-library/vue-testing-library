@@ -18,5 +18,6 @@ module.exports = {
     'testing-library/no-manual-cleanup': 'off',
     'testing-library/no-await-sync-events': 'off',
     'testing-library/await-fire-event': 'error',
+    'testing-library/prefer-user-event': 'off',
   },
 }

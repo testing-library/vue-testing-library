@@ -15,6 +15,7 @@ Object.keys(dtlFireEvent).forEach(key => {
   fireEvent[key] = async (...args) => {
     warnOnChangeOrInputEventCalledDirectly(args[1], key)
 
+    // eslint-disable-next-line testing-library/await-fire-event
     dtlFireEvent[key](...args)
     await waitFor(() => {})
   }
