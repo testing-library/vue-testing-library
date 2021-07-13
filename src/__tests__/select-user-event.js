@@ -1,3 +1,4 @@
+/* eslint-enable testing-library/prefer-user-event */
 import '@testing-library/jest-dom'
 import {render} from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
