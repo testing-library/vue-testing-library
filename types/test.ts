@@ -14,20 +14,27 @@ const SomeComponent = Vue.extend({
 })
 
 export async function testRender() {
-  const page = render({template: '<div />'})
+  const {
+    getByText,
+    queryByText,
+    findByText,
+    getAllByText,
+    queryAllByText,
+    findAllByText,
+    container,
+    unmount,
+    debug,
+  } = render({template: '<div />'})
 
   // single queries
-  page.getByText('foo')
-  page.queryByText('foo')
-  await page.findByText('foo')
+  getByText('foo')
+  queryByText('foo')
+  await findByText('foo')
 
   // multiple queries
-  page.getAllByText('bar')
-  page.queryAllByText('bar')
-  await page.findAllByText('bar')
-
-  // helpers
-  const {container, unmount, debug} = page
+  getAllByText('bar')
+  queryAllByText('bar')
+  await findAllByText('bar')
 
   debug(container)
 
