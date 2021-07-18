@@ -1,4 +1,4 @@
-/* eslint-disable testing-library/no-wait-for-empty-callback */
+/* eslint-disable testing-library/no-wait-for-empty-callback, testing-library/await-fire-event */
 import {waitFor, fireEvent as dtlFireEvent} from '@testing-library/dom'
 
 // Vue Testing Lib's version of fireEvent will call DOM Testing Lib's

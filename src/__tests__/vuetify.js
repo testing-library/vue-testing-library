@@ -43,7 +43,7 @@ test('renders a Vuetify-powered component', async () => {
 
   expect(getByText('Lorem ipsum dolor sit amet.')).toMatchInlineSnapshot(`
     <div
-      class="v-card__text"
+      class=v-card__text
     >
       Lorem ipsum dolor sit amet.
     </div>

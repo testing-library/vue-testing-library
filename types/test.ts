@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
+import VueRouter from 'vue-router'
 import {render, fireEvent, screen, waitFor} from '@testing-library/vue'
 
 declare const elem: Element
@@ -12,20 +14,27 @@ const SomeComponent = Vue.extend({
 })
 
 export async function testRender() {
-  const page = render({template: '<div />'})
+  const {
+    getByText,
+    queryByText,
+    findByText,
+    getAllByText,
+    queryAllByText,
+    findAllByText,
+    container,
+    unmount,
+    debug,
+  } = render({template: '<div />'})
 
   // single queries
-  page.getByText('foo')
-  page.queryByText('foo')
-  await page.findByText('foo')
+  getByText('foo')
+  queryByText('foo')
+  await findByText('foo')
 
   // multiple queries
-  page.getAllByText('bar')
-  page.queryAllByText('bar')
-  await page.findAllByText('bar')
-
-  // helpers
-  const {container, unmount, debug} = page
+  getAllByText('bar')
+  queryAllByText('bar')
+  await findAllByText('bar')
 
   debug(container)
 
@@ -124,6 +133,38 @@ export function testConfigCallback() {
     localVue.use(ExamplePlugin)
     store.replaceState({foo: 'bar'})
     router.onError(error => console.log(error.message))
+  })
+}
+
+export function testInstantiatedStore() {
+  render(SomeComponent, {
+    store: new Vuex.Store({
+      state: {count: 3},
+      mutations: {
+        increment(state) {
+          state.count++
+        },
+        decrement(state) {
+          state.count--
+        },
+      },
+      actions: {
+        increment(context) {
+          context.commit('increment')
+        },
+        decrement(context) {
+          context.commit('decrement')
+        },
+      },
+    }),
+  })
+}
+
+export function testInstantiatedRouter() {
+  render(SomeComponent, {
+    routes: new VueRouter({
+      routes: [{path: '/', name: 'home', component: SomeComponent}],
+    }),
   })
 }
 
