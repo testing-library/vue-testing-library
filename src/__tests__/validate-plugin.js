@@ -13,10 +13,12 @@ test('can validate using plugin', async () => {
 
   await fireEvent.touch(emailInput)
 
-  await findByText('This field is required')
+  expect(await findByText('This field is required')).toBeInTheDocument()
 
   await fireEvent.update(emailInput, 'an invalid email')
   await fireEvent.blur(emailInput)
 
-  await findByText('This field must be a valid email')
+  expect(
+    await findByText('This field must be a valid email'),
+  ).toBeInTheDocument()
 })
