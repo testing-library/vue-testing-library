@@ -110,11 +110,6 @@ export function testOptions() {
         foos: [4, 5],
         bars: ['a', 'b'],
       },
-      getters: {
-        fooCount() {
-          return this.foos.length
-        },
-      },
     },
     routes: [
       {path: '/', name: 'home', component: SomeComponent},
@@ -129,10 +124,8 @@ export function testOptions() {
 
 export function testConfigCallback() {
   const ExamplePlugin: Vue.PluginFunction<never> = () => {}
-  render(SomeComponent, {}, (localVue, store, router) => {
+  render(SomeComponent, {}, localVue => {
     localVue.use(ExamplePlugin)
-    store.replaceState({foo: 'bar'})
-    router.onError(error => console.log(error.message))
   })
 }
 
