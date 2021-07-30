@@ -11,7 +11,7 @@
     "test": "kcd-scripts test",
     "test:update": "npm test -- --updateSnapshot --coverage",
     "validate": "kcd-scripts validate",
-    "typecheck": "dtslint ./types/",
+    "typecheck": "tsd",
     "setup": "npm install && npm run validate -s"
   },
   "engines": {
