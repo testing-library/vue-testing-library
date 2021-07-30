@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
+import {expectType} from 'tsd'
 import {defineComponent} from 'vue'
-import {render, fireEvent, screen, waitFor} from '@testing-library/vue'
+import {render, fireEvent, screen, waitFor} from '.'
 
 declare const elem: Element
 
@@ -16,29 +16,28 @@ export async function testRender() {
   const utils = render({template: '<div />'})
 
   // single queries
-  utils.getByText('foo')
-  utils.queryByText('foo')
-  await utils.findByText('foo')
+  expectType<HTMLElement>(utils.getByText('foo'))
+  expectType<HTMLElement | null>(utils.queryByText('foo'))
+  expectType<HTMLElement>(await utils.findByText('foo'))
 
   // multiple queries
-  utils.getAllByText('bar')
-  utils.queryAllByText('bar')
-  await utils.findAllByText('bar')
+  expectType<HTMLElement[]>(utils.getAllByText('bar'))
+  expectType<HTMLElement[]>(utils.queryAllByText('bar'))
+  expectType<HTMLElement[]>(await utils.findAllByText('bar'))
 
   // helpers
   const {container, baseElement, unmount, debug, rerender} = utils
 
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  rerender({a: 1}) // $ExpectType Promise<void>
+  expectType<void>(await rerender({a: 1}))
 
-  debug() // $ExpectType void
-  debug(container) // $ExpectType void
-  debug([elem, elem], 100, {highlight: false}) // $ExpectType void
+  expectType<void>(debug())
+  expectType<void>(debug(container))
+  expectType<void>(debug([elem, elem], 100, {highlight: false}))
 
-  unmount() // $ExpectType void
+  expectType<void>(unmount())
 
-  container // $ExpectType Element
-  baseElement // $ExpectType Element
+  expectType<Element>(container)
+  expectType<Element>(baseElement)
 }
 
 export function testRenderOptions() {
@@ -50,20 +49,20 @@ export function testRenderOptions() {
 
 export async function testFireEvent() {
   const {container} = render({template: 'button'})
-  await fireEvent.click(container) // $ExpectType Promise<void>
-  await fireEvent.touch(elem) // $ExpectType Promise<void>
+  expectType<void>(await fireEvent.click(container))
+  expectType<void>(await fireEvent.touch(elem))
 }
 
 export async function testScreen() {
   render({template: 'button'})
 
-  await screen.findByRole('button') // $ExpectType Promise<HTMLElement>
+  expectType<HTMLElement>(await screen.findByRole('button'))
 }
 
 export async function testWaitFor() {
   const {container} = render({template: 'button'})
-  await fireEvent.update(container) // $ExpectType Promise<void>
-  await waitFor(() => {})
+  expectType<void>(await fireEvent.update(container))
+  expectType<void>(await waitFor(() => {}))
 }
 
 export function testOptions() {
@@ -86,7 +85,7 @@ export function testOptions() {
 
 export function testEmitted() {
   const {emitted} = render(SomeComponent)
-  emitted().foo // $ExpectType unknown[]
+  expectType<unknown[]>(emitted().foo)
 }
 
 /*
@@ -96,4 +95,5 @@ eslint
   testing-library/no-debug: "off",
   testing-library/prefer-screen-queries: "off",
   @typescript-eslint/unbound-method: "off",
+  @typescript-eslint/no-invalid-void-type: "off"
 */
