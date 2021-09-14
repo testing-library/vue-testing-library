@@ -75,6 +75,7 @@ function render(
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
     updateProps: _ => wrapper.setProps(_),
+    vm: wrapper.vm,
     ...getQueriesForElement(baseElement),
   }
 }

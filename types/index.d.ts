@@ -32,6 +32,7 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   emitted(): {[name: string]: any[][]}
   updateProps(props: object): Promise<void>
+  vm: Vue
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
