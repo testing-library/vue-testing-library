@@ -65,7 +65,7 @@
     "jest-serializer-vue": "^2.0.2",
     "kcd-scripts": "^11.1.0",
     "lodash.merge": "^4.6.2",
-    "msw": "^0.26.2",
+    "msw": "^0.35.0",
     "portal-vue": "^2.1.7",
     "typescript": "^4.0.5",
     "vee-validate": "^2.2.15",
