@@ -11,7 +11,7 @@ module.exports = merge(config, {
   collectCoverageFrom: ['**/src/**/*.js', '!**/src/__tests__/**'],
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
-    '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
+    '.*\\.(vue)$': '<rootDir>/node_modules/@vue/vue2-jest',
   },
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
   testPathIgnorePatterns: [
