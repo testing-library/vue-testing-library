@@ -11,6 +11,6 @@ test('uses require("vue-router").default when require("vue-router") is undefined
   })
 
   expect(() => render(About, {routes})).toThrowError(
-    new TypeError("Cannot read property 'default' of undefined"),
+    new TypeError("Cannot read properties of undefined (reading 'default')"),
   )
 })
