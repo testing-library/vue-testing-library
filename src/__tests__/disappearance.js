@@ -11,7 +11,7 @@ test('waits for the data to be loaded', async () => {
 
   // Following line reads as follows:
   // "Wait until element with text 'Loading...' is gone."
-  await waitForElementToBeRemoved(getByText('Loading...'))
+  await waitForElementToBeRemoved(queryByText('Loading...'))
   // It is equivalent to:
   //
   // await waitFor(() => {
