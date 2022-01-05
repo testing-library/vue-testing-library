@@ -30,8 +30,8 @@ Check out the test examples on GitHub for further details.`)
     attachTo: container,
   })
 
-  // this removes the additional "data-v-app" div node from VTU:
-  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L196-L213
+  // this removes the additional wrapping div node from VTU:
+  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L309
   unwrapNode(wrapper.parentElement)
 
   mountedWrappers.add(wrapper)
