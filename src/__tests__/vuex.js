@@ -1,5 +1,7 @@
 import '@testing-library/jest-dom'
 import {render, fireEvent} from '@testing-library/vue'
+import Vue from 'vue'
+import Vuex from 'vuex'
 
 import VuexTest from './components/Store/VuexTest'
 import {store} from './components/Store/store'
@@ -53,4 +55,40 @@ test('can render with vuex with custom store', async () => {
 
   await fireEvent.click(getByText('-'))
   expect(getByTestId('count-value')).toHaveTextContent('1000')
+})
+
+test('can render with an instantiated Vuex store', async () => {
+  // Before calling new Vuex.Store in your code, you'll need to `.use` it on the
+  // global (or local) Vue instance. In frameworks like Jest, the `setupFilesAfterEnv`
+  // property is a good place to do this.
+  // https://jestjs.io/docs/configuration#setupfilesafterenv-array
+  Vue.use(Vuex)
+
+  const {getByTestId, getByText} = render(VuexTest, {
+    store: new Vuex.Store({
+      state: {count: 3},
+      mutations: {
+        increment(state) {
+          state.count++
+        },
+        decrement(state) {
+          state.count--
+        },
+      },
+      actions: {
+        increment(context) {
+          context.commit('increment')
+        },
+        decrement(context) {
+          context.commit('decrement')
+        },
+      },
+    }),
+  })
+
+  await fireEvent.click(getByText('+'))
+  expect(getByTestId('count-value')).toHaveTextContent('4')
+
+  await fireEvent.click(getByText('-'))
+  expect(getByTestId('count-value')).toHaveTextContent('3')
 })

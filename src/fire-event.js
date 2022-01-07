@@ -1,4 +1,4 @@
-/* eslint-disable testing-library/no-wait-for-empty-callback */
+/* eslint-disable testing-library/no-wait-for-empty-callback, testing-library/await-fire-event */
 import {waitFor, fireEvent as dtlFireEvent} from '@testing-library/dom'
 
 // Vue Testing Lib's version of fireEvent will call DOM Testing Lib's
@@ -28,7 +28,7 @@ fireEvent.touch = async elem => {
 // fireEvent.update is a small utility to provide a better experience when
 // working with v-model.
 // Related upstream issue: https://github.com/vuejs/vue-test-utils/issues/345#issuecomment-380588199
-// Examples: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/form.js
+// Examples: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/form.js
 fireEvent.update = (elem, value) => {
   const tagName = elem.tagName
   const type = elem.type

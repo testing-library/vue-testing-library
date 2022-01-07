@@ -2,8 +2,6 @@
 
 import Vue, {ComponentOptions} from 'vue'
 import {ThisTypedMountOptions, VueClass} from '@vue/test-utils'
-import {Store, StoreOptions} from 'vuex'
-import Router, {RouteConfig} from 'vue-router'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
   queries,
@@ -36,26 +34,32 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
   updateProps(props: object): Promise<void>
 }
 
-export interface RenderOptions<V extends Vue, S = {}>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Store = any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Routes = any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Router = any
+
+export interface RenderOptions<V extends Vue>
   // The props and store options special-cased by Vue Testing Library and NOT passed to mount().
   extends Omit<ThisTypedMountOptions<V>, 'store' | 'props'> {
   props?: object
-  store?: StoreOptions<S>
-  routes?: RouteConfig[]
+  store?: Store
+  routes?: Routes
   container?: Element
   baseElement?: Element
 }
 
-type ConfigurationArgs = [
-  localVue: typeof Vue,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  store: Store<any>,
-  router: Router,
-]
-
 export type ConfigurationCallback<V extends Vue> =
-  | ((...args: ConfigurationArgs) => Partial<ThisTypedMountOptions<V>>)
-  | ((...args: ConfigurationArgs) => void)
+  | ((
+      localVue: typeof Vue,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      store: Store,
+      router: Router,
+    ) => Partial<ThisTypedMountOptions<V>>)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | ((localVue: typeof Vue, store: Store, router: Router) => void)
 
 export function render<V extends Vue>(
   TestComponent: VueClass<V> | ComponentOptions<V>,
