@@ -15,6 +15,11 @@
 <p>Simple and complete Vue.js testing utilities that encourage good testing practices.</p>
 
 <p>Vue Testing Library is a lightweight adapter built on top of <a href="https://github.com/testing-library/dom-testing-library/">DOM Testing Library</a> and <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a>.</p>
+  
+  
+<br />
+  
+  <p>If you're looking for the Vue 3 version of Vue Testing Library, check out the <a href="https://github.com/testing-library/vue-testing-library/tree/next">next</a> branch.</p>
 
 <br />
 
