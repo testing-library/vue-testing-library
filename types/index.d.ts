@@ -9,6 +9,8 @@ import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
 
+export function cleanup(): void
+
 type Debug = (
   baseElement?: Array<DocumentFragment | Element> | DocumentFragment | Element,
   maxLength?: number,
