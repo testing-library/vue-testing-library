@@ -66,6 +66,12 @@
 This module is distributed via `npm` and should be installed as one of your
 project's `devDependencies`:
 
+If using Vue 2
+```
+npm install --save-dev @testing-library/vue@5
+```
+
+If using Vue 3
 ```
 npm install --save-dev @testing-library/vue
 ```
