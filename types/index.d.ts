@@ -41,11 +41,11 @@ type Routes = any
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Router = any
 
-export interface RenderOptions<V extends Vue>
+export interface RenderOptions<V extends Vue, S = Store>
   // The props and store options special-cased by Vue Testing Library and NOT passed to mount().
   extends Omit<ThisTypedMountOptions<V>, 'store' | 'props'> {
   props?: object
-  store?: Store
+  store?: S
   routes?: Routes
   container?: Element
   baseElement?: Element
@@ -61,9 +61,11 @@ export type ConfigurationCallback<V extends Vue> =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   | ((localVue: typeof Vue, store: Store, router: Router) => void)
 
-export function render<V extends Vue>(
+export function render<V extends Vue, S = Store>(
   TestComponent: VueClass<V> | ComponentOptions<V>,
-  options?: RenderOptions<V>,
+  // eslint-disable-next-line @typescript-eslint/ban-tslint-comment
+  // tslint:disable-next-line no-unnecessary-generics
+  options?: RenderOptions<V, S>,
   configure?: ConfigurationCallback<V>,
 ): RenderResult
 
