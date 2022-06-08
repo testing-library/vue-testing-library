@@ -4,7 +4,8 @@ module.exports = {
   },
   extends: [
     './node_modules/kcd-scripts/eslint.js',
-    'plugin:vue/recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:testing-library/vue',
     'prettier',
   ],
   plugins: ['vue'],
@@ -17,8 +18,8 @@ module.exports = {
     'testing-library/prefer-screen-queries': 'off',
     'testing-library/no-manual-cleanup': 'off',
     'testing-library/no-await-sync-events': 'off',
-    'testing-library/await-fire-event': 'error',
     'testing-library/prefer-user-event': 'off',
     'testing-library/no-node-access': 'off',
+    'testing-library/await-fire-event': 'off',
   },
 }

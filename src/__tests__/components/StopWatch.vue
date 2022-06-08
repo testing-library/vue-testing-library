@@ -13,10 +13,10 @@ export default {
     return {
       running: false,
       lapse: 0,
-      timer: null
+      timer: null,
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearInterval(this.timer)
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
       }
 
       this.running = !this.running
-    }
-  }
+    },
+  },
 }
 </script>

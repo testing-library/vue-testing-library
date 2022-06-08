@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import {render, waitFor, fireEvent} from '@testing-library/vue'
+import {render, waitFor, fireEvent} from '..'
 import StopWatch from './components/StopWatch.vue'
 
 const sleep = ms =>
@@ -36,21 +36,4 @@ test('updates component state', async () => {
   // We can't assert a specific amount of time. Instead, we assert that the
   // content has changed.
   expect(elapsedTime).toHaveTextContent(timeBeforeStop)
-})
-
-test('unmounts a component', async () => {
-  jest.spyOn(console, 'error').mockImplementation(() => {})
-
-  const {unmount, isUnmounted, getByText} = render(StopWatch)
-  await fireEvent.click(getByText('Start'))
-
-  // Destroys a Vue component instance.
-  unmount()
-
-  expect(isUnmounted()).toBe(true)
-
-  // Wait for a few milliseconds
-  await sleep(5)
-
-  expect(console.error).not.toHaveBeenCalled()
 })

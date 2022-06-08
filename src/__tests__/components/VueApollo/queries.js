@@ -1,17 +1,16 @@
-import gql from 'graphql-tag'
+import {gql} from 'apollo-boost'
 
-export const updateUserMutation = gql`
-  mutation updateUser($data: UpdateUserInput) {
-    updateUser(input: $data) {
+export const getUserQuery = gql`
+  query getUser($id: String!) {
+    user(id: $id) {
       id
       email
     }
   }
 `
-
-export const userQuery = gql`
-  query User($id: String!) {
-    user(id: $id) {
+export const updateUserMutation = gql`
+  mutation updateUser($data: UpdateUserInput) {
+    updateUser(input: $data) {
       id
       email
     }

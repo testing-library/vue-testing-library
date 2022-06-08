@@ -1,8 +1,8 @@
-/* eslint-enable testing-library/prefer-user-event */
 import '@testing-library/jest-dom'
-import {render, waitFor} from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
+import {render, waitFor} from '..'
 import Form from './components/Form'
+import Select from './components/Select'
 
 beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {})
@@ -25,16 +25,16 @@ test('User events in a form', async () => {
 
   const titleInput = getByLabelText(/title of the movie/i)
   userEvent.type(titleInput, fakeReview.title)
-  expect(titleInput.value).toEqual(fakeReview.title)
+  expect(titleInput).toHaveValue(fakeReview.title)
 
   const textArea = getByLabelText(/Your review/i)
   userEvent.type(textArea, 'The t-rex went insane!')
-  expect(textArea.value).toEqual('The t-rex went insane!')
+  expect(textArea).toHaveValue('The t-rex went insane!')
 
   userEvent.clear(textArea)
-  expect(textArea.value).toEqual('')
+  expect(textArea).toHaveValue('')
   userEvent.type(textArea, fakeReview.review)
-  expect(textArea.value).toEqual(fakeReview.review)
+  expect(textArea).toHaveValue(fakeReview.review)
 
   const initialSelectedRating = getByLabelText(/Awful/i)
   const wonderfulRadioInput = getByLabelText(/Wonderful/i)
@@ -56,4 +56,17 @@ test('User events in a form', async () => {
   expect(emitted().submit[0][0]).toMatchObject(fakeReview)
 
   expect(console.warn).not.toHaveBeenCalled()
+})
+
+test('selecting option with user events', () => {
+  const {getByDisplayValue} = render(Select)
+  const select = getByDisplayValue('Tyrannosaurus')
+  expect(select).toHaveValue('dino1')
+
+  userEvent.selectOptions(select, 'dino2')
+  expect(select).toHaveValue('dino2')
+
+  userEvent.selectOptions(select, 'dino3')
+  expect(select).not.toHaveValue('dino2')
+  expect(select).toHaveValue('dino3')
 })

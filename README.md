@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Vue Testing Library</h1>
+<h1>Vue Testing Library for Vue 3</h1>
 
 <br />
 
@@ -15,11 +15,6 @@
 <p>Simple and complete Vue.js testing utilities that encourage good testing practices.</p>
 
 <p>Vue Testing Library is a lightweight adapter built on top of <a href="https://github.com/testing-library/dom-testing-library/">DOM Testing Library</a> and <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a>.</p>
-  
-  
-<br />
-  
-  <p>If you're looking for the Vue 3 version of Vue Testing Library, check out the <a href="https://github.com/testing-library/vue-testing-library/tree/next">next</a> branch.</p>
 
 <br />
 
@@ -66,30 +61,29 @@
 This module is distributed via `npm` and should be installed as one of your
 project's `devDependencies`:
 
-If using Vue 2
-```
-npm install --save-dev @testing-library/vue@5
-```
-
-If using Vue 3
 ```
 npm install --save-dev @testing-library/vue
 ```
 
-This library has `peerDependencies` listings for `Vue` and
+This library has `peerDependencies` listings for `Vue 3` and
 `vue-template-compiler`.
 
-You may also be interested in installing `@testing-library/jest-dom` so you can
-use [the custom Jest matchers][jest-dom].
+You may also be interested in installing `jest-dom` so you can use [the custom
+Jest matchers][jest-dom].
+
+If you're using Vue 2, please install version 5 of the library:
+
+```
+npm install --save-dev @testing-library/vue@^5
+```
+
 
 ## A basic example
 
 ```html
 <template>
-  <div>
-    <p>Times clicked: {{ count }}</p>
-    <button @click="increment">increment</button>
-  </div>
+  <p>Times clicked: {{ count }}</p>
+  <button @click="increment">increment</button>
 </template>
 
 <script>
@@ -133,9 +127,9 @@ test('increments value on click', async () => {
 })
 ```
 
-> You might want to install [`@testing-library/jest-dom`][jest-dom] to add handy
-> assertions such as `.toBeInTheDocument()`. In the example above, you could
-> write `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
+> You might want to install [`jest-dom`][jest-dom] to add handy assertions such
+> as `.toBeInTheDocument()`. In the example above, you could write
+> `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
 
 > Using `byText` queries it's not the only nor the best way to query for
 > elements. Read [Which query should I use?][which-query] to discover
@@ -258,8 +252,8 @@ instead of filing an issue on GitHub.
 [npm-badge]: https://badge.fury.io/js/%40testing-library%2Fvue.svg
 [npm]: https://badge.fury.io/js/%40testing-library%2Fvue
 [license-badge]: https://img.shields.io/github/license/testing-library/vue-testing-library.svg
-[license]: https://github.com/testing-library/vue-testing-library/blob/main/LICENSE
-[discord]: https://discord.gg/testing-library
+[license]: https://github.com/testing-library/vue-testing-library/blob/master/LICENSE
+[discord]: https://testing-library.com/discord
 [discord-badge]: https://img.shields.io/discord/723559267868737556.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2&style=flat-square
 [jest-dom]: https://github.com/testing-library/jest-dom
 [which-query]: https://testing-library.com/docs/guide-which-query
@@ -274,11 +268,11 @@ instead of filing an issue on GitHub.
 [add-issue-bug]: https://github.com/testing-library/vue-testing-library/issues/new?assignees=&labels=bug&template=bug_report.md&title=
 [add-issue]: (https://github.com/testing-library/vue-testing-library/issues/new)
 
-[types-directory]: https://github.com/testing-library/vue-testing-library/blob/main/types
-[test-directory]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__
-[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuex.js
-[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vue-router.js
-[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/validate-plugin.js
-[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/translations-vue-i18n.js
-[vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuetify.js
+[types-directory]: https://github.com/testing-library/vue-testing-library/blob/master/types
+[test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
+[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
+[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
+[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
+[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js
+[vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuetify.js
 <!-- prettier-ignore-end -->

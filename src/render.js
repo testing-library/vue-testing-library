@@ -1,4 +1,5 @@
-import {createLocalVue, mount} from '@vue/test-utils'
+/* eslint-disable testing-library/no-wait-for-empty-callback */
+import {mount} from '@vue/test-utils'
 
 import {getQueriesForElement, prettyDOM} from '@testing-library/dom'
 
@@ -13,70 +14,45 @@ function render(
     baseElement: customBaseElement,
     ...mountOptions
   } = {},
-  configurationCb,
 ) {
   const div = document.createElement('div')
   const baseElement = customBaseElement || customContainer || document.body
   const container = customContainer || baseElement.appendChild(div)
 
-  const attachTo = document.createElement('div')
-  container.appendChild(attachTo)
-
-  const localVue = createLocalVue()
-  let vuexStore = null
-  let router = null
-  let callbackOptions = {}
-
-  if (store) {
-    const Vuex = require('vuex')
-    localVue.use(Vuex)
-
-    vuexStore = store instanceof Vuex.Store ? store : new Vuex.Store(store)
-  }
-
-  if (routes) {
-    const requiredRouter = require('vue-router')
-    const VueRouter = requiredRouter.default || requiredRouter
-    localVue.use(VueRouter)
-
-    router = routes instanceof VueRouter ? routes : new VueRouter({routes})
-  }
-
-  if (configurationCb && typeof configurationCb === 'function') {
-    callbackOptions = configurationCb(localVue, vuexStore, router)
-  }
-
-  if (!mountOptions.propsData && !!mountOptions.props) {
-    mountOptions.propsData = mountOptions.props
-    delete mountOptions.props
+  if (store || routes) {
+    console.warn(`Providing 'store' or 'routes' options is no longer available.
+You need to create a router/vuex instance and provide it through 'global.plugins'.
+Check out the test examples on GitHub for further details.`)
   }
 
   const wrapper = mount(Component, {
-    attachTo,
-    localVue,
-    router,
-    store: vuexStore,
     ...mountOptions,
-    ...callbackOptions,
+    attachTo: container,
   })
 
+  // this removes the additional wrapping div node from VTU:
+  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L309
+  unwrapNode(wrapper.parentElement)
+
   mountedWrappers.add(wrapper)
-  container.appendChild(wrapper.element)
 
   return {
     container,
     baseElement,
-    debug: (el = baseElement, ...args) =>
+    debug: (el = baseElement, maxLength, options) =>
       Array.isArray(el)
-        ? el.forEach(e => console.log(prettyDOM(e, ...args)))
-        : console.log(prettyDOM(el, ...args)),
-    unmount: () => wrapper.destroy(),
-    isUnmounted: () => wrapper.vm._isDestroyed,
+        ? el.forEach(e => console.log(prettyDOM(e, maxLength, options)))
+        : console.log(prettyDOM(el, maxLength, options)),
+    unmount: () => wrapper.unmount(),
     html: () => wrapper.html(),
     emitted: () => wrapper.emitted(),
-    updateProps: _ => wrapper.setProps(_),
+    rerender: props => wrapper.setProps(props),
     ...getQueriesForElement(baseElement),
   }
+}
+
+function unwrapNode(node) {
+  node.replaceWith(...node.childNodes)
 }
 
 function cleanup() {
@@ -91,11 +67,8 @@ function cleanupAtWrapper(wrapper) {
     document.body.removeChild(wrapper.element.parentNode)
   }
 
-  try {
-    wrapper.destroy()
-  } finally {
-    mountedWrappers.delete(wrapper)
-  }
+  wrapper.unmount()
+  mountedWrappers.delete(wrapper)
 }
 
-export {cleanup, render}
+export {render, cleanup}

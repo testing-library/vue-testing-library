@@ -11,14 +11,14 @@
     "test": "kcd-scripts test",
     "test:update": "npm test -- --updateSnapshot --coverage",
     "validate": "kcd-scripts validate",
-    "typecheck": "dtslint ./types/",
+    "typecheck": "tsd",
     "setup": "npm install && npm run validate -s"
   },
   "engines": {
-    "node": ">10.18"
+    "node": ">=12"
   },
   "files": [
-    "types/*.d.ts",
+    "types",
     "dist",
     "cleanup-after-each.js"
   ],
@@ -35,52 +35,51 @@
     "vue.js testing",
     "vue",
     "vue testing",
-    "vue.js 2",
-    "vue.js 2 testing",
-    "vue 2",
-    "vue 2 testing"
+    "vue.js 3",
+    "vue.js 3 testing",
+    "vue 3",
+    "vue 3 testing"
   ],
   "author": "Daniel Cook",
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "@testing-library/dom": "^7.26.6",
-    "@vue/test-utils": "^1.1.0"
+    "@babel/runtime": "^7.15.4",
+    "@testing-library/dom": "^8.5.0",
+    "@vue/test-utils": "^2.0.0-rc.18"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.11.5",
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/estree": "0.0.46",
-    "@vue/vue2-jest": "^27.0.0-alpha.2",
+    "@apollo/client": "^3.4.11",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/estree": "^0.0.50",
+    "@vue/apollo-composable": "^4.0.0-alpha.14",
+    "@vue/compiler-sfc": "^3.2.12",
     "apollo-boost": "^0.4.9",
-    "apollo-cache-inmemory": "^1.6.6",
-    "axios": "^0.21.1",
-    "dtslint": "^4.0.5",
-    "eslint": "^7.13.0",
-    "eslint-plugin-vue": "^7.6.0",
-    "graphql": "^15.3.0",
-    "graphql-tag": "^2.11.0",
-    "isomorphic-unfetch": "^3.0.0",
+    "axios": "^0.20.0",
+    "element-plus": "^1.3.0-beta.1",
+    "eslint-plugin-vue": "^8.2.0",
+    "graphql": "^15.5.3",
+    "graphql-tag": "^2.12.4",
+    "isomorphic-unfetch": "^3.1.0",
     "jest-serializer-vue": "^2.0.2",
-    "kcd-scripts": "^11.1.0",
+    "kcd-scripts": "^10.0.0",
     "lodash.merge": "^4.6.2",
-    "msw": "^0.35.0",
-    "portal-vue": "^2.1.7",
-    "semver": "^7.3.5",
-    "typescript": "^4.0.5",
-    "vee-validate": "^2.2.15",
-    "vue": "^2.6.12",
-    "vue-apollo": "^3.0.4",
-    "vue-i18n": "^8.21.1",
-    "vue-router": "^3.4.9",
-    "vue-template-compiler": "^2.6.12",
-    "vuetify": "^2.3.17",
-    "vuex": "^3.5.1"
+    "msw": "^0.21.3",
+    "tsd": "^0.19.1",
+    "typescript": "^4.4.3",
+    "vee-validate": "^4.3.5",
+    "vue": "^3.2.12",
+    "vue-apollo": "^3.0.5",
+    "vue-i18n": "^9.2.0-beta.26",
+    "vue-jest": "^5.0.0-alpha.10",
+    "vue-router": "^4.0.3",
+    "vuetify": "^v3.0.0-alpha.12",
+    "vuex": "^4.0.0"
   },
   "peerDependencies": {
-    "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10"
+    "@vue/compiler-sfc": ">= 3",
+    "vue": ">= 3"
   },
   "husky": {
     "hooks": {

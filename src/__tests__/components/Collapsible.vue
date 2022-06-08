@@ -15,7 +15,7 @@ export default {
     }
   },
   methods: {
-    handleClick(e) {
+    handleClick(_) {
       this.displayElement = !this.displayElement
     },
   },

@@ -1,29 +1,24 @@
-// Notice this example is using vee-validate v2.X
-import VeeValidate from 'vee-validate'
 import '@testing-library/jest-dom'
 
-import {render, fireEvent} from '@testing-library/vue'
-import Validate from './components/Validate'
+import {render, fireEvent} from '..'
+import VeeValidate from './components/Validate'
 
 test('can validate using plugin', async () => {
-  // The third argument of `render` is a callback function that receives the
-  // Vue instance as a parameter. This way, we can register plugins such as
-  // VeeValidate.
-  const {getByPlaceholderText, queryByTestId, getByTestId} = render(
-    Validate,
-    {},
-    vue => vue.use(VeeValidate, {events: 'blur'}),
-  )
+  const {findByText, getByRole, queryByTestId} = render(VeeValidate)
 
   // Assert error messages are not in the DOM when rendering the component.
-  expect(queryByTestId('username-errors')).not.toBeInTheDocument()
+  expect(queryByTestId('error-message')).not.toBeInTheDocument()
 
-  const usernameInput = getByPlaceholderText('Username...')
-  await fireEvent.touch(usernameInput)
+  const emailInput = getByRole('textbox')
 
-  // After "touching" the input (focusing and blurring), validation error
-  // should appear.
-  expect(getByTestId('username-errors')).toHaveTextContent(
-    /the username field is required/i,
-  )
+  await fireEvent.touch(emailInput)
+
+  expect(await findByText('This field is required')).toBeInTheDocument()
+
+  await fireEvent.update(emailInput, 'an invalid email')
+  await fireEvent.blur(emailInput)
+
+  expect(
+    await findByText('This field must be a valid email'),
+  ).toBeInTheDocument()
 })

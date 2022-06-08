@@ -32,6 +32,9 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
+          # Needed because @vue/apollo-composable requires @vue/composition-api
+          # which has a peerDep on Vue 2.
+          install-command: npm i --legacy-peer-deps
 
       - name: ▶️ Run validate script
         run: npm run validate

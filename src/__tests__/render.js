@@ -1,4 +1,4 @@
-import {render} from '@testing-library/vue'
+import {render} from '..'
 import '@testing-library/jest-dom'
 
 test('baseElement defaults to document.body', () => {
@@ -74,4 +74,16 @@ test('baseElement matches container if not custom baseElement is provided', () =
       <div />
     </blink>
   `)
+})
+
+test('unmounts', () => {
+  const {getByTestId, unmount, queryByTestId} = render({
+    template: `<div data-testid="node">Hi</div>`,
+  })
+
+  expect(getByTestId('node')).toBeInTheDocument()
+
+  unmount()
+
+  expect(queryByTestId('node')).not.toBeInTheDocument()
 })

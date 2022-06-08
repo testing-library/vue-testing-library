@@ -1,6 +1,8 @@
 export const store = {
-  state: {
-    count: 0,
+  state() {
+    return {
+      count: 0,
+    }
   },
   actions: {
     increment: ({commit, state}) => commit('SET_COUNT', state.count + 1),

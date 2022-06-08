@@ -1,10 +1,11 @@
-import {render, fireEvent} from '@testing-library/vue'
+import {h} from 'vue'
+import {render, fireEvent} from '..'
 import Button from './components/Button'
 
 const eventTypes = [
   {
     type: 'Clipboard',
-    events: ['copy', 'paste'],
+    events: ['copy', 'cut', 'paste'],
   },
   {
     type: 'Composition',
@@ -17,20 +18,16 @@ const eventTypes = [
   },
   {
     type: 'Focus',
-    events: ['focus', 'blur'],
-  },
-  {
-    type: 'Form',
-    events: ['focus', 'blur'],
-  },
-  {
-    type: 'Focus',
-    events: ['input', 'invalid'],
+    events: ['focus', 'blur', 'focusIn', 'focusOut'],
   },
   {
     type: 'Focus',
     events: ['submit'],
     elementType: 'form',
+  },
+  {
+    type: 'Form',
+    events: ['change', 'input', 'invalid', 'submit', 'reset'],
   },
   {
     type: 'Mouse',
@@ -118,6 +115,22 @@ const eventTypes = [
     events: ['transitionEnd'],
     elementType: 'div',
   },
+  {
+    type: 'Pointer',
+    events: [
+      'pointerOver',
+      'pointerEnter',
+      'pointerDown',
+      'pointerMove',
+      'pointerUp',
+      'pointerCancel',
+      'pointerOut',
+      'pointerLeave',
+      'gotPointerCapture',
+      'lostPointerCapture',
+    ],
+    elementType: 'div',
+  },
 ]
 
 beforeEach(() => {
@@ -128,6 +141,8 @@ afterEach(() => {
   console.warn.mockRestore()
 })
 
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
+
 // For each event type, we assert that the right events are being triggered
 // when the associated fireEvent method is called.
 eventTypes.forEach(({type, events, elementType = 'input', init}) => {
@@ -136,21 +151,22 @@ eventTypes.forEach(({type, events, elementType = 'input', init}) => {
       it(`triggers ${eventName}`, async () => {
         const testId = `${type}-${eventName}`
         const spy = jest.fn()
+        const eventNameHandler = `on${capitalize(
+          eventName.toLocaleLowerCase(),
+        )}`
+
+        const componentWithEvent = {
+          render() {
+            return h(elementType, {
+              [eventNameHandler]: spy,
+              'data-testid': testId,
+            })
+          },
+        }
 
         // Render an element with a listener of the event under testing and a
         // test-id attribute, so that we can get the DOM node afterwards.
-        const {getByTestId} = render({
-          render(h) {
-            return h(elementType, {
-              on: {
-                [eventName.toLowerCase()]: spy,
-              },
-              attrs: {
-                'data-testid': testId,
-              },
-            })
-          },
-        })
+        const {getByTestId} = render(componentWithEvent)
 
         const elem = getByTestId(testId)
 
@@ -165,13 +181,13 @@ eventTypes.forEach(({type, events, elementType = 'input', init}) => {
 test('triggers dblclick on doubleClick', async () => {
   const spy = jest.fn()
 
-  const {getByRole} = render({
-    render(h) {
-      return h('button', {
-        on: {dblclick: spy},
-      })
+  const componentWithDblClick = {
+    render() {
+      return h('button', {onDblclick: spy}, 'Click me')
     },
-  })
+  }
+
+  const {getByRole} = render(componentWithDblClick)
 
   const elem = getByRole('button')
 
@@ -189,49 +205,39 @@ test('calling `fireEvent` directly works too', async () => {
 
   expect(emitted()).toHaveProperty('click')
 })
-const typingEvents = ['input', 'change']
-typingEvents.forEach(event => {
-  test(`fireEvent.${event} prints a warning message to use fireEvent.update instead`, async () => {
-    const {getByTestId} = render({
-      template: `<input type="text" data-testid=test-${event}></input>`,
-    })
 
-    await fireEvent[event](getByTestId(`test-${event}`), 'hello')
+test.each(['input', 'change'])(
+  `fireEvent.%s prints a warning message to use fireEvent.update instead`,
+  async event => {
+    const {getByRole} = render({template: `<input type="text" />`})
+
+    await fireEvent[event](getByRole('textbox'), 'hello')
 
     expect(console.warn).toHaveBeenCalledTimes(1)
     expect(console.warn).toHaveBeenCalledWith(
-      expect.stringContaining(
-        `Using "fireEvent.${event}" may lead to unexpected results. Please use fireEvent.update() instead.`,
-      ),
+      `Using "fireEvent.${event}" may lead to unexpected results. Please use fireEvent.update() instead.`,
     )
-  })
-})
-test('fireEvent.update does not trigger warning messages', async () => {
+  },
+)
+
+test('does not warn when disabled via env var', async () => {
+  process.env.VTL_SKIP_WARN_EVENT_UPDATE = 'true'
+
   const {getByTestId} = render({
-    template: `<input type="text" data-testid=test-update></input>`,
+    template: `<input type="text" data-testid="test-update" />`,
   })
 
-  await fireEvent.update(getByTestId('test-update'), 'hello')
+  await fireEvent.input(getByTestId('test-update'), 'hello')
 
   expect(console.warn).not.toHaveBeenCalled()
 })
 
-test('fireEvent.update should not crash with input file', async () => {
+test('fireEvent.update does not trigger warning messages', async () => {
   const {getByTestId} = render({
-    template: `<input type="file" data-testid="test-update" />`,
+    template: `<input type="text" data-testid="test-update" />`,
   })
 
-  const file = new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})
-
-  const inputEl = getByTestId('test-update')
-
-  // You could replace the lines below with
-  // userEvent.upload(inputEl, file)
-  Object.defineProperty(inputEl, 'files', {
-    value: [file],
-  })
-
-  await fireEvent.update(inputEl)
+  await fireEvent.update(getByTestId('test-update'), 'hello')
 
   expect(console.warn).not.toHaveBeenCalled()
 })
@@ -248,17 +254,23 @@ test('fireEvent.update does not crash if non-input element is passed in', async 
       Hi
     </div>
   `)
+
   expect(console.warn).not.toHaveBeenCalled()
 })
 
-test('fireEvent change/input should not throw warning when env is set', async () => {
-  process.env.VTL_SKIP_WARN_EVENT_UPDATE = 'true'
+test('fireEvent.update handles input file', async () => {
   const {getByTestId} = render({
-    template: `<input type="text" data-testid=test-input></input>`,
+    template: `<input type="file" data-testid="test-update" />`,
   })
 
-  await fireEvent.input(getByTestId('test-input'), {target: {value: 'hello'}})
-  await fireEvent.change(getByTestId('test-input'), {target: {value: 'hello'}})
+  const file = new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})
+
+  const inputEl = getByTestId('test-update')
+
+  // You could replace the lines below with
+  // userEvent.upload(inputEl, file)
+  Object.defineProperty(inputEl, 'files', {value: [file]})
+  await fireEvent.update(inputEl)
 
   expect(console.warn).not.toHaveBeenCalled()
 })
