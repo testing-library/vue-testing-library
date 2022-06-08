@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Vue Testing Library for Vue 3</h1>
+<h1>Vue Testing Library</h1>
 
 <br />
 
