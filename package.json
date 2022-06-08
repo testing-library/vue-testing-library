@@ -45,7 +45,7 @@
   "dependencies": {
     "@babel/runtime": "^7.15.4",
     "@testing-library/dom": "^8.5.0",
-    "@vue/test-utils": "^2.0.0-rc.18"
+    "@vue/test-utils": "^2.0.0"
   },
   "devDependencies": {
     "@apollo/client": "^3.4.11",
