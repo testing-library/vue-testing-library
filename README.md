@@ -268,11 +268,11 @@ instead of filing an issue on GitHub.
 [add-issue-bug]: https://github.com/testing-library/vue-testing-library/issues/new?assignees=&labels=bug&template=bug_report.md&title=
 [add-issue]: (https://github.com/testing-library/vue-testing-library/issues/new)
 
-[types-directory]: https://github.com/testing-library/vue-testing-library/blob/master/types
-[test-directory]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__
-[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js
-[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-router.js
-[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/validate-plugin.js
-[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js
-[vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuetify.js
+[types-directory]: https://github.com/testing-library/vue-testing-library/blob/main/types
+[test-directory]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__
+[vuex-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuex.js
+[vue-router-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vue-router.js
+[vee-validate-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/validate-plugin.js
+[vue-i18n-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/translations-vue-i18n.js
+[vuetify-example]: https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuetify.js
 <!-- prettier-ignore-end -->
