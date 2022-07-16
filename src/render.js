@@ -45,7 +45,7 @@ Check out the test examples on GitHub for further details.`)
         : console.log(prettyDOM(el, maxLength, options)),
     unmount: () => wrapper.unmount(),
     html: () => wrapper.html(),
-    emitted: () => wrapper.emitted(),
+    emitted: name => wrapper.emitted(name),
     rerender: props => wrapper.setProps(props),
     ...getQueriesForElement(baseElement),
   }
