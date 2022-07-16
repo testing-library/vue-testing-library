@@ -62,6 +62,6 @@ test('Review form submits', async () => {
 
   // Assert the right event has been emitted.
   expect(emitted()).toHaveProperty('submit')
-  expect(emitted().submit[0][0]).toMatchObject(fakeReview)
+  expect(emitted('submit')[0][0]).toMatchObject(fakeReview)
   expect(console.warn).not.toHaveBeenCalled()
 })

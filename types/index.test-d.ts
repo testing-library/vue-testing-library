@@ -86,6 +86,7 @@ export function testOptions() {
 export function testEmitted() {
   const {emitted} = render(SomeComponent)
   expectType<unknown[]>(emitted().foo)
+  expectType<unknown[]>(emitted('foo'))
 }
 
 /*

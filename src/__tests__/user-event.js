@@ -53,7 +53,7 @@ test('User events in a form', async () => {
   expect(submitButton).toHaveFocus()
   expect(submitButton).toBeEnabled()
   userEvent.type(submitButton, '{enter}')
-  expect(emitted().submit[0][0]).toMatchObject(fakeReview)
+  expect(emitted('submit')[0][0]).toMatchObject(fakeReview)
 
   expect(console.warn).not.toHaveBeenCalled()
 })

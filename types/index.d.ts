@@ -24,6 +24,7 @@ export interface RenderResult extends BoundFunctions<typeof queries> {
   unmount(): void
   html(): string
   emitted<T = unknown>(): Record<string, T[]>
+  emitted<T = unknown>(name?: string): T[]
   rerender(props: object): Promise<void>
 }
 
