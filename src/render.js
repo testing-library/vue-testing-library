@@ -46,7 +46,10 @@ Check out the test examples on GitHub for further details.`)
     unmount: () => wrapper.unmount(),
     html: () => wrapper.html(),
     emitted: name => wrapper.emitted(name),
-    rerender: props => wrapper.setProps(props),
+    rerender: options => {
+      cleanup()
+      render(Component, options)
+    },
     ...getQueriesForElement(baseElement),
   }
 }

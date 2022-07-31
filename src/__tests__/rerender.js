@@ -14,14 +14,13 @@ test('rerender re-renders the element', async () => {
 
   expect(getByTestId('number-display')).toHaveTextContent('1')
 
-  await rerender({number: 3})
+  rerender({props: {number: 3}})
   expect(getByTestId('number-display')).toHaveTextContent('3')
 
-  await rerender({number: 5})
+  rerender({props: {number: 5}})
   expect(getByTestId('number-display')).toHaveTextContent('5')
 
-  // Notice we don't remount a different instance
-  expect(getByTestId('instance-id')).toHaveTextContent('1')
+  expect(getByTestId('instance-id')).toHaveTextContent('3')
 })
 
 test('rerender works with composition API', async () => {
@@ -46,7 +45,7 @@ test('rerender works with composition API', async () => {
 
   expect(getContent()).toHaveTextContent('Foo is: foo. Foobar is: foo-bar')
 
-  await rerender({foo: 'qux'})
+  rerender({props: {foo: 'qux'}})
 
   expect(getContent()).toHaveTextContent('Foo is: qux. Foobar is: qux-bar')
 })
