@@ -1,5 +1,6 @@
 /* eslint-disable testing-library/no-wait-for-empty-callback */
 import {waitFor, fireEvent as dtlFireEvent} from '@testing-library/dom'
+import {useActions, InputTypeActions} from './input-type-actions'
 
 // Vue Testing Lib's version of fireEvent will call DOM Testing Lib's
 // version of fireEvent. The reason is because we need to wait another
@@ -30,48 +31,15 @@ fireEvent.touch = async elem => {
 // Related upstream issue: https://github.com/vuejs/vue-test-utils/issues/345#issuecomment-380588199
 // See some examples in __tests__/form.js
 fireEvent.update = (elem, value) => {
-  const tagName = elem.tagName
-  const type = elem.type
+  const {tagName} = elem
 
-  switch (tagName) {
-    case 'OPTION': {
-      elem.selected = true
-
-      const parentSelectElement =
-        elem.parentElement.tagName === 'OPTGROUP'
-          ? elem.parentElement.parentElement
-          : elem.parentElement
-
-      return fireEvent.change(parentSelectElement)
-    }
-
-    case 'INPUT': {
-      if (['checkbox', 'radio'].includes(type)) {
-        elem.checked = true
-        return fireEvent.change(elem)
-      } else if (type === 'file') {
-        return fireEvent.change(elem)
-      } else {
-        elem.value = value
-        return fireEvent.input(elem)
-      }
-    }
-
-    case 'TEXTAREA': {
-      elem.value = value
-      return fireEvent.input(elem)
-    }
-
-    case 'SELECT': {
-      elem.value = value
-      return fireEvent.change(elem)
-    }
-
-    default:
-    // do nothing
+  if (!InputTypeActions[tagName.toUpperCase()]) {
+    return null
   }
 
-  return null
+  const {[tagName.toUpperCase()]: inputAction} = useActions(fireEvent)
+
+  return inputAction(elem, value)
 }
 
 function warnOnChangeOrInputEventCalledDirectly(eventValue, eventKey) {
