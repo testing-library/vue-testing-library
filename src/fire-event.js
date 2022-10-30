@@ -1,5 +1,5 @@
-/* eslint-disable testing-library/no-wait-for-empty-callback */
-import {waitFor, fireEvent as dtlFireEvent} from '@testing-library/dom'
+import {fireEvent as dtlFireEvent} from '@testing-library/dom'
+import {flushPromises} from '@vue/test-utils'
 
 // Vue Testing Lib's version of fireEvent will call DOM Testing Lib's
 // version of fireEvent. The reason is because we need to wait another
@@ -8,7 +8,7 @@ import {waitFor, fireEvent as dtlFireEvent} from '@testing-library/dom'
 
 async function fireEvent(...args) {
   dtlFireEvent(...args)
-  await waitFor(() => {})
+  await flushPromises()
 }
 
 Object.keys(dtlFireEvent).forEach(key => {
@@ -16,7 +16,7 @@ Object.keys(dtlFireEvent).forEach(key => {
     warnOnChangeOrInputEventCalledDirectly(args[1], key)
 
     dtlFireEvent[key](...args)
-    await waitFor(() => {})
+    await flushPromises()
   }
 })
 

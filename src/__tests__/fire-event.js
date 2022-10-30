@@ -1,6 +1,9 @@
 import {h} from 'vue'
+import Vant from 'vant'
 import {render, fireEvent} from '..'
 import Button from './components/Button'
+import VantValidate from './components/VantValidate'
+import '@testing-library/jest-dom'
 
 const eventTypes = [
   {
@@ -273,4 +276,19 @@ test('fireEvent.update handles input file', async () => {
   await fireEvent.update(inputEl)
 
   expect(console.warn).not.toHaveBeenCalled()
+})
+
+test('triggers form validation', async () => {
+  const { getByPlaceholderText, getByTestId, getByText } = render(VantValidate, {
+    global: {
+      plugins: [Vant]
+    }
+  });
+  expect(getByText('empty')).toBeInTheDocument();
+
+  await fireEvent.update(getByPlaceholderText('username'), 'user');
+  await fireEvent.update(getByPlaceholderText('password'), 'psw');
+  await fireEvent.submit(getByTestId('form'));
+  
+  expect(getByText('validation passed')).toBeInTheDocument();
 })
