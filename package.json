@@ -81,6 +81,11 @@
     "@vue/compiler-sfc": ">= 3",
     "vue": ">= 3"
   },
+  "peerDependenciesMeta": {
+    "@vue/compiler-sfc": {
+      "optional": true
+    }
+  },
   "husky": {
     "hooks": {
       "pre-commit": "kcd-scripts pre-commit"
