@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Vue Testing Library</h1>
+<h1>Vue Testing Library for Vue 2</h1>
 
 <br />
 
@@ -15,11 +15,12 @@
 <p>Simple and complete Vue.js testing utilities that encourage good testing practices.</p>
 
 <p>Vue Testing Library is a lightweight adapter built on top of <a href="https://github.com/testing-library/dom-testing-library/">DOM Testing Library</a> and <a href="https://github.com/vuejs/vue-test-utils">@vue/test-utils</a>.</p>
-  
-  
+
 <br />
-  
-  <p>If you're looking for the Vue 3 version of Vue Testing Library, check out the <a href="https://github.com/testing-library/vue-testing-library/tree/next">next</a> branch.</p>
+
+  <p>If you're looking for the Vue 3 version of Vue Testing Library, check out the <a href="https://github.com/testing-library/vue-testing-library/tree/main">main</a> branch.</p>
+
+  <p>Vue Testing Library support Vue 2 in its 5.x version range. Bear in  mind that it means that <strong>any version bump in the 5.x range may include breaking changes</strong>.</p>
 
 <br />
 
@@ -66,14 +67,8 @@
 This module is distributed via `npm` and should be installed as one of your
 project's `devDependencies`:
 
-If using Vue 2
 ```
 npm install --save-dev @testing-library/vue@5
-```
-
-If using Vue 3
-```
-npm install --save-dev @testing-library/vue
 ```
 
 This library has `peerDependencies` listings for `Vue` and
