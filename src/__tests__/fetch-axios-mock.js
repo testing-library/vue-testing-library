@@ -4,11 +4,9 @@ import {render, fireEvent} from '@testing-library/vue'
 import Component from './components/Fetch.vue'
 
 test('mocks an API call when load-greeting is clicked', async () => {
-  axiosMock.get.mockImplementationOnce(() =>
-    Promise.resolve({
-      data: {greeting: 'hello there'},
-    }),
-  )
+  axiosMock.get.mockResolvedValueOnce({
+    data: {greeting: 'hello there'},
+  })
 
   const {html, getByText} = render(Component, {props: {url: '/greeting'}})
 

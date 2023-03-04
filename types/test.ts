@@ -165,7 +165,7 @@ export function testInstantiatedRouter() {
 eslint
   testing-library/prefer-explicit-assert: "off",
   testing-library/no-wait-for-empty-callback: "off",
-  testing-library/no-debug: "off",
+  testing-library/no-debugging-utils: "off",
   testing-library/prefer-screen-queries: "off",
   @typescript-eslint/unbound-method: "off",
 */
