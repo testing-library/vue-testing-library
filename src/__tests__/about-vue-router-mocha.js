@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-conditional-in-test */
 import '@testing-library/jest-dom'
 import {render} from '@testing-library/vue'
 import semver from 'semver'
