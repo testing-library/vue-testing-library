@@ -3,12 +3,15 @@ const config = require('kcd-scripts/jest')
 
 module.exports = merge(config, {
   testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    customExportConditions: ['node', 'node-addons'],
+  },
   moduleFileExtensions: ['js', 'vue'],
   coverageDirectory: './coverage',
   collectCoverageFrom: ['**/src/**/*.js', '!**/src/__tests__/**'],
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
-    '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
+    '^.+\\.vue$': '@vue/vue3-jest',
   },
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
   testPathIgnorePatterns: [
