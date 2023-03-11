@@ -1,6 +1,8 @@
 module.exports = {
+  parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
+    sourceType: 'module',
   },
   extends: [
     './node_modules/kcd-scripts/eslint.js',
@@ -8,7 +10,6 @@ module.exports = {
     'plugin:testing-library/vue',
     'prettier',
   ],
-  plugins: ['vue'],
   rules: {
     'no-console': 'off',
     'import/no-unresolved': 'off',
