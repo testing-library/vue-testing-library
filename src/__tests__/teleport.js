@@ -1,5 +1,5 @@
 import {defineComponent} from 'vue'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import {render, fireEvent} from '..'
 
 const ModalButton = defineComponent({
