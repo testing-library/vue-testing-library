@@ -5,9 +5,7 @@ import {cleanup} from './render'
 // This ensures that tests run in isolation from each other.
 // If you don't like this, set the VTL_SKIP_AUTO_CLEANUP variable to 'true'.
 if (typeof afterEach === 'function' && !process.env.VTL_SKIP_AUTO_CLEANUP) {
-  afterEach(() => {
-    cleanup()
-  })
+  afterEach(cleanup)
 } else if (!process.env.VTL_AFTEREACH_WARNING_LOGGED) {
   process.env.VTL_AFTEREACH_WARNING_LOGGED = true
   console.warn(
