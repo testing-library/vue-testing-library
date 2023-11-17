@@ -1,10 +1,13 @@
-// This test verifies that if test is running from vitest without globals - jest will throw
-test('works', () => {
-  delete global.afterEach // no globals in vitest by default
-  process.env.VITEST = 'true'
+test('Testing Utilities lacking a global `afterEach` function will log a warning ONCE', () => {
+  delete global.afterEach
+  const warn = jest.spyOn(console, 'warn')
 
-  expect(() => require('..')).toThrowErrorMatchingInlineSnapshot(`
-    You are using vitest without globals, this way we can't run cleanup after each test.
-    See https://testing-library.com/docs/vue-testing-library/setup for details or set the VTL_SKIP_AUTO_CLEANUP variable to 'true'
-  `)
+  require('..')
+  jest.resetModules()
+  require('..')
+
+  expect(warn).toHaveBeenCalledTimes(1)
+  expect(warn.mock.calls[0][0]).toMatchInlineSnapshot(
+    `The current test runner does not support afterEach/teardown hooks. This means we won't be able to run automatic cleanup and you should be calling cleanup() manually.`,
+  )
 })

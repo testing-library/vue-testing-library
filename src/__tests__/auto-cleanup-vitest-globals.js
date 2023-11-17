@@ -1,7 +1,7 @@
-// This test verifies that if test is running from vitest with globals - jest will not throw
-test('works', () => {
-  global.afterEach = () => {} // emulate enabled globals
-  process.env.VITEST = 'true'
+test('Testing Utilities with global access to `afterEach()` will not log warnings', () => {
+  jest.spyOn(console, 'warn')
+  global.afterEach = () => {}
 
-  expect(() => require('..')).not.toThrow()
+  require('..')
+  expect(console.warn).not.toHaveBeenCalled()
 })
