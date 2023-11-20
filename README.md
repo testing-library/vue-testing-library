@@ -27,7 +27,6 @@
 <hr />
 
 <!-- prettier-ignore-start -->
-[![Build Status][build-badge]][build]
 [![Coverage Status][coverage-badge]][coverage]
 [![GitHub version][github-badge]][github]
 [![npm version][npm-badge]][npm]
@@ -66,7 +65,7 @@ npm install --save-dev @testing-library/vue
 ```
 
 This library has `peerDependencies` listings for `Vue 3` and
-`vue-template-compiler`.
+`@vue/compiler-sfc`.
 
 You may also be interested in installing `jest-dom` so you can use [the custom
 Jest matchers][jest-dom].
@@ -129,7 +128,7 @@ test('increments value on click', async () => {
 
 > You might want to install [`jest-dom`][jest-dom] to add handy assertions such
 > as `.toBeInTheDocument()`. In the example above, you could write
-> `expect(screen.queryByText('Times clicked: 0')).toBeInTheDocument()`.
+> `expect(screen.getByText('Times clicked: 0')).toBeInTheDocument()`.
 
 > Using `byText` queries it's not the only nor the best way to query for
 > elements. Read [Which query should I use?][which-query] to discover
@@ -243,8 +242,6 @@ instead of filing an issue on GitHub.
 [![ITenthusiasm](https://avatars2.githubusercontent.com/u/47364027?v3&s=120)](https://github.com/ITenthusiasm)
 
 <!-- prettier-ignore-start -->
-[build-badge]: https://img.shields.io/github/workflow/status/testing-library/vue-testing-library/validate?logo=github
-[build]: https://github.com/testing-library/vue-testing-library/actions?query=workflow%3Avalidate
 [coverage-badge]: https://img.shields.io/codecov/c/github/testing-library/vue-testing-library.svg
 [coverage]: https://codecov.io/github/testing-library/vue-testing-library
 [github-badge]: https://badge.fury.io/gh/testing-library%2Fvue-testing-library.svg
