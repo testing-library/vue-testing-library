@@ -61,6 +61,7 @@ function cleanup() {
 
 function cleanupAtWrapper(wrapper) {
   if (
+    wrapper.element &&
     wrapper.element.parentNode &&
     wrapper.element.parentNode.parentNode === document.body
   ) {
