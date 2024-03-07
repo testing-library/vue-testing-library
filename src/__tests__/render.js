@@ -90,24 +90,22 @@ test('unmounts', () => {
 })
 
 test('use unmount before cleanup', () => {
-  const ChildComponent = defineComponent(() => {
-    return () =>
-      h(
-        'div',
-        {
-          'data-testid': 'node',
-        },
-        ['Hi'],
-      )
-  })
-
-  const ParentComponent = defineComponent((_, {slots}) => {
+  const TestComponent = defineComponent((_, {slots}) => {
     return () => slots.default?.()
   })
 
   const {getByTestId, unmount, queryByTestId} = render({
     render() {
-      return h(ParentComponent, {}, {default: () => h(ChildComponent)})
+      return h(
+        TestComponent,
+        {},
+        {
+          default: () =>
+            h('div', {
+              'data-testid': 'node',
+            }),
+        },
+      )
     },
   })
 
