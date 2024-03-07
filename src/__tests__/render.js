@@ -1,4 +1,5 @@
-import {render} from '..'
+import {render, cleanup} from '..'
+import {h, defineComponent} from 'vue'
 import '@testing-library/jest-dom'
 
 test('baseElement defaults to document.body', () => {
@@ -86,4 +87,35 @@ test('unmounts', () => {
   unmount()
 
   expect(queryByTestId('node')).not.toBeInTheDocument()
+})
+
+test('use unmount before cleanup', () => {
+  const ChildComponent = defineComponent(() => {
+    return () =>
+      h(
+        'div',
+        {
+          'data-testid': 'node',
+        },
+        ['Hi'],
+      )
+  })
+
+  const ParentComponent = defineComponent((_, {slots}) => {
+    return () => slots.default?.()
+  })
+
+  const {getByTestId, unmount, queryByTestId} = render({
+    render() {
+      return h(ParentComponent, {}, {default: () => h(ChildComponent)})
+    },
+  })
+
+  expect(getByTestId('node')).toBeInTheDocument()
+
+  unmount()
+
+  expect(queryByTestId('node')).not.toBeInTheDocument()
+
+  expect(() => cleanup()).not.toThrow()
 })
