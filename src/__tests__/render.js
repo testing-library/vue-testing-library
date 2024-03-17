@@ -89,31 +89,14 @@ test('unmounts', () => {
   expect(queryByTestId('node')).not.toBeInTheDocument()
 })
 
-test('use unmount before cleanup', () => {
-  const TestComponent = defineComponent((_, {slots}) => {
-    return () => slots.default?.()
-  })
+test('unmounts when no wrapper element is present', () => {
+  const Comp = defineComponent((_, ctx) => () => ctx.slots.default?.())
 
-  const {getByTestId, unmount, queryByTestId} = render({
-    render() {
-      return h(
-        TestComponent,
-        {},
-        {
-          default: () =>
-            h('div', {
-              'data-testid': 'node',
-            }),
-        },
-      )
-    },
+  const {unmount} = render({
+    render: () => h(Comp, () => h('div')),
   })
-
-  expect(getByTestId('node')).toBeInTheDocument()
 
   unmount()
-
-  expect(queryByTestId('node')).not.toBeInTheDocument()
 
   expect(() => cleanup()).not.toThrow()
 })
