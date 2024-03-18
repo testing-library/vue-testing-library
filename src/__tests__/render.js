@@ -1,4 +1,5 @@
-import {render} from '..'
+import {render, cleanup} from '..'
+import {h, defineComponent} from 'vue'
 import '@testing-library/jest-dom'
 
 test('baseElement defaults to document.body', () => {
@@ -86,4 +87,16 @@ test('unmounts', () => {
   unmount()
 
   expect(queryByTestId('node')).not.toBeInTheDocument()
+})
+
+test('unmounts when no wrapper element is present', () => {
+  const Comp = defineComponent((_, ctx) => () => ctx.slots.default?.())
+
+  const {unmount} = render({
+    render: () => h(Comp, () => h('div')),
+  })
+
+  unmount()
+
+  expect(() => cleanup()).not.toThrow()
 })

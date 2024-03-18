@@ -60,10 +60,7 @@ function cleanup() {
 }
 
 function cleanupAtWrapper(wrapper) {
-  if (
-    wrapper.element.parentNode &&
-    wrapper.element.parentNode.parentNode === document.body
-  ) {
+  if (wrapper.element?.parentNode?.parentNode === document.body) {
     document.body.removeChild(wrapper.element.parentNode)
   }
 
