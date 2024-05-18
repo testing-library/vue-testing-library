@@ -1,13 +1,13 @@
 // Minimum TypeScript Version: 4.0
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { VNodeChild } from 'vue';
-import { MountingOptions } from '@vue/test-utils'
-import { queries, EventType, BoundFunctions } from '@testing-library/dom'
+import {VNodeChild} from 'vue'
+import {MountingOptions} from '@vue/test-utils'
+import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { OptionsReceived as PrettyFormatOptions } from 'pretty-format'
-import type { ComponentProps, ComponentSlots } from "vue-component-type-helpers";
-import { RemoveIndexSignature } from "type-fest";
+import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
+import {ComponentProps, ComponentSlots} from 'vue-component-type-helpers'
+import {RemoveIndexSignature} from 'type-fest'
 
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
@@ -48,16 +48,20 @@ interface VueTestingLibraryRenderOptions {
   baseElement?: Element
 }
 
-
 type AllowNonFunctionSlots<Slots> = {
-  [K in keyof Slots]: Slots[K] | VNodeChild;
-};
-type ExtractSlots<C> = AllowNonFunctionSlots<Partial<RemoveIndexSignature<ComponentSlots<C>>>>;
+  [K in keyof Slots]: Slots[K] | VNodeChild
+}
+type ExtractSlots<C> = AllowNonFunctionSlots<
+  Partial<RemoveIndexSignature<ComponentSlots<C>>>
+>
 
-export interface RenderOptions<C> extends Omit<VueTestingLibraryRenderOptions & VueTestUtilsRenderOptions
-  , "props" | "slots"> {
-  props?: ComponentProps<C>;
-  slots?: ExtractSlots<C>;
+export interface RenderOptions<C>
+  extends Omit<
+    VueTestingLibraryRenderOptions & VueTestUtilsRenderOptions,
+    'props' | 'slots'
+  > {
+  props?: ComponentProps<C>
+  slots?: ExtractSlots<C>
 }
 
 export function render<C>(
