@@ -68,7 +68,7 @@ export async function testWaitFor() {
 export function testOptions() {
   render(SomeComponent, {
     attrs: {a: 1},
-    props: {c: 1}, // ideally it would fail because `c` is not an existing prop…
+    props: {foo: 1},
     data: () => ({b: 2}),
     slots: {
       default: '<div />',

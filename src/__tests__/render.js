@@ -1,6 +1,6 @@
-import {render, cleanup} from '..'
 import {h, defineComponent} from 'vue'
 import '@testing-library/jest-dom'
+import {render, cleanup} from '..'
 
 test('baseElement defaults to document.body', () => {
   const {baseElement} = render({template: '<div />'})
