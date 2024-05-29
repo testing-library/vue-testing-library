@@ -45,7 +45,7 @@
   "dependencies": {
     "@babel/runtime": "^7.23.2",
     "@testing-library/dom": "^9.3.3",
-    "@vue/test-utils": "^2.4.1"
+    "@vue/test-utils": "^2.4.6"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-methods": "^7.18.6",
