@@ -68,7 +68,7 @@
     "lodash.merge": "^4.6.2",
     "msw": "^1.3.2",
     "tsd": "^0.29.0",
-    "type-fest": "~2.19",
+    "type-fest": ">=2.10 <4.0.0",
     "typescript": "^5.2.2",
     "vee-validate": "^4.11.8",
     "vue": "^3.3.5",
