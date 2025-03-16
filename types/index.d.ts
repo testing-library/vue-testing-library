@@ -7,7 +7,7 @@ import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
 import {ComponentProps, ComponentSlots} from 'vue-component-type-helpers'
-import {RemoveIndexSignature} from 'type-fest'
+import {OmitIndexSignature} from 'type-fest'
 
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
@@ -52,7 +52,7 @@ type AllowNonFunctionSlots<Slots> = {
   [K in keyof Slots]: Slots[K] | VNodeChild
 }
 type ExtractSlots<C> = AllowNonFunctionSlots<
-  Partial<RemoveIndexSignature<ComponentSlots<C>>>
+  Partial<OmitIndexSignature<ComponentSlots<C>>>
 >
 
 export interface RenderOptions<C>
