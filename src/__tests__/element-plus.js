@@ -15,5 +15,5 @@ test('Renders component from third-party library', async () => {
     },
   })
 
-  expect(screen.getByRole('alert')).toHaveTextContent('success alert')
+  expect(await screen.findByRole('alert')).toHaveTextContent('success alert')
 })
