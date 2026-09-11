@@ -1,6 +1,6 @@
 import {expectType} from 'tsd'
 import {defineComponent} from 'vue'
-import {render, fireEvent, screen, waitFor} from '.'
+import {render, fireEvent, screen, waitFor, RenderOptions} from '.'
 
 declare const elem: Element
 
@@ -87,6 +87,26 @@ export function testEmitted() {
   const {emitted} = render(SomeComponent)
   expectType<unknown[]>(emitted().foo)
   expectType<unknown[]>(emitted('foo'))
+}
+
+// Named slot plus mapped header/cell slots, as in issue #321.
+type HeaderItem = {key: string}
+type MappedTableSlots = {expand: (props: {row: unknown}) => unknown} & {
+  [K in HeaderItem as `header:${K['key']}`]: (props: {header: K}) => unknown
+} & {
+  [K in HeaderItem as `cell:${K['key']}`]: (props: {row: unknown}) => unknown
+}
+const DataTable = {} as {new (): {$slots: MappedTableSlots}}
+
+export function testMappedSlotTypes() {
+  const options: RenderOptions<typeof DataTable> = {
+    slots: {
+      expand: '<div />',
+      'header:name': '<th>Name (custom)</th>',
+      'cell:name': '<td>Name</td>',
+    },
+  }
+  render(DataTable, options)
 }
 
 /*

@@ -7,7 +7,6 @@ import {queries, EventType, BoundFunctions} from '@testing-library/dom'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {OptionsReceived as PrettyFormatOptions} from 'pretty-format'
 import {ComponentProps, ComponentSlots} from 'vue-component-type-helpers'
-import {RemoveIndexSignature} from 'type-fest'
 
 // NOTE: fireEvent is overridden below
 export * from '@testing-library/dom'
@@ -51,8 +50,18 @@ interface VueTestingLibraryRenderOptions {
 type AllowNonFunctionSlots<Slots> = {
   [K in keyof Slots]: Slots[K] | VNodeChild
 }
+// Keep mapped keys such as `header:${string}`; only drop string/number/symbol indexes.
+type OmitWideIndexSignature<T> = {
+  [K in keyof T as string extends K
+    ? never
+    : number extends K
+    ? never
+    : symbol extends K
+    ? never
+    : K]: T[K]
+}
 type ExtractSlots<C> = AllowNonFunctionSlots<
-  Partial<RemoveIndexSignature<ComponentSlots<C>>>
+  Partial<OmitWideIndexSignature<ComponentSlots<C>>>
 >
 
 export interface RenderOptions<C>
