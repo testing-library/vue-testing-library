@@ -45,6 +45,53 @@ test('container defaults to div', () => {
   expect(container.tagName).toBe('DIV')
 })
 
+test.each([
+  ['the default container', {}],
+  ['document.body', {container: document.body}],
+])('preserves focus set on mount with %s', (_, options) => {
+  const {getByRole} = render(
+    {
+      mounted() {
+        this.$refs.button.focus()
+      },
+      template: '<div><button ref="button">Continue</button></div>',
+    },
+    options,
+  )
+
+  expect(getByRole('button', {name: 'Continue'})).toHaveFocus()
+})
+
+test('keeps focus moved elsewhere while unwrapping the mount element', () => {
+  const target = document.body.appendChild(document.createElement('button'))
+
+  customElements.define(
+    'vtl-focus-on-connect',
+    class extends HTMLElement {
+      connectedCallback() {
+        target.focus()
+      }
+    },
+  )
+
+  try {
+    render({
+      mounted() {
+        this.$refs.button.focus()
+      },
+      render() {
+        return h('vtl-focus-on-connect', [
+          h('button', {ref: 'button'}, 'Continue'),
+        ])
+      },
+    })
+
+    expect(target).toHaveFocus()
+  } finally {
+    target.remove()
+  }
+})
+
 test('renders custom container', () => {
   const blink = document.createElement('blink')
   const Component = {template: '<div />'}

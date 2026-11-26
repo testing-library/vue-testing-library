@@ -52,7 +52,16 @@ Check out the test examples on GitHub for further details.`)
 }
 
 function unwrapNode(node) {
+  const {ownerDocument} = node
+  const {activeElement} = node.getRootNode()
+  const focusWasInside = node.contains(activeElement?.parentNode)
+
   node.replaceWith(...node.childNodes)
+
+  // Moving children can reset focus to the body.
+  if (focusWasInside && ownerDocument.activeElement === ownerDocument.body) {
+    activeElement.focus({preventScroll: true})
+  }
 }
 
 function cleanup() {
