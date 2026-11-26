@@ -77,6 +77,38 @@ test('baseElement matches container if not custom baseElement is provided', () =
   `)
 })
 
+test.each([
+  ['the default container', () => ({})],
+  ['document.body as the container', body => ({container: body})],
+])(
+  'keeps document.body when a component moves its root on mount with %s',
+  (_, getOptions) => {
+    const body = document.body
+    const originalChildCount = body.childNodes.length
+    const Component = defineComponent({
+      mounted() {
+        body.appendChild(this.$el)
+      },
+      render() {
+        return h('button', 'Moved button')
+      },
+    })
+
+    try {
+      const {getByRole} = render(Component, getOptions(body))
+
+      expect(document.body).toBe(body)
+      expect(getByRole('button', {name: 'Moved button'}).parentNode).toBe(body)
+
+      cleanup()
+
+      expect(body.childNodes).toHaveLength(originalChildCount)
+    } finally {
+      document.body = body
+    }
+  },
+)
+
 test('unmounts', () => {
   const {getByTestId, unmount, queryByTestId} = render({
     template: `<div data-testid="node">Hi</div>`,
