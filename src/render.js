@@ -3,7 +3,7 @@ import {mount} from '@vue/test-utils'
 
 import {getQueriesForElement, prettyDOM} from '@testing-library/dom'
 
-const mountedWrappers = new Set()
+const mountedWrappers = new Map()
 
 function render(
   Component,
@@ -30,11 +30,10 @@ Check out the test examples on GitHub for further details.`)
     attachTo: container,
   })
 
-  // this removes the additional wrapping div node from VTU:
-  // https://github.com/vuejs/vue-test-utils-next/blob/master/src/mount.ts#L309
-  unwrapNode(wrapper.parentElement)
+  // Use the extra div created by VTU. The component can move its root on mount.
+  unwrapNode(wrapper.vm.$.appContext.app._container)
 
-  mountedWrappers.add(wrapper)
+  mountedWrappers.set(wrapper, container)
 
   return {
     container,
@@ -59,9 +58,9 @@ function cleanup() {
   mountedWrappers.forEach(cleanupAtWrapper)
 }
 
-function cleanupAtWrapper(wrapper) {
-  if (wrapper.element?.parentNode?.parentNode === document.body) {
-    document.body.removeChild(wrapper.element.parentNode)
+function cleanupAtWrapper(container, wrapper) {
+  if (container.parentNode === document.body) {
+    container.remove()
   }
 
   wrapper.unmount()
